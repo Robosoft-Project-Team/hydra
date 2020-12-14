@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520px" height="98px" viewBox="0 0 520 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>750CF875-462E-4BEE-AC2A-8A488DD0E2B0@1.5x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01_Internapp_Landing" transform="translate(-460.000000, -99.000000)">
+            <g id="img_Robosoft-logo" transform="translate(460.000000, 99.000000)">
+                <text id="EMOTION-ENGINEERING-&amp;-DESIGN" font-family="NeoSansStd-Regular, Neo Sans Std" font-size="19.0799998" font-weight="normal" fill="#F52851">
+                    <tspan x="106" y="81">EM</tspan>
+                    <tspan x="131.03296" y="81" letter-spacing="-0.875771958">O</tspan>
+                    <tspan x="141.910468" y="81">TION ENGINEERING &amp; DESIGN</tspan>
+                </text>
+                <g id="Group-5" transform="translate(0.000000, 0.082080)">
+                    <path d="M97.6402789,49.0987074 C97.6402789,76.0612671 75.7839591,97.9197469 48.8203194,97.9197469 C21.8573997,97.9197469 0,76.0612671 0,49.0987074 C0,22.1361477 21.8573997,0.278027997 48.8203194,0.278027997 C75.7839591,0.278027997 97.6402789,22.1361477 97.6402789,49.0987074" id="Fill-1" fill="#F52851"></path>
+                    <path d="M19.8236878,28.0657797 C19.8236878,28.0657797 31.7231276,13.6625398 45.4333675,40.9282195 L45.5230075,41.1074995 C45.5230075,41.1074995 49.8232074,31.9940996 53.4451674,27.0649797 C57.0638873,22.1351397 66.3050872,12.5839799 81.7109271,22.9818597 C81.7109271,22.9818597 70.6474072,15.3055798 61.7417273,31.3975796 C56.2157273,41.0311795 50.7678474,59.0034593 46.1562475,92.6188189 C46.1562475,92.6188189 43.0170475,58.1765393 33.8017676,39.5807395 C30.1560477,32.2223396 24.8687277,25.1008197 19.8236878,28.0657797" id="Fill-3" fill="#FFFFFF"></path>
+                </g>
+                <text id="Robosoft-Technologies" font-family="NeoTech-Medium, NeoTech" font-size="41.5799995" font-weight="400" letter-spacing="-1.8" fill="#ED2F52">
+                    <tspan x="104" y="56">Robosoft Technologies</tspan>
+                </text>
+                <path d="M519.11464,24.5573199 C519.11464,27.6263199 516.62668,30.1146399 513.55732,30.1146399 C510.48796,30.1146399 508,27.6263199 508,24.5573199 C508,21.48796 510.48796,19 513.55732,19 C516.62668,19 519.11464,21.48796 519.11464,24.5573199 Z" id="Stroke-6" stroke="#ED2F52" stroke-width="0.719999992"></path>
+                <text id="R" font-family="NeoSansStd-Regular, Neo Sans Std" font-size="7" font-weight="normal" fill="#ED2F52">
+                    <tspan x="511.5" y="27">R</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
