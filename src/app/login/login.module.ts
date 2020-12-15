@@ -8,8 +8,10 @@ import {
   LoginForgotPasswordComponent,
   LoginUserTypeComponent, VerifyOtpComponent,
   ChangePasswordComponent,
-  ResetSuccessComponent
+  ResetSuccessComponent,
+  SignUpComponent
 } from './components';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import {
     LoginForgotPasswordComponent,
     VerifyOtpComponent,
     ChangePasswordComponent,
-    ResetSuccessComponent
+    ResetSuccessComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    FormsModule
   ]
 })
 export class LoginModule { }
