@@ -20,7 +20,7 @@
 
       img {
         height: 10em;
-        width: 46em;
+        width: auto;
         margin-top: 5em;
         margin-bottom: 2.5em;
       }
@@ -40,5 +40,6 @@
     min-height: calc(100vh - 255px);
     text-align: center;
     padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
