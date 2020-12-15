@@ -1,48 +1,82 @@
 @import '../../../../variables';
 
+@mixin position-middle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .user-type {
-  height: 30vh;
-  font-size: .625rem;
-  max-width: 72em;
-  margin-top: 5em;
+  margin: 7vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 
   &-choice {
+    margin-bottom: 40px;
     display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .box {
-      margin: 0 2em;
-      height: 16em;
-      width: 20em;
-      border-radius: 1.5em;
+    .choice {
+      height: 170px;
+      width: 200px;
+      padding: 10px;
+      border-radius: 15px;
       border: 2px solid rgba($color-grey-light, .3);
+      color: $color-grey-dark;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      &-icon {
+        color: $color-primary-dark;
+      }
+
+      &-title {
+        margin-bottom: 0;
+        color: inherit;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
 
       &.active {
-        border: 2px solid $color-primary-dark;
+        color: $color-primary-dark;
         background-color: rgba($color-primary-dark, 0.06);
+        border: 2px solid $color-primary-dark;
       }
     }
   }
 
   &-button {
     display: flex;
-    justify-content: end;
-    align-items: center;
-    margin-top: 5em;
-    margin-right: 2em;
-    margin-left: 2em;
+    justify-content: flex-end;
 
-    .btn {
+    .button {
+      margin-top: 40px;
+      margin-bottom: 40px;
       height: 40px;
-      width: 115px;
+      width: 250px;
       border-radius: 8px;
+      outline: none;
+      border: none;
+      background-color: $color-primary-dark;
+      color: $color-white;
+      font-family: Muli;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 18px;
+      text-align: center;
 
-      &.-danger {
-        background-color: $color-primary-dark;
+      i {
+        margin-left: 4px
       }
     }
   }
@@ -50,27 +84,28 @@
 
 .alternate {
   position: absolute;
-  bottom: 40px;
-  margin: 0 auto;
+  bottom: 20px;
   width: 100%;
-  font-family: "Muli";
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 20px;
-  text-align: center;
+  height: 40px;
 
   &-message {
-    color: #808087;
-    display: inline-block;
-    margin: 0;
+    height: 40px;
+    color: $color-grey-dark;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.29px;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 0;
   }
 
   &-action {
-    color: $color-primary-dark;
-    display: inline-block;
-    margin: 0;
     text-transform: uppercase;
-    transition: transform .2s;
+    color: $color-primary-dark;
+    font-style: 700;
+    font-family: Muli;
+    display: inline-block;
 
     &:hover {
       cursor: pointer;
