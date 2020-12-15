@@ -20,9 +20,9 @@
     display: flex;
 
     .choice {
-      height: 170px;
-      width: 200px;
-      padding: 10px;
+      height: 160px;
+      width: 185px;
+      padding: 16px;
       border-radius: 15px;
       border: 2px solid rgba($color-grey-light, .3);
       color: $color-grey-dark;
@@ -30,15 +30,60 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      transition: all .3s ease-in-out;
 
       &:not(:last-child) {
         margin-right: 40px;
       }
 
       &-icon {
+        width: 80px;
+        height: 80px;
+        transition: all .3s ease-in-out;
+      }
+
+      .icon-recruiter {
+        background: url('../../../../assets/3-users/icn_Recruiter_unselected@1.5x.svg') no-repeat center;
+        background-size: contain;
+      }
+
+      .icon-organizer {
+        background: url('../../../../assets/3-users/icn_Organizer_unselected@1.5x.svg') no-repeat center;
+        background-size: contain;
+      }
+
+      .icon-approval {
+        background: url('../../../../assets/3-users/icn_Approval_unselected@1.5x.svg') no-repeat center;
+        background-size: contain;
+      }
+
+      &:hover,
+      &.active {
+        cursor: pointer;
         color: $color-primary-dark;
-        width: 89px;
-        height: 89px;
+        background-color: rgba($color-primary-dark, 0.06);
+        border: 2px solid $color-primary-dark;
+        transform: scale3d(1.05, 1.05, 1.05);
+
+        .icon-recruiter {
+          background: url('../../../../assets/3-users/icn_Recruiter_selected@1.5x.svg') no-repeat center;
+          background-size: contain;
+        }
+
+        .icon-organizer {
+          background: url('../../../../assets/3-users/icn_Organizer_selected@1.5x.svg') no-repeat center;
+          background-size: contain;
+        }
+
+        .icon-approval {
+          background: url('../../../../assets/3-users/icn_Approval_selected@1.5x.svg') no-repeat center;
+          background-size: contain;
+        }
+      }
+
+      &:hover .choice-icon,
+      &.active .choice-icon {
+        transform: scale3d(1.05, 1.05, 1.05);
       }
 
       &-title {
@@ -49,16 +94,6 @@
         font-size: 20px;
         font-weight: 600;
         letter-spacing: 0.29px;
-      }
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      &.active {
-        color: $color-primary-dark;
-        background-color: rgba($color-primary-dark, 0.06);
-        border: 2px solid $color-primary-dark;
       }
     }
   }

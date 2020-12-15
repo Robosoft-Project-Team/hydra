@@ -1,15 +1,15 @@
 <div class="container user-type">
   <div class="user-type-choice">
-    <div class="choice active">
-      <img class="choice-icon" src="../../../../assets/3-users/icn_Recruiter_selected@1.5x.svg" alt="Recruiter Icon">
+    <div class="choice" [ngClass]="{'active': recruiterActive}" (click)="recruiterActive = !recruiterActive">
+      <div class="choice-icon icon-recruiter"></div>
       <p class="choice-title">Recruiter</p>
     </div>
-    <div class="choice">
-      <img class="choice-icon" src="../../../../assets/3-users/icn_Organizer_unselected@1.5x.svg" alt="Organizer Icon">
+    <div class="choice" [ngClass]="{'active': organizerActive}" (click)="organizerActive = !organizerActive">
+      <div class="choice-icon icon-organizer"></div>
       <p class="choice-title">Organizer</p>
     </div>
-    <div class="choice">
-      <img class="choice-icon" src="../../../../assets/3-users/icn_Approval_unselected@1.5x.svg" alt="Approver Icon">
+    <div class="choice" [ngClass]="{'active': approvalActive}" (click)="approvalActive = !approvalActive">
+      <div class="choice-icon icon-approval"></div>
       <p class="choice-title">Approval Authority</p>
     </div>
   </div>
