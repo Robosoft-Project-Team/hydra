@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginForgotPasswordComponent implements OnInit {
 
+  email = { value: '', error: false };
+
   constructor() { }
 
   ngOnInit(): void {
