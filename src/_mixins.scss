@@ -1,5 +1,29 @@
 @import 'src/variables';
 
+@mixin text {
+  .text {
+    color: $color-white;
+    font-family: Muli;
+    font-size: 1.75rem;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 2rem;
+  }
+}
+
+@mixin sub-text {
+  .sub-text {
+    margin: 0.5rem 0rem;
+    color: #808087;
+    font-family: Muli;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.21px;
+    line-height: 2rem;
+    text-align: center;
+  }
+}
+
 @mixin button {
   .button {
     margin-top: 40px;
@@ -19,3 +43,4 @@
     margin-bottom: 133px;
   }
 }
+

@@ -1,0 +1,18 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+.container {
+  text-align: center;
+
+  div {
+    margin-top: 40px;   
+    @include sub-text;
+    .sub-text {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+@include text;
+@include button;
