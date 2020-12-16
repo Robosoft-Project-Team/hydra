@@ -1,0 +1,176 @@
+@import '../../../../variables';
+
+@mixin button {
+  .button {
+    margin-top: 40px;
+    height: 40px;
+    width: 250px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: $color-primary-dark;
+    color: $color-white;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+  }
+}
+
+@mixin default-text-style {
+  font-family: Muli;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.29px;
+  margin-bottom: 0;
+}
+
+// User Type Component Container
+.user-type {
+  margin: 7vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  // User Choice Container
+  &-choice {
+    margin-bottom: 40px;
+    display: flex;
+
+    // User Type Selector Boxes
+    .choice {
+      height: 160px;
+      width: 185px;
+      padding: 16px;
+      border-radius: 15px;
+      border: 2px solid rgba($color-grey-light, .3);
+      color: $color-grey-dark;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all .3s ease-in-out;
+
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      // Common Icon Styles
+      &-icon {
+        width: 80px;
+        height: 80px;
+        transition: all .3s ease-in-out;
+        background-size: contain !important;
+      }
+
+      // Unselected Icon Styles
+      .icon-recruiter {
+        background: url('../../../../assets/3-users/icn_Recruiter_unselected@1.5x.svg') no-repeat center;
+      }
+
+      .icon-organizer {
+        background: url('../../../../assets/3-users/icn_Organizer_unselected@1.5x.svg') no-repeat center;
+      }
+
+      .icon-approval {
+        background: url('../../../../assets/3-users/icn_Approval_unselected@1.5x.svg') no-repeat center;
+      }
+
+      // User Mode Hover States
+      &:hover,
+      &.active {
+        cursor: pointer;
+        color: $color-primary-dark;
+        background-color: rgba($color-primary-dark, 0.06);
+        border: 2px solid $color-primary-dark;
+        transform: scale3d(1.05, 1.05, 1.05);
+
+        // Selected Icon Styles
+        .icon-recruiter {
+          background: url('../../../../assets/3-users/icn_Recruiter_selected@1.5x.svg') no-repeat center;
+        }
+
+        .icon-organizer {
+          background: url('../../../../assets/3-users/icn_Organizer_selected@1.5x.svg') no-repeat center;
+        }
+
+        .icon-approval {
+          background: url('../../../../assets/3-users/icn_Approval_selected@1.5x.svg') no-repeat center;
+        }
+      }
+
+      // Check Mark on Selected Icon
+      &.active .choice-icon {
+        transform: scale3d(1.1, 1.1, 1.05);
+
+        &::after {
+          content: "";
+          width: 30px;
+          height: 20px;
+          display: block;
+          background: url('../../../../assets/3-users/icn_selected_tick@1.5x.svg') no-repeat center;
+          margin: 5px auto 0;
+          position: relative;
+          left: 7px;
+          text-align: center;
+        }
+      }
+
+      // Icon Title
+      &-title {
+        margin-top: 10px;
+        color: inherit;
+        @include default-text-style();
+      }
+    }
+  }
+
+  // Next Button
+  &-button {
+    display: flex;
+    justify-content: flex-end;
+
+    @include button();
+
+    .button i {
+      margin-left: 4px
+    }
+  }
+}
+
+// Signup Option Text
+.alternate {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  height: 40px;
+
+  &-message {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: $color-grey-dark;
+    @include default-text-style();
+  }
+
+  // Signup Link
+  &-action {
+    display: inline-block;
+    text-transform: uppercase;
+    font-family: Muli;
+    font-style: 700;
+    color: $color-primary-dark;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: translateX(2px);
+    }
+  }
+}
