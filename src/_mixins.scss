@@ -1,11 +1,5 @@
 @import 'src/variables';
 
-.form {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 @mixin text {
   .text {
     color: $color-white;
@@ -30,51 +24,6 @@
   }
 }
 
-@mixin image {
-  img {
-    margin-top: 4rem;
-    margin-bottom: 2.5rem;
-  }
-}
-
-@mixin input-styles {
-  .input {
-    display: flex;
-    flex-direction: column;
-    width: 330px;
-
-    label {
-      color: $color-grey-light;
-      font-size: 14px;
-      line-height: 18px;
-      margin-bottom: 0.75rem;
-      font-family: muli, sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-
-    input {
-      color: $color-grey-light;
-      font-size: 14px;
-      font-weight: 300;
-      width: 100%;
-      line-height: 18px;
-      padding: 0.7rem;
-      padding-left: 1rem;
-      border-radius: 6px;
-      outline: none;
-      background: #0000000f;
-      border: 1px solid $color-white;
-      box-sizing: border-box;
-    }
-
-    input.invalid {
-      color: $color-primary-dark;
-      border: 1px solid $color-primary-dark;
-    }
-  }
-}
-
 @mixin button {
   .button {
     margin-top: 40px;
@@ -95,8 +44,3 @@
   }
 }
 
-@include text;
-@include sub-text;
-@include image;
-@include input-styles;
-@include button;
