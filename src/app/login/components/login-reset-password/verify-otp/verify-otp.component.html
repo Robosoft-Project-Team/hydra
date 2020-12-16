@@ -1,1 +1,15 @@
-<p>verify-otp works!</p>
+<div class="container">
+  <h1>Verification</h1>
+  <h2>Enter the verification code we just sent you on
+    <br> your email address.</h2>
+  <div class="form">
+    <input type="number" maxLength="1" size="1" min="0" max="9" pattern="[0-9]" (input)="keytab($event)" />
+    <input type="number" maxLength="1" size="1" min="0" max="9" pattern="[0-9]" (input)="keytab($event)" />
+    <input type="number" maxLength="1" size="1" min="0" max="9" pattern="[0-9]" (input)="keytab($event)" />
+    <input type="number" maxLength="1" size="1" min="0" max="9" pattern="[0-9]" />
+    <!-- TODO: Add Verify Function on last digit enter -->
+  </div>
+  <p>If you didn't recieve a code!
+    <a>Resend</a></p>
+  <button class="button" routerLink="">Verify</button>
+</div>
