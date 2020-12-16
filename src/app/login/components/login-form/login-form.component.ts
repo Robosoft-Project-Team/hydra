@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 
 @Component({
@@ -13,9 +13,10 @@ export class LoginFormComponent implements OnInit {
   showMark: boolean;
   password = { value: '', error: '' };
 
-  constructor(private validation: FormValidationService,
+  constructor(
+    private validation: FormValidationService,
     private router: Router,
-    private route: ActivatedRoute) { }
+  ) { }
 
   ngOnInit(): void {
     this.showMark = false;
@@ -53,7 +54,7 @@ export class LoginFormComponent implements OnInit {
       console.log(this.email.value);
       this.email.tick = true;
       this.email.error = '';
-      this.router.navigate(['../verify'], { relativeTo: this.route });
+      this.router.navigate(['/dashboard']);
     } else {
       this.email.error = 'You have entered invalid email address';
       this.email.tick = false;
