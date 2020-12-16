@@ -12,17 +12,17 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  keytab(event){
+  keytab(event) {
     let nextInput = event.srcElement.nextElementSibling; // get the sibling element
 
     var target = event.target || event.srcElement;
     var id = target.id
     console.log(id.maxlength); // prints undefined
 
-    if(nextInput == null)  // check the maxLength from here
-        return;
+    if (nextInput == null)  // check the maxLength from here
+      return;
     else
-        nextInput.focus();   // focus if not null
-}
+      nextInput.focus();   // focus if not null
+  }
 
 }
