@@ -17,7 +17,6 @@ export class VerifyOtpComponent implements OnInit {
 
     var target = event.target || event.srcElement;
     var id = target.id
-    console.log(id.maxlength); // prints undefined
 
     if (nextInput == null)  // check the maxLength from here
       return;

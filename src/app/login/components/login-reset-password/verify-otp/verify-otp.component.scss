@@ -61,13 +61,11 @@
 
     a {
       color: $color-primary-dark;
+      cursor: pointer;
     }
   }
 
-  .button {
-    @include button;
-  }
-
+  @include button;
 }
 
 input::-webkit-outer-spin-button,
