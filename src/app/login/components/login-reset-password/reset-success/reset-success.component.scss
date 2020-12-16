@@ -1,40 +1,23 @@
 @import '../../../../../variables';
+@import '../../../../../mixins';
 
 .container {
-  background-color: $color-secondary-dark;
   text-align: center;
 
   h1 {
-     height: 34px;
-    color: $color-white;
-    font-family: Muli;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 0.23px;
-    line-height: 34px;
-    text-align: center;
+    @include text;
   }
 
   img {
-    height: 314px;
-    width: 452px;
+    height: 319px;
+    width: 457px;
   }
 
   div {
     margin-top: 40px;
 
     h2 {
-      height: 34px;
-      color: $color-white;
-      font-family: Muli;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 0.23px;
-      line-height: 34px;
-      text-align: center;
-      padding-bottom: 0;
-      margin: 0;
-      padding: 0;
+      @include text;
     }
 
     p {
@@ -51,21 +34,7 @@
     }
   }
 
-  button {
-    margin-top: 40px;
-    height: 40px;
-    width: 250px;
-    border-radius: 8px;
-    outline: none;
-    border: none;
-    background-color: $color-primary-dark;
-    color: $color-white;
-    font-family: Muli;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0;
-    line-height: 18px;
-    text-align: center;
-    margin-bottom: 133px;
+  .button {
+    @include button;
   }
 }
