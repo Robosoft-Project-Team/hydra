@@ -1,1 +1,24 @@
-<p>login-user-type works!</p>
+<div class="container user-type">
+  <div class="user-type-choice">
+    <div class="choice" [ngClass]="{'active': selectedItem === 0}" (click)="onSelectUserType(0)">
+      <div class="choice-icon icon-recruiter"></div>
+      <p class="choice-title">Recruiter</p>
+    </div>
+    <div class="choice" [ngClass]="{'active': selectedItem === 1}" (click)="onSelectUserType(1)">
+      <div class="choice-icon icon-organizer"></div>
+      <p class="choice-title">Organizer</p>
+    </div>
+    <div class="choice" [ngClass]="{'active': selectedItem === 2}" (click)="onSelectUserType(2)">
+      <div class="choice-icon icon-approval"></div>
+      <p class="choice-title">Approval Authority</p>
+    </div>
+  </div>
+  <div class="user-type-button">
+    <button class="button" routerLink="../form">Next <i><img
+          src="../../../../assets/next-arrow/icn_nextbtn_arrow@1.5x.svg" alt="Next Icon"></i></button>
+  </div>
+</div>
+<div class="alternate">
+  <p class="alternate-message">New to Intern Management ? <span class="alternate-action"
+      routerLink="../success">Signup</span></p>
+</div>
