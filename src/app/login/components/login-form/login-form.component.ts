@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class LoginFormComponent implements OnInit {
   password = { value: '', error: '' };
 
   constructor(private validation: FormValidationService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.showMark = false;
@@ -22,7 +23,7 @@ export class LoginFormComponent implements OnInit {
 
   isValidPassword(): void {
     if (!this.password.value) {
-      this.password.error = "Password is required";
+      this.password.error = 'Password is required';
     }
     else {
       this.password.error = '';
@@ -46,12 +47,13 @@ export class LoginFormComponent implements OnInit {
       this.email.error = 'Email is required';
     }
     else if (!this.password.value) {
-      this.password.error = "Password is required";
+      this.password.error = 'Password is required';
     }
     else if (this.validation.isValidRobosoftEmail(this.email.value)) {
       console.log(this.email.value);
       this.email.tick = true;
       this.email.error = '';
+      this.router.navigate(['../verify'], { relativeTo: this.route });
     } else {
       this.email.error = 'You have entered invalid email address';
       this.email.tick = false;
