@@ -1,0 +1,164 @@
+@import '../../../../variables';
+
+.container {
+    color: $color-grey-darker;
+    font-family: Muli;
+
+    .heading {
+        margin: auto;
+        display: table;
+
+        p {
+            color: $color-grey-darker;
+            font-family: Muli;
+            font-size: 20px;
+            letter-spacing: 0.17px;
+            line-height: 34px;
+            text-align: center;
+            margin-bottom: 0;
+            font-weight: bold;
+
+            span {
+                color: $color-primary-dark;
+            }
+        }
+
+        h2 {
+            margin-top: 0;
+            color: $color-white;
+            font-family: Muli;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 0.17px;
+            line-height: 34px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    }
+
+    .login-form {
+        margin: auto;
+        display: table;
+
+        .forgot-password {
+            margin-left: 210px;
+            margin-top: -10px;
+            color: $color-primary-dark;
+            font-family: Muli;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 18px;
+            cursor: pointer;
+        }
+
+        .button {
+            height: 40px;
+            width: 250px;
+            margin-top: 30px;
+            border-radius: 8px;
+            background-color: $color-primary-dark;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            color: $color-white;
+            font-family: Muli;
+            font-size: 20px;
+            // font-weight: bold;
+            letter-spacing: 0;
+            line-height: 18px;
+            text-align: center
+        }
+    }
+}
+
+@mixin input-styles {
+    .input {
+        display: flex;
+        flex-direction: column;
+        width: 330px;
+
+        label {
+            color: $color-grey-light;
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom: 0.75rem;
+            font-family: 'Muli', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            text-align: left;
+        }
+
+        input {
+            color: $color-white;
+            font-size: 14px;
+            font-weight: 400;
+            font-family: 'Muli', sans-serif;
+            width: 100%;
+            line-height: 18px;
+            padding: 0.7rem 1rem 0.65rem 1rem;
+            border-radius: 6px;
+            text-align: left;
+            outline: none;
+            background: #0000000f;
+            border: 1px solid $color-white;
+            box-sizing: border-box;
+        }
+
+        input.invalid {
+            color: $color-primary-dark;
+            border: 1px solid $color-primary-dark;
+        }
+
+        @include error();
+    }
+}
+
+@mixin error {
+    .error {
+        margin-top: 6px;
+        text-align: left;
+        color: $color-primary-dark;
+        font-family: Muli;
+        font-size: 12px;
+        letter-spacing: 0;
+        line-height: 15px;
+    }
+}
+
+@include input-styles();
+
+.input {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+
+.tick {
+    position: absolute;
+    right: 1rem;
+    z-index: 11;
+    top: 2.5rem;
+}
+
+.sign-up {
+    margin: auto;
+    margin-top: 150px;
+    height: 20px;
+    width: 363px;
+    font-family: Muli;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 0.29px;
+    line-height: 20px;
+    text-align: center;
+
+    p {
+        color: $color-grey-darker;
+    }
+
+    a {
+        color: $color-primary-dark;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

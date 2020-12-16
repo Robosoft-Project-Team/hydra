@@ -11,7 +11,7 @@ import {
   ResetSuccessComponent,
   SignUpComponent
 } from './components';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LoginRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ]
 })
