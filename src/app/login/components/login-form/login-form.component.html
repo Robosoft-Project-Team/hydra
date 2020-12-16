@@ -1,1 +1,31 @@
-<p>login-form works!</p>
+<div class="container">
+  <div class="heading">
+    <p>Hello Again <span>Recruiter</span></p>
+    <h2>Welcome Back</h2>
+  </div>
+  <div class="login-form">
+    <div class="input">
+      <label for="">Email ID</label>
+      <input type="text" placeholder="Enter your Email Address" [(ngModel)]="email.value" [class.invalid]="email.error"
+        (focusout)="isValid()">
+      <span class="tick" *ngIf="showMark">
+        <img *ngIf="email.tick" src="../../../../assets/input-tick/icn_done_tick.png" alt="">
+        <img *ngIf="!email.tick" src="../../../../assets/input-error/icn_error_tick.png" alt="">
+      </span>
+      <div *ngIf="email.error" class="error">{{email.error}}</div>
+    </div>
+    <div class="input">
+      <label for="">Password</label>
+      <input type="password" placeholder="Enter your Password" [(ngModel)]="password.value"
+        [class.invalid]="password.error" (focusout)="isValidPassword()">
+      <div *ngIf="password.error" class="error">{{password.error}}</div>
+    </div>
+    <p class="forgot-password">Forgot Password?</p>
+    <button class="button" (click)="onclick()">
+      Sign In
+    </button>
+  </div>
+</div>
+<div class="sign-up">
+  <p>New to Intern Management ? <a>Sign Up</a></p>
+</div>
