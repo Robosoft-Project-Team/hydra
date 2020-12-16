@@ -7,7 +7,8 @@ import {
   LoginFormComponent,
   VerifyOtpComponent,
   ChangePasswordComponent,
-  ResetSuccessComponent
+  ResetSuccessComponent,
+  SignUpComponent
 } from './components';
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'forgot-password', component: LoginForgotPasswordComponent },
       { path: 'verify', component: VerifyOtpComponent },
       { path: 'change-password', component: ChangePasswordComponent },
-      { path: 'success', component: ResetSuccessComponent }
+      { path: 'success', component: ResetSuccessComponent },
+      { path: 'sign-up', component: SignUpComponent }
     ]
   },
 ];

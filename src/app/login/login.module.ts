@@ -8,7 +8,8 @@ import {
   LoginForgotPasswordComponent,
   LoginUserTypeComponent, VerifyOtpComponent,
   ChangePasswordComponent,
-  ResetSuccessComponent
+  ResetSuccessComponent,
+  SignUpComponent
 } from './components';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,7 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VerifyOtpComponent,
     ChangePasswordComponent,
     ResetSuccessComponent,
-    
+    SignUpComponent
   ],
   imports: [
     CommonModule,

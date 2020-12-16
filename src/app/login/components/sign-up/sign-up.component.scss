@@ -3,7 +3,16 @@
 .form {
   display: inline-flex;
   flex-direction: column;
-  align-items: center;
+  position: relative;
+  margin-top: 2em;
+}
+
+.hello-text {
+  font-size: 1.25rem;
+  font-family: 'Muli';
+  font-weight: bold;
+  color: $color-primary-dark;
+  margin-bottom: 0.1rem;
 }
 
 @mixin text {
@@ -48,21 +57,22 @@
       font-size: 14px;
       line-height: 18px;
       margin-bottom: 0.75rem;
-      font-family: muli, sans-serif;
-      font-weight: 300;
+      font-family: 'Muli', sans-serif;
+      font-weight: 400;
       font-style: normal;
+      text-align: left;
     }
 
     input {
       color: $color-white;
-      font-family: 'Muli', sans-serif;
       font-size: 14px;
       font-weight: 400;
+      font-family: 'Muli', sans-serif;
       width: 100%;
       line-height: 18px;
-      padding: 0.7rem;
       padding: 0.7rem 1rem 0.65rem 1rem;
       border-radius: 6px;
+      text-align: left;
       outline: none;
       background: #0000000f;
       border: 1px solid $color-white;
@@ -115,6 +125,103 @@
 @include input-styles;
 @include button;
 
-.button {
-  margin-bottom: 3rem;
+
+.row  {
+  width: auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 4rem;
+  margin-bottom: 30px;
+}
+
+
+.label {
+  color: $color-grey-light;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 1em;
+  font-family: muli, sans-serif;
+  font-style: normal;
+  text-align: left;
+}
+
+.radio-button-container {
+  text-align: left;
+  position: relative;
+  width: 100%;
+  left: 0;
+}
+
+.button{
+  margin: auto;
+  margin-top: 20px;
+
+}
+
+.radio-label {
+  margin-right: 50px;
+  transition: 0.1s ease all;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 0.1em solid $color-primary-dark;
+  display: inline-block;
+  top: 2px;
+  margin-right: 10px;
+}
+
+.radio::after { 
+  content: ''; 
+  height: 5px; 
+  width: 5px; 
+  display: block; 
+  position: absolute; 
+  background: $color-primary-dark;
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  border-radius: 50%; 
+  opacity: 0; 
+} 
+
+.radio-input:checked + label {
+  color: $color-primary-dark;
+}
+
+.radio-input:checked + label > .radio {
+  border: 0.1em solid $color-primary-dark;
+}
+
+.radio-input:checked + label > .radio::after { 
+  opacity: 1; 
+} 
+
+.sign-up {
+  margin: auto;
+  margin-top: 3rem;
+  height: 20px;
+  width: 363px;
+  font-family: Muli;
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: 0.29px;
+  line-height: 20px;
+  text-align: center;
+  p {
+      color: $color-grey-dark;
+  }
+
+  a {
+      color: $color-primary-dark;
+      text-decoration: none;
+      cursor: pointer;
+  }
 }
