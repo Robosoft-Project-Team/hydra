@@ -6,12 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-user-type.component.scss']
 })
 export class LoginUserTypeComponent implements OnInit {
-  recruiterActive = false;
-  organizerActive = false;
-  approvalActive = false;
+  selectedItem = 0;
+  userTypes = [
+    'Recruiter',
+    'Organizer',
+    'Approval Authority'
+  ];
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSelectUserType(id: number): void {
+    this.selectedItem = id;
+    console.log(this.userTypes[this.selectedItem]);
+  }
 }

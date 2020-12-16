@@ -1,14 +1,14 @@
 <div class="container user-type">
   <div class="user-type-choice">
-    <div class="choice" [ngClass]="{'active': recruiterActive}" (click)="recruiterActive = !recruiterActive">
+    <div class="choice" [ngClass]="{'active': selectedItem === 0}" (click)="onSelectUserType(0)">
       <div class="choice-icon icon-recruiter"></div>
       <p class="choice-title">Recruiter</p>
     </div>
-    <div class="choice" [ngClass]="{'active': organizerActive}" (click)="organizerActive = !organizerActive">
+    <div class="choice" [ngClass]="{'active': selectedItem === 1}" (click)="onSelectUserType(1)">
       <div class="choice-icon icon-organizer"></div>
       <p class="choice-title">Organizer</p>
     </div>
-    <div class="choice" [ngClass]="{'active': approvalActive}" (click)="approvalActive = !approvalActive">
+    <div class="choice" [ngClass]="{'active': selectedItem === 2}" (click)="onSelectUserType(2)">
       <div class="choice-icon icon-approval"></div>
       <p class="choice-title">Approval Authority</p>
     </div>

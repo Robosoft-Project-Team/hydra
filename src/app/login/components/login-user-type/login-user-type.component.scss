@@ -81,10 +81,23 @@
         }
       }
 
-      &:hover .choice-icon,
       &.active .choice-icon {
-        transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.1, 1.1, 1.05);
+
+        &::after {
+          content: "";
+          width: 30px;
+          height: 20px;
+          display: block;
+          background: url('../../../../assets/3-users/icn_selected_tick@1.5x.svg') no-repeat center;
+          margin: 5px auto 0;
+          position: relative;
+          left: 7px;
+          text-align: center;
+        }
       }
+
+
 
       &-title {
         margin-top: 10px;
