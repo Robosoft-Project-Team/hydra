@@ -15,11 +15,13 @@ export class SignUpComponent implements OnInit {
   designation = { value: '', error: false };
   rePassword = { value: '', error: false };
   position = 'recruiter';
-  password;
+  password: string;
 
-  constructor(private validation: FormValidationService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(
+    private validation: FormValidationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }

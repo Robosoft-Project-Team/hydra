@@ -24,19 +24,19 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkpassword() {
+  checkpassword(): void {
     if (!this.changepassword.value.newPassword || !this.changepassword.value.reEnterPassword) {
-      this.message = "Password is required";
-      this.messageSuccess = "";
+      this.message = 'Password is required';
+      // this.messageSuccess = '';
     }
-    else if (this.changepassword.value.newPassword == this.changepassword.value.reEnterPassword) {
-      this.message = "";
+    else if (this.changepassword.value.newPassword === this.changepassword.value.reEnterPassword) {
+      this.message = '';
       // this.messageSuccess = "Password successfully changed";
       this.router.navigate(['../reset-success'], { relativeTo: this.route });
     }
     else {
-      this.message = "Passwords do not match";
-      this.messageSuccess = "";
+      this.message = 'Passwords do not match';
+      // this.messageSuccess = '';
     }
   }
 

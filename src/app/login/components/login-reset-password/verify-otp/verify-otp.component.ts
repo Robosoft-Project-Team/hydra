@@ -16,20 +16,22 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  keytab(event) {
-    let nextInput = event.srcElement.nextElementSibling; // get the sibling element
+  keytab(event): void {
+    const nextInput = event.srcElement.nextElementSibling; // get the sibling element
 
-    var target = event.target || event.srcElement;
-    var id = target.id
+    const target = event.target || event.srcElement;
+    const id = target.id;
 
-    if (nextInput == null)  // check the maxLength from here
+    if (nextInput == null) {  // check the maxLength from here
       return;
-    else
-      nextInput.focus();   // focus if not null
+    }
+    else {
+      nextInput.focus();
+    }   // focus if not null
   }
 
   onVerify(): void {
-    this.router.navigate(['../change-password'], { relativeTo: this.route })
+    this.router.navigate(['../change-password'], { relativeTo: this.route });
   }
 
 }
