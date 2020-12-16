@@ -1,12 +1,33 @@
 @import '../../../../variables';
 
-@mixin position-middle {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+@mixin button {
+  .button {
+    margin-top: 40px;
+    height: 40px;
+    width: 250px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: $color-primary-dark;
+    color: $color-white;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+  }
 }
 
+@mixin default-text-style {
+  font-family: Muli;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.29px;
+  margin-bottom: 0;
+}
+
+// User Type Component Container
 .user-type {
   margin: 7vh auto;
   display: flex;
@@ -15,10 +36,12 @@
   align-items: center;
   flex-wrap: wrap;
 
+  // User Choice Container
   &-choice {
     margin-bottom: 40px;
     display: flex;
 
+    // User Type Selector Boxes
     .choice {
       height: 160px;
       width: 185px;
@@ -36,27 +59,28 @@
         margin-right: 40px;
       }
 
+      // Common Icon Styles
       &-icon {
         width: 80px;
         height: 80px;
         transition: all .3s ease-in-out;
+        background-size: contain !important;
       }
 
+      // Unselected Icon Styles
       .icon-recruiter {
         background: url('../../../../assets/3-users/icn_Recruiter_unselected@1.5x.svg') no-repeat center;
-        background-size: contain;
       }
 
       .icon-organizer {
         background: url('../../../../assets/3-users/icn_Organizer_unselected@1.5x.svg') no-repeat center;
-        background-size: contain;
       }
 
       .icon-approval {
         background: url('../../../../assets/3-users/icn_Approval_unselected@1.5x.svg') no-repeat center;
-        background-size: contain;
       }
 
+      // User Mode Hover States
       &:hover,
       &.active {
         cursor: pointer;
@@ -65,22 +89,21 @@
         border: 2px solid $color-primary-dark;
         transform: scale3d(1.05, 1.05, 1.05);
 
+        // Selected Icon Styles
         .icon-recruiter {
           background: url('../../../../assets/3-users/icn_Recruiter_selected@1.5x.svg') no-repeat center;
-          background-size: contain;
         }
 
         .icon-organizer {
           background: url('../../../../assets/3-users/icn_Organizer_selected@1.5x.svg') no-repeat center;
-          background-size: contain;
         }
 
         .icon-approval {
           background: url('../../../../assets/3-users/icn_Approval_selected@1.5x.svg') no-repeat center;
-          background-size: contain;
         }
       }
 
+      // Check Mark on Selected Icon
       &.active .choice-icon {
         transform: scale3d(1.1, 1.1, 1.05);
 
@@ -97,48 +120,29 @@
         }
       }
 
-
-
+      // Icon Title
       &-title {
         margin-top: 10px;
-        margin-bottom: 0;
         color: inherit;
-        font-family: Muli;
-        font-size: 20px;
-        font-weight: 600;
-        letter-spacing: 0.29px;
+        @include default-text-style();
       }
     }
   }
 
+  // Next Button
   &-button {
     display: flex;
     justify-content: flex-end;
 
-    .button {
-      margin-top: 40px;
-      margin-bottom: 40px;
-      height: 40px;
-      width: 250px;
-      border-radius: 8px;
-      outline: none;
-      border: none;
-      background-color: $color-primary-dark;
-      color: $color-white;
-      font-family: Muli;
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 0;
-      line-height: 18px;
-      text-align: center;
+    @include button();
 
-      i {
-        margin-left: 4px
-      }
+    .button i {
+      margin-left: 4px
     }
   }
 }
 
+// Signup Option Text
 .alternate {
   position: absolute;
   bottom: 20px;
@@ -147,22 +151,19 @@
 
   &-message {
     height: 40px;
-    color: $color-grey-dark;
-    font-family: Muli;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.29px;
     line-height: 40px;
     text-align: center;
-    margin-bottom: 0;
+    color: $color-grey-dark;
+    @include default-text-style();
   }
 
+  // Signup Link
   &-action {
-    text-transform: uppercase;
-    color: $color-primary-dark;
-    font-style: 700;
-    font-family: Muli;
     display: inline-block;
+    text-transform: uppercase;
+    font-family: Muli;
+    font-style: 700;
+    color: $color-primary-dark;
 
     &:hover {
       cursor: pointer;
