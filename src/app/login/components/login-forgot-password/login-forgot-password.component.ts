@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+import { ChangePasswordService } from '../../services/change-password.service';
 
 @Component({
   selector: 'app-login-forgot-password',
@@ -13,7 +14,8 @@ export class LoginForgotPasswordComponent implements OnInit {
 
   constructor(private validation: FormValidationService,
               private router: Router,
-              private route: ActivatedRoute ) { }
+              private route: ActivatedRoute,
+              private passwordService: ChangePasswordService ) { }
 
   ngOnInit(): void {
   }
@@ -22,12 +24,25 @@ export class LoginForgotPasswordComponent implements OnInit {
     return this.validation.isValidRobosoftEmail(this.email.value);
   }
 
-  onClickSubmitEmail(): void {
+  checkUserExists(): boolean {
+    return this.passwordService.checkUserExists(this.email.value);
+  }
+
+  validationCheck(): boolean {
     if (!this.email.value) {
       this.email.error = 'This field is required';
-    } else if (!this.isValidEmail()) {
+      return false;
+    } else if (!this.isValidEmail() || !this.checkUserExists()) {
       this.email.error = 'You have entered a invalid mail address';
+      return false;
     } else {
+      return true;
+    }
+  }
+
+  onClickSubmitEmail(): void {
+    if (this.validationCheck()) {
+      this.passwordService.setUserEmail(this.email.value);
       this.router.navigate(['../verify'], { relativeTo: this.route });
     }
   }
