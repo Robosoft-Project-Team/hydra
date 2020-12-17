@@ -25,7 +25,18 @@ export class LoginForgotPasswordComponent implements OnInit {
   }
 
   checkUserExists(): boolean {
-    return this.passwordService.checkUserExists(this.email.value);
+    this.passwordService.checkUserExists(this.email.value)
+    .subscribe(
+      res => {
+        if (res.status === 200) {
+          return true;
+        }
+      },
+      err => {
+        this.email.error = err.message;
+      }
+    );
+    return false;
   }
 
   validationCheck(): boolean {

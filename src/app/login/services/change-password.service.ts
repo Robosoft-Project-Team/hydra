@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
 
 @Injectable({
@@ -17,19 +17,11 @@ export class ChangePasswordService {
     this.email = email;
   }
 
-  checkUserExists(email: string): boolean {
-    let response;
+  checkUserExists(email: string): Observable<any> {
     let params = new HttpParams();
     params = params.append('email', email);
-    return true;
     // tslint:disable-next-line: object-literal-shorthand
-    this.http.get(`${this.baseUrl}forgotPassword` , {params: params})
-    .subscribe(res => response = res);
-    if (response.status === 200){
-      return true;
-    } else {
-      return false;
-    }
+    return this.http.get(`${this.baseUrl}forgotPassword` , {params: params});
   }
 
   verifyOtp(otp: string): boolean {

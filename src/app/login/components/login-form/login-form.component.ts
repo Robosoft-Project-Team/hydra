@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+import { SignInService } from '../../services/sign-in.service';
 
 @Component({
   selector: 'app-login-form',
@@ -10,54 +11,72 @@ import { FormValidationService } from 'src/app/shared/services/form-validation.s
 export class LoginFormComponent implements OnInit {
 
   email = { value: '', error: '', tick: false };
-  showMark: boolean;
   password = { value: '', error: '' };
+  showMark: boolean;
+  buttonDisabled: boolean;
+  role = 'recruiter';
 
   constructor(
     private validation: FormValidationService,
     private router: Router,
+    private signInService: SignInService
   ) { }
 
   ngOnInit(): void {
     this.showMark = false;
+    this.buttonDisabled = true;
   }
 
-  isValidPassword(): void {
-    if (!this.password.value) {
-      this.password.error = 'Password is required';
+  validateUsername(): void {
+    this.email.error = '';
+    if (this.validation.isValidRobosoftEmail(this.email.value)) {
+      this.email.tick = true;
+    } else {
+      this.email.tick = false;
     }
-    else {
-      this.password.error = '';
-    }
+    this.enableButton();
   }
 
   isValid(): void {
     this.showMark = true;
-    if (this.validation.isValidRobosoftEmail(this.email.value)) {
-      this.email.tick = true;
-      this.email.error = '';
-    } else {
-      this.email.tick = false;
+    if (!this.email.value) {
+      this.email.error = 'Email is required';
+    } else if (!this.validation.isValidRobosoftEmail(this.email.value)) {
       this.email.error = 'You have entered invalid email address';
+    } else {
+      this.email.error = '';
     }
   }
 
-  onclick(): void {
-    this.showMark = true;
-    if (!this.email.value) {
-      this.email.error = 'Email is required';
+  isValidPassword(): void {
+    if (this.password.value.length < 8) {
+      this.password.error = 'Enter Password (minimum 8 characters)';
     }
-    else if (!this.password.value) {
-      this.password.error = 'Password is required';
-    }
-    else if (this.validation.isValidRobosoftEmail(this.email.value)) {
-      console.log(this.email.value);
-      this.email.tick = true;
-      this.email.error = '';
-      this.router.navigate(['/dashboard']);
+  }
+
+  enableButton(): void {
+    if (!this.password.error && this.password.value.length >= 8 && !this.email.error && this.email.tick) {
+      this.buttonDisabled = false;
     } else {
-      this.email.error = 'You have entered invalid email address';
-      this.email.tick = false;
+      this.buttonDisabled = true;
     }
+  }
+
+  onClickSignIn(): void {
+    this.signInService.signInDetails(this.email.value, this.password.value, this.role)
+    .subscribe(
+      res => {
+        if (res.status === 200) {
+          this.signInService.storeCredentials(res);
+          this.router.navigate(['/dashboard']);
+        } else if (res.status === 401) {
+          this.email.error = res.message;
+        }
+      },
+      err => {
+        this.email.error = err.statusText;
+        console.log('Error : ', err);
+      }
+    );
   }
 }
