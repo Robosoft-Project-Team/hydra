@@ -1,0 +1,104 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+@mixin text {
+    .text {
+        color: $color-white;
+        font-family: Muli;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: 0.23px;
+        line-height: 2rem;
+    }
+}
+
+@include text;
+@include button;
+
+form {
+    max-width: 70%;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.hello-text {
+    font-size: 26px;
+    font-family: 'Muli';
+    font-weight: bold;
+    color: $color-primary-dark;
+    margin-bottom: 0.1rem;
+}
+
+@mixin dropdown($margin-top, $margin-left) {
+    select {
+        margin-top: $margin-top;
+        margin-left: $margin-left;
+        width: 340px;
+        height: 40px;
+        border-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.06);
+        border: 1px solid $color-white;
+        color: $color-grey-light;
+        padding: 5px;
+        padding-left: 12px;
+        font-size: 14px;
+
+        option {
+            color: black;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.dropdown {
+    @include dropdown(0, 0);
+}
+
+.dropdown1 {
+    @include dropdown(26px, -50px);
+}
+
+@mixin experience($width, $margin-left) {
+    width: $width;
+    height: 40px;
+    margin-left: $margin-left;
+    margin-top: 27px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid $color-white;
+    color: $color-grey-light;
+    padding: 5px;
+    padding-left: 12px;
+    font-size: 14px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.row1 {
+    display: flex;
+
+    .years {
+        @include experience(200px, -130px);
+    }
+
+    .months {
+        @include experience(110px, 28px);
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    // display: none; <- Crashes Chrome on hover 
+    -webkit-appearance: none;
+    margin: 0; // <-- Apparently some margin are still there even though it's hidden
+}
+
+input[type=number] {
+    -moz-appearance: textfield; // Firefox
+}

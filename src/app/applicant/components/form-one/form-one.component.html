@@ -1,1 +1,122 @@
-<p>form-one works!</p>
+<div class="container">
+  <p class="hello-text">Welcome to Robosoft!</p>
+  <p class="text">Enter your Details here</p>
+  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Full Name</label>
+        <input class="input-control" type="text" placeholder="Your Good Name" formControlName="name">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
+          Enter Full Name</p>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Date of Birth</label>
+        <input class="input-control" type="text" placeholder="(DD/MM/YYYY)" formControlName="email">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
+          Enter valid Email ID</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Mobile Number</label>
+        <input class="input-control" type="number" placeholder="Your Mobile Number" formControlName="mobile">
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('mobile').valid && signupForm.get('mobile').touched }">
+          Enter valid Mobile Number</p>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Email ID</label>
+        <input class="input-control" type="text" placeholder="Your Mail ID" formControlName="email">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
+          Enter valid Email ID</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Job Location</label>
+        <div class="dropdown">
+          <select name="location" id="location">
+            <option value="udupi">Udupi</option>
+            <option value="banglore">Banglore</option>
+            <option value="mumbai">Mumbai</option>
+          </select>
+        </div>
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
+          Enter Full Name</p>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Gender</label>
+        <div class="dropdown1">
+          <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
+          Enter valid Email ID</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">What position are you applying for?</label>
+        <input class="input-control" type="text" placeholder="Designation" formControlName="designation">
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('designation').valid && signupForm.get('designation').touched }">
+          Enter valid Ddesignation</p>
+      </div>
+      <div class="input-group">
+        <label class="input-label">Previous Experience</label>
+        <div class="row1">
+          <input type="number" class="years" placeholder="Years">
+          <input type="number" class="months" placeholder="Months">
+        </div>
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('designation').valid && signupForm.get('designation').touched }">
+          Enter valid Ddesignation</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <div class="input-control-radio">
+          <input type="radio" formControlName="radio" name="radio" id="recruiter" value="recruiter" checked="true">
+          <label class="input-label radio-label" for="recruiter">
+            <div class="radio"></div>
+            Referral
+          </label>
+          <input type="radio" formControlName="radio" name="radio" id="organizer" value="organizer">
+          <label class="input-label radio-label" for="organizer">
+            <div class="radio"></div>
+            Walkin
+          </label>
+          <input type="radio" formControlName="radio" name="radio" id="approval" value="approval">
+          <label class="input-label radio-label" for="approval">
+            <div class="radio"></div>
+            Campus Interview
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Name and Designation of Contact Person in Company</label>
+        <input class="input-control" type="text" placeholder="Enter Reference Name, Designation, Number and Email ID"
+          formControlName="name">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
+          Enter Full Name</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Languages you know</label>
+        <input class="input-control" type="text" placeholder="Enter languages you speak/read/write"
+          formControlName="name">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
+          Enter Full Name</p>
+      </div>
+    </div>
+    <p class="input-error" *ngIf="formError">Please fill all the details</p>
+    <button class="button" type="submit" [ngClass]="{'disabled':signupForm.invalid}"
+      [disabled]="signupForm.invalid">Continue</button>
+  </form>
+</div>
