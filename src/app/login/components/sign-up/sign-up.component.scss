@@ -48,7 +48,13 @@ form {
 
   a {
     color: $color-primary-dark;
-    text-decoration: none;
     cursor: pointer;
+
+    &:link,
+    &:hover,
+    &:active {
+      text-decoration: none;
+      outline: none;
+    }
   }
 }

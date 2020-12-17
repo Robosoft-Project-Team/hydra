@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
@@ -11,8 +12,6 @@ import {
   ResetSuccessComponent,
   SignUpComponent
 } from './components';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -26,10 +25,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SignUpComponent
   ],
   imports: [
-    CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LoginModule { }
