@@ -1,3 +1,4 @@
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
@@ -9,13 +10,10 @@ import { FormValidationService } from 'src/app/shared/services/form-validation.s
 })
 export class SignUpComponent implements OnInit {
 
-  name = { value: '', error: false };
-  email = { value: '', error: false };
-  mobile = { value: '', error: false };
-  designation = { value: '', error: false };
-  rePassword = { value: '', error: false };
-  position = 'recruiter';
-  password: string;
+  //Reactive Forms
+  signupForm: FormGroup;
+  formError = false;
+
 
   constructor(
     private validation: FormValidationService,
@@ -24,68 +22,62 @@ export class SignUpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.signupForm = new FormGroup({
+      'name': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email, this.isEmailValid]),
+      'mobile': new FormControl(null, Validators.required),
+      'designation': new FormControl(null, Validators.required),
+      'radio': new FormControl('recruiter'),
+      'password': new FormControl(null, [Validators.required, this.isPasswordValid.bind(this)]),
+      'rePassword': new FormControl(null, [Validators.required, this.isPasswordMatching.bind(this)]),
+    });
+
+    this.signupForm.setValue({
+      'name': '',
+      'email': '',
+      'mobile': '',
+      'designation': '',
+      'radio': 'recruiter',
+      'password': '',
+      'rePassword': ''
+    })
   }
 
-  resetErrorFields(): void {
-    this.name.error = false;
-    this.email.error = false;
-    this.mobile.error = false;
-    this.designation.error = false;
-    this.rePassword.error = false;
+  onSubmit(): void {
+    console.log(this.signupForm);
+    if (this.signupForm.invalid) {
+      this.formError = true;
+      return;
+    }
+    this.router.navigate(['../form'], { relativeTo: this.route });
   }
 
-  getValues(): object {
-    return {
-      name: this.name.value,
-      email: this.email.value,
-      mobile: this.mobile.value,
-      designation: this.designation.value,
-      password: this.password,
-      position: this.position
-    };
-  }
-
-  isValidFields(): boolean {
-    if (!this.name.value) {
-      this.name.error = true;
+  isEmailValid(control: FormControl): { [s: string]: boolean } {
+    if (!control.value) {
+      return { 'invalidCompanyEmail': true };
     }
-    if (!this.validation.isValidRobosoftEmail(this.email.value)) {
-      this.email.error = true;
-    }
-    if (!this.validation.isValidMobileNumber(this.mobile.value)) {
-      this.mobile.error = true;
-    }
-    if (!this.designation.value) {
-      this.designation.error = true;
-    }
-    return true;
-  }
-
-  isPasswordMatching(): boolean {
-    if (!this.password ||
-      !this.rePassword.value ||
-      this.password !== this.rePassword.value) {
-      this.rePassword.error = true;
-      return false;
-    }
-    return true;
-  }
-
-  onClickSubmit(): void {
-    console.log(
-      this.name.error,
-      this.email.error,
-      this.mobile.error,
-      this.designation.error,
-      this.position,
-      this.rePassword.error,
-      this.password
-    );
-    this.resetErrorFields();
-    if (this.isValidFields() && this.isPasswordMatching()) {
-      console.log(this.getValues());
-      this.router.navigate(['../form'], { relativeTo: this.route });
+    if (this.validation.isValidRobosoftEmail(control.value)) {
+      return null;
     }
   }
 
+  isPasswordValid(control: FormControl): { [s: string]: boolean } {
+    if (!control.value) {
+      return { 'invalidPassword': true };
+    }
+    if (this.validation.isValidPassword(control.value)) {
+      return null;
+    }
+  }
+
+  isPasswordMatching(control: FormControl): { [s: string]: boolean } {
+    if (
+      !control.value ||
+      !this.signupForm.get('password').value ||
+      this.signupForm.get('password').value !== control.value
+    ) {
+      return { 'passwordMatchError': true }
+    }
+    return null;
+  }
 }

@@ -1,51 +1,53 @@
 <div class="container">
   <p class="hello-text">Hello!</p>
   <p class="text">Sign Up to get started</p>
-  <div class="form">
+  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="input-group">
         <label class="input-label">Name</label>
-        <input class="input-control" type="text" placeholder="Your Good Name" [(ngModel)]="name.value"
-          [ngClass]="{'invalid':name.error}">
-        <p class="input-error" [ngClass]="{'show': name.error}">Enter Full Name</p>
+        <input class="input-control" type="text" placeholder="Your Good Name" formControlName="name">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
+          Enter Full Name</p>
       </div>
       <div class="input-group">
         <label class="input-label">Email ID</label>
-        <input class="input-control" type="text" placeholder="Your Robosoft Mail ID" [(ngModel)]="email.value"
-          [ngClass]="{'invalid':email.error}">
-        <p class="input-error" [ngClass]="{'show': email.error}">Enter valid email ID</p>
+        <input class="input-control" type="text" placeholder="Your Robosoft Mail ID" formControlName="email">
+        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
+          Enter valid Email ID</p>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Mobile Number</label>
-        <input class="input-control" type="text" placeholder="Your Mobile Number" [(ngModel)]="mobile.value"
-          [ngClass]="{'invalid':mobile.error}">
-        <p class="input-error" [ngClass]="{'show':mobile.error}">Enter Mobile Number</p>
+        <input class="input-control" type="text" placeholder="Your Mobile Number" formControlName="mobile">
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('mobile').valid && signupForm.get('mobile').touched }">
+          Enter valid Mobile Number</p>
       </div>
       <div class="input-group">
         <label class="input-label">Company Designation</label>
-        <input class="input-control" type="text" placeholder="Your Company Designation" [(ngModel)]="designation.value"
-          [ngClass]="{'invalid':designation.error}">
-        <p class="input-error" [ngClass]="{'show':designation.error}">Enter Designation</p>
+        <input class="input-control" type="text" placeholder="Your Company Designation" formControlName="designation">
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('designation').valid && signupForm.get('designation').touched }">
+          Enter valid Ddesignation</p>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Position</label>
         <div class="input-control-radio">
-          <input type="radio" name="position" id="recruiter" value="recruiter" checked="true">
-          <label class="input-label radio-label" for="recruiter" (click)="position = 'recruiter'">
+          <input type="radio" formControlName="radio" name="radio" id="recruiter" value="recruiter" checked="true">
+          <label class="input-label radio-label" for="recruiter">
             <div class="radio"></div>
             Recruiter
           </label>
-          <input type="radio" name="position" id="organizer" value="organizer">
-          <label class="input-label radio-label" for="organizer" (click)="position = 'organizer'">
+          <input type="radio" formControlName="radio" name="radio" id="organizer" value="organizer">
+          <label class="input-label radio-label" for="organizer">
             <div class="radio"></div>
             Organizer
           </label>
-          <input type="radio" name="position" id="approval" value="approval">
-          <label class="input-label radio-label" for="approval" (click)="position = 'approval'">
+          <input type="radio" formControlName="radio" name="radio" id="approval" value="approval">
+          <label class="input-label radio-label" for="approval">
             <div class="radio"></div>
             Approval Authority
           </label>
@@ -55,19 +57,22 @@
     <div class="row">
       <div class="input-group">
         <label class="input-label">Password</label>
-        <input class="input-control" type="password" placeholder="Enter your Password" [(ngModel)]="password"
-          [ngClass]="{'invalid': rePassword.error}">
-        <p class="input-error">Min. 6 characters</p>
+        <input class="input-control" type="password" placeholder="Enter your Password" formControlName="password">
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('password').valid && signupForm.get('password').touched }">
+          Enter a valid Password</p>
       </div>
       <div class="input-group">
         <label class="input-label">Confirm Password</label>
-        <input class="input-control" type="password" placeholder="ReEnter your Password" [(ngModel)]="rePassword.value"
-          [ngClass]="{'invalid':rePassword.error}">
-        <p class="input-error" [ngClass]="{'show':rePassword.error}">Password does not match</p>
+        <input class="input-control" type="password" placeholder="ReEnter your Password" formControlName="rePassword">
+        <p class="input-error"
+          [ngClass]="{'show':!signupForm.get('rePassword').valid && signupForm.get('rePassword').touched }">
+          Passwords do not match</p>
       </div>
     </div>
-    <button class="button" (click)="onClickSubmit()">Sign Up</button>
-  </div>
+    <p class="input-error" *ngIf="formError">Please fill all the details</p>
+    <button class="button" type="submit">Sign Up</button>
+  </form>
   <div class="sign-up">
     <p>Already have an Account ? <a routerLink="../form">Sign In</a></p>
   </div>
