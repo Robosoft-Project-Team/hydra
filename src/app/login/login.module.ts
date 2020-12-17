@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -27,6 +27,7 @@ import {
   imports: [
     LoginRoutingModule,
     CommonModule,
+    FormsModule,
     ReactiveFormsModule
   ]
 })

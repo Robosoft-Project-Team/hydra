@@ -1,7 +1,16 @@
+import { SignUpValidators } from './signup.validator';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+
+interface User {
+  name: string;
+  email: string;
+  mobile: string;
+  designation: string;
+  position: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-sign-up',
@@ -10,73 +19,70 @@ import { FormValidationService } from 'src/app/shared/services/form-validation.s
 })
 export class SignUpComponent implements OnInit {
 
-  //Reactive Forms
+  // Reactive Forms
   signupForm: FormGroup;
   formError = false;
 
+  formData: User = {
+    name: '',
+    email: '',
+    mobile: '',
+    designation: '',
+    position: 'recruiter',
+    password: '',
+  };
+
   constructor(
-    private validation: FormValidationService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'email': new FormControl(null, [Validators.required, Validators.email, this.isEmailValid]),
-      'mobile': new FormControl(null, Validators.required),
-      'designation': new FormControl(null, Validators.required),
-      'radio': new FormControl('recruiter'),
-      'password': new FormControl(null, [Validators.required, this.isPasswordValid.bind(this)]),
-      'rePassword': new FormControl(null, [Validators.required, this.isPasswordMatching.bind(this)]),
+      name: new FormControl(this.formData.name, [Validators.required, SignUpValidators.isValidUsername()]),
+      email: new FormControl(
+        this.formData.email,
+        [
+          Validators.required,
+          SignUpValidators.isValidEmail(),
+          SignUpValidators.isCompanyEmail()
+        ]),
+      mobile: new FormControl(this.formData.mobile, [Validators.required, SignUpValidators.isValidMobileNumber()]),
+      designation: new FormControl(this.formData.designation, Validators.required),
+      position: new FormControl(this.formData.position),
+      passwordForm: new FormGroup({
+        password: new FormControl(this.formData.password, [Validators.required, SignUpValidators.isValidPassword()]),
+        rePassword: new FormControl(
+          this.formData.password,
+          [
+            Validators.required,
+            SignUpValidators.isValidPassword()
+          ]
+        ),
+      }, SignUpValidators.isPasswordMatching('password', 'rePassword'))
     });
+  }
 
-    this.signupForm.setValue({
-      'name': '',
-      'email': '',
-      'mobile': '',
-      'designation': '',
-      'radio': 'recruiter',
-      'password': '',
-      'rePassword': ''
-    })
+  get signup(): any {
+    return this.signupForm.controls;
+  }
+
+  setFormData(): void {
+    this.formData.name = this.signup.name.value || '';
+    this.formData.email = this.signup.email.value || '';
+    this.formData.mobile = this.signup.mobile.value || '';
+    this.formData.designation = this.signup.designation.value || '';
+    this.formData.position = this.signup.position.value || 'recruiter';
+    this.formData.password = this.signup.passwordForm?.controls?.rePassword?.value || '';
   }
 
   onSubmit(): void {
-    console.log(this.signupForm);
     if (this.signupForm.invalid) {
       this.formError = true;
       return;
     }
+    this.setFormData();
+    console.log(this.formData);
     this.router.navigate(['../form'], { relativeTo: this.route });
-  }
-
-  isEmailValid(control: FormControl): { [s: string]: boolean } {
-    if (!control.value) {
-      return { 'invalidCompanyEmail': true };
-    }
-    if (this.validation.isValidRobosoftEmail(control.value)) {
-      return null;
-    }
-  }
-
-  isPasswordValid(control: FormControl): { [s: string]: boolean } {
-    if (!control.value) {
-      return { 'invalidPassword': true };
-    }
-    if (this.validation.isValidPassword(control.value)) {
-      return null;
-    }
-  }
-
-  isPasswordMatching(control: FormControl): { [s: string]: boolean } {
-    if (
-      !control.value ||
-      !this.signupForm.get('password').value ||
-      this.signupForm.get('password').value !== control.value
-    ) {
-      return { 'passwordMatchError': true }
-    }
-    return null;
   }
 }
