@@ -14,7 +14,6 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   formError = false;
 
-
   constructor(
     private validation: FormValidationService,
     private router: Router,

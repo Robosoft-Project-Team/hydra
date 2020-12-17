@@ -41,6 +41,11 @@
     line-height: 18px;
     text-align: center;
     margin-bottom: 133px;
+
+    &.disabled {
+      background-color: $color-grey-dark;
+      color: $color-white;
+    }
   }
 }
 
