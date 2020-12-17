@@ -47,13 +47,16 @@ export class SignUpComponent implements OnInit {
 
   isValidFields(): boolean {
     if (!this.name.value) {
-      this.name.error = true; return false;
-    } else if (!this.validation.isValidRobosoftEmail(this.email.value)) {
-      this.email.error = true; return false;
-    } else if (!this.validation.isValidMobileNumber(this.mobile.value)) {
-      this.mobile.error = true; return false;
-    } else if (!this.designation.value) {
-      this.designation.error = true; return false;
+      this.name.error = true;
+    }
+    if (!this.validation.isValidRobosoftEmail(this.email.value)) {
+      this.email.error = true;
+    }
+    if (!this.validation.isValidMobileNumber(this.mobile.value)) {
+      this.mobile.error = true;
+    }
+    if (!this.designation.value) {
+      this.designation.error = true;
     }
     return true;
   }
@@ -69,6 +72,15 @@ export class SignUpComponent implements OnInit {
   }
 
   onClickSubmit(): void {
+    console.log(
+      this.name.error,
+      this.email.error,
+      this.mobile.error,
+      this.designation.error,
+      this.position,
+      this.rePassword.error,
+      this.password
+    );
     this.resetErrorFields();
     if (this.isValidFields() && this.isPasswordMatching()) {
       console.log(this.getValues());
