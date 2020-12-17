@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
