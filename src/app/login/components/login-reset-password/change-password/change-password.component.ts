@@ -9,35 +9,23 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ChangePasswordComponent implements OnInit {
   message: string;
-  messageSuccess: string;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   changepassword: FormGroup = new FormGroup({
-    newPassword: new FormControl('', [Validators.required]),
-    reEnterPassword: new FormControl('', [Validators.required])
+    newPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    reEnterPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
 
 
   ngOnInit(): void {
   }
 
-  checkpassword(): void {
-    if (!this.changepassword.value.newPassword || !this.changepassword.value.reEnterPassword) {
-      this.message = 'Password is required';
-      // this.messageSuccess = '';
-    }
-    else if (this.changepassword.value.newPassword === this.changepassword.value.reEnterPassword) {
-      this.message = '';
-      // this.messageSuccess = "Password successfully changed";
-      this.router.navigate(['../reset-success'], { relativeTo: this.route });
-    }
-    else {
-      this.message = 'Passwords do not match';
-      // this.messageSuccess = '';
-    }
+  submitPassword(): void {
+    console.log(this.changepassword.get('newPassword').value);
   }
 
 }
