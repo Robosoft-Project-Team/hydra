@@ -27,4 +27,9 @@ export class FormValidationService {
     return regEx.test(mobileNo.trim());
   }
 
+  isValidPassword(password: string): boolean {
+    const regEx = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/;
+    return regEx.test(password.trim());
+  }
+
 }
