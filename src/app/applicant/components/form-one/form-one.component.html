@@ -17,7 +17,8 @@
       </div>
       <div class="input-group">
         <label class="input-label">Date of Birth</label>
-        <input class="input-control" type="text" placeholder="(DD/MM/YYYY)" formControlName="dob" maxlength="10">
+        <input class="input-control" type="text" placeholder="(DD/MM/YYYY)" formControlName="dob"
+          (keyup)="maskDoB($event.target.value)" maxlength="10">
         <div class="input-error-wrapper">&nbsp;
           <p class="input-error" *ngIf="form.dob?.errors?.required && form.dob?.touched">
             Enter valid DoB (DD/MM/YYYY)</p>
