@@ -2,6 +2,7 @@ import { SignUpValidators } from './signup.validator';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SignInService } from '../../services/sign-in.service';
 
 interface User {
   name: string;
@@ -33,6 +34,7 @@ export class SignUpComponent implements OnInit {
   };
 
   constructor(
+    private signInService: SignInService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -82,7 +84,14 @@ export class SignUpComponent implements OnInit {
       return;
     }
     this.setFormData();
-    console.log(this.formData);
-    this.router.navigate(['../form'], { relativeTo: this.route });
+    this.signInService.registerUser(this.formData)
+    .subscribe(
+      res => {
+        if (res.status === 201) {
+          this.router.navigate(['../form'], { relativeTo: this.route });
+        }
+      },
+      err => console.log('user exists', err)
+    );
   }
 }
