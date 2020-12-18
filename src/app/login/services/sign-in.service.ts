@@ -9,8 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class SignInService {
 
-  baseUrl;
-
   constructor(
     private storage: StorageService,
     private http: HttpClient
