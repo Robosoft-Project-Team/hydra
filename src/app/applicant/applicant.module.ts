@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 
 import { ApplicantRoutingModule } from './applicant-routing.module';
@@ -9,6 +10,7 @@ import { FormOneComponent, FormTwoComponent, FormThreeComponent, ApplySuccessCom
   declarations: [ApplicantComponent, FormOneComponent, FormTwoComponent, FormThreeComponent, ApplySuccessComponent],
   imports: [
     ApplicantRoutingModule,
+    SharedModule
   ]
 })
 export class ApplicantModule { }
