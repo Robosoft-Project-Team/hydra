@@ -85,13 +85,13 @@ export class SignUpComponent implements OnInit {
     }
     this.setFormData();
     this.signInService.registerUser(this.formData)
-    .subscribe(
-      res => {
-        if (res.status === 201) {
-          this.router.navigate(['../form'], { relativeTo: this.route });
-        }
-      },
-      err => console.log('user exists', err)
-    );
+      .subscribe(
+        res => {
+          if (res.status === 201) {
+            this.router.navigate(['../form'], { relativeTo: this.route });
+          }
+        },
+        err => console.log('user exists', err)
+      );
   }
 }

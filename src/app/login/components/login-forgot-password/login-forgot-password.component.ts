@@ -11,44 +11,46 @@ import { ChangePasswordService } from '../../services/change-password.service';
 export class LoginForgotPasswordComponent implements OnInit {
 
   email = { value: '', error: '' };
+  buttonDisabled: boolean;
 
-  constructor(private validation: FormValidationService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private passwordService: ChangePasswordService ) { }
+  constructor(
+    private validation: FormValidationService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private passwordService: ChangePasswordService) { }
 
   ngOnInit(): void {
+    this.buttonDisabled = true;
   }
 
   isValidEmail(): boolean {
     return this.validation.isValidRobosoftEmail(this.email.value);
   }
 
-  checkUserExists(): boolean {
-    this.passwordService.checkUserExists(this.email.value)
-    .subscribe(
-      res => {
-        if (res.status === 200) {
-          return true;
-        }
-      },
-      err => {
-        this.email.error = err.message;
-      }
-    );
-    return false;
+  isValid(): void {
+    this.email.error = '';
+    if (this.isValidEmail()) {
+      this.buttonDisabled = false;
+    } else {
+      this.buttonDisabled = true;
+    }
   }
 
   validationCheck(): boolean {
-    if (!this.email.value) {
-      this.email.error = 'This field is required';
-      return false;
-    } else if (!this.isValidEmail() || !this.checkUserExists()) {
-      this.email.error = 'You have entered a invalid mail address';
-      return false;
-    } else {
-      return true;
-    }
+    this.passwordService.checkUserExists(this.email.value)
+      .subscribe(
+        res => {
+          if (res.status === 200) {
+            return true;
+          } else if (res.status === 404) {
+            this.email.error = res.message;
+          }
+        },
+        err => {
+          this.email.error = 'You have entered a invalid mail address';
+        }
+      );
+    return false;
   }
 
   onClickSubmitEmail(): void {

@@ -64,19 +64,19 @@ export class LoginFormComponent implements OnInit {
 
   onClickSignIn(): void {
     this.signInService.signInDetails(this.email.value, this.password.value, this.role)
-    .subscribe(
-      res => {
-        if (res.status === 200) {
-          this.signInService.storeCredentials(res);
-          this.router.navigate(['/dashboard']);
-        } else if (res.status === 401) {
-          this.email.error = res.message;
+      .subscribe(
+        res => {
+          if (res.status === 200) {
+            this.signInService.storeCredentials(res);
+            this.router.navigate(['/dashboard']);
+          } else if (res.status === 401) {
+            this.email.error = res.message;
+          }
+        },
+        err => {
+          this.email.error = err.statusText;
+          console.log('Error : ', err);
         }
-      },
-      err => {
-        this.email.error = err.statusText;
-        console.log('Error : ', err);
-      }
-    );
+      );
   }
 }

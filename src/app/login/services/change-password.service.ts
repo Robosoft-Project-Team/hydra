@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/internal/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,10 @@ import { catchError, tap } from 'rxjs/internal/operators';
 export class ChangePasswordService {
 
   email: string;
-  baseUrl: string;
+  constructor(private http: HttpClient) {
+  }
 
-  constructor(private http: HttpClient) { }
-
-  setUserEmail( email: string ): void {
+  setUserEmail(email: string): void {
     this.email = email;
   }
 
@@ -21,42 +20,42 @@ export class ChangePasswordService {
     let params = new HttpParams();
     params = params.append('email', email);
     // tslint:disable-next-line: object-literal-shorthand
-    return this.http.get(`${this.baseUrl}forgotPassword` , {params: params});
+    return this.http.get(`${environment.baseUrl}forgotPassword`, { params: params });
   }
 
-  verifyOtp(otp: string): boolean {
-    let response;
+  sendOtp(): void | string {
+    let params = new HttpParams();
+    if (!this.email) {
+      return 'Email not exists';
+    }
+    params = params.append('email', this.email);
+    // tslint:disable-next-line: object-literal-shorthand
+    this.http.get(`${environment.baseUrl}forgotPassword`, { params: params })
+      .subscribe(
+        res => {
+          if (res) {
+            return 'OTP sent to your Email';
+          }
+        },
+        error => {
+          return error.message;
+        }
+      );
+  }
+
+  verifyOtp(otp: string): Observable<any> {
     let params = new HttpParams();
     params = params.append('email', this.email);
     params = params.append('otp', otp);
-    return true;
     // tslint:disable-next-line: object-literal-shorthand
-    this.http.get(`${this.baseUrl}/verifyOtp` , {params: params})
-    .subscribe(res => response = res);
-    if (response.status === 200){
-      return true;
-    } else {
-      return false;
-    }
+    return this.http.get(`${environment.baseUrl}verifyOtp`, { params: params });
   }
 
   changePassword(newPassword: string): any {
-    let response;
-    const postbody = {
+    const putbody = {
       emailId: this.email,
       password: newPassword
     };
-    this.http.post(`${this.baseUrl}/changePassword` , { body: postbody })
-    .pipe(
-      catchError(this.handleError)
-    )
-    .subscribe(
-      res => response = res,
-      err => console.log('Error : ', err)
-    );
-  }
-
-  handleError(error: HttpErrorResponse): any {
-    return throwError(error);
+    return this.http.put(`${environment.baseUrl}changePassword`, { body: putbody });
   }
 }
