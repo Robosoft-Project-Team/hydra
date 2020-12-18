@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,15 @@ export class SignInService {
       password: userPassword,
       role: userRole
     };
-    return this.http.post(`${this.baseUrl}signIn`, postBody);
+    return this.http.post(`${environment.baseUrl}signIn`, postBody);
   }
 
   storeCredentials(response): void {
     this.storage.setJwtToken(response.token);
     // store some details in dashboard services
+  }
+
+  registerUser(userDetails): any {
+    return this.http.post(`${environment.baseUrl}signUp`, userDetails);
   }
 }
