@@ -75,7 +75,7 @@
       <div class="row">
         <div class="form-info-wrapper">
           <p class="form-error" *ngIf="form.educationForm?.invalid">Enter Education Details</p>
-          <a class="form-add-control">+ Add Other Institution</a>
+          <a class="form-add-control" (click)="addEducationForm()">+ Add Other Institution</a>
         </div>
       </div>
     </div>
