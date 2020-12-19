@@ -48,7 +48,7 @@ form {
   }
 
   .form-group {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
     .input-group {
       margin-bottom: .5rem;
@@ -76,50 +76,10 @@ form {
       }
     }
 
-    .form-info-wrapper {
-      font-family: Muli;
-      font-size: .75rem;
-      letter-spacing: 0;
-      display: inline-flex;
-      line-height: 18px;
-      display: flex;
-      width: 100%;
-      margin: .5rem 2rem 0;
-
-      .form-error {
-        flex: 1;
-        margin: 0;
-        text-align: left;
-        color: $color-primary-dark;
-      }
-
-      .form-add-control {
-        flex: 1;
-        margin: 0;
-        margin-left: auto;
-        max-width: 50%;
-        color: $color-primary-dark;
-        text-decoration: none;
-        font-size: .875rem;
-        font-weight: 600;
-        text-align: right;
-        transition: all .1s ease-in-out;
-
-        &:hover,
-        &:link {
-          cursor: pointer;
-          text-decoration: none;
-        }
-
-        &:active {
-          transform: translateY(1px);
-        }
-      }
-    }
-
     .button {
       &-group {
         justify-content: center;
+        margin: 1rem 0;
 
         .button {
           margin: 0;
@@ -129,6 +89,47 @@ form {
           margin-right: 2rem;
         }
 
+      }
+    }
+  }
+
+  .form-info-wrapper {
+    font-family: Muli;
+    font-size: .75rem;
+    letter-spacing: 0;
+    display: inline-flex;
+    line-height: 18px;
+    display: flex;
+    width: 100%;
+    margin: -.5rem 2rem 0;
+
+    .form-error {
+      flex: 1;
+      margin: 0;
+      text-align: left;
+      color: $color-primary-dark;
+    }
+
+    .form-add-control {
+      flex: 1;
+      margin: 0;
+      margin-left: auto;
+      max-width: 50%;
+      color: $color-primary-dark;
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 600;
+      text-align: right;
+      transition: all .1s ease-in-out;
+
+      &:hover,
+      &:link {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      &:active {
+        transform: translateY(1px);
       }
     }
   }

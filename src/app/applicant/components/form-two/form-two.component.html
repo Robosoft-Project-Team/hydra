@@ -5,67 +5,71 @@
   </div>
   <form class="form" [formGroup]="applicantFormTwo" (ngSubmit)="onSubmit()">
     <p class="sub-heading">Work History</p>
-    <div class="form-group" formGroupName="workHistoryForm">
-      <div class="row">
-        <div class="input-group">
-          <label class="input-label">Company</label>
-          <input class="input-control" type="text" placeholder="Company Name" formControlName="companyName">
-        </div>
-        <div class="input-group">
-          <label class="input-label">Position</label>
-          <input class="input-control" type="text" placeholder="Job Title" formControlName="position">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-group">
-          <div class="input-group sub">
-            <label class="input-label">From</label>
-            <input class="input-control" placeholder="MM/YYYY" formControlName="from">
+    <div formArrayName="workHistoryForm">
+      <div class="form-group" [formGroupName]="i" *ngFor="let control of form.workHistoryForm?.controls; let i=index">
+        <div class="row">
+          <div class="input-group">
+            <label class="input-label">Company</label>
+            <input class="input-control" type="text" placeholder="Company Name" formControlName="companyName">
           </div>
-          <div class="input-group sub">
-            <label class="input-label">To</label>
-            <input class="input-control" placeholder="MM/YYYY" formControlName="to">
+          <div class="input-group">
+            <label class="input-label">Position</label>
+            <input class="input-control" type="text" placeholder="Job Title" formControlName="position">
           </div>
         </div>
-        <div class="input-group">
-          <label class="input-label">Location</label>
-          <input class="input-control" type="text" placeholder="Enter Location" formControlName="location">
+        <div class="row">
+          <div class="input-group">
+            <div class="input-group sub">
+              <label class="input-label">From</label>
+              <input class="input-control" placeholder="MM/YYYY" formControlName="from">
+            </div>
+            <div class="input-group sub">
+              <label class="input-label">To</label>
+              <input class="input-control" placeholder="MM/YYYY" formControlName="to">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label">Location</label>
+            <input class="input-control" type="text" placeholder="Enter Location" formControlName="location">
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="form-info-wrapper">
           <p class="form-error" *ngIf="form.workHistoryForm?.invalid">Enter Work History Details</p>
-          <a class="form-add-control">+ Add Other Company</a>
+          <a class="form-add-control" (click)="addCompanyForm()">+ Add Other Company</a>
         </div>
       </div>
     </div>
     <p class="sub-heading">Education</p>
-    <div class="form-group" formGroupName="educationForm">
-      <div class="row">
-        <div class="input-group">
-          <label class="input-label">Institution</label>
-          <input class="input-control" type="text" placeholder="Institution Name" formControlName="instituitionName">
-        </div>
-        <div class="input-group">
-          <label class="input-label">Grade</label>
-          <input class="input-control" type="number" placeholder="Grade" formControlName="grade">
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-group">
-          <div class="input-group sub">
-            <label class="input-label">From</label>
-            <input class="input-control" placeholder="MM/YYYY" formControlName="from">
+    <div formArrayName="educationForm">
+      <div class="form-group" [formGroupName]="i" *ngFor="let control of form.educationForm?.controls; let i=index">
+        <div class="row">
+          <div class="input-group">
+            <label class="input-label">Institution</label>
+            <input class="input-control" type="text" placeholder="Institution Name" formControlName="instituitionName">
           </div>
-          <div class="input-group sub">
-            <label class="input-label">To</label>
-            <input class="input-control" placeholder="MM/YYYY" formControlName="to">
+          <div class="input-group">
+            <label class="input-label">Grade</label>
+            <input class="input-control" type="number" placeholder="Grade" formControlName="grade">
           </div>
         </div>
-        <div class="input-group">
-          <label class="input-label location-text">Location</label>
-          <input class="input-control location-input" type="text" placeholder="Enter Location"
-            formControlName="location">
+        <div class="row">
+          <div class="input-group">
+            <div class="input-group sub">
+              <label class="input-label">From</label>
+              <input class="input-control" placeholder="MM/YYYY" formControlName="from">
+            </div>
+            <div class="input-group sub">
+              <label class="input-label">To</label>
+              <input class="input-control" placeholder="MM/YYYY" formControlName="to">
+            </div>
+          </div>
+          <div class="input-group">
+            <label class="input-label location-text">Location</label>
+            <input class="input-control location-input" type="text" placeholder="Enter Location"
+              formControlName="location">
+          </div>
         </div>
       </div>
       <div class="row">
@@ -92,8 +96,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-info-wrapper">
-          <p class="form-error" *ngIf="form.addressForm?.invalid">Enter Address Details</p>
+        <div class="form-info-wrapper">&nbsp;
+          <p class="form-error">Enter Address Details</p>
         </div>
       </div>
     </div>
