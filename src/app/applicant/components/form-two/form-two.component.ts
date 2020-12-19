@@ -1,3 +1,4 @@
+import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-two.component.scss']
 })
 export class FormTwoComponent implements OnInit {
-
+  showErrors = true;
+  applicantFormTwo: FormGroup;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  get form(): any {
+    return this.applicantFormTwo.controls;
+  }
+
+  onSubmit(): void {
+
+  }
 }
