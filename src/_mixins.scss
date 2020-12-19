@@ -174,3 +174,56 @@
     }
   }
 }
+
+@mixin customize-mat-date-picker {
+  .mat-icon-button {
+    font-size: 1.25rem;
+    color: $color-primary-dark !important;
+    outline: none;
+
+    &:active {
+      outline: none;
+    }
+  }
+
+  .mat-datepicker-toggle-default-icon {
+    height: 18px;
+    width: 18px;
+    outline: none;
+  }
+
+  .mat-calendar-body-selected {
+    background-color: $color-primary-dark !important;
+    outline: none;
+  }
+
+  .mat-calendar-previous-button {
+    order: 1;
+  }
+
+  .mat-calendar-period-button {
+    flex: 1;
+    order: 2;
+  }
+
+  .mat-calendar-next-button {
+    order: 3;
+  }
+
+  .mat-calendar-spacer {
+    flex: 0 !important;
+  }
+
+  .mat-calendar-arrow {
+    display: none !important;
+  }
+
+  .mat-calendar-controls {
+    margin: 0 calc(33% / 7 - 16px) !important;
+  }
+
+  button:focus {
+    outline: none !important;
+  }
+
+}

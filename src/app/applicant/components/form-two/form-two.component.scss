@@ -60,6 +60,16 @@ form {
         &:first-child {
           margin-left: 0;
         }
+
+        .input-container {
+          display: flex;
+          position: relative;
+
+          .mat-datepicker-toggle {
+            position: absolute;
+            right: 0;
+          }
+        }
       }
 
       .input-control {

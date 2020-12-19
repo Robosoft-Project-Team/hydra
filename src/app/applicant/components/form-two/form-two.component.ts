@@ -62,7 +62,7 @@ export class FormTwoComponent implements OnInit {
         new FormGroup({
           instituitionName: new FormControl(''),
           grade: new FormControl(''),
-          from: new FormControl(''),
+          from: new FormControl({ value: '', disabled: true }),
           to: new FormControl(''),
           location: new FormControl('')
         }, Validators.required)
