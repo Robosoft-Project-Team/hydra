@@ -1,122 +1,157 @@
 <div class="container">
   <p class="hello-text">Welcome to Robosoft!</p>
   <p class="text">Enter your Details here</p>
-  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="applicantFormOne" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="input-group">
         <label class="input-label">Full Name</label>
-        <input class="input-control" type="text" placeholder="Your Good Name" formControlName="name">
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
-          Enter Full Name</p>
+        <input class="input-control" type="text" placeholder="Your Good Name" formControlName="applicantName">
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.applicantName?.errors?.required && form.applicantName?.touched">Enter Full
+            Name</p>
+          <p class="input-error"
+            *ngIf="!form.applicantName?.errors?.required && form.applicantName?.errors?.invalidUserName && form.applicantName?.touched">
+            Enter
+            a valid username</p>
+        </div>
       </div>
       <div class="input-group">
         <label class="input-label">Date of Birth</label>
-        <input class="input-control" type="text" placeholder="(DD/MM/YYYY)" formControlName="email">
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
-          Enter valid Email ID</p>
+        <input class="input-control" type="text" placeholder="(DD/MM/YYYY)" formControlName="dob"
+          (keyup)="maskDoB($event.target.value)" maxlength="10">
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.dob?.errors?.required && form.dob?.touched">
+            Enter valid DoB (DD/MM/YYYY)</p>
+          <p class="input-error" *ngIf="!form.dob?.errors?.required && form.dob.errors?.invalidDOB">
+            Enter DoB as (DD/MM/YYYY)</p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Mobile Number</label>
-        <input class="input-control" type="number" placeholder="Your Mobile Number" formControlName="mobile">
-        <p class="input-error"
-          [ngClass]="{'show':!signupForm.get('mobile').valid && signupForm.get('mobile').touched }">
-          Enter valid Mobile Number</p>
+        <input class="input-control" type="text" placeholder="Your Mobile Number" formControlName="mobile_no">
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.mobile_no?.errors?.required && form.mobile_no?.touched">
+            Enter Mobile Number</p>
+          <p class="input-error"
+            *ngIf="!form.mobile_no?.errors?.required && form.mobile_no?.errors?.invalidMobileNumber">
+            Enter valid Mobile Number</p>
+        </div>
       </div>
       <div class="input-group">
         <label class="input-label">Email ID</label>
-        <input class="input-control" type="text" placeholder="Your Mail ID" formControlName="email">
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
-          Enter valid Email ID</p>
+        <input class="input-control" type="text" placeholder="Your Mail ID" formControlName="emailid">
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.emailid?.errors?.required && form.emailid?.touched">
+            Enter an Email ID</p>
+          <p class="input-error"
+            *ngIf="!form.emailid?.errors?.required && form.emailid?.errors?.invalidEmail && form.emailid?.touched">
+            Enter a valid Email ID</p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Job Location</label>
-        <div class="dropdown">
-          <select name="location" id="location">
-            <option value="udupi">Udupi</option>
-            <option value="banglore">Banglore</option>
-            <option value="mumbai">Mumbai</option>
+        <div class="input-control placeholder">
+          <select class="dropdown input-control" name="location" id="location" formControlName="jobLocation">
+            <option value="location" *ngFor="let location of jobLocations">{{location}}</option>
           </select>
         </div>
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
-          Enter Full Name</p>
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.jobLocation?.errors?.required && form.jobLocation?.touched">
+            Select preferred job location</p>
+        </div>
       </div>
       <div class="input-group">
         <label class="input-label">Gender</label>
-        <div class="dropdown1">
-          <select name="gender" id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
+        <div class="input-control placeholder">
+          <select class="dropdown input-control" name="gender" id="gender" formControlName="gender">
+            <option value="gender" *ngFor="let gender of genders">{{gender}}</option>
           </select>
         </div>
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('email').valid && signupForm.get('email').touched }">
-          Enter valid Email ID</p>
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.gender?.errors?.required && form.gender?.touched">
+            Select your Gender</p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">What position are you applying for?</label>
         <input class="input-control" type="text" placeholder="Designation" formControlName="designation">
-        <p class="input-error"
-          [ngClass]="{'show':!signupForm.get('designation').valid && signupForm.get('designation').touched }">
-          Enter valid Ddesignation</p>
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.designation?.errors?.required && form.designation?.touched">
+            Enter valid designation</p>
+        </div>
       </div>
       <div class="input-group">
         <label class="input-label">Previous Experience</label>
         <div class="row1">
-          <input type="number" class="years" placeholder="Years">
-          <input type="number" class="months" placeholder="Months">
+          <input type="number" class="years" placeholder="Years" formControlName="experienceYear">
+          <input type="number" class="months" placeholder="Months" formControlName="experienceMonth">
         </div>
-        <p class="input-error"
-          [ngClass]="{'show':!signupForm.get('designation').valid && signupForm.get('designation').touched }">
-          Enter valid Ddesignation</p>
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.experienceYear?.errors?.required && form.experienceYear?.touched">
+            Enter no. of years</p>
+          <p class="input-error"
+            *ngIf="!form.experienceYear?.errors?.required && form.experienceMonth?.errors?.required && form.experienceMonth?.touched">
+            Enter no. of months</p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <div class="input-control-radio">
-          <input type="radio" formControlName="radio" name="radio" id="recruiter" value="recruiter" checked="true">
+          <input type="radio" formControlName="applicationType" name="applicationType" id="recruiter" value="Referral">
           <label class="input-label radio-label" for="recruiter">
             <div class="radio"></div>
             Referral
           </label>
-          <input type="radio" formControlName="radio" name="radio" id="organizer" value="organizer">
+          <input type="radio" formControlName="applicationType" name="applicationType" id="organizer" value="Organizer">
           <label class="input-label radio-label" for="organizer">
             <div class="radio"></div>
-            Walkin
+            WalkIn
           </label>
-          <input type="radio" formControlName="radio" name="radio" id="approval" value="approval">
+          <input type="radio" formControlName="applicationType" name="applicationType" id="approval"
+            value="Campus Interview">
           <label class="input-label radio-label" for="approval">
             <div class="radio"></div>
             Campus Interview
           </label>
+        </div>
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.applicationType.errors?.insufficientData && form.applicationType.touched">
+            Select preferred application category
+          </p>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Name and Designation of Contact Person in Company</label>
-        <input class="input-control" type="text" placeholder="Enter Reference Name, Designation, Number and Email ID"
-          formControlName="name">
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
-          Enter Full Name</p>
+        <input class="input-control" type="text"
+          placeholder="Enter Reference Name, Designation, Mobile Number and Email ID" formControlName="reference">
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.reference.errors?.insufficientData && form.reference.touched">
+            Enter Reference Name, Designation, Mobile Number and Email ID
+          </p>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Languages you know</label>
-        <input class="input-control" type="text" placeholder="Enter languages you speak/read/write"
-          formControlName="name">
-        <p class="input-error" [ngClass]="{'show':!signupForm.get('name').valid && signupForm.get('name').touched }">
-          Enter Full Name</p>
+        <input class="input-control" type="text" placeholder="Enter languages you Speak/Read/Write"
+          formControlName="languages">
+        <div class="input-error-wrapper">&nbsp;
+          <p class="input-error" *ngIf="form.languages?.errors?.required && form.languages?.touched">
+            Enter languages you Speak/Read/Write</p>
+        </div>
       </div>
     </div>
-    <p class="input-error" *ngIf="formError">Please fill all the details</p>
-    <button class="button" type="submit" [ngClass]="{'disabled':signupForm.invalid}"
-      [disabled]="signupForm.invalid">Continue</button>
+    <button class="button" type="submit" [ngClass]="{'disabled':applicantFormOne.invalid}"
+      [disabled]="applicantFormOne.invalid">Continue</button>
   </form>
 </div>
