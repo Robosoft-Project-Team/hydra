@@ -21,11 +21,31 @@
           <div class="input-group">
             <div class="input-group sub">
               <label class="input-label">From</label>
-              <input class="input-control" placeholder="MM/YYYY" formControlName="from">
+              <div class="input-container">
+                <input class="input-control" placeholder="(MM/YYYY)" formControlName="from" [matDatepicker]="workFrom"
+                  (click)="workFrom.open()">
+                <mat-datepicker-toggle matSuffix [for]="workFrom">
+                  <i matDatepickerToggleIcon></i>
+                </mat-datepicker-toggle>
+                <mat-datepicker #workFrom startView="multi-year" [startAt]="startDate"
+                  (yearSelected)="chosenYearHandler($event, control.controls.from)"
+                  (monthSelected)="chosenMonthHandler($event, workFrom, control.controls.from)" disabled="false">
+                </mat-datepicker>
+              </div>
             </div>
             <div class="input-group sub">
               <label class="input-label">To</label>
-              <input class="input-control" placeholder="MM/YYYY" formControlName="to">
+              <div class="input-container">
+                <input class="input-control" placeholder="(MM/YYYY)" formControlName="to" [matDatepicker]="workTo"
+                  (click)="workTo.open()">
+                <mat-datepicker-toggle matSuffix [for]="workTo">
+                  <i matDatepickerToggleIcon></i>
+                </mat-datepicker-toggle>
+                <mat-datepicker #workTo startView="multi-year" [startAt]="startDate"
+                  (yearSelected)="chosenYearHandler($event, control.controls.to)"
+                  (monthSelected)="chosenMonthHandler($event, workTo, control.controls.to)" disabled="false">
+                </mat-datepicker>
+              </div>
             </div>
           </div>
           <div class="input-group">
@@ -59,19 +79,30 @@
             <div class="input-group sub">
               <label class="input-label">From</label>
               <div class="input-container">
-                <input class="input-control" placeholder="MM/YYYY" formControlName="from"
-                  [matDatepicker]="educationFrom" (click)="educationFrom.open()">
-                <mat-datepicker-toggle matSuffix [for]="educationFrom" class="input-suffix-date">
+                <input class="input-control" placeholder="(MM/YYYY)" formControlName="from"
+                  [matDatepicker]="educationFrom" (click)="educationFrom.open()" [min]="minDate" [max]="maxDate">
+                <mat-datepicker-toggle matSuffix [for]="educationFrom">
+                  <i matDatepickerToggleIcon></i>
                 </mat-datepicker-toggle>
-                <mat-datepicker 
-                #educationFrom 
-                startView="year"
-                disabled="false"></mat-datepicker>
+                <mat-datepicker #educationFrom startView="multi-year" [startAt]="startDate"
+                  (yearSelected)="chosenYearHandler($event, control.controls.from)"
+                  (monthSelected)="chosenMonthHandler($event, educationFrom, control.controls.from)" disabled="false">
+                </mat-datepicker>
               </div>
             </div>
             <div class="input-group sub">
               <label class="input-label">To</label>
-              <input class="input-control" placeholder="MM/YYYY" formControlName="to">
+              <div class="input-container">
+                <input class="input-control" placeholder="(MM/YYYY)" formControlName="to" [matDatepicker]="educationTo"
+                  (click)="educationTo.open()">
+                <mat-datepicker-toggle matSuffix [for]="educationTo">
+                  <i matDatepickerToggleIcon></i>
+                </mat-datepicker-toggle>
+                <mat-datepicker #educationTo startView="multi-year" [startAt]="startDate"
+                  (yearSelected)="chosenYearHandler($event, control.controls.to)"
+                  (monthSelected)="chosenMonthHandler($event, educationTo, control.controls.to)" disabled="false">
+                </mat-datepicker>
+              </div>
             </div>
           </div>
           <div class="input-group">

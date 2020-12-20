@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     MatDatepickerModule,
     MatChipsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MomentDateModule,
   ],
   exports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     FormsModule,
     MatDatepickerModule,
     MatChipsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MomentDateModule
   ]
 })
 export class SharedModule { }

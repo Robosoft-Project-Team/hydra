@@ -184,42 +184,77 @@
     &:active {
       outline: none;
     }
+
   }
 
-  .mat-datepicker-toggle-default-icon {
-    height: 18px;
-    width: 18px;
-    outline: none;
+  .mat-datepicker-toggle {
+    i {
+      height: 19px;
+      width: 18px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: url('./assets/btn_calendar_registration_unselected/btn_calendar_registration_unselected@1.5x.svg') no-repeat;
+    }
+
+    &-active i {
+      background: url('./assets/btn_calendar_registration_selected/btn_calendar_registration_selected@1.5x.svg') no-repeat;
+    }
   }
 
-  .mat-calendar-body-selected {
-    background-color: $color-primary-dark !important;
-    outline: none;
+  .mat-datepicker-content .mat-calendar {
+    height: auto !important;
+    width: 300px;
   }
 
-  .mat-calendar-previous-button {
-    order: 1;
-  }
+  .mat-calendar {
+    &-previous-button {
+      order: 1;
+    }
 
-  .mat-calendar-period-button {
-    flex: 1;
-    order: 2;
-  }
+    &-period-button {
+      flex: 1;
+      order: 2;
+      color: $color-primary-dark;
+    }
 
-  .mat-calendar-next-button {
-    order: 3;
-  }
+    &-next-button {
+      order: 3;
+    }
 
-  .mat-calendar-spacer {
-    flex: 0 !important;
-  }
+    &-spacer {
+      flex: 0 !important;
+    }
 
-  .mat-calendar-arrow {
-    display: none !important;
-  }
+    &-arrow {
+      display: none !important;
+    }
 
-  .mat-calendar-controls {
-    margin: 0 calc(33% / 7 - 16px) !important;
+    &-controls {
+      margin: 0 calc(33% / 7 - 16px) !important;
+    }
+
+    &-body {
+      &-selected {
+        background-color: transparent !important;
+        color: $color-primary-dark !important;
+        outline: none;
+      }
+
+      &-label {
+        display: none !important;
+      }
+
+      &-today {
+        border: none !important;
+
+        .mat-calendar-body-selected {
+          box-shadow: none;
+          border: none;
+        }
+      }
+    }
   }
 
   button:focus {
