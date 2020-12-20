@@ -2,7 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormArray, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
 import * as moment from 'moment';
 
 const MY_FORMATS = {
@@ -35,7 +35,7 @@ interface WorkHistory {
 
 interface EducationHistory {
   institutionName: string;
-  grade: string;
+  grade: number;
   from: string;
   to: string;
   location: string;
@@ -49,13 +49,55 @@ interface EducationHistory {
 })
 export class FormTwoComponent implements OnInit {
   applicantFormTwo: FormGroup;
+  showError = false;
 
+  // Initial Form Data
   formData = {
-    workHistory: [],
-    educationHistory: [],
+    workHistory: [
+      {
+        companyName: '',
+        position: '',
+        from: moment().format('YYYY-MM-DD'),
+        to: moment().format('YYYY-MM-DD'),
+        location: ''
+      }
+    ],
+    educationHistory: [
+      {
+        institutionName: '',
+        grade: null,
+        from: moment().format('YYYY-MM-DD'),
+        to: moment().format('YYYY-MM-DD'),
+        location: ''
+      }
+    ],
     address: '',
     state: '',
     pincode: ''
+  };
+
+  MOCK_DATA_FROM_SERVICE = {
+    workHistory: [
+      {
+        companyName: 'Robosofot Technologies',
+        position: 'Software Engineer',
+        from: '1998-10-25',
+        to: '2007-08-15',
+        location: 'Udupi'
+      }
+    ],
+    educationHistory: [
+      {
+        institutionName: 'St. Xaviers College of Engineering',
+        grade: 8.4,
+        from: '1995-10-25',
+        to: '1998-9-25',
+        location: 'Bangalore'
+      }
+    ],
+    address: 'Mangalore',
+    state: 'Karnataka',
+    pincode: '547555'
   };
 
   // Default Date Settings
@@ -69,95 +111,110 @@ export class FormTwoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Reactive Form Template
     this.applicantFormTwo = new FormGroup({
-      workHistoryForm: new FormArray([
-        new FormGroup({
-          companyName: new FormControl(''),
-          position: new FormControl(''),
-          from: new FormControl(moment()),
-          to: new FormControl(moment()),
-          location: new FormControl('')
-        }, Validators.required)
-      ]),
-      educationForm: new FormArray([
-        new FormGroup({
-          instituitionName: new FormControl(''),
-          grade: new FormControl(''),
-          from: new FormControl(moment()),
-          to: new FormControl(moment()),
-          location: new FormControl('')
-        }, Validators.required)
-      ]),
-      addressForm: new FormGroup({
-        address: new FormControl(''),
-        state: new FormControl(''),
-        pincode: new FormControl('')
-      }, Validators.required)
+      workHistoryForm: new FormArray([]),
+      educationForm: new FormArray([]),
+      addressForm: new FormGroup({})
     });
+
+    // Populate the form with data if present
+    // Else Initialize with default data
+    this.populateForm(this.MOCK_DATA_FROM_SERVICE);
   }
 
+  // Get Form Controls
   get form(): any {
     return this.applicantFormTwo.controls;
   }
 
+  // Get Work History FormArray => [(controls/values), valid]
   get workHistory(): any {
-    return this.applicantFormTwo.get('workHistoryForm');
+    return (this.applicantFormTwo.get('workHistoryForm') as FormArray);
   }
 
+  // Get Education History FormArray => [(controls/values), valid]
   get educationHistory(): any {
-    return this.applicantFormTwo.get('educationForm');
+    return (this.applicantFormTwo.get('educationForm') as FormArray);
   }
 
+  // Get Address FormGroup => (controls/values)
   get addressList(): any {
-    return this.form.addressForm.controls;
+    return (this.applicantFormTwo.get('addressForm') as FormGroup);
   }
 
-  addCompanyForm(): void {
+  // Add New Company Form
+  addCompanyForm(data: WorkHistory): void {
     const formGroup = new FormGroup({
-      companyName: new FormControl(''),
-      position: new FormControl(''),
-      from: new FormControl(moment()),
-      to: new FormControl(moment()),
-      location: new FormControl('')
+      companyName: new FormControl(data?.companyName || '', Validators.required),
+      position: new FormControl(data?.position || '', Validators.required),
+      from: new FormControl( data ? moment(data.from, 'YYYY-MM-DD') : moment(), Validators.required),
+      to: new FormControl(data ? moment(data.to, 'YYYY-MM-DD') : moment(), Validators.required),
+      location: new FormControl(data?.location || '', Validators.required)
     });
     this.workHistory.push(formGroup);
   }
 
-  addEducationForm(): void {
+  // Add New Education Form
+  addEducationForm(data: EducationHistory): void {
     const formGroup = new FormGroup({
-      instituitionName: new FormControl(''),
-      grade: new FormControl(''),
-      from: new FormControl(moment()),
-      to: new FormControl(moment()),
-      location: new FormControl('')
+      instituitionName: new FormControl(data?.institutionName || '', Validators.required),
+      grade: new FormControl(data?.grade || null, Validators.required),
+      from: new FormControl(data ? moment(data.from, 'YYYY-MM-DD') : moment(), Validators.required),
+      to: new FormControl(data ? moment(data.to, 'YYYY-MM-DD') : moment(), Validators.required),
+      location: new FormControl(data?.location || '', Validators.required)
     });
     this.educationHistory.push(formGroup);
   }
 
-  fetchDataFromFormArray(formArray: any, data: string): void {
-    formArray.controls.forEach((control: FormControl) => {
-      this.formData[data].push(control.value);
+  // Setup Address Form Group
+  addAddressForm(address: string, state: string, pincode: string): void {
+    const formGroup = new FormGroup({
+      address: new FormControl(address || '', Validators.required),
+      state: new FormControl(state || '', Validators.required),
+      pincode: new FormControl(pincode || null, [Validators.required, Validators.min(100000), Validators.max(999999)])
     });
+    this.form.addressForm = formGroup;
   }
 
-  formatDate(item: string): void {
-    this.formData[item].forEach((key: any, value: any) => {
-      key.from = key?.from.format('YYYY-MM-DD');
-      key.to = key?.to.format('YYYY-MM-DD');
-      console.log(key.from, key.to);
+  // Format and Fetch data from Form Arrays
+  fetchDataFromFormArray(formArray: any, key: string): void {
+    formArray.value.forEach((item: any) => {
+      item.from = item?.from.format('YYYY-MM-DD');
+      item.to = item?.to.format('YYYY-MM-DD');
     });
+    this.formData[key] = formArray.value;
   }
 
-  setFormData(): void {
+  // Fill the Form with default data or fetched data
+  populateForm(data: ApplicantFormTwo): void {
+    data.workHistory?.forEach((item: WorkHistory) => {
+      this.addCompanyForm(item);
+    });
+    data.educationHistory?.forEach((item: EducationHistory) => {
+      this.addEducationForm(item);
+    });
+    this.addAddressForm(data.address, data.state, data.pincode);
+  }
+
+  // Fetch Data of the form on Submit
+  getFormData(): void {
     this.fetchDataFromFormArray(this.workHistory, 'workHistory');
     this.fetchDataFromFormArray(this.educationHistory, 'educationHistory');
-    this.formData.address = this.addressList.address.value || '';
-    this.formData.state = this.addressList.state.value || '';
-    this.formData.pincode = this.addressList.pincode.value || '';
-    this.formatDate('workHistory');
-    this.formatDate('educationHistory');
+    this.formData = { ...this.formData, ...this.addressList.value };
   }
 
+  onSubmit(): void {
+    if (!this.applicantFormTwo.valid) {
+      this.showError = true;
+      return;
+    }
+    this.getFormData();
+    console.log(JSON.stringify(this.formData));
+    this.router.navigate(['../form-3'], { relativeTo: this.route });
+  }
+
+  // Handlers for Date Formatting and Input
   chosenYearHandler(normalizedYear: moment.Moment, control: any): void {
     const ctrlValue = control.value;
     ctrlValue.year(normalizedYear.year());
@@ -169,14 +226,5 @@ export class FormTwoComponent implements OnInit {
     ctrlValue.month(normalizedMonth.month());
     control.setValue(ctrlValue);
     datepicker.close();
-  }
-
-  onSubmit(): void {
-    if (this.applicantFormTwo.invalid) {
-      return;
-    }
-    this.setFormData();
-    console.log(JSON.stringify(this.formData));
-    this.router.navigate(['../form-3'], { relativeTo: this.route });
   }
 }
