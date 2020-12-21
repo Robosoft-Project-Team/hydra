@@ -1,156 +1,127 @@
 <div class="container">
   <p class="hello-text">Welcome to Robosoft!</p>
   <p class="text">Enter your Details here</p>
-  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <div class="row">
+  <form [formGroup]="applicantFormThree" (ngSubmit)="onSubmit()">
+    <div class="row form-group mb-0">
       <div class="input-group">
-
-        <!-- <mat-form-field class="example-chip-list">
-            <mat-label>Favorite Fruits</mat-label>
-            <mat-chip-list #chipList aria-label="Fruit selection">
-              <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                       [removable]="removable" (removed)="remove(fruit)">
-                {{fruit.name}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input placeholder="New fruit..."
-                     [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-          </mat-form-field>
-           -->
-
-
         <label class="input-label">Software you worked</label>
-        <!-- <input class="input-control textarea-big" type="text" placeholder="Your Good Name" formControlName="name"> -->
-        <textarea rows="3" placeholder="Enter softwares you are good at"></textarea>
+        <textarea class="input-control large no-resize" placeholder="Enter softwares you are good at"
+          formControlName="softwares"></textarea>
         <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.name?.errors?.required && signup.name?.touched">Enter Full Name</p>
-          <p class="input-error"
-            *ngIf="!signup.name?.errors?.required && signup.name?.errors?.invalidUserName && signup.name?.touched">Enter
-            a valid username</p>
+          <p class="input-error" *ngIf="form.softwares?.errors?.required && form.softwares?.touched">Enter Softwares you
+            are good at</p>
         </div>
       </div>
       <div class="input-group">
         <label class="input-label">Feature skills</label>
-        <!-- <input class="input-control textarea-big" type="text" placeholder="Your Robosoft Mail ID"
-          formControlName="email"> -->
-          <textarea rows="3" placeholder="Enter your Skills"></textarea>
+        <textarea class="input-control large no-resize" placeholder="Enter your Skills"
+          formControlName="skill"></textarea>
         <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.email?.errors?.invalidEmail && signup.email?.touched">
-            Enter valid Email ID</p>
-          <p class="input-error"
-            *ngIf="!signup.email?.errors?.invalidEmail && signup.email?.errors?.invalidCompanyEmail && signup.email?.touched">
-            Enter valid Company Email ID</p>
+          <p class="input-error" *ngIf="form.skill?.errors?.required && form.skill?.touched">Enter your skills</p>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row form-group mb-0 ">
       <div class="input-group">
         <label class="input-label">About You</label>
-        <textarea rows="4" placeholder="Your Message"></textarea>
+        <textarea class="input-control large no-resize" placeholder="Your Message"
+          formControlName="aboutYou"></textarea>
         <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.name?.errors?.required && signup.name?.touched">Enter Full Name</p>
-          <p class="input-error"
-            *ngIf="!signup.name?.errors?.required && signup.name?.errors?.invalidUserName && signup.name?.touched">Enter
-            a valid username</p>
+          <p class="input-error" *ngIf="form.aboutYou?.errors?.required && form.aboutYou?.touched">Enter few details
+            about yourself</p>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="input-group">
-        <label class="input-label">Facebook Profile Link</label>
-        <input class="input-control" type="text" placeholder="Enter link here" formControlName="name">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.name?.errors?.required && signup.name?.touched">Enter Full Name</p>
-          <p class="input-error"
-            *ngIf="!signup.name?.errors?.required && signup.name?.errors?.invalidUserName && signup.name?.touched">Enter
-            a valid username</p>
+
+    <div class="form-group-container mb-4">
+      <div class="form-group">
+        <div class="row">
+          <div class="input-group">
+            <label class="input-label">Facebook Profile Link</label>
+            <input class="input-control" type="text" placeholder="Enter link here" formControlName="facebookLink">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Linkedin Profile Link</label>
+            <input class="input-control" type="text" placeholder="Enter link here" formControlName="linkedInLink">
+          </div>
         </div>
       </div>
-      <div class="input-group">
-        <label class="input-label">Linkedin Profile Link</label>
-        <input class="input-control" type="text" placeholder="Enter link here" formControlName="designation">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.designation?.errors?.required && signup.designation?.touched ">
-            Enter valid Ddesignation</p>
+      <div class="row">
+        <div class="form-info-wrapper">
+          <p class="form-error">Provide Social Links</p>
+          <a class="form-add-control">+ Add Other External Link</a>
         </div>
-        <!-- <p class="link">+ Add Other External Link</p> -->
       </div>
     </div>
-    <div class="row">
+    <div class="row form-group mb-0">
       <div class="input-group">
         <label class="input-label">Current CTC</label>
-        <input class="input-control" type="text" placeholder="&nbsp;&nbsp; Enter your current CTC" formControlName="mobile">
-        <img src="../../../../assets/indian-rupee-xxl.png" alt="" class="rupee-symbol">
+        <input class="input-control padding" type="text" placeholder="&nbsp;&nbsp; Enter your current CTC"
+          formControlName="currentCTC">
+        <img class="input-icon" src="../../../../assets/indian-rupee-xxl.png">
         <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.mobile?.errors?.invalidMobileNumber && signup.mobile?.touched ">
-            Enter valid Mobile Number</p>
+          <p class="input-error" *ngIf="form.currennCTC?.errors?.required && form.currennCTC?.touched ">
+            Enter Current CTC</p>
         </div>
       </div>
       <div class="input-group">
         <label class="input-label">Expected CTC</label>
-        <input class="input-control" type="text" placeholder="&nbsp;&nbsp; Enter your expected CTC"
-          formControlName="designation">
-          <img src="../../../../assets/indian-rupee-xxl.png" alt="" class="rupee-symbol">
+        <input class="input-control padding" type="text" placeholder="&nbsp;&nbsp; Enter your expected CTC"
+          formControlName="expectedCTC">
+        <img class="input-icon" src="../../../../assets/indian-rupee-xxl.png">
         <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.designation?.errors?.required && signup.designation?.touched ">
-            Enter valid Ddesignation</p>
+          <p class="input-error" *ngIf="form.expectedCTC?.errors?.required && form.expectedCTC?.touched ">
+            Enter Expected CTC</p>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="input-group">
-        <label class="input-label label">Attachments</label>
-        <p class="size">Maximum upload Size 5MB </p>
-        <div class="file-drag-drop">
-          <div class="container-2">
-            <div appDrag (filesUploaded)="dragDropFile($event)" class="label">
-              <div class="para">
-                Drag and Drop to Upload your CV, Photo and Work Life
-              </div>
-              <span>or</span>
-              <label for="file"
-                style="font-size: 15px; color: #F52851; text-decoration: underline;margin-top: 5px;cursor: pointer;padding-right: 10px;">
-                Browse</label>
-            </div>
-            <input type="file" id="file" (change)="handleFileInput($event.target.files)" style="display: none;"
-              multiple>
-
-            <p *ngIf="file">{{file.name}}</p>
-            <p *ngIf="file">{{convertSize(file.size)}}</p>
-
+    <div class="form-group-container">
+      <div class="row form-group">
+        <div class="input-group">
+          <p class="input-group-heading left">Attachments</p>
+          <p class="input-group-info right">Maximum upload Size 5MB </p>
+          <div class="file-input-container" appDrag (filesUploaded)="dragDropFile($event)">
+            <div class="input-info file-upload-info">Drag or Drop to Upload your CV, Photo and Work File</div>
+            <div class="input-info file-upload-info small">or</div>
+            <label class="input-info file-browse-button" for="file">Browse</label>
+            <input type="file" id="file" (change)="dragDropFile($event.target.files)" multiple>
           </div>
-          <button (click)="reset()" class="reset">Reset</button>
         </div>
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.mobile?.errors?.invalidMobileNumber && signup.mobile?.touched ">
-            Enter valid Mobile Number</p>
+        <div class="input-group">
+          <p class="input-group-heading left">Profile Image</p>
+          <p class="input-group-info right">File Format jpg or png</p>
+          <div class="file-input-container profile">
+            <label for="file-input"><img src="../../../../assets/icn_upload_profile.png" /></label>
+            <input id="file-input" type="file" accept=".png, .jpg" (change)="uploadImage($event.target.files)" />
+          </div>
         </div>
       </div>
-      <div class="input-group">
-        <label class="input-label label">Profile image</label>
-        <p class="format">File Format jpg or png</p>
-        <div class="file">
-          <div class="image-upload">
-            <label for="file-input">
-              <img src="../../../../assets/icn_upload_profile.png" class="upload-image" />
-            </label>
-            <input id="file-input" type="file" accept=".png, .jpg" />
-          </div>
-        </div>
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.designation?.errors?.required && signup.designation?.touched ">
-            Enter valid Ddesignation</p>
+      <div class="row">
+        <div class="form-info-wrapper mb-0">
+          <ul class="file-list">
+            <li class="file-list-item" *ngFor="let _file of fileArray; let i = index">
+              <div class="file-name">{{_file.name}}</div>
+              <div class="file-size">({{convertSize(_file.size)}})</div>
+              <p for="reset" class="file-reset-button" (click)="reset(i)"></p>
+            </li>
+          </ul>
+          <ul class="file-list profile-list" *ngIf="profileImage">
+            <li class="file-list-item">
+              <div class="file-name">{{profileImage.name}}</div>
+              <div class="file-size">({{convertSize(profileImage.size)}})</div>
+              <!-- <p for="reset" class="file-reset-button" (click)="reset()"></p> -->
+            </li>
+          </ul>
         </div>
       </div>
     </div>
-    <button class="button" type="submit" [ngClass]="{disabled: signupForm.invalid}" [disabled]="signupForm.invalid">Back
-    </button>
-    <button class="button" type="submit" [ngClass]="{disabled: signupForm.invalid}"
-      [disabled]="signupForm.invalid">Submit
-    </button>
+    <div class="form-group">
+      <p>Please fill all the required fields!</p>
+      <div class="row button-group">
+        <button class="button" (click)="goBack()">Back</button>
+        <button class="button" type="submit" [disabled]="applicantFormThree.invalid"
+          [ngClass]="{'disabled': applicantFormThree.invalid}">Continue</button>
+      </div>
+    </div>
   </form>
 </div>
