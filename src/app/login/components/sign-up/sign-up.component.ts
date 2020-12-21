@@ -1,6 +1,17 @@
+import { SignUpValidators } from './signup.validator';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+import { SignInService } from '../../services/sign-in.service';
+
+interface User {
+  name: string;
+  email: string;
+  mobile: string;
+  designation: string;
+  position: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-sign-up',
@@ -9,71 +20,78 @@ import { FormValidationService } from 'src/app/shared/services/form-validation.s
 })
 export class SignUpComponent implements OnInit {
 
-  name = { value: '', error: false };
-  email = { value: '', error: false };
-  mobile = { value: '', error: false };
-  designation = { value: '', error: false };
-  rePassword = { value: '', error: false };
-  position = 'recruiter';
-  password: string;
+  // Reactive Forms
+  signupForm: FormGroup;
+  formError = false;
+
+  formData: User = {
+    name: '',
+    email: '',
+    mobile: '',
+    designation: '',
+    position: 'recruiter',
+    password: '',
+  };
 
   constructor(
-    private validation: FormValidationService,
+    private signInService: SignInService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.signupForm = new FormGroup({
+      name: new FormControl(this.formData.name, [Validators.required, SignUpValidators.isValidUsername()]),
+      email: new FormControl(
+        this.formData.email,
+        [
+          Validators.required,
+          SignUpValidators.isValidEmail(),
+          SignUpValidators.isCompanyEmail()
+        ]),
+      mobile: new FormControl(this.formData.mobile, [Validators.required, SignUpValidators.isValidMobileNumber()]),
+      designation: new FormControl(this.formData.designation, Validators.required),
+      position: new FormControl(this.formData.position),
+      passwordForm: new FormGroup({
+        password: new FormControl(this.formData.password, [Validators.required, SignUpValidators.isValidPassword()]),
+        rePassword: new FormControl(
+          this.formData.password,
+          [
+            Validators.required,
+            SignUpValidators.isValidPassword()
+          ]
+        ),
+      }, SignUpValidators.isPasswordMatching('password', 'rePassword'))
+    });
   }
 
-  resetErrorFields(): void {
-    this.name.error = false;
-    this.email.error = false;
-    this.mobile.error = false;
-    this.designation.error = false;
-    this.rePassword.error = false;
+  get signup(): any {
+    return this.signupForm.controls;
   }
 
-  getValues(): object {
-    return {
-      name: this.name.value,
-      email: this.email.value,
-      mobile: this.mobile.value,
-      designation: this.designation.value,
-      password: this.password,
-      position: this.position
-    };
+  setFormData(): void {
+    this.formData.name = this.signup.name.value || '';
+    this.formData.email = this.signup.email.value || '';
+    this.formData.mobile = this.signup.mobile.value || '';
+    this.formData.designation = this.signup.designation.value || '';
+    this.formData.position = this.signup.position.value || 'recruiter';
+    this.formData.password = this.signup.passwordForm?.controls?.rePassword?.value || '';
   }
 
-  isValidFields(): boolean {
-    if (!this.name.value) {
-      this.name.error = true; return false;
-    } else if (!this.validation.isValidRobosoftEmail(this.email.value)) {
-      this.email.error = true; return false;
-    } else if (!this.validation.isValidMobileNumber(this.mobile.value)) {
-      this.mobile.error = true; return false;
-    } else if (!this.designation.value) {
-      this.designation.error = true; return false;
+  onSubmit(): void {
+    if (this.signupForm.invalid) {
+      this.formError = true;
+      return;
     }
-    return true;
+    this.setFormData();
+    this.signInService.registerUser(this.formData)
+      .subscribe(
+        res => {
+          if (res.status === 201) {
+            this.router.navigate(['../form'], { relativeTo: this.route });
+          }
+        },
+        err => console.log('user exists', err)
+      );
   }
-
-  isPasswordMatching(): boolean {
-    if (!this.password ||
-      !this.rePassword.value ||
-      this.password !== this.rePassword.value) {
-      this.rePassword.error = true;
-      return false;
-    }
-    return true;
-  }
-
-  onClickSubmit(): void {
-    this.resetErrorFields();
-    if (this.isValidFields() && this.isPasswordMatching()) {
-      console.log(this.getValues());
-      this.router.navigate(['../form'], { relativeTo: this.route });
-    }
-  }
-
 }

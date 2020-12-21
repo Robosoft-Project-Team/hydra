@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
+import { ChangePasswordService } from '../../services/change-password.service';
 
 @Component({
   selector: 'app-login-forgot-password',
@@ -10,24 +11,51 @@ import { FormValidationService } from 'src/app/shared/services/form-validation.s
 export class LoginForgotPasswordComponent implements OnInit {
 
   email = { value: '', error: '' };
+  buttonDisabled: boolean;
 
-  constructor(private validation: FormValidationService,
-              private router: Router,
-              private route: ActivatedRoute ) { }
+  constructor(
+    private validation: FormValidationService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private passwordService: ChangePasswordService) { }
 
   ngOnInit(): void {
+    this.buttonDisabled = true;
   }
 
   isValidEmail(): boolean {
     return this.validation.isValidRobosoftEmail(this.email.value);
   }
 
-  onClickSubmitEmail(): void {
-    if (!this.email.value) {
-      this.email.error = 'This field is required';
-    } else if (!this.isValidEmail()) {
-      this.email.error = 'You have entered a invalid mail address';
+  isValid(): void {
+    this.email.error = '';
+    if (this.isValidEmail()) {
+      this.buttonDisabled = false;
     } else {
+      this.buttonDisabled = true;
+    }
+  }
+
+  validationCheck(): boolean {
+    this.passwordService.checkUserExists(this.email.value)
+      .subscribe(
+        res => {
+          if (res.status === 200) {
+            return true;
+          } else if (res.status === 404) {
+            this.email.error = res.message;
+          }
+        },
+        err => {
+          this.email.error = 'You have entered a invalid mail address';
+        }
+      );
+    return false;
+  }
+
+  onClickSubmitEmail(): void {
+    if (this.validationCheck()) {
+      this.passwordService.setUserEmail(this.email.value);
       this.router.navigate(['../verify'], { relativeTo: this.route });
     }
   }

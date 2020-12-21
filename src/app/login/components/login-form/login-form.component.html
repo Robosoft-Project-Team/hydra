@@ -7,7 +7,7 @@
     <div class="input">
       <label for="">Email ID</label>
       <input type="text" placeholder="Enter your Email Address" [(ngModel)]="email.value" [class.invalid]="email.error"
-        (focusout)="isValid()">
+      (input)="validateUsername()" (focusout)="isValid()">
       <span class="tick" *ngIf="showMark">
         <img *ngIf="email.tick" src="../../../../assets/input-tick/icn_done_tick.png" alt="">
         <img *ngIf="!email.tick" src="../../../../assets/input-error/icn_error_tick.png" alt="">
@@ -17,11 +17,12 @@
     <div class="input">
       <label for="">Password</label>
       <input type="password" placeholder="Enter your Password" [(ngModel)]="password.value"
-        [class.invalid]="password.error" (focusout)="isValidPassword()">
+        [class.invalid]="password.error" (keyup)="password.error = ''" 
+        (input)="enableButton()" (focusout)="isValidPassword()">
       <div *ngIf="password.error" class="error">{{password.error}}</div>
     </div>
     <p class="forgot-password" routerLink="../forgot-password">Forgot Password?</p>
-    <button class="button" (click)="onclick()">
+    <button class="button" (click)="onClickSignIn()" [class.disabled]="buttonDisabled" [disabled]="buttonDisabled">
       Sign In
     </button>
   </div>

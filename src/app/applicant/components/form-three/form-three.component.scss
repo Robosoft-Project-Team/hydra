@@ -1,0 +1,334 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+@mixin text {
+  .text {
+    color: $color-white;
+    font-family: Muli;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 2rem;
+    margin-bottom: 50px;
+  }
+}
+
+@include text;
+@include button;
+
+.button {
+  margin: 20px;
+}
+
+form {
+  max-width: 70%;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.hello-text {
+  font-size: 26px;
+  font-family: 'Muli';
+  font-weight: bold;
+  color: $color-primary-dark;
+  margin-bottom: 15px;
+}
+
+
+.label {
+  font-size: 18px;
+  font-weight: 530;
+  // font-weight: bold;
+  color: $color-white;
+}
+
+.textarea-big {
+  height: 90px;
+}
+
+// .example-chip-list {
+//   width: 100%;
+// }
+
+
+.file {
+  width: 100%;
+  height: 80px;
+  border-radius: 6px;
+  border: 3px dashed $color-primary-dark;
+  background-color: rgba(255, 255, 255, 0.06);
+
+  .upload-image {
+    height: 35px;
+    width: 41px;
+    margin-top: 18px;
+    cursor: pointer;
+  }
+
+  .image-upload>input {
+    display: none;
+  }
+}
+
+.format {
+  font-size: 16px;
+  margin-left: 72px;
+  margin-top: 28px;
+  font-weight: 300;
+}
+
+textarea {
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 10px;
+  border: 1px solid $color-white;
+  color: $color-grey-light;
+  padding-left: 14px;
+  font-size: 14px;
+  width: 100%;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.file-drag-drop {
+  width: 100%;
+  height: 80px;
+  border-radius: 6px;
+  border: 3px dashed $color-primary-dark;
+  background-color: rgba(255, 255, 255, 0.06);
+
+  .container-2 {
+    .label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      width: 328px;
+      padding-top: 22px;
+      color: $color-grey-light;
+
+      .para {
+        width: 60%;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .reset {
+    margin-top: 40px;
+    background: none;
+    outline: none;
+    color: white;
+    border: none;
+  }
+}
+
+/// RESET STYLES
+
+form {
+  max-width: 70%;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 2em;
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    &-container {
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      margin-bottom: .5rem;
+      position: relative;
+
+      .right {
+        text-align: right;
+        width: 100%;
+      }
+
+      .left {
+        text-align: left;
+        width: 100%;
+      }
+
+      &-info {
+        color: $color-white;
+        font-family: Muli;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 18px;
+        margin-bottom: .5rem;
+      }
+
+      &-heading {
+        color: $color-white;
+        font-family: Muli;
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.13px;
+        line-height: 1rem;
+        margin-bottom: .5rem;
+      }
+
+      .file-input-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        border-radius: 6px;
+        border: 3px dashed $color-primary-dark;
+        background-color: rgba(255, 255, 255, 0.06);
+
+        .file-upload-info {
+          font-family: Muli;
+          color: rgba($color-grey-light, .5);
+          text-align: center;
+          flex: 4;
+
+          &.small {
+            flex: 1;
+          }
+        }
+
+        .file-browse-button {
+          color: $color-primary-dark;
+          text-decoration: underline;
+          flex: 2;
+          cursor: pointer;
+        }
+
+        &.profile {
+          flex: 1;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .input-control {
+        margin-bottom: .5rem;
+
+        &.large {
+          height: 80px;
+        }
+
+        &.no-resize {
+          resize: none;
+          overflow-y: auto;
+        }
+
+        &.padding {
+          padding-left: 1.7rem;
+        }
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    }
+
+    .button {
+      &-group {
+        justify-content: center;
+        margin: 1rem 0;
+
+        .button {
+          margin: 0;
+        }
+
+        .button:first-child {
+          margin-right: 2rem;
+        }
+
+      }
+    }
+  }
+
+  .form-info-wrapper {
+    font-family: Muli;
+    font-size: .75rem;
+    letter-spacing: 0;
+    display: inline-flex;
+    line-height: 18px;
+    display: flex;
+    width: 100%;
+    margin: -.5rem 2rem 0;
+
+    .form-error {
+      flex: 1;
+      margin: 0;
+      text-align: left;
+      color: $color-primary-dark;
+    }
+
+    .form-add-control {
+      flex: 1;
+      margin: 0;
+      margin-left: auto;
+      max-width: 50%;
+      color: $color-primary-dark;
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 600;
+      text-align: right;
+      transition: all .1s ease-in-out;
+
+      &:hover,
+      &:link {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+
+    .file-list {
+      margin: 0;
+      margin-left: -2.5rem;
+
+      &.profile-list {
+        flex: 1;
+        margin-left: 2rem;
+      }
+
+      &-item {
+        display: flex;
+        color: $color-white;
+        font-family: Muli;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 18px;
+
+        .file-size {
+          opacity: .5;
+          margin: 0 1rem;
+        }
+
+        .file-reset-button {
+          height: 15px;
+          width: 15px;
+          background-image: url('../../../../assets/icn_attachmentdelete/icn_attachmentdelete@1.5x.svg');
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .input-icon {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    top: 41px;
+    left: 13px;
+  }
+}
