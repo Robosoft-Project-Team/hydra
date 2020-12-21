@@ -225,7 +225,7 @@ export class FormTwoComponent implements OnInit {
       return;
     }
     this.getFormData();
-    console.log(JSON.stringify(this.formData));
+    this.formStore.storeForm('formTwo', this.formData);
     this.router.navigate(['../form-3'], { relativeTo: this.route });
   }
 
