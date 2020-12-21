@@ -120,7 +120,7 @@ export class FormTwoComponent implements OnInit {
 
     // Populate the form with data if present
     // Else Initialize with default data
-    this.populateForm(this.MOCK_DATA_FROM_SERVICE);
+    this.populateForm(this.formData);
   }
 
   // Get Form Controls

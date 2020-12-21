@@ -59,7 +59,7 @@
           <p class="form-error" *ngIf="workHistory.invalid && form.workHistoryForm?.touched">Enter
             Work
             History Details</p>
-          <a class="form-add-control" (click)="addCompanyForm()">+ Add Other Company</a>
+          <a class="form-add-control" (click)="addCompanyForm(null)">+ Add Other Company</a>
         </div>
       </div>
     </div>
@@ -119,7 +119,7 @@
           <p class="form-error" *ngIf="educationHistory.invalid && form.workHistoryForm?.touched">Enter
             Education
             Details</p>
-          <a class="form-add-control" (click)="addEducationForm()">+ Add Other Institution</a>
+          <a class="form-add-control" (click)="addEducationForm(null)">+ Add Other Institution</a>
         </div>
       </div>
     </div>
