@@ -2,6 +2,8 @@ import { SignUpValidators } from '../../../login/components/sign-up/signup.valid
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormStorageService } from '../../services/form-storage.service';
+import { SubmitFormService } from '../../services/submit-form.service';
 
 interface ApplicantFormThree {
   softwares: string;
@@ -9,7 +11,7 @@ interface ApplicantFormThree {
   aboutYou: string;
   currentCTC: string;
   expectedCTC: string;
-  facbookLink: string;
+  facebookLink: string;
   linkedInLink: string;
 }
 
@@ -35,7 +37,7 @@ export class FormThreeComponent implements OnInit {
     aboutYou: '',
     currentCTC: '',
     expectedCTC: '',
-    facbookLink: '',
+    facebookLink: '',
     linkedInLink: ''
   };
 
@@ -45,7 +47,7 @@ export class FormThreeComponent implements OnInit {
     aboutYou: 'Good Team pLayer, Blah Blah Blah',
     currentCTC: '350000',
     expectedCTC: '4000000',
-    facbookLink: 'https://www.facebook.com/',
+    facebookLink: 'https://www.facebook.com/',
     linkedInLink: 'https://in.linkedin.com/'
   };
 
@@ -55,12 +57,16 @@ export class FormThreeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formStore: FormStorageService,
+    private submitForm: SubmitFormService
   ) { }
 
   ngOnInit(): void {
     this.applicantFormThree = new FormGroup({});
-    this.populateForm(this.MOCK_DATA);
+    if (this.formStore.hasForm('formThree')) {
+      this.populateForm(this.formStore.getForm('formThree'));
+    }
   }
 
   get form(): any {
@@ -74,7 +80,7 @@ export class FormThreeComponent implements OnInit {
       aboutYou: new FormControl(data.aboutYou, Validators.required),
       currentCTC: new FormControl(data.currentCTC, Validators.required),
       expectedCTC: new FormControl(data.expectedCTC, Validators.required),
-      facebookLink: new FormControl(data.facbookLink, Validators.required),
+      facebookLink: new FormControl(data.facebookLink, Validators.required),
       linkedInLink: new FormControl(data.linkedInLink, Validators.required)
     });
     this.applicantFormThree = formGroup;
@@ -90,11 +96,16 @@ export class FormThreeComponent implements OnInit {
       return;
     }
     this.getFormData();
-    console.log(JSON.stringify(this.formData));
-    this.router.navigate(['../success'], { relativeTo: this.route });
+    this.submitForm.submitForm();
+    if (this.fileArray !==  [] && this.profileImage) {
+      this.router.navigate(['../success'], { relativeTo: this.route });
+    }
+    this.submitForm.submitFiles(this.fileArray, this.profileImage);
   }
 
   goBack(): void {
+    this.getFormData();
+    this.formStore.storeForm('formThree', this.formData);
     this.router.navigate(['../form-2'], { relativeTo: this.route });
   }
 
@@ -118,5 +129,6 @@ export class FormThreeComponent implements OnInit {
   uploadImage(files): void {
     this.profileImage = files.item(0);
   }
+
 }
 

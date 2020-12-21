@@ -181,7 +181,7 @@ export class FormTwoComponent implements OnInit {
     const formGroup = new FormGroup({
       address: new FormControl(address || '', Validators.required),
       state: new FormControl(state || '', Validators.required),
-      pincode: new FormControl(pincode || null, [Validators.required, Validators.min(100000), Validators.max(999999)])
+      pincode: new FormControl(pincode || '', [Validators.required, Validators.min(100000), Validators.max(999999)])
     });
     this.form.addressForm = formGroup;
   }
