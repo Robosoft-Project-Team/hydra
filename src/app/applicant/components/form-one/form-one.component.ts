@@ -2,6 +2,7 @@ import { FormValidator } from 'src/app/shared/services/form.validator';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormStorageService } from '../../services/form-storage.service';
 
 interface ApplicantFormOne {
   applicantName: string;
@@ -89,12 +90,17 @@ export class FormOneComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formStore: FormStorageService
   ) { }
 
   ngOnInit(): void {
     this.applicantFormOne = new FormGroup({});
     this.populateForm(this.formData);
+
+    if (this.formStore.hasForm('formOne')){
+      this.populateForm(this.formStore.getForm('formOne'));
+    }
   }
 
   get form(): any {
@@ -128,6 +134,7 @@ export class FormOneComponent implements OnInit {
       return;
     }
     console.log(JSON.stringify(this.getFormData()));
+    this.formStore.storeForm('formOne', this.getFormData());
     this.router.navigate(['../form-2'], { relativeTo: this.route });
   }
 

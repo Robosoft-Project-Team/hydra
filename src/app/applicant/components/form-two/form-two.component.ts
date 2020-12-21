@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import * as moment from 'moment';
+import { FormStorageService } from '../../services/form-storage.service';
 
 const MY_FORMATS = {
   parse: {
@@ -107,7 +108,8 @@ export class FormTwoComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formStore: FormStorageService
   ) { }
 
   ngOnInit(): void {
@@ -120,7 +122,14 @@ export class FormTwoComponent implements OnInit {
 
     // Populate the form with data if present
     // Else Initialize with default data
-    this.populateForm(this.formData);
+
+    if (this.formStore.hasForm('formTwo')) {
+      this.populateForm(this.formStore.getForm('formTwo'));
+      console.log(this.formStore.getForm('formTwo'));
+    } else {
+      this.populateForm(this.formData);
+
+    }
   }
 
   // Get Form Controls
@@ -144,7 +153,7 @@ export class FormTwoComponent implements OnInit {
   }
 
   // Add New Company Form
-  addCompanyForm(data: WorkHistory): void {
+  addCompanyForm = (data: WorkHistory): void => {
     const formGroup = new FormGroup({
       companyName: new FormControl(data?.companyName || '', Validators.required),
       position: new FormControl(data?.position || '', Validators.required),
@@ -156,9 +165,9 @@ export class FormTwoComponent implements OnInit {
   }
 
   // Add New Education Form
-  addEducationForm(data: EducationHistory): void {
+  addEducationForm = (data: EducationHistory): void => {
     const formGroup = new FormGroup({
-      instituitionName: new FormControl(data?.institutionName || '', Validators.required),
+      institutionName: new FormControl(data?.institutionName || '', Validators.required),
       grade: new FormControl(data?.grade || null, Validators.required),
       from: new FormControl(data ? moment(data.from, 'YYYY-MM-DD') : moment(), Validators.required),
       to: new FormControl(data ? moment(data.to, 'YYYY-MM-DD') : moment(), Validators.required),
@@ -204,6 +213,12 @@ export class FormTwoComponent implements OnInit {
     this.formData = { ...this.formData, ...this.addressList.value };
   }
 
+  goBack(): void {
+    this.getFormData();
+    this.formStore.storeForm('formTwo', this.formData);
+    this.router.navigate(['../form-1'], { relativeTo: this.route });
+  }
+
   onSubmit(): void {
     if (!this.applicantFormTwo.valid) {
       this.showError = true;
@@ -226,5 +241,14 @@ export class FormTwoComponent implements OnInit {
     ctrlValue.month(normalizedMonth.month());
     control.setValue(ctrlValue);
     datepicker.close();
+  }
+
+  isValid(referance, refFunction): void {
+    console.log(referance);
+    const lastIndex = referance.length - 1;
+    if (!referance[lastIndex].invalid) {
+      refFunction();
+    }
+    // console.log(referance[lastIndex].invalid);
   }
 }
