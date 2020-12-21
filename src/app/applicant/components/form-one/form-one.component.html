@@ -56,7 +56,7 @@
         <label class="input-label">Job Location</label>
         <div class="input-control placeholder">
           <select class="dropdown input-control" name="location" id="location" formControlName="jobLocation">
-            <option value="location" *ngFor="let location of jobLocations">{{location}}</option>
+            <option [value]="_location" selectedValueChange="alert(_location)" *ngFor="let _location of jobLocations">{{_location}}</option>
           </select>
         </div>
         <div class="input-error-wrapper">&nbsp;
@@ -68,7 +68,7 @@
         <label class="input-label">Gender</label>
         <div class="input-control placeholder">
           <select class="dropdown input-control" name="gender" id="gender" formControlName="gender">
-            <option value="gender" *ngFor="let gender of genders">{{gender}}</option>
+            <option [value]="_gender" *ngFor="let _gender of genders">{{_gender}}</option>
           </select>
         </div>
         <div class="input-error-wrapper">&nbsp;

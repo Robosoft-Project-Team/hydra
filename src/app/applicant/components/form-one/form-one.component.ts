@@ -2,10 +2,8 @@ import { FormValidator } from 'src/app/shared/services/form.validator';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 
 interface ApplicantFormOne {
-  appplicantId: number;
   applicantName: string;
   emailid: string;
   mobile_no: string;
@@ -50,7 +48,6 @@ export class FormOneComponent implements OnInit {
   // Reactive Forms
   applicantFormOne: FormGroup;
   formData: ApplicantFormOne = {
-    appplicantId: 0,
     applicantName: '',
     emailid: '',
     mobile_no: '',
@@ -70,47 +67,75 @@ export class FormOneComponent implements OnInit {
     languages: '',
   };
 
+  MOCK_DATA_FROM_SERVICE = {
+    applicantName: 'John',
+    emailid: 'john@hmail.co',
+    mobile_no: '8855664488',
+    dob: '10/06/1998',
+    jobLocation: 'Udupi',
+    gender: 'Others',
+    designation: 'Engineer',
+    experienceYear: 6,
+    experienceMonth: 3,
+    applicationType: 'Organizer',
+    reference: {
+      reference_name: 'Jim Doe',
+      reference_desig: 'Engineer',
+      reference_mobile: '8855664455',
+      reference_mail: 'jim@test.com'
+    },
+    languages: 'English, Spanish'
+  };
+
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private validators: FormValidationService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.applicantFormOne = new FormGroup({
-      applicantName: new FormControl('', [Validators.required, FormValidator.isValidUsername()]),
-      dob: new FormControl('', [Validators.required, FormValidator.isDOBValid()]),
-      mobile_no: new FormControl('', [Validators.required, FormValidator.isValidMobileNumber()]),
-      emailid: new FormControl('', [Validators.required, FormValidator.isValidEmail()]),
-      jobLocation: new FormControl('', Validators.required),
-      gender: new FormControl('', Validators.required),
-      designation: new FormControl('', Validators.required),
-      experienceYear: new FormControl(null, Validators.required),
-      experienceMonth: new FormControl(null, Validators.required),
-      applicationType: new FormControl('Referral', Validators.required),
-      reference: new FormControl('', [Validators.required, FormValidator.isValidReference()]),
-      languages: new FormControl('', Validators.required),
-    });
-
+    this.applicantFormOne = new FormGroup({});
+    this.populateForm(this.formData);
   }
 
   get form(): any {
     return this.applicantFormOne.controls;
   }
 
-  setFormData(): void {
-    this.formData.applicantName = this.form.applicantName.value || '';
-    this.formData.emailid = this.form.emailid.value || '';
-    this.formData.dob = this.form.dob.value || '';
-    this.formData.mobile_no = this.form.mobile_no.value || '';
-    this.formData.jobLocation = this.form.jobLocation.value || '';
-    this.formData.gender = this.form.gender.value || '';
-    this.formData.designation = this.form.designation.value || '';
-    this.formData.experienceYear = this.form.experienceYear?.value || 0;
-    this.formData.experienceMonth = this.form.experienceMonths?.value || 0;
-    this.formData.applicationType = this.form.applicationType?.value || 'Referral';
-    this.formData.reference = this.processReferenceData(this.form.reference?.value) || null;
-    this.formData.languages = this.form.languages.value || '';
+  populateForm(data: ApplicantFormOne): void {
+    const formGroup = new FormGroup({
+      applicantName: new FormControl(data.applicantName, [Validators.required, FormValidator.isValidUsername()]),
+      dob: new FormControl(data.dob, [Validators.required, FormValidator.isDOBValid()]),
+      mobile_no: new FormControl(data.mobile_no, [Validators.required, FormValidator.isValidMobileNumber()]),
+      emailid: new FormControl(data.emailid, [Validators.required, FormValidator.isValidEmail()]),
+      jobLocation: new FormControl(data ? data.jobLocation : '', Validators.required),
+      gender: new FormControl(data ? data.gender : '', Validators.required),
+      designation: new FormControl(data.designation, Validators.required),
+      experienceYear: new FormControl(data.experienceYear, Validators.required),
+      experienceMonth: new FormControl(data.experienceMonth, Validators.required),
+      applicationType: new FormControl(data.applicationType, Validators.required),
+      reference: new FormControl(this.formatReference(data.reference), [Validators.required, FormValidator.isValidReference()]),
+      languages: new FormControl(data.languages, Validators.required),
+    });
+    this.applicantFormOne = formGroup;
+  }
+
+  getFormData(): ApplicantFormOne {
+    return { ...this.applicantFormOne.value, reference: this.processReferenceData(this.form.reference?.value) };
+  }
+
+  onSubmit(): void {
+    if (this.applicantFormOne.invalid) {
+      return;
+    }
+    console.log(JSON.stringify(this.getFormData()));
+    this.router.navigate(['../form-2'], { relativeTo: this.route });
+  }
+
+  formatReference(reference: Reference): string {
+    if (reference.reference_name) {
+      return `${reference.reference_name},${reference.reference_desig},${reference.reference_mobile},${reference.reference_mail}`;
+    }
+    return '';
   }
 
   processReferenceData(value: string): Reference {
@@ -132,14 +157,5 @@ export class FormOneComponent implements OnInit {
       value = v + '/';
     }
     this.form.dob.patchValue(value);
-  }
-
-  onSubmit(): void {
-    if (this.applicantFormOne.invalid) {
-      return;
-    }
-    this.setFormData();
-    console.log(JSON.stringify(this.formData));
-    this.router.navigate(['../form-2'], { relativeTo: this.route });
   }
 }
