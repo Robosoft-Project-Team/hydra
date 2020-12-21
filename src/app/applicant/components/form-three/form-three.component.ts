@@ -1,22 +1,21 @@
 import { SignUpValidators } from '../../../login/components/sign-up/signup.validator';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-//Chips
-// import {COMMA, ENTER} from '@angular/cdk/keycodes';
-// import {MatChipInputEvent} from '@angular/material/chips';
-// export interface Fruit {
-//   name: string;
-// }
+interface ApplicantFormThree {
+  softwares: string;
+  skill: string;
+  aboutYou: string;
+  currentCTC: string;
+  expectedCTC: string;
+  facbookLink: string;
+  linkedInLink: string;
+}
 
-interface User {
-  name: string;
-  email: string;
-  mobile: string;
-  designation: string;
-  position: string;
-  password: string;
+interface SocialWebsite {
+  websiteName: string;
+  url: string;
 }
 
 @Component({
@@ -26,58 +25,33 @@ interface User {
 })
 export class FormThreeComponent implements OnInit {
 
-  //chips
-  // visible = true;
-  // selectable = true;
-  // removable = true;
-  // addOnBlur = true;
-  // readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  // fruits: Fruit[] = [
-  //   {name: 'Lemon'},
-  //   {name: 'Lime'},
-  //   {name: 'Apple'},
-  // ];
-
-  // add(event: MatChipInputEvent): void {
-  //   const input = event.input;
-  //   const value = event.value;
-
-  //   // Add our fruit
-  //   if ((value || '').trim()) {
-  //     this.fruits.push({name: value.trim()});
-  //   }
-
-  //   // Reset the input value
-  //   if (input) {
-  //     input.value = '';
-  //   }
-  // }
-
-  // remove(fruit: Fruit): void {
-  //   const index = this.fruits.indexOf(fruit);
-
-  //   if (index >= 0) {
-  //     this.fruits.splice(index, 1);
-  //   }
-  // }
-  //chips close
-
-
   // Reactive Forms
-  signupForm: FormGroup;
+  applicantFormThree: FormGroup;
   formError = false;
 
-  formData: User = {
-    name: '',
-    email: '',
-    mobile: '',
-    designation: '',
-    position: 'recruiter',
-    password: '',
+  formData: ApplicantFormThree = {
+    softwares: '',
+    skill: '',
+    aboutYou: '',
+    currentCTC: '',
+    expectedCTC: '',
+    facbookLink: '',
+    linkedInLink: ''
   };
 
-  //FileDragDrop
-  file: FileList;
+  MOCK_DATA: ApplicantFormThree = {
+    softwares: 'C, Java, Python',
+    skill: 'Programming, Communication',
+    aboutYou: 'Good Team pLayer, Blah Blah Blah',
+    currentCTC: '350000',
+    expectedCTC: '4000000',
+    facbookLink: 'https://www.facebook.com/',
+    linkedInLink: 'https://in.linkedin.com/'
+  };
+
+  // FileDragDrop
+  fileArray = [];
+  profileImage: FileList;
 
   constructor(
     private router: Router,
@@ -85,86 +59,64 @@ export class FormThreeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.signupForm = new FormGroup({
-      name: new FormControl(this.formData.name, [Validators.required, SignUpValidators.isValidUsername()]),
-      email: new FormControl(
-        this.formData.email,
-        [
-          Validators.required,
-          SignUpValidators.isValidEmail(),
-          SignUpValidators.isCompanyEmail()
-        ]),
-      mobile: new FormControl(this.formData.mobile, [Validators.required, SignUpValidators.isValidMobileNumber()]),
-      designation: new FormControl(this.formData.designation, Validators.required),
-      position: new FormControl(this.formData.position),
-      passwordForm: new FormGroup({
-        password: new FormControl(this.formData.password, [Validators.required, SignUpValidators.isValidPassword()]),
-        rePassword: new FormControl(
-          this.formData.password,
-          [
-            Validators.required,
-            SignUpValidators.isValidPassword()
-          ]
-        ),
-      }, SignUpValidators.isPasswordMatching('password', 'rePassword'))
+    this.applicantFormThree = new FormGroup({});
+    this.populateForm(this.MOCK_DATA);
+  }
+
+  get form(): any {
+    return this.applicantFormThree.controls;
+  }
+
+  populateForm(data: ApplicantFormThree): void {
+    const formGroup = new FormGroup({
+      softwares: new FormControl(data.softwares, Validators.required),
+      skill: new FormControl(data.skill, Validators.required),
+      aboutYou: new FormControl(data.aboutYou, Validators.required),
+      currentCTC: new FormControl(data.currentCTC, Validators.required),
+      expectedCTC: new FormControl(data.expectedCTC, Validators.required),
+      facebookLink: new FormControl(data.facbookLink, Validators.required),
+      linkedInLink: new FormControl(data.linkedInLink, Validators.required)
     });
+    this.applicantFormThree = formGroup;
   }
 
-  get signup(): any {
-    return this.signupForm.controls;
-  }
-
-  setFormData(): void {
-    this.formData.name = this.signup.name.value || '';
-    this.formData.email = this.signup.email.value || '';
-    this.formData.mobile = this.signup.mobile.value || '';
-    this.formData.designation = this.signup.designation.value || '';
-    this.formData.position = this.signup.position.value || 'recruiter';
-    this.formData.password = this.signup.passwordForm?.controls?.rePassword?.value || '';
+  getFormData(): void {
+    this.formData = this.applicantFormThree.value;
   }
 
   onSubmit(): void {
-    if (this.signupForm.invalid) {
+    if (this.applicantFormThree.invalid) {
       this.formError = true;
       return;
     }
-    this.setFormData();
-    console.log(this.formData);
-    this.router.navigate(['../form'], { relativeTo: this.route });
+    this.getFormData();
+    console.log(JSON.stringify(this.formData));
+    this.router.navigate(['../success'], { relativeTo: this.route });
   }
 
-
-
-
-  //FileDragDrop
-
-  // tslint:disable-next-line: typedef
-  handleFileInput(event) {
-    this.file = event.item(0);
-    this.details();
+  goBack(): void {
+    this.router.navigate(['../form-2'], { relativeTo: this.route });
   }
 
-  // tslint:disable-next-line: typedef
-  dragDropFile(files) {
-    console.log(files);
-    this.file = files.item(0);
-  }
-
+  // FileDragDrop
   convertSize(fileSize: number): string {
     return fileSize < 1024000
       ? (fileSize / 1024).toFixed(2) + ' KB'
       : (fileSize / 1024000).toFixed(2) + ' MB';
   }
 
-  reset(): void {
-    this.file = null;
-    this.details();
+  reset(index: number): void {
+    this.fileArray.splice(index, 1);
   }
 
-  details(): void {
-    // console.log(this.file.name);
-    // console.log(this.convertSize(this.file.size));
+  dragDropFile(files): void {
+    for (let i = 0; i < files.length; i++) {
+      this.fileArray.push(files.item(i));
+    }
   }
 
+  uploadImage(files): void {
+    this.profileImage = files.item(0);
+  }
 }
 

@@ -12,7 +12,7 @@ const routes: Routes = [
       { path: 'form-1', component: FormOneComponent },
       { path: 'form-2', component: FormTwoComponent },
       { path: 'form-3', component: FormThreeComponent },
-      { path: 'apply-success', component: ApplySuccessComponent }
+      { path: 'success', component: ApplySuccessComponent }
     ]
   }
 ];
