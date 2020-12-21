@@ -1,0 +1,148 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+@mixin text {
+  .text {
+    color: $color-white;
+    font-family: Muli;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 2rem;
+    margin-bottom: 50px;
+  }
+}
+
+@include text;
+@include button;
+
+.button {
+  margin: 20px;
+}
+
+form {
+  max-width: 70%;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.hello-text {
+  font-size: 26px;
+  font-family: 'Muli';
+  font-weight: bold;
+  color: $color-primary-dark;
+  margin-bottom: 15px;
+}
+
+// .link {
+//   color: #F52851;
+//   font-weight: 400;
+//   margin-left: 180px;
+// }
+
+.label {
+  font-size: 18px;
+  font-weight: 530;
+  // font-weight: bold;
+  color: $color-white;
+}
+
+.textarea-big {
+  height: 90px;
+}
+
+// .example-chip-list {
+//   width: 100%;
+// }
+
+
+.file {
+  width: 100%;
+  height: 80px;
+  border-radius: 6px;
+  border: 3px dashed $color-primary-dark;
+  background-color: rgba(255, 255, 255, 0.06);
+
+  .upload-image {
+    height: 35px;
+    width: 41px;
+    margin-top: 18px;
+    cursor: pointer;
+  }
+
+  .image-upload>input {
+    display: none;
+  }
+}
+
+.size {
+  font-size: 16px;
+  margin-left: 35px;
+  margin-top: 28px;
+  font-weight: 300;
+}
+
+.format {
+  font-size: 16px;
+  margin-left: 72px;
+  margin-top: 28px;
+  font-weight: 300;
+}
+
+textarea {
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 10px;
+  border: 1px solid $color-white;
+  color: $color-grey-light;
+  padding-left: 14px;
+  font-size: 14px;
+  width: 100%;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.file-drag-drop {
+  width: 100%;
+  height: 80px;
+  border-radius: 6px;
+  border: 3px dashed $color-primary-dark;
+  background-color: rgba(255, 255, 255, 0.06);
+
+  .container-2 {
+    .label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      width: 328px;
+      padding-top: 22px;
+      color: $color-grey-light;
+
+      .para {
+        width: 60%;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .reset {
+    margin-top: 40px;
+    background: none;
+    outline: none;
+    color: white;
+    border: none;
+  }
+}
+
+.rupee-symbol {
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 41px;
+  left: 13px;
+}
