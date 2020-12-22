@@ -68,6 +68,8 @@ export class FormThreeComponent implements OnInit {
     this.applicantFormThree = new FormGroup({});
     if (this.formStore.hasForm('formThree')) {
       this.populateForm(this.formStore.getForm('formThree'));
+    } else {
+      this.populateForm(this.formData);
     }
   }
 
