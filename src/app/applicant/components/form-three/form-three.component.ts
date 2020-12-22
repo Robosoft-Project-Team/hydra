@@ -99,9 +99,10 @@ export class FormThreeComponent implements OnInit {
       this.formError = true;
       return;
     }
+
     this.getFormData();
     this.submitForm.submitForm();
-    if (this.fileArray !==  [] && this.profileImage) {
+    if (this.fileArray !== [] && this.profileImage) {
       this.router.navigate(['../success'], { relativeTo: this.route });
     }
     this.submitForm.submitFiles(this.fileArray, this.profileImage);
@@ -125,8 +126,8 @@ export class FormThreeComponent implements OnInit {
     this.fileArray.splice(index, 1);
   }
 
-  dragDropFile(files): void {
-    let file;
+  dragDropFile(files: FileList): void {
+    let file: File;
     for (let i = 0; i < files.length; i++) {
       file = files.item(i);
       if ((this.fileSize + file.size) < 5000000) {
@@ -140,6 +141,4 @@ export class FormThreeComponent implements OnInit {
   uploadImage(files): void {
     this.profileImage = files.item(0);
   }
-
 }
-

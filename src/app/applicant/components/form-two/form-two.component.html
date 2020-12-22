@@ -59,7 +59,8 @@
           <p class="form-error" *ngIf="workHistory.invalid && form.workHistoryForm?.touched">Enter
             Work
             History Details</p>
-          <a class="form-add-control" (click)="isValid(form.workHistoryForm.controls, addCompanyForm)">+ Add Other Company</a>
+          <a class="form-add-control" (click)="isValid(form.workHistoryForm.controls, addCompanyForm)">+ Add Other
+            Company</a>
         </div>
       </div>
     </div>
@@ -116,10 +117,11 @@
       </div>
       <div class="row">
         <div class="form-info-wrapper">
-          <p class="form-error" *ngIf="educationHistory.invalid && form.workHistoryForm?.touched">Enter
+          <p class="form-error" *ngIf="educationHistory.invalid && form.educationHistory.touched">Enter
             Education
             Details</p>
-          <a class="form-add-control" (click)="isValid(form.educationForm.controls, addEducationForm)">+ Add Other Institution</a>
+          <a class="form-add-control" (click)="isValid(form.educationForm.controls, addEducationForm)">+ Add Other
+            Institution</a>
         </div>
       </div>
     </div>
@@ -149,8 +151,8 @@
       <p *ngIf="showError">Please fill all the required fields!</p>
       <div class="row button-group">
         <button class="button" (click)="goBack()">Back</button>
-        <button class="button" type="submit" [disabled]="applicantFormTwo.invalid"
-          [ngClass]="{'disabled': applicantFormTwo.invalid}">Continue</button>
+        <button class="button" type="submit" [disabled]="applicantFormTwo.invalid && !addressList.valid "
+          [ngClass]="{'disabled': applicantFormTwo.invalid && !addressList.valid }">Continue</button>
       </div>
     </div>
   </form>
