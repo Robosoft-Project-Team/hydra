@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="22px" viewBox="0 0 17 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>0FFDD076-C045-422C-88AD-0674ED2AA745@1.5x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Recruiter-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02_Internapp_Dashboard" transform="translate(-37.000000, -503.000000)">
+            <g id="Group-6" transform="translate(0.000000, 164.000000)">
+                <g id="Group-4-Copy-3" transform="translate(20.000000, 324.000000)">
+                    <g id="icn_invite">
+                        <rect id="Rectangle" x="0" y="0" width="51" height="51"></rect>
+                        <g id="icn_assign" transform="translate(18.000000, 15.000000)">
+                            <path d="M0,20.2833534 C0,18.8870526 0,16.7926015 0,14 C0,10.6862915 2.6862915,8 6,8 C8.75430073,8 11.0751401,9.85586871 11.7802362,12.3853242" id="Path" stroke="#C1BEBE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <circle id="Oval" fill="#C1BEBE" cx="5.5" cy="2.5" r="2.5"></circle>
+                            <line x1="9" y1="18" x2="15" y2="18" id="Line-2-Copy" stroke="#C1BEBE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" transform="translate(12.000000, 18.000000) rotate(90.000000) translate(-12.000000, -18.000000) "></line>
+                            <line x1="9" y1="18" x2="15" y2="18" id="Line-2" stroke="#C1BEBE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
