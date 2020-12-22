@@ -19,4 +19,10 @@ export class FormStorageService {
     return JSON.parse(localStorage.getItem(name));
   }
 
+  resetForms(): void {
+    localStorage.removeItem('formOne');
+    localStorage.removeItem('formTwo');
+    localStorage.removeItem('formThree');
+  }
+
 }

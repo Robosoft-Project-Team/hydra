@@ -10,6 +10,7 @@ export class SubmitFormService {
 
   submitForm(): void {
     console.log({...this.formStore.getForm('formOne'), ...this.formStore.getForm('formTwo'), ...this.formStore.getForm('formThree')});
+    this.formStore.resetForms();
   }
 
   submitFiles(attachments, profileImage): void {
