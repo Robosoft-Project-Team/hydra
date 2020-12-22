@@ -1,31 +1,44 @@
-<nav class="sidebar-container">
-  <div class="sidebar">
-    <div class="sidebar-logo">
-      <!-- <img class="small" src="../../../../assets/dashboard/img_robosoftlogo.png" alt="sidebar-logo-small"> -->
-      <img class="large" src="../../../../assets/dashboard/img_Robosoft logo_dashboard.png" alt="sidebar-logo-large">
-      <p class="sidebar-title">Intern Management</p>
-    </div>
-    <ul class="sidebar-nav">
-      <li class="sidebar-item">
-        <img src="../../../../assets/dashboard/icn_dashboard_selected@1.5x.svg" alt="">
-        <a>Dashboard</a>
-      </li>
-      <li class="sidebar-item">
-        <img src="../../../../assets/dashboard/icn_recruitment@1.5x.svg" alt="">
-        <a>CV Analysis</a>
-      </li>
-      <li class="sidebar-item">
-        <img src="../../../../assets/dashboard/icn_assign@1.5x.svg" alt="">
-        <a>Assign Board</a>
-      </li>
-      <li class="sidebar-item">
-        <img src="../../../../assets/dashboard/icn_rejected@1.5x.svg" alt="">
-        <a>Rejected CV</a>
-      </li>
-      <li class="sidebar-item">
-        <img src="../../../../assets/dashboard/icn_invite@1.5x.svg" alt="">
-        <a>Invite</a>
-      </li>
-    </ul>
+<nav class="sidebar-container" [ngClass]="{expand: router.url === '/dashboard'}">
+  <div class="sidebar-header">
+    <img class="sidebar-logo small" src="../../../../assets/dashboard/img_robosoftlogo.png" alt="sidebar-logo-small">
+    <img class="sidebar-logo large" src="../../../../assets/dashboard/img_Robosoft logo_dashboard.png"
+      alt="sidebar-logo-large">
+    <p class="sidebar-title">Intern Management</p>
+  </div>
+  <ul class="sidebar-nav">
+    <li class="sidebar-item" [routerLink]="['.']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <img src="../../../../assets/dashboard/icn_dashboard_selected@1.5x.svg" alt="">
+      <a>Dashboard</a>
+    </li>
+    <li class="sidebar-item" [routerLink]="['.','cv']" routerLinkActive="active">
+      <img src="../../../../assets/dashboard/icn_recruitment@1.5x.svg" alt="">
+      <a>CV Analysis</a>
+    </li>
+    <li class="sidebar-item" [routerLink]="['.','assign']" routerLinkActive="active">
+      <img src="../../../../assets/dashboard/icn_assign@1.5x.svg" alt="">
+      <a>Assign Board</a>
+    </li>
+    <li class="sidebar-item" [routerLink]="['.','rejected']" routerLinkActive="active">
+      <img src="../../../../assets/dashboard/icn_rejected@1.5x.svg" alt="">
+      <a>Rejected CV</a>
+    </li>
+    <li class="sidebar-item" [routerLink]="['.','invite']" routerLinkActive="active">
+      <img src="../../../../assets/dashboard/icn_invite@1.5x.svg" alt="">
+      <a>Invite</a>
+    </li>
+    <li class="sidebar-item" [routerLink]="['.','notification']" routerLinkActive="active">
+      <img src="../../../../assets/dashboard/icn_notification@1.5x.svg" alt="">
+      <a>Notification</a>
+    </li>
+    <li class="sidebar-item" [routerLink]="['.','settings']" routerLinkActive="active">
+      <img src="../../../../assets/dashboard/icn_settings@1.5x.svg" alt="">
+      <a>Settings</a>
+    </li>
+  </ul>
+  <div class="sidebar-footer">
+    <li class="sidebar-item">
+      <img src="../../../../assets/dashboard/icn_logout@1.5x.svg" alt="">
+      <a>Logout</a>
+    </li>
   </div>
 </nav>
