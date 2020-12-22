@@ -12,10 +12,9 @@ export class DragDirective {
 
   @HostListener('dragover', ['$event'])
   // tslint:disable-next-line: typedef
-  onDragOver(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
-    console.log('drg over');
+  onDragOver(event) {
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   @HostListener('dragleave', ['$event'])
@@ -23,7 +22,6 @@ export class DragDirective {
   onDragleave(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log('drg leave');
   }
 
   @HostListener('drop', ['$event'])
@@ -31,7 +29,6 @@ export class DragDirective {
   onDrop(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log('drg over');
     const files = event.dataTransfer.files;
     this.filesUploaded.emit(files);
   }

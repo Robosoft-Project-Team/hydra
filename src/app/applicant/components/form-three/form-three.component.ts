@@ -1,6 +1,6 @@
 import { SignUpValidators } from '../../../login/components/sign-up/signup.validator';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormStorageService } from '../../services/form-storage.service';
 import { SubmitFormService } from '../../services/submit-form.service';
@@ -53,7 +53,9 @@ export class FormThreeComponent implements OnInit {
 
   // FileDragDrop
   fileArray = [];
+  fileSize = 0;
   profileImage: FileList;
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(
     private router: Router,
@@ -117,13 +119,20 @@ export class FormThreeComponent implements OnInit {
   }
 
   reset(index: number): void {
+    this.fileSize -= this.fileArray[index].size;
     this.fileArray.splice(index, 1);
   }
 
   dragDropFile(files): void {
+    let file;
     for (let i = 0; i < files.length; i++) {
-      this.fileArray.push(files.item(i));
+      file = files.item(i);
+      if ((this.fileSize + file.size) < 5000000) {
+        this.fileArray.push(file);
+        this.fileSize += file.size;
+      }
     }
+    this.fileInput.nativeElement.value = '';
   }
 
   uploadImage(files): void {

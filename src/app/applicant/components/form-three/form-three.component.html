@@ -84,7 +84,7 @@
             <div class="input-info file-upload-info">Drag or Drop to Upload your CV, Photo and Work File</div>
             <div class="input-info file-upload-info small">or</div>
             <label class="input-info file-browse-button" for="file">Browse</label>
-            <input type="file" id="file" (change)="dragDropFile($event.target.files)" multiple>
+            <input #fileInput type="file" id="file" (change)="dragDropFile($event.target.files)" multiple>
           </div>
         </div>
         <div class="input-group">
