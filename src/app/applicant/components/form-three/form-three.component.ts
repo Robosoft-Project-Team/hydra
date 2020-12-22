@@ -1,6 +1,6 @@
 import { SignUpValidators } from '../../../login/components/sign-up/signup.validator';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormStorageService } from '../../services/form-storage.service';
 import { SubmitFormService } from '../../services/submit-form.service';
@@ -53,7 +53,9 @@ export class FormThreeComponent implements OnInit {
 
   // FileDragDrop
   fileArray = [];
+  fileSize = 0;
   profileImage: FileList;
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(
     private router: Router,
@@ -66,6 +68,8 @@ export class FormThreeComponent implements OnInit {
     this.applicantFormThree = new FormGroup({});
     if (this.formStore.hasForm('formThree')) {
       this.populateForm(this.formStore.getForm('formThree'));
+    } else {
+      this.populateForm(this.formData);
     }
   }
 
@@ -95,9 +99,10 @@ export class FormThreeComponent implements OnInit {
       this.formError = true;
       return;
     }
+
     this.getFormData();
     this.submitForm.submitForm();
-    if (this.fileArray !==  [] && this.profileImage) {
+    if (this.fileArray !== [] && this.profileImage) {
       this.router.navigate(['../success'], { relativeTo: this.route });
     }
     this.submitForm.submitFiles(this.fileArray, this.profileImage);
@@ -117,18 +122,23 @@ export class FormThreeComponent implements OnInit {
   }
 
   reset(index: number): void {
+    this.fileSize -= this.fileArray[index].size;
     this.fileArray.splice(index, 1);
   }
 
-  dragDropFile(files): void {
+  dragDropFile(files: FileList): void {
+    let file: File;
     for (let i = 0; i < files.length; i++) {
-      this.fileArray.push(files.item(i));
+      file = files.item(i);
+      if ((this.fileSize + file.size) < 5000000) {
+        this.fileArray.push(file);
+        this.fileSize += file.size;
+      }
     }
+    this.fileInput.nativeElement.value = '';
   }
 
   uploadImage(files): void {
     this.profileImage = files.item(0);
   }
-
 }
-

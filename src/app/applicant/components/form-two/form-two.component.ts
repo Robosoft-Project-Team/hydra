@@ -128,7 +128,6 @@ export class FormTwoComponent implements OnInit {
       console.log(this.formStore.getForm('formTwo'));
     } else {
       this.populateForm(this.formData);
-
     }
   }
 
