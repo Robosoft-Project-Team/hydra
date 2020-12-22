@@ -9,7 +9,7 @@ export class SubmitFormService {
   constructor(private formStore: FormStorageService) { }
 
   submitForm(): void {
-    console.log({...this.formStore.getForm('formOne'), ...this.formStore.getForm('formTwo'), ...this.formStore.getForm('formThree')});
+    console.log({ ...this.formStore.getForm('formOne'), ...this.formStore.getForm('formTwo'), ...this.formStore.getForm('formThree') });
     this.formStore.resetForms();
   }
 

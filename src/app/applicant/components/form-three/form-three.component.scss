@@ -20,13 +20,6 @@
   margin: 20px;
 }
 
-form {
-  max-width: 70%;
-  margin: 0 auto;
-  width: 100%;
-  margin-top: 2em;
-}
-
 .hello-text {
   font-size: 26px;
   font-family: 'Muli';
@@ -35,99 +28,6 @@ form {
   margin-bottom: 15px;
 }
 
-
-.label {
-  font-size: 18px;
-  font-weight: 530;
-  // font-weight: bold;
-  color: $color-white;
-}
-
-.textarea-big {
-  height: 90px;
-}
-
-// .example-chip-list {
-//   width: 100%;
-// }
-
-
-.file {
-  width: 100%;
-  height: 80px;
-  border-radius: 6px;
-  border: 3px dashed $color-primary-dark;
-  background-color: rgba(255, 255, 255, 0.06);
-
-  .upload-image {
-    height: 35px;
-    width: 41px;
-    margin-top: 18px;
-    cursor: pointer;
-  }
-
-  .image-upload>input {
-    display: none;
-  }
-}
-
-.format {
-  font-size: 16px;
-  margin-left: 72px;
-  margin-top: 28px;
-  font-weight: 300;
-}
-
-textarea {
-  border-radius: 6px;
-  background-color: rgba(255, 255, 255, 0.06);
-  padding: 10px;
-  border: 1px solid $color-white;
-  color: $color-grey-light;
-  padding-left: 14px;
-  font-size: 14px;
-  width: 100%;
-  resize: none;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.file-drag-drop {
-  width: 100%;
-  height: 80px;
-  border-radius: 6px;
-  border: 3px dashed $color-primary-dark;
-  background-color: rgba(255, 255, 255, 0.06);
-
-  .container-2 {
-    .label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 50px;
-      width: 328px;
-      padding-top: 22px;
-      color: $color-grey-light;
-
-      .para {
-        width: 60%;
-        font-size: 14px;
-      }
-    }
-  }
-
-  .reset {
-    margin-top: 40px;
-    background: none;
-    outline: none;
-    color: white;
-    border: none;
-  }
-}
-
-/// RESET STYLES
 
 form {
   max-width: 70%;
@@ -188,7 +88,9 @@ form {
           font-family: Muli;
           color: rgba($color-grey-light, .5);
           text-align: center;
-          flex: 4;
+          flex: 6;
+          margin-left: .5rem;
+          text-align: left;
 
           &.small {
             flex: 1;
@@ -200,6 +102,7 @@ form {
           text-decoration: underline;
           flex: 2;
           cursor: pointer;
+          margin-right: .5rem;
         }
 
         &.profile {
@@ -295,10 +198,10 @@ form {
     .file-list {
       margin: 0;
       margin-left: -2.5rem;
+      flex: 1;
 
       &.profile-list {
-        flex: 1;
-        margin-left: 2rem;
+        margin-left: 1.5rem;
       }
 
       &-item {
