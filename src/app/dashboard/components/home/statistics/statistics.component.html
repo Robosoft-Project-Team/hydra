@@ -3,12 +3,12 @@
     <p class="heading">Dashboard</p>
     <button class="button">Register <img src="../../../../../assets/dashboard-home/icn_register.png"
         alt="Register"></button>
-    <p class="right-date">Date:<span> 2020, March 04</span></p>
+    <p class="right-date">Date:<span>{{todayDate}}</span></p>
   </div>
   <div class="cv-analysis-card">
     <div class="cv-analysis-details">
-      <p class="welcome-text">Welcome Back, Renuka !</p>
-      <p class="number-of-cv">You have <span>36</span> new CV to Analysis.</p>
+      <p class="welcome-text">Welcome Back, {{user.firstName}} !</p>
+      <p class="number-of-cv">You have <span>{{numberOfCv}}</span> new CV to Analysis.</p>
       <button class="button">Check Now</button>
     </div>
     <div class="cv-analysis-image">

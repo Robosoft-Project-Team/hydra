@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  user = { name: 'Renuka Shetty', designation: 'Recruiter' };
+
   constructor() { }
 
   ngOnInit(): void {

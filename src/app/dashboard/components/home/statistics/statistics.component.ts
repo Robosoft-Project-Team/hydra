@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticsComponent implements OnInit {
 
+  date = new Date();
+  month = this.date.getUTCMonth() + 1;
+  day = this.date.getUTCDate();
+  year = this.date.getUTCFullYear();
+  todayDate = this.year + "," + this.month + " " + this.day;
+
+  user = { firstName: 'Renuka', lastName: 'Shetty' };
+  numberOfCv = 36;
+
   constructor() { }
 
   ngOnInit(): void {
