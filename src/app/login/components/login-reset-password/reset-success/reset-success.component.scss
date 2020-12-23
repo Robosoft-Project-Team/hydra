@@ -1,18 +1,50 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-.container {
-  text-align: center;
+.success {
+  margin: 3rem auto;
+  text-align: left;
+  font-family: Muli;
+  @include text;
+  @include sub-text;
 
-  div {
-    margin-top: 40px;   
-    @include sub-text;
-    .sub-text {
-      margin: 0;
-      padding: 0;
+  &-title {
+    display: block;
+    color: $color-grey-darker;
+    font-size: 28px;
+    font-family: Muli;
+    letter-spacing: 0.23px;
+    line-height: 34px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 3.5rem;
+
+    &-heading {
+      display: block;
+      margin-bottom: 0;
+      color: $color-white;
     }
   }
-}
 
-@include text;
-@include button;
+  &-form-container {
+    margin: auto;
+  }
+
+  &-display {
+    text-align: center;
+    margin: 0 0 2.5rem;
+
+    img {
+      margin-bottom: 2.5rem;
+      margin-top: 0;
+    }
+  }
+
+  @include button();
+
+  .button {
+    transition: 0.1s ease all;
+    display: block;
+    margin: 0 auto;
+  }
+}

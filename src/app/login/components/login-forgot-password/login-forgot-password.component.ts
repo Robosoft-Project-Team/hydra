@@ -47,7 +47,7 @@ export class LoginForgotPasswordComponent implements OnInit {
           }
         },
         err => {
-          this.email.error = 'You have entered a invalid mail address';
+          this.email.error = 'Please check your email address';
         }
       );
     return false;

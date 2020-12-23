@@ -3,30 +3,29 @@
 .login {
   background: url('../../assets/background-image/img_bg.svg') no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
   width: 100%;
   min-height: 100vh;
   color: white;
 
   &-header {
     font-size: 0.625rem;
-    max-height: 25.5em;
+    position: relative;
+    height: 25.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
 
     &-logo {
-      display: block;
-
-      img {
-        height: 10em;
-        width: auto;
-        margin-top: 5em;
-        margin-bottom: 2.5em;
-      }
+      position: absolute;
+      top: 5em;
     }
 
     &-title {
+      position: absolute;
+      bottom: 20px;
+      margin: 0;
       color: $color-white;
       font-family: Muli;
       font-weight: bold;

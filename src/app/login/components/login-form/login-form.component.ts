@@ -50,7 +50,7 @@ export class LoginFormComponent implements OnInit {
 
   isValidPassword(): void {
     if (this.password.value.length < 8) {
-      this.password.error = 'Enter Password (minimum 8 characters)';
+      this.password.error = 'Enter Password (min 8 chars)';
     }
   }
 
