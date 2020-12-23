@@ -1,0 +1,181 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+.container {
+    height: 1100px;
+    width: 100%;
+    border-radius: 40px;
+    background-color:$color-blue-light ;
+    padding: 50px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 130px;
+
+        .heading {
+            color: $color-black-light;
+            font-family: Muli;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 0.22px;
+            line-height: 26px;
+        }
+
+        @include button;
+
+        .button {
+            height: 50px;
+            width: 144px;
+            border-radius: 15px;
+            margin-top: 120px;
+            //   margin-left: 100px;
+        }
+
+        .right-date {
+            height: 50px;
+            width: 200px;
+            border-radius: 15px;
+            background-color: $color-blue-dark;
+            color: $color-grey-medium;
+            font-family: Muli;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.54px;
+            line-height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                color:$color-black;
+            }
+        }
+    }
+
+    .cv-analysis-card {
+        height: 250px;
+        width: 100%;
+        border-radius: 26px;
+        border: none;
+        background-color: $color-blue-dark;
+
+        .cv-analysis-details {
+            float: left;
+            padding-left: 40px;
+            padding-top: 60px;
+
+            .welcome-text {
+                color: $color-black-light;
+                font-family: Muli;
+                font-size: 30px;
+                font-weight: bold;
+                letter-spacing: 0.43px;
+                line-height: 20px;
+            }
+
+            .number-of-cv {
+                color: $color-grey-darker;
+                font-family: Muli;
+                font-size: 22px;
+                font-weight: bold;
+                letter-spacing: 0.31px;
+                line-height: 20px;
+                margin-top: 20px;
+                margin-left: 5px;
+
+                span {
+                    color: $color-black-light;
+                }
+            }
+
+            @include button;
+
+            .button {
+                height: 40px;
+                width: 144px;
+            }
+        }
+
+        .cv-analysis-image {
+            float: right;
+            margin-top: 38px;
+        }
+    }
+
+    .cv-graph-card {
+        width: 100%;
+        margin-top: 50px;
+
+        .cv-analysis-heading {
+            // height: 26px;
+            // width: 70px;
+            color: $color-black-light;
+            font-family: Muli;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 0.17px;
+            line-height: 26px;
+        }
+
+        .cv-graph {
+            height: 302px;
+            border: 1px solid $color-grey-lighter;
+            border-radius: 26px;
+            background-color: $color-white;
+            margin-top: 20px;
+            padding: 30px;
+        }
+    }
+
+    .invite-candidate-card {
+        height: 142px;
+        width: 100%;
+        border: 1px solid $color-grey-lighter;
+        border-radius: 26px;
+        background-color: $color-white;
+        padding: 35px;
+        margin-top: 40px;
+
+        .invite-candidate-text {
+            float: left;
+
+            h2 {
+                color: $color-black-light;
+                font-family: Muli;
+                font-size: 30px;
+                font-weight: bold;
+                letter-spacing: 0.43px;
+                line-height: 20px;
+                margin-top: 5px;
+            }
+
+            h3 {
+                color: $color-grey-darker;
+                font-family: Muli;
+                font-size: 22px;
+                font-weight: bold;
+                letter-spacing: 0.31px;
+                line-height: 20px;
+                margin-top: 20px;
+            }
+        }
+
+        .invite-button {
+            float: right;
+            @include button;
+            margin-top: -25px;
+            margin-right: 40px;
+
+            .button {
+                height: 40px;
+                width: 121px;
+
+                img {
+                    margin-top: -3px;
+                }
+            }
+        }
+    }
+}
