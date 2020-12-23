@@ -1,3 +1,5 @@
+@import 'src/variables';
+
 .row {
   position: absolute;
   top: 0;
@@ -5,7 +7,7 @@
 
   .column {
     .hello-text {
-      color: #333539;
+      color: $color-black-light;
       font-family: Muli;
       font-size: 20px;
       font-weight: 600;
@@ -14,7 +16,7 @@
     }
 
     .user-name {
-      color: #333539;
+      color: $color-black-light;
       font-family: Muli;
       font-size: 22px;
       font-weight: 800;
@@ -24,7 +26,7 @@
     }
 
     .designation {
-      color: #F52851;
+      color: $color-primary-dark;
       font-family: Muli;
       font-size: 20px;
       font-weight: bold;
@@ -37,7 +39,7 @@
   .user-profile-image {
     height: 100px;
     width: 100px;
-    background-color: #F52851;
+    background-color: $color-primary-dark;
     border-radius: 50%;
     margin-left: 40px;
 
