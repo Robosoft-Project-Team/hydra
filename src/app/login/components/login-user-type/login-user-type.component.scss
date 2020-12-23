@@ -1,31 +1,5 @@
-@import '../../../../variables';
-
-@mixin button {
-  .button {
-    margin-top: 40px;
-    height: 40px;
-    width: 250px;
-    border-radius: 8px;
-    outline: none;
-    border: none;
-    background-color: $color-primary-dark;
-    color: $color-white;
-    font-family: Muli;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0;
-    line-height: 18px;
-    text-align: center;
-  }
-}
-
-@mixin default-text-style {
-  font-family: Muli;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.29px;
-  margin-bottom: 0;
-}
+@import 'src/variables';
+@import 'src/mixins';
 
 // User Type Component Container
 .user-type {
@@ -135,42 +109,20 @@
     justify-content: flex-end;
 
     @include button();
-
+    .button {
+      margin-bottom: 0;
+    }
     .button i {
       margin-left: 4px
     }
   }
 }
 
-// Signup Option Text
+@include alternate;
+
 .alternate {
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   width: 100%;
   height: 40px;
-
-  &-message {
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    color: $color-grey-dark;
-    @include default-text-style();
-  }
-
-  // Signup Link
-  &-action {
-    display: inline-block;
-    text-transform: uppercase;
-    font-family: Muli;
-    font-style: 700;
-    color: $color-primary-dark;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:active {
-      transform: translateX(2px);
-    }
-  }
 }
