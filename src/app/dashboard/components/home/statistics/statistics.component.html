@@ -1,1 +1,34 @@
-<p>statistics works!</p>
+<div class="container">
+  <div class="header">
+    <p class="heading">Dashboard</p>
+    <button class="button">Register <img src="../../../../../assets/dashboard-home/icn_register.png"
+        alt="Register"></button>
+    <p class="right-date">Date:<span>{{todayDate}}</span></p>
+  </div>
+  <div class="cv-analysis-card">
+    <div class="cv-analysis-details">
+      <p class="welcome-text">Welcome Back, {{user.firstName}} !</p>
+      <p class="number-of-cv">You have <span>{{numberOfCv}}</span> new CV to Analysis.</p>
+      <button class="button">Check Now</button>
+    </div>
+    <div class="cv-analysis-image">
+      <img src="../../../../../assets/dashboard-home/img_cvanalysis.png" alt="CV Analysis Image">
+    </div>
+  </div>
+  <div class="cv-graph-card">
+    <p class="cv-analysis-heading">CV Analysis</p>
+    <div class="cv-graph">
+      <img src="../../../../../assets/dashboard-home/dashboard-graph1.png" alt="CV Analysis Graph">
+    </div>
+  </div>
+  <div class="invite-candidate-card">
+    <div class="invite-candidate-text">
+      <h2>Invite Candidate</h2>
+      <h3>Send invite by email address</h3>
+    </div>
+    <div class="invite-button">
+      <button class="button">Invite &nbsp;<img src="../../../../../assets/dashboard-home/icn_invite.png"
+          alt="Invite Icon"></button>
+    </div>
+  </div>
+</div>

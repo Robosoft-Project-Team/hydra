@@ -1,0 +1,54 @@
+@import 'src/variables';
+
+.row {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  .column {
+    .hello-text {
+      color: $color-black-light;
+      font-family: Muli;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.17px;
+      line-height: 26px;
+    }
+
+    .user-name {
+      color: $color-black-light;
+      font-family: Muli;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.17px;
+      line-height: 26px;
+      margin-bottom: 0;
+    }
+
+    .user-designation {
+      color: $color-primary-dark;
+      font-family: Muli;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.15px;
+      line-height: 26px;
+      margin-top: 0;
+    }
+  }
+
+  .user-profile-image {
+    height: 100px;
+    width: 100px;
+    background-color: $color-primary-dark;
+    border-radius: 50%;
+    margin-left: 40px;
+
+    img {
+      height: 49px;
+      width: 48px;
+      display: block;
+      margin: auto;
+      margin-top: 23px;
+    }
+  }
+}
