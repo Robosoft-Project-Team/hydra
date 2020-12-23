@@ -1,0 +1,61 @@
+@import '../../../../../variables';
+
+.container {
+  height: 403px;
+  width: 320px;
+  background-color: $color-white;
+
+  h1 {
+    height: 26px;
+    color: #333539;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 26px;
+  }
+
+  .summary-group {
+    height: 354px;
+    width: 320px;
+    border-radius: 26px;
+    background-color: #F6F9FD;
+    padding: 30px;
+
+    .row {
+      height: 51px;
+      width: 185px;
+      margin-bottom: 30px;
+
+      img {
+        height: 50px;
+        width: 49px;
+      }
+
+      .column {
+        margin-left: 20px;
+
+        .number {
+          height: 30px;
+          color: #333539;
+          font-family: Muli;
+          font-size: 24px;
+          font-weight: bold;
+          letter-spacing: 0.2px;
+          line-height: 30px;
+          margin-bottom: 0;
+        }
+
+        .category {
+          height: 20px;
+          color: #808087;
+          font-family: Muli;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: 0.13px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
