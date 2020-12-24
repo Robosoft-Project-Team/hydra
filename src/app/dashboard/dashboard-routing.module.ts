@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CvAnalysisComponent } from './components/cv-analysis/cv-analysis.component';
-import { HomeComponent } from './components/home/home.component';
 
 import { DashboardComponent } from './dashboard.component';
+import { HomeComponent, CvAnalysisComponent, CvStatsComponent, CvStatsBodyComponent, CvDetailsComponent } from './components';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent,
-  children: [
-    {path: '', component: HomeComponent},
-    {path: 'cv', component: CvAnalysisComponent}
-  ]
-}
+  {
+    path: '', component: DashboardComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'cv', component: CvAnalysisComponent },
+      {
+        path: 'cv/stats', component: CvStatsComponent,
+        children: [
+          { path: ':designation', component: CvStatsBodyComponent },
+        ]
+      },
+      { path: 'cv/details', component: CvDetailsComponent },
+    ]
+  }
 ];
 
 @NgModule({

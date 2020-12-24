@@ -1,0 +1,27 @@
+.cv-stats {
+  height: 100vh;
+  position: relative;
+  border-radius: 2.5rem 0 0 2.5rem;
+  background-color:  #F6F9FD;
+
+  &-left-side {
+    width: 25%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 2.5rem;
+    background-color: white;
+    padding: 2.5rem;
+  }
+
+  &-right-side {
+    width: 75%;
+    height: 100vh;
+    position: relative;
+    left: 25%;
+    top: 0;
+    background-color:  #F6F9FD;
+    padding: 2.5rem;
+  }
+}
