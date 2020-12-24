@@ -1,9 +1,16 @@
-<div class="container header">
+<div class="header">
   <h1 class="header-title">CV Analysis</h1>
   <div class="header-controls">
+    <div class="header-date">
+      <input type="text" id="date" [matDatepicker]="date">
+      <mat-datepicker-toggle [for]="date"><i class="date-icon" matDatepickerToggleIcon></i></mat-datepicker-toggle>
+      <mat-datepicker  #date></mat-datepicker>
+    </div>
     <div class="header-search">
-      <input class="header-search-box" type="text" placeholder="Search">
-      <div class="header-search-icon"><span></span></div>
+      <label for="search">
+        <mat-icon class="header-search-icon">search</mat-icon>
+      </label>
+      <input id="search" class="header-search-box" type="text" placeholder="Search">
     </div>
     <div class="header-profile">
       <div class="user">

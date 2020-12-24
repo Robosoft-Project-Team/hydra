@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,8 +18,8 @@ import { TableComponent } from './components/cv-analysis/table/table.component';
 @NgModule({
   declarations: [DashboardComponent, SidebarComponent, HomeComponent, StatisticsComponent, SummaryComponent, NotificationItemComponent, OrganizerListComponent, CvAnalysisComponent, HeaderComponent, TableComponent],
   imports: [
-    CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }
