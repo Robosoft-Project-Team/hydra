@@ -2,9 +2,9 @@
   <h1 class="header-title">CV Analysis</h1>
   <div class="header-controls">
     <div class="header-date">
-      <input type="text" id="date" [matDatepicker]="date">
+      <input type="text" id="date" [matDatepicker]="date" [formControl]="filterDate" (dateInput)="selectedDate($event)">
       <mat-datepicker-toggle [for]="date"><i class="date-icon" matDatepickerToggleIcon></i></mat-datepicker-toggle>
-      <mat-datepicker  #date></mat-datepicker>
+      <mat-datepicker #date></mat-datepicker>
     </div>
     <div class="header-search">
       <label for="search">
