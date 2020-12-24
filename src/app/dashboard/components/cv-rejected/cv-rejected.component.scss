@@ -1,100 +1,136 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-.background {
-    height: 100%;
-    width: 100%;
-    background-color: $color-blue-light;
-    padding: 4rem;
-}
+.cv-rejected {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 2.5rem;
 
-.column {
-    float: left;
-}
+  &-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5rem;
+  }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
+  &-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6rem;
+    padding: 2.5rem .5rem;
+    height: calc(100vh - 6rem);
 
-.cv {
-    height: 14.438rem;
-    width: 15.625rem;
-    border-radius: 0.438rem;
-    background-color: $color-white;
-    margin-right: 40px;
-    margin-bottom: 30px;
+    .card-container {
+      min-width: 100%;
+      max-height: 100%;
+      flex-wrap: wrap;
+      display: flex;
+      overflow-y: auto;
+      
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
 
-    &-profile {
+      &::-webkit-scrollbar-thumb {
+        border: 3px solid rgba(0, 0, 0, 0);
+        opacity: 0;
+        background-clip: padding-box;
+        background-color: #808087;
+        box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+      }
+
+      hr {
+        margin: 0;
+      }
+    }
+
+    .cv-card {
+      max-height: 14.5rem;
+      max-width: 16rem;
+      width: 25%;
+      border-radius: 0.5rem;
+      background-color: $color-white;
+      margin: 0 2% 30px;
+      padding: 0;
+      text-align: center;
+
+      &-header {
         display: flex;
         align-items: center;
-        height: 4.5rem;
-        width: 15.625rem;
-        padding: 0.938rem;
-    }
+        margin: 15px;
+      }
 
-    &-image {
+      &-image {
         height: 2.625rem;
         width: 2.625rem;
-        margin-top: 0.938rem;
-    }
+        border-radius: 50%;
+        margin: 0;
+      }
 
-    &-details {
+      &-profile {
         flex: 1;
         font-family: Muli;
         font-weight: bold;
-        margin-left: 0.75rem;
-        margin-top: 2.2rem;
+        margin: 0;
+        text-align: left;
+        margin-left: 10px;
 
         &-name {
-            color: $color-black-light;
-            margin: 0;
-            font-size: 1rem;
-            letter-spacing: 0.23px;
-            line-height: 20px;
+          color: $color-black-light;
+          margin: 0;
+          font-size: 1rem;
+          letter-spacing: 0.23px;
+          line-height: 20px;
         }
 
         &-designation {
-            color: $color-grey-light;
-            font-size: 0.875rem;
-            letter-spacing: 0.2px;
-            line-height: 20px;
-            margin-top: 0.313rem;
+          color: $color-grey-light;
+          font-size: 0.875rem;
+          letter-spacing: 0.2px;
+          line-height: 20px;
+          margin: 0;
         }
+      }
+
+      &-body {
+        margin: 1rem 1.25rem 0;
+        padding: 0;
+      }
+
+      &-details {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.25rem;
+
+        &-info {
+          margin: 0;
+          margin-left: 1.25rem;
+          color: $color-black-lighter;
+          font-family: Muli;
+          font-size: 0.875rem;
+          font-weight: 600;
+          letter-spacing: 0.2px;
+          line-height: 20px;
+        }
+
+        &-icon {
+          height: 15px;
+          margin-left: 5px;
+        }
+      }
+
+      @include button;
+
+      .button-recruit {
+        margin: 0 0 1.5rem;
+        height: 2.125rem;
+        width: 9.375rem;
+        font-size: 1rem;
+      }
     }
-
-    .cv-contact {
-        padding-left: 1.25rem;
-
-        &-details {
-            display: flex;
-
-            &-info {
-                margin-left: 1.188rem;
-                color: $color-black-lighter;
-                font-family: Muli;
-                font-size: 0.875rem;
-                font-weight: 600;
-                letter-spacing: 0.2px;
-                line-height: 20px;
-            }
-
-            &-icon {
-                height: 0.938rem;
-                width: 0.688rem;
-                margin-left: 0.313rem;
-            }
-        }
-
-        @include button;
-
-        .button-recruit {
-            margin-top: 0.313rem;
-            margin-left: 1.875rem;
-            height: 2.125rem;
-            width: 9.375rem;
-            font-size: 1rem;
-        }
-    }
+  }
 }

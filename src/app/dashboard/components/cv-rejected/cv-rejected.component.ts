@@ -18,4 +18,8 @@ export class CvRejectedComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSearchItem(data: string): void {
+    console.log(data);
+  }
+
 }
