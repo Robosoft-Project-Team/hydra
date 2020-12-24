@@ -1,1 +1,22 @@
-<p>table works!</p>
+<div class="container">
+    <table class="table">
+    <thead>
+        <tr class="tr">
+            <th>Designation</th>
+            <th>Applicants</th>
+            <th>Received date</th>
+            <th>Status</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr class="tr" *ngFor="let row of resumes; let i = index" (click)="disp(i)">
+                <td>{{row.title}}</td>
+                <td class="applicants"><span [class.closed]="!row.status">{{row.applicants}}</span></td>
+                <td>{{row.date | date : 'd MMM, y'}}</td>
+                <td>{{row.status ? 'Active' : 'Closed'}} <span></span></td>
+                <td>{{row.location}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
