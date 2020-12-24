@@ -1,95 +1,102 @@
-<div class="container">
-  <p class="hello-text">Hello!</p>
-  <p class="text">Sign Up to get started</p>
-  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="input-group">
-        <label class="input-label">Name</label>
-        <input class="input-control" type="text" placeholder="Your Good Name" formControlName="name">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.name?.errors?.required && signup.name?.touched">Enter Full Name</p>
-          <p class="input-error"
-            *ngIf="!signup.name?.errors?.required && signup.name?.errors?.invalidUserName && signup.name?.touched">Enter
-            a valid username</p>
-        </div>
-      </div>
-      <div class="input-group">
-        <label class="input-label">Email ID</label>
-        <input class="input-control" type="text" placeholder="Your Robosoft Mail ID" formControlName="email">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.email?.errors?.invalidEmail && signup.email?.touched">
-            Enter valid Email ID</p>
-          <p class="input-error"
-            *ngIf="!signup.email?.errors?.invalidEmail && signup.email?.errors?.invalidCompanyEmail && signup.email?.touched">
-            Enter valid Company Email ID</p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-group">
-        <label class="input-label">Mobile Number</label>
-        <input class="input-control" type="text" placeholder="Your Mobile Number" formControlName="mobile">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.mobile?.errors?.invalidMobileNumber && signup.mobile?.touched ">
-            Enter valid Mobile Number</p>
-        </div>
-      </div>
-      <div class="input-group">
-        <label class="input-label">Company Designation</label>
-        <input class="input-control" type="text" placeholder="Your Company Designation" formControlName="designation">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="signup.designation?.errors?.required && signup.designation?.touched ">
-            Enter valid designation</p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-group">
-        <label class="input-label">Position</label>
-        <div class="input-control-radio">
-          <input type="radio" formControlName="position" name="position" id="recruiter" value="recruiter"
-            checked="true">
-          <label class="input-label radio-label" for="recruiter">
-            <div class="radio"></div>
-            Recruiter
-          </label>
-          <input type="radio" formControlName="position" name="position" id="organizer" value="organizer">
-          <label class="input-label radio-label" for="organizer">
-            <div class="radio"></div>
-            Organizer
-          </label>
-          <input type="radio" formControlName="position" name="position" id="approval" value="approval">
-          <label class="input-label radio-label" for="approval">
-            <div class="radio"></div>
-            Approval Authority
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="row" formGroupName="passwordForm">
-      <div class="input-group">
-        <label class="input-label">Password</label>
-        <input class="input-control" type="password" placeholder="Enter your Password" formControlName="password">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error"
-            *ngIf="signup.passwordForm.controls.password?.errors?.invalidPassword && signup.passwordForm.controls.password?.touched">
-            Choose a strong password (8-16 chars)</p>
-        </div>
-      </div>
-      <div class="input-group">
-        <label class="input-label">Confirm Password</label>
-        <input class="input-control" type="password" placeholder="ReEnter your Password" formControlName="rePassword">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error"
-            *ngIf="signup.passwordForm.controls?.rePassword?.errors?.passwordMismatch && signup.passwordForm.controls.rePassword?.touched">
-            Passwords do not match</p>
-        </div>
-      </div>
-    </div>
-    <button class="button" type="submit" [ngClass]="{disabled: signupForm.invalid}" [disabled]="signupForm.invalid">Sign
-      Up</button>
-  </form>
-  <div class="sign-up">
-    <p>Already have an Account ? <a routerLink="../form">Sign In</a></p>
+<div class="container signup">
+  <div class="signup-title">
+    <p class="signup-title-message">Hello!</p>
+    <p class="signup-title-text">Sign Up to get started</p>
   </div>
+  <div class="signup-form-container">
+    <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-group">
+          <label class="input-label">Name</label>
+          <input class="input-control" type="text" placeholder="Your Good Name" formControlName="name">
+          <div class="input-error-wrapper">&nbsp;
+            <p class="input-error" *ngIf="signup.name?.errors?.required && signup.name?.touched">Enter Full Name</p>
+            <p class="input-error"
+              *ngIf="!signup.name?.errors?.required && signup.name?.errors?.invalidUserName && signup.name?.touched">
+              Enter
+              a valid username</p>
+          </div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Email ID</label>
+          <input class="input-control" type="text" placeholder="Your Robosoft Mail ID" formControlName="email">
+          <div class="input-error-wrapper">&nbsp;
+            <p class="input-error" *ngIf="signup.email?.errors?.invalidEmail && signup.email?.touched">
+              Enter valid Email ID</p>
+            <p class="input-error"
+              *ngIf="!signup.email?.errors?.invalidEmail && signup.email?.errors?.invalidCompanyEmail && signup.email?.touched">
+              Enter valid Company Email ID</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group">
+          <label class="input-label">Mobile Number</label>
+          <input class="input-control" type="text" placeholder="Your Mobile Number" formControlName="mobile">
+          <div class="input-error-wrapper">&nbsp;
+            <p class="input-error" *ngIf="signup.mobile?.errors?.invalidMobileNumber && signup.mobile?.touched ">
+              Enter valid Mobile Number</p>
+          </div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Company Designation</label>
+          <input class="input-control" type="text" placeholder="Your Company Designation" formControlName="designation">
+          <div class="input-error-wrapper">&nbsp;
+            <p class="input-error" *ngIf="signup.designation?.errors?.required && signup.designation?.touched ">
+              Enter valid designation</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group">
+          <label class="input-label">Position</label>
+          <div class="input-control-radio">
+            <input type="radio" formControlName="position" name="position" id="recruiter" value="recruiter"
+              checked="true">
+            <label class="input-label radio-label" for="recruiter">
+              <div class="radio"></div>
+              Recruiter
+            </label>
+            <input type="radio" formControlName="position" name="position" id="organizer" value="organizer">
+            <label class="input-label radio-label" for="organizer">
+              <div class="radio"></div>
+              Organizer
+            </label>
+            <input type="radio" formControlName="position" name="position" id="approval" value="approval">
+            <label class="input-label radio-label" for="approval">
+              <div class="radio"></div>
+              Approval Authority
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="passwordForm">
+        <div class="input-group">
+          <label class="input-label">Password</label>
+          <input class="input-control" type="password" placeholder="Enter your Password" formControlName="password">
+          <div class="input-error-wrapper">&nbsp;
+            <p class="input-error"
+              *ngIf="signup.passwordForm.controls.password?.errors?.invalidPassword && signup.passwordForm.controls.password?.touched">
+              Choose a strong password (8-16 chars)</p>
+          </div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Confirm Password</label>
+          <input class="input-control" type="password" placeholder="ReEnter your Password" formControlName="rePassword">
+          <div class="input-error-wrapper">&nbsp;
+            <p class="input-error"
+              *ngIf="signup.passwordForm.controls?.rePassword?.errors?.passwordMismatch && signup.passwordForm.controls.rePassword?.touched">
+              Passwords do not match</p>
+          </div>
+        </div>
+      </div>
+      <button class="button" type="submit" [ngClass]="{disabled: signupForm.invalid}"
+        [disabled]="signupForm.invalid">Sign
+        Up</button>
+    </form>
+  </div>
+</div>
+<div class="alternate">
+  <p class="alternate-message">Already have an Account ? <a class="alternate-action" routerLink="../sign-up">Sign In</a>
+  </p>
 </div>

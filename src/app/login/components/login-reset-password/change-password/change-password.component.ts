@@ -12,6 +12,7 @@ import { FormValidationService } from 'src/app/shared/services/form-validation.s
 export class ChangePasswordComponent implements OnInit {
   message: string;
   buttonDisabled: boolean;
+  changePasswordForm: FormGroup;
 
   constructor(
     private router: Router,
@@ -22,32 +23,37 @@ export class ChangePasswordComponent implements OnInit {
     this.buttonDisabled = true;
   }
 
-  changepassword: FormGroup = new FormGroup({
-    newPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    reEnterPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
-  });
-
   ngOnInit(): void {
+    this.changePasswordForm = new FormGroup({
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      reEnterPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+    });
+  }
+
+  get form(): any {
+    return this.changePasswordForm.controls;
   }
 
   buttonState(): void {
-    if (this.changepassword.invalid ||
-      !this.validation.isValidPassword(this.changepassword.get('newPassword').value)) {
+    if (!this.validation.isValidPassword(this.form.newPassword.value)) {
       this.message = 'Enter Strong Password (8 - 16 chars)';
       this.buttonDisabled = true;
+      return;
     }
-    else if (this.changepassword.get('newPassword').value !== this.changepassword.get('reEnterPassword').value) {
+
+    if (this.form.newPassword.value !== this.form.reEnterPassword.value) {
       this.message = 'Password do not match!';
       this.buttonDisabled = true;
+      return;
     }
-    else {
-      this.message = '';
-      this.buttonDisabled = false;
-    }
+
+    this.message = '';
+    this.buttonDisabled = false;
+
   }
 
   submitPassword(): void {
-    this.passwordService.changePassword(this.changepassword.get('newPassword').value)
+    this.passwordService.changePassword(this.changePasswordForm.get('newPassword').value)
       .subscribe(
         res => {
           if (res.status === 200) {

@@ -24,6 +24,22 @@
   }
 }
 
+@mixin default-text-style {
+  font-family: Muli;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.29px;
+  margin-bottom: 0;
+}
+
+@mixin input-text-style($font-size, $color) {
+  color: $color;
+  font-size: $font-size;
+  line-height: 18px;
+  font-family: 'Muli', sans-serif;
+  letter-spacing: 0;
+}
+
 @mixin button {
   .button {
     margin-top: 40px;
@@ -38,23 +54,52 @@
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 0;
-    line-height: 18px;
+    line-height: 24px;
     text-align: center;
     margin-bottom: 133px;
 
     &.disabled {
-      background-color: $color-grey-dark;
-      color: $color-white;
+      opacity: 0.5;
     }
   }
 }
 
-@mixin input-text-style($font-size, $color) {
-  color: $color;
-  font-size: $font-size;
-  line-height: 18px;
-  font-family: 'Muli', sans-serif;
-  letter-spacing: 0;
+@mixin alternate {
+
+  // Signup Option Text
+  .alternate {
+
+    &-message {
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      color: $color-grey-darker;
+      @include default-text-style();
+      font-weight: unset;
+    }
+
+    // Signup Link
+    &-action {
+      display: inline-block;
+      font-family: Muli;
+      font-weight: 700;
+      color: $color-primary-dark;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      &:active {
+        transform: translateX(2px);
+      }
+
+      &:active,
+      &:link,
+      &:visited {
+        text-decoration: none;
+        outline: none;
+      }
+    }
+  }
 }
 
 @mixin custom-input-styles {
