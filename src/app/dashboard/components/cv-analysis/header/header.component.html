@@ -1,1 +1,27 @@
-<p>header works!</p>
+<div class="header">
+  <h1 class="header-title">CV Analysis</h1>
+  <div class="header-controls">
+    <div class="header-date">
+      <input type="text" id="date" [matDatepicker]="date">
+      <mat-datepicker-toggle [for]="date"><i class="date-icon" matDatepickerToggleIcon></i></mat-datepicker-toggle>
+      <mat-datepicker  #date></mat-datepicker>
+    </div>
+    <div class="header-search">
+      <label for="search">
+        <mat-icon class="header-search-icon">search</mat-icon>
+      </label>
+      <input id="search" class="header-search-box" type="text" placeholder="Search">
+    </div>
+    <div class="header-profile">
+      <div class="user">
+        <div class="user-info">
+          <p class="user-name">Renuka Singh</p>
+          <p class="user-designation">Recruiter</p>
+        </div>
+        <div class="user-image">
+          <img src="../../../../assets/dashboard-home/icn_hr.png" alt="User Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
