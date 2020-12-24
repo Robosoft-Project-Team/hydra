@@ -1,54 +1,140 @@
 @import 'src/variables';
 
-.row {
+@mixin position-middle {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-  .column {
-    .hello-text {
-      color: $color-black-light;
-      font-family: Muli;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.17px;
-      line-height: 26px;
-    }
+.dashboard {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-y: auto;
 
-    .user-name {
-      color: $color-black-light;
-      font-family: Muli;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.17px;
-      line-height: 26px;
-      margin-bottom: 0;
-    }
+  &-statistics {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 63%;
+    padding: 2rem;
+    border-radius: 2rem;
+  }
 
-    .user-designation {
-      color: $color-primary-dark;
-      font-family: Muli;
-      font-size: 20px;
-      font-weight: bold;
-      letter-spacing: 0.15px;
-      line-height: 26px;
-      margin-top: 0;
+  &-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: auto;
+    width: 37%;
+    padding: 2rem;
+    background-color: white;
+  }
+
+  &-section-title {
+    color: #333539;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title-action {
+      background-color: #EFF3FB;
+      border-radius: .5rem;
+      width: 85px;
+      height: 30px;
+      text-align: center;
+
+      a {
+        color: #4D4D4D;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06px;
+        line-height: 16px;
+        outline: none;
+        border: none;
+
+        &:link,
+        &:hover,
+        &:active {
+          text-decoration: none;
+          outline: none;
+          border: none;
+        }
+      }
     }
   }
 
-  .user-profile-image {
-    height: 100px;
-    width: 100px;
-    background-color: $color-primary-dark;
-    border-radius: 50%;
-    margin-left: 40px;
+  &-profile {
+    height: auto;
+    position: relative;
+    margin: 0 0 3rem;
 
-    img {
-      height: 49px;
-      width: 48px;
-      display: block;
-      margin: auto;
-      margin-top: 23px;
+    .user {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      color: $color-black-light;
+      font-family: Muli;
+      letter-spacing: 0.17px;
+      line-height: 26px;
+
+      &-greeting {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: .5rem;
+      }
+
+      &-name {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0;
+      }
+
+      &-designation {
+        color: $color-primary-dark;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      &-image {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: $color-primary-dark;
+        position: relative;
+
+        img {
+          @include position-middle();
+        }
+      }
     }
   }
+
+  &-summary {
+    height: auto;
+    margin: 0 0 3rem;
+  }
+
+  &-notifications {
+    height: auto;
+    margin: 0 0 3rem;
+  }
+
+  &-organizers {
+    height: auto;
+    margin: 0 0 3rem;
+  }
+
 }
