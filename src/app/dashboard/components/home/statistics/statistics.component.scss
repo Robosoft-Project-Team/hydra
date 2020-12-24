@@ -1,182 +1,168 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-.container {
-    height: 1100px;
+.heading {
+  color: $color-black-light;
+  font-family: Muli;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0.43px;
+  line-height: 20px;
+  margin: 0 0 1.5rem;
+}
+
+.text {
+  color: $color-grey-darker;
+  font-family: Muli;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.31px;
+  line-height: 20px;
+  margin: 0;
+
+  span {
+    color: $color-black-light;
+    font-weight: 800;
+  }
+}
+
+.statistics {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+  }
+
+  &-title {
+    flex: 2;
+    color: #333539;
+    font-size: 26px;
+    font-family: Muli;
+    font-weight: bold;
+    letter-spacing: 0.22px;
+    line-height: 26px;
+    margin: 0;
+  }
+
+  @include button;
+
+  .button-register {
+    height: 3.125rem;
+    width: 9rem;
+    border-radius: 0.937rem;
+    margin: 0 1.5rem;
+    flex: 1;
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &-date {
+    height: 3.125rem;
+    border-radius: 0.937rem;
+    background-color: $color-blue-dark;
+    color: $color-grey-medium;
+    font-size: 14px;
+    letter-spacing: 0.54px;
+    line-height: 24px;
+    padding: 0 1rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    span {
+      color: $color-black;
+      margin-left: .5rem;
+      font-weight: 500;
+    }
+  }
+
+  &-analysis {
+    height: 15.625rem;
     width: 100%;
-    border-radius: 2.5rem;
-    background-color: $color-blue-light;
-    padding: 3.125rem;
+    border-radius: 1.625rem;
+    border: none;
+    background: url('../../../../../assets/dashboard-home/img_cvanalysis.png') no-repeat right bottom;
+    background-color: rgba($color-secondary-dark, .05);
+    position: relative;
+    margin: 3.125rem 0;
 
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 8.125rem;
+    &-details {
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 40px;
+      transform: translateY(-50%);
 
-        .heading {
-            color: $color-black-light;
-            font-family: Muli;
-            font-size: 32px;
-            font-weight: bold;
-            letter-spacing: 0.22px;
-            line-height: 26px;
-        }
+      @include button;
 
-        @include button;
+      .button-cta {
+        height: 2.5rem;
+        width: 9rem;
+        margin: 3rem 0 0;
+      }
+    }
+  }
 
-        .button {
-            height: 3.125rem;
-            width: 9rem;
-            border-radius: 0.937rem;
-            margin-top: 7.5rem;
-            //   margin-left: 100px;
-        }
+  &-graph {
+    width: 100%;
+    margin-bottom: 2.5rem;
 
-        .right-date {
-            height: 3.125rem;
-            width: 12.5rem;
-            border-radius: 0.937rem;
-            background-color: $color-blue-dark;
-            color: $color-grey-medium;
-            font-family: Muli;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.54px;
-            line-height: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            span {
-                color: $color-black;
-            }
-        }
+    .heading {
+      font-size: 20px;
+      letter-spacing: 0.17px;
+      line-height: 26px;
+      margin-bottom: 1.25rem;
     }
 
-    .cv-analysis-card {
-        height: 15.625rem;
+    &-details {
+      height: auto;
+      width: 100%;
+      border: 1px solid $color-grey-lighter;
+      border-radius: 1.625rem;
+      background-color: $color-white;
+      padding: 1.875rem;
+
+      img {
         width: 100%;
-        border-radius: 1.625rem;
-        border: none;
-        background-color: $color-blue-dark;
-
-        .cv-analysis-details {
-            float: left;
-            padding-left: 2.5rem;
-            padding-top: 3.75rem;
-
-            .welcome-text {
-                color: $color-black-light;
-                font-family: Muli;
-                font-size: 30px;
-                font-weight: bold;
-                letter-spacing: 0.43px;
-                line-height: 20px;
-            }
-
-            .number-of-cv {
-                color: $color-grey-darker;
-                font-family: Muli;
-                font-size: 22px;
-                font-weight: bold;
-                letter-spacing: 0.31px;
-                line-height: 20px;
-                margin-top: 1.25rem;
-                margin-left: 0.3125rem;
-
-                span {
-                    color: $color-black-light;
-                    font-weight: 800;
-                }
-            }
-
-            @include button;
-
-            .button {
-                height: 2.5rem;
-                width: 9rem;
-            }
-        }
-
-        .cv-analysis-image {
-            float: right;
-            margin-top: 2.375rem;
-        }
+        object-fit: cover;
+      }
     }
+  }
 
-    .cv-graph-card {
-        width: 100%;
-        margin-top: 3.125rem;
+  &-invite {
+    height: auto;
+    width: 100%;
+    border: 1px solid $color-grey-lighter;
+    border-radius: 1.625rem;
+    background-color: $color-white;
+    padding: 2.25rem 1.875rem;
 
-        .cv-analysis-heading {
-            // height: 26px;
-            // width: 70px;
-            color: $color-black-light;
-            font-family: Muli;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 0.17px;
-            line-height: 26px;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .cv-graph {
-            height: 18.875rem;
-            border: 1px solid $color-grey-lighter;
-            border-radius: 1.625rem;
-            background-color: $color-white;
-            margin-top: 1.25rem;
-            padding: 1.875rem;
-        }
+    @include button;
+
+    .button-invite {
+      margin: 0;
+      padding: 0 1.5rem;
+      height: 2.5rem;
+      width: auto;
+      font-size: 1.25rem;
+
+      img {
+        margin-left: .5rem;
+      }
     }
-
-    .invite-candidate-card {
-        height: 8.875rem;
-        width: 100%;
-        border: 1px solid $color-grey-lighter;
-        border-radius: 1.625rem;
-        background-color: $color-white;
-        padding: 2.1875rem;
-        margin-top: 2.5rem;
-
-        .invite-candidate-text {
-            float: left;
-
-            h2 {
-                color: $color-black-light;
-                font-family: Muli;
-                font-size: 30px;
-                font-weight: bold;
-                letter-spacing: 0.43px;
-                line-height: 20px;
-                margin-top: 0.3125rem;
-            }
-
-            h3 {
-                color: $color-grey-darker;
-                font-family: Muli;
-                font-size: 22px;
-                font-weight: bold;
-                letter-spacing: 0.31px;
-                line-height: 20px;
-                margin-top: 1.25rem;
-            }
-        }
-
-        .invite-button {
-            float: right;
-            @include button;
-            margin-top: -25px;
-            margin-right: 2.5rem;
-
-            .button {
-                height: 2.5rem;
-                width: 7.5625rem;
-
-                img {
-                    margin-top: -3px;
-                }
-            }
-        }
-    }
+  }
 }

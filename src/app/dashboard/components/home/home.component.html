@@ -1,14 +1,38 @@
-<div class="row">
-  <div class="column">
-    <p class="hello-text">Hello,</p>
-    <p class="user-name">{{user.name}}</p>
-    <p class="user-designation">{{user.designation}}</p>
+<div class="dashboard">
+  <div class="dashboard-statistics">
+    <app-statistics></app-statistics>
   </div>
-  <div class="user-profile-image">
-    <img src="../../../../assets/dashboard-home/icn_hr.png" alt="User Image">
+  <div class="dashboard-right">
+    <div class="dashboard-profile">
+      <div class="user">
+        <div class="user-info">
+          <p class="user-greeting">Hello,</p>
+          <p class="user-name">{{user.name}}</p>
+          <p class="user-designation">{{user.designation}}</p>
+        </div>
+        <div class="user-image">
+          <img src="../../../../assets/dashboard-home/icn_hr.png" alt="User Image">
+        </div>
+      </div>
+    </div>
+    <p class="dashboard-section-title">Summary (March)</p>
+    <div class="dashboard-summary">
+      <app-summary></app-summary>
+    </div>
+    <div class="dashboard-section-title">
+      <span class="title-text">Notification</span>
+      <div class="title-action">
+        <a>View All</a>
+      </div>
+    </div>
+    <div class="dashboard-notifications">
+      <app-notification-item></app-notification-item>
+    </div>
+    <p class="dashboard-section-title">Organizers</p>
+    <div class="dashboard-organizers">
+      <app-organizer-list></app-organizer-list>
+    </div>
+
   </div>
+
 </div>
-<app-statistics></app-statistics>
-<app-summary></app-summary>
-<app-notification-item></app-notification-item>
-<app-organizer-list></app-organizer-list>
