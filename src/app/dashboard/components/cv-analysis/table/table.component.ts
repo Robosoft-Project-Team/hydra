@@ -26,7 +26,7 @@ export class TableComponent implements OnInit {
     },
     {
       title: 'UI/UX design',
-      applicants: 100,
+      applicants: 99,
       date: '2020-03-03',
       status: true,
       location: 'Udupi'
