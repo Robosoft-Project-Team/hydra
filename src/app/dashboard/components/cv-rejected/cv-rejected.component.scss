@@ -59,7 +59,7 @@
         &-details {
             display: flex;
 
-            p {
+            &-info {
                 margin-left: 1.188rem;
                 color: $color-black-lighter;
                 font-family: Muli;
@@ -69,7 +69,7 @@
                 line-height: 20px;
             }
 
-            img {
+            &-icon {
                 height: 0.938rem;
                 width: 0.688rem;
                 margin-left: 0.313rem;
