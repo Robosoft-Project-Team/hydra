@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { map } from 'rxjs/internal/operators';
-import { SignInService } from 'src/app/login/services/sign-in.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -49,25 +47,30 @@ export class TableComponent implements OnInit {
 
   resp;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
 
   disp(i): void {
-    const body = {
-      username: 'soumyasap4@gmail.com',
-      password: 'pass',
-      role: 'ROLE_RECRUITER'
-    };
-    this.http.post('http://18.220.120.155:5000/employee/signin', body)
-      .subscribe(
-        res => {
-          let respo;
-          respo = res;
-          console.log(respo.status);
-        }
-      );
+    // const body = {
+    //   username: 'soumyasap4@gmail.com',
+    //   password: 'pass',
+    //   role: 'ROLE_RECRUITER'
+    // };
+    // this.http.post('http://18.220.120.155:5000/employee/signin', body)
+    //   .subscribe(
+    //     res => {
+    //       let respo;
+    //       respo = res;
+    //       console.log(respo.status);
+    //     }
+    //   );
+    this.router.navigate(['stats'], {relativeTo: this.route});
   }
 
 }

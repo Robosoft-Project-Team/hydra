@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cv-stats-header',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cv-stats-header.component.scss']
 })
 export class CvStatsHeaderComponent implements OnInit {
+
+  @Input() title;
 
   constructor() { }
 

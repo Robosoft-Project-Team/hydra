@@ -1,11 +1,22 @@
 <div class="cv-stats">
   <div class="cv-stats-left-side">
-      <a class="disignation" [routerLink]="['.','ui-ux']">UI/UX Designer</a>
-      <br>
-      <a class="disignation" [routerLink]="['.','angular']">Angular Developer</a>
+    <div class="header">
+      <h1>CV Analysis</h1>
+      <div class="icon"><img src="assets/dashboard-cv/icn_search.png" alt=""></div>
+    </div>
+    <hr>
+    <ul class="list">
+      <li class="list-item" *ngFor="let item of list; let i = index" (click)="disp(i)" [class.selected]="i === index">
+        <p class="list-main-text">{{item.designation}}</p>
+        <p class="list-sub-text">{{item.location}}</p>
+      </li>
+    </ul>
   </div>
   <div class="cv-stats-right-side">
-    <app-cv-stats-header></app-cv-stats-header>
-    <router-outlet></router-outlet>
+    <app-cv-stats-header [title]="selectedDesignation.designation"></app-cv-stats-header>
+    <hr>
+    <app-cv-stats-body [resumes]="selectedResume"></app-cv-stats-body>
+    <!-- <app-cv-details></app-cv-details> -->
   </div>
 </div>
+<router-outlet></router-outlet>

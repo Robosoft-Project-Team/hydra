@@ -13,7 +13,7 @@ const routes: Routes = [
       {
         path: 'cv/stats', component: CvStatsComponent,
         children: [
-          { path: ':designation', component: CvStatsBodyComponent },
+          { path: ':id', component: CvDetailsComponent },
         ]
       },
       { path: 'cv/details', component: CvDetailsComponent },
