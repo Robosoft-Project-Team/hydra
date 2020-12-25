@@ -53,7 +53,7 @@
 
   .button-register {
     height: 3.125rem;
-    width: 9rem;
+    min-width: 9rem;
     border-radius: 0.937rem;
     margin: 0 1.5rem;
     flex: 1;
@@ -108,7 +108,7 @@
 
       .button-cta {
         height: 2.5rem;
-        width: 9rem;
+        width: 40%;
         margin: 3rem 0 0;
       }
     }

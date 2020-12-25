@@ -57,7 +57,7 @@
     .date-icon {
       height: 30px;
       width: 30px;
-      background: url('../../../../../assets/dashboard-home/icn_calender_selected@1.5x.svg') no-repeat center;
+      background: url('../../../../assets/dashboard-home/icn_calender_selected@1.5x.svg') no-repeat center;
       background-size: contain;
     }
   }
@@ -157,6 +157,7 @@
           @include position-middle();
           height: 25px;
           width: 25px;
+          border-radius: 50%;
         }
       }
     }

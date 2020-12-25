@@ -1,0 +1,17 @@
+<div class="assign">
+  <div class="assign-header">
+    <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Assign Board'"
+      (searchItem)="onSearchItem($event)"></app-header>
+  </div>
+  <div class="assign-table">
+    <app-table [headings]="tableHeadings">
+      <tr class="table-row" *ngFor="let item of data; let i = index;" (click)="onItemSelected(i)">
+        <td class="table-data">{{item.Name}}</td>
+        <td class="table-data">{{item.Designation}}</td>
+        <td class="table-data">{{item.Location}}</td>
+        <td class="table-data">{{item.AssignedDate | date : 'dd MMM, y'}}</td>
+        <td class="table-data">{{item.Organizer}}</td>
+      </tr>
+    </app-table>
+  </div>
+</div>
