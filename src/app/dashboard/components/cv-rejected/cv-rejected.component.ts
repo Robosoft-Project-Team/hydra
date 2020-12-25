@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvRejectedComponent implements OnInit {
 
-  user = { name: 'Kaushik Kumar', designation: 'Product Manager', location: 'Bangalore', phone: '+91 9876543210' }
+  user = {
+    name: 'Kaushik Kumar', designation: 'Product Manager',
+    location: 'Bangalore', phone: '+91 9876543210'
+  }
 
   constructor() {
   }

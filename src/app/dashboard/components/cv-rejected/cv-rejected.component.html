@@ -1,26 +1,27 @@
 <div class="background">
-  <div class="cv">
-    <div class="cv-profile">
-      <img class="cv-image" 
-      src="../../../../../assets/cv-rejected/icn_photo_thumbnail.png" alt="Profile Image">
-      <div class="cv-details">
-        <p class="cv-details-name">{{user.name}}</p>
-        <p class="cv-details-designation">{{user.designation}}</p>
+  <div class="row">
+    <div class="column cv" *ngFor="let i of [].constructor(8)">
+      <div class="cv-profile">
+        <img class="cv-image" src="../../../../../assets/cv-rejected/icn_photo_thumbnail.png" alt="Profile Image">
+        <div class="cv-details">
+          <p class="cv-details-name">{{user.name}}</p>
+          <p class="cv-details-designation">{{user.designation}}</p>
+        </div>
       </div>
-    </div>
-    <hr>
-    <div class="cv-contact">
-      <div class="cv-contact-details">
-        <img src="../../../../../assets/cv-rejected/icn_location_recruit.png" alt="Map Icon"
-         class="cv-contact-details-icon">
-        <p class="cv-contact-details-info">{{user.location}}</p>
+      <hr>
+      <div class="cv-contact">
+        <div class="cv-contact-details">
+          <img src="../../../../../assets/cv-rejected/icn_location_recruit.png" alt="Map Icon"
+            class="cv-contact-details-icon">
+          <p class="cv-contact-details-info">{{user.location}}</p>
+        </div>
+        <div class="cv-contact-details">
+          <img src="../../../../../assets/cv-rejected/icn_contact_recruit.png" alt="Phone Icon"
+            class="cv-contact-details-icon">
+          <p class="cv-contact-details-info">{{user.phone}}</p>
+        </div>
+        <button class="button button-recruit">Recruit</button>
       </div>
-      <div class="cv-contact-details">
-        <img src="../../../../../assets/cv-rejected/icn_contact_recruit.png" alt="Phone Icon"
-         class="cv-contact-details-icon">
-        <p class="cv-contact-details-info">{{user.phone}}</p>
-      </div>
-      <button class="button button-recruit">Recruit</button>
     </div>
   </div>
 </div>

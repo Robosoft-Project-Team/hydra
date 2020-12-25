@@ -1,12 +1,21 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-
 .background {
     height: 100%;
     width: 100%;
     background-color: $color-blue-light;
-    padding: 2.5rem;
+    padding: 4rem;
+}
+
+.column {
+    float: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .cv {
@@ -14,6 +23,8 @@
     width: 15.625rem;
     border-radius: 0.438rem;
     background-color: $color-white;
+    margin-right: 40px;
+    margin-bottom: 30px;
 
     &-profile {
         display: flex;
@@ -34,7 +45,7 @@
         font-family: Muli;
         font-weight: bold;
         margin-left: 0.75rem;
-        margin-top: 2rem;
+        margin-top: 2.2rem;
 
         &-name {
             color: $color-black-light;
