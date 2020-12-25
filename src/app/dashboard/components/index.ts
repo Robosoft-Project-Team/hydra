@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+
 export * from './sidebar/sidebar.component';
 
 export * from './home/home.component';
@@ -18,3 +20,5 @@ export * from './cv-stats/cv-stats-body/applicant-card/applicant-card.component'
 
 export * from './cv-details/cv-details.component';
 export * from './cv-details/left-sidebar/left-sidebar.component';
+
+export * from './cv-rejected/cv-rejected.component';

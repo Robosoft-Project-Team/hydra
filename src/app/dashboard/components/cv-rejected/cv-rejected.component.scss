@@ -1,0 +1,89 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+
+.background {
+    height: 100%;
+    width: 100%;
+    background-color: $color-blue-light;
+    padding: 2.5rem;
+}
+
+.cv {
+    height: 231px;
+    width: 250px;
+    border-radius: 7px;
+    background-color: $color-white;
+
+    .cv-profile {
+        display: flex;
+        align-items: center;
+        height: 72px;
+        width: 250px;
+        padding: 15px;
+    }
+
+    .cv-image {
+        height: 42px;
+        width: 42px;
+        margin-top: 15px;
+    }
+
+    .cv-details {
+        flex: 1;
+        font-family: Muli;
+        font-weight: bold;
+        margin-left: 12px;
+        margin-top: 32px;
+
+        .cv-details-name {
+            color: $color-black-light;
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 0.23px;
+            line-height: 20px;
+        }
+
+        .cv-details-designation {
+            color: $color-grey-light;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            line-height: 20px;
+            margin-top: 5px;
+        }
+    }
+
+    .cv-contact {
+        padding-left: 20px;
+
+        .cv-contact-details {
+            display: flex;
+
+            p {
+                margin-left: 19px;
+                color: $color-black-lighter;
+                font-family: Muli;
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 0.2px;
+                line-height: 20px;
+            }
+
+            img {
+                height: 15px;
+                width: 11px;
+                margin-left: 5px
+            }
+        }
+
+        @include button;
+
+        .button-recruit {
+            margin-top: 5px;
+            margin-left: 30px;
+            height: 34px;
+            width: 150px;
+            font-size: 16px;
+        }
+    }
+}

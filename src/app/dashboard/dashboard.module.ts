@@ -19,6 +19,7 @@ import {
   ApplicantCardComponent,
   LeftSidebarComponent,
 } from './components';
+import { CvRejectedComponent } from './components/cv-rejected/cv-rejected.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {
     CvStatsBodyComponent,
     CvDetailsComponent,
     ApplicantCardComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    CvRejectedComponent
   ],
   imports: [
     DashboardRoutingModule,
