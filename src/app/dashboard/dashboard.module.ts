@@ -23,6 +23,9 @@ import {
   HeaderComponent,
   TableComponent,
 } from './shared';
+import { InviteComponent } from './components/invite/invite.component';
+import { InviteHeaderComponent } from './components/invite/invite-header/invite-header.component';
+import { InviteBodyComponent } from './components/invite/invite-body/invite-body.component';
 
 
 @NgModule({
@@ -43,7 +46,10 @@ import {
     CvDetailsComponent,
     ApplicantCardComponent,
     LeftSidebarComponent,
-    AssignBoardComponent
+    AssignBoardComponent,
+    InviteComponent,
+    InviteHeaderComponent,
+    InviteBodyComponent
   ],
   imports: [
     DashboardRoutingModule,

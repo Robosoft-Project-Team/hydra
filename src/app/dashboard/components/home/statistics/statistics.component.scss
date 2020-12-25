@@ -26,6 +26,8 @@
   }
 }
 
+@include button;
+
 .statistics {
   height: 100vh;
   width: 100%;
@@ -48,8 +50,6 @@
     line-height: 26px;
     margin: 0;
   }
-
-  @include button;
 
   .button-register {
     height: 3.125rem;
@@ -78,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 
     span {
       color: $color-black;
@@ -103,8 +103,6 @@
       top: 50%;
       left: 40px;
       transform: translateY(-50%);
-
-      @include button;
 
       .button-cta {
         height: 2.5rem;
@@ -151,8 +149,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include button;
 
     .button-invite {
       margin: 0;
