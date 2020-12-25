@@ -10,80 +10,80 @@
 }
 
 .cv {
-    height: 231px;
-    width: 250px;
-    border-radius: 7px;
+    height: 14.438rem;
+    width: 15.625rem;
+    border-radius: 0.438rem;
     background-color: $color-white;
 
-    .cv-profile {
+    &-profile {
         display: flex;
         align-items: center;
-        height: 72px;
-        width: 250px;
-        padding: 15px;
+        height: 4.5rem;
+        width: 15.625rem;
+        padding: 0.938rem;
     }
 
-    .cv-image {
-        height: 42px;
-        width: 42px;
-        margin-top: 15px;
+    &-image {
+        height: 2.625rem;
+        width: 2.625rem;
+        margin-top: 0.938rem;
     }
 
-    .cv-details {
+    &-details {
         flex: 1;
         font-family: Muli;
         font-weight: bold;
-        margin-left: 12px;
-        margin-top: 32px;
+        margin-left: 0.75rem;
+        margin-top: 2rem;
 
-        .cv-details-name {
+        &-name {
             color: $color-black-light;
             margin: 0;
-            font-size: 16px;
+            font-size: 1rem;
             letter-spacing: 0.23px;
             line-height: 20px;
         }
 
-        .cv-details-designation {
+        &-designation {
             color: $color-grey-light;
-            font-size: 14px;
+            font-size: 0.875rem;
             letter-spacing: 0.2px;
             line-height: 20px;
-            margin-top: 5px;
+            margin-top: 0.313rem;
         }
     }
 
     .cv-contact {
-        padding-left: 20px;
+        padding-left: 1.25rem;
 
-        .cv-contact-details {
+        &-details {
             display: flex;
 
             p {
-                margin-left: 19px;
+                margin-left: 1.188rem;
                 color: $color-black-lighter;
                 font-family: Muli;
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 600;
                 letter-spacing: 0.2px;
                 line-height: 20px;
             }
 
             img {
-                height: 15px;
-                width: 11px;
-                margin-left: 5px
+                height: 0.938rem;
+                width: 0.688rem;
+                margin-left: 0.313rem;
             }
         }
 
         @include button;
 
         .button-recruit {
-            margin-top: 5px;
-            margin-left: 30px;
-            height: 34px;
-            width: 150px;
-            font-size: 16px;
+            margin-top: 0.313rem;
+            margin-left: 1.875rem;
+            height: 2.125rem;
+            width: 9.375rem;
+            font-size: 1rem;
         }
     }
 }
