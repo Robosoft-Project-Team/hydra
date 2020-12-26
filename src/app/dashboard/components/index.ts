@@ -14,3 +14,6 @@ export * from './cv-details/cv-details.component';
 export * from './cv-details/left-sidebar/left-sidebar.component';
 
 export * from './assign-board/assign-board.component';
+export * from './invite/invite.component';
+export * from './invite/invite-header/invite-header.component';
+export * from './invite/invite-body/invite-body.component';

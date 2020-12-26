@@ -2,7 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { HomeComponent, CvAnalysisComponent, CvStatsComponent, CvStatsBodyComponent, CvDetailsComponent, AssignBoardComponent } from './components';
+import {
+  HomeComponent,
+  CvAnalysisComponent,
+  CvStatsComponent,
+  CvStatsBodyComponent,
+  CvDetailsComponent,
+  AssignBoardComponent,
+  InviteComponent
+} from './components';
 
 const routes: Routes = [
   {
@@ -17,6 +25,7 @@ const routes: Routes = [
         ]
       },
       { path: 'assign', component: AssignBoardComponent },
+      { path: 'invite', component: InviteComponent }
     ]
   }
 ];
