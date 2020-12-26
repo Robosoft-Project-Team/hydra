@@ -13,10 +13,9 @@
     </ul>
   </div>
   <div class="cv-stats-right-side">
-    <app-cv-stats-header [title]="selectedDesignation.designation"></app-cv-stats-header>
+    <app-header [searchControl]="false" [dateControl]="false" [headerTitle]="selectedDesignation.designation"></app-header>
     <hr>
     <app-cv-stats-body [resumes]="selectedResume"></app-cv-stats-body>
-    <!-- <app-cv-details></app-cv-details> -->
   </div>
 </div>
 <router-outlet></router-outlet>

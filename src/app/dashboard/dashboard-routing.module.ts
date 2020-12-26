@@ -16,7 +16,6 @@ const routes: Routes = [
           { path: ':id', component: CvDetailsComponent },
         ]
       },
-      { path: 'cv/details', component: CvDetailsComponent },
       { path: 'assign', component: AssignBoardComponent },
     ]
   }
