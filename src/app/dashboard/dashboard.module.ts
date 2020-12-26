@@ -14,7 +14,11 @@ import {
   CvDetailsComponent,
   ApplicantCardComponent,
   LeftSidebarComponent,
-  AssignBoardComponent
+  AssignBoardComponent,
+  InviteComponent,
+  InviteHeaderComponent,
+  InviteBodyComponent,
+  CvRejectedComponent
 } from './components';
 
 import {
@@ -22,10 +26,6 @@ import {
   HeaderComponent,
   TableComponent,
 } from './shared';
-import { InviteComponent } from './components/invite/invite.component';
-import { InviteHeaderComponent } from './components/invite/invite-header/invite-header.component';
-import { InviteBodyComponent } from './components/invite/invite-body/invite-body.component';
-
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { InviteBodyComponent } from './components/invite/invite-body/invite-body
     AssignBoardComponent,
     InviteComponent,
     InviteHeaderComponent,
-    InviteBodyComponent
+    InviteBodyComponent,
+    CvRejectedComponent
   ],
   imports: [
     DashboardRoutingModule,

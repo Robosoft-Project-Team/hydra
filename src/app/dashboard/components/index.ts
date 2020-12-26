@@ -17,3 +17,5 @@ export * from './assign-board/assign-board.component';
 export * from './invite/invite.component';
 export * from './invite/invite-header/invite-header.component';
 export * from './invite/invite-body/invite-body.component';
+
+export * from './cv-rejected/cv-rejected.component';

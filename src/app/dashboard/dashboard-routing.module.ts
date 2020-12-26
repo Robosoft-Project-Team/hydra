@@ -6,10 +6,10 @@ import {
   HomeComponent,
   CvAnalysisComponent,
   CvStatsComponent,
-  CvStatsBodyComponent,
   CvDetailsComponent,
   AssignBoardComponent,
-  InviteComponent
+  InviteComponent,
+  CvRejectedComponent
 } from './components';
 
 const routes: Routes = [
@@ -25,7 +25,8 @@ const routes: Routes = [
         ]
       },
       { path: 'assign', component: AssignBoardComponent },
-      { path: 'invite', component: InviteComponent }
+      { path: 'rejected', component: CvRejectedComponent },
+      { path: 'invite', component: InviteComponent },
     ]
   }
 ];
