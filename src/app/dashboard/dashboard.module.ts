@@ -18,7 +18,8 @@ import {
   InviteComponent,
   InviteHeaderComponent,
   InviteBodyComponent,
-  CvRejectedComponent
+  CvRejectedComponent,
+  InviteSentBodyComponent
 } from './components';
 
 import {
@@ -48,7 +49,8 @@ import {
     InviteComponent,
     InviteHeaderComponent,
     InviteBodyComponent,
-    CvRejectedComponent
+    CvRejectedComponent,
+    InviteSentBodyComponent
   ],
   imports: [
     DashboardRoutingModule,
