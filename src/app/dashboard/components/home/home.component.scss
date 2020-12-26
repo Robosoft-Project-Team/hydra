@@ -117,6 +117,9 @@
 
         img {
           @include position-middle();
+          border-radius: 50%;
+          height: 70%;
+          width: 70%;
         }
       }
     }

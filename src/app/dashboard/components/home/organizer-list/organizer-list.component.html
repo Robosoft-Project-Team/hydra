@@ -1,22 +1,7 @@
 <div class="organizer">
-  <div class="organizer-item">
-    <img class="organizer-profile" src="../../../../../assets/dashboard/img_robosoftlogo@1.5x.svg">
-    <p class="organizer-name">Raksha</p>
-    <p class="organizer-info">10 Interviews</p>
-  </div>
-  <div class="organizer-item">
-    <img class="organizer-profile" src="../../../../../assets/dashboard/icn_recruitment@1.5x.svg">
-    <p class="organizer-name">Nisha</p>
-    <p class="organizer-info">5 Interviews</p>
-  </div>
-  <div class="organizer-item">
-    <img class="organizer-profile" src="../../../../../assets/dashboard/img_Robosoft logo_dashboard@1.5x.svg">
-    <p class="organizer-name">Riya</p>
-    <p class="organizer-info">2 Interviews</p>
-  </div>
-  <div class="organizer-item">
-    <img class="organizer-profile" src="../../../../../assets/dashboard/icn_rejected@1.5x.svg">
-    <p class="organizer-name">Ashwath</p>
-    <p class="organizer-info">2 Interviews</p>
+  <div class="organizer-item" *ngFor="let item of organizers">
+    <img class="organizer-profile" [src]="item.image.url">
+    <p class="organizer-name">{{item.name}}</p>
+    <p class="organizer-info">{{item.interviewCount}} Interviews</p>
   </div>
 </div>

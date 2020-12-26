@@ -3,12 +3,12 @@
     <p class="statistics-title">Dashboard</p>
     <button class="button button-register">Register <img class="button-icon"
         src="../../../../../assets/dashboard-home/icn_register.png" alt="Register"></button>
-    <p class="statistics-date">Date:<span>{{todayDate | date:'y, MMMM d'}}</span></p>
+    <p class="statistics-date">Date:<span>{{date.format('YYYY, MMMM DD')}}</span></p>
   </div>
   <div class="statistics-analysis">
     <div class="statistics-analysis-details">
-      <p class="heading">Welcome Back, {{user.firstName}} !</p>
-      <p class="text">You have <span>{{numberOfCv}}</span> new CV to Analysis.</p>
+      <p class="heading">Welcome Back, {{userName.split(' ')[0]}} !</p>
+      <p class="text">You have <span>{{count}}</span> new CV for Analysis.</p>
       <button class="button button-cta">Check Now</button>
     </div>
   </div>
