@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { HomeComponent, CvAnalysisComponent, CvStatsComponent, CvStatsBodyComponent, CvDetailsComponent } from './components';
+import { HomeComponent, CvAnalysisComponent, CvStatsComponent, CvStatsBodyComponent, CvDetailsComponent, AssignBoardComponent } from './components';
 
 const routes: Routes = [
   {
@@ -17,6 +17,7 @@ const routes: Routes = [
         ]
       },
       { path: 'cv/details', component: CvDetailsComponent },
+      { path: 'assign', component: AssignBoardComponent },
     ]
   }
 ];

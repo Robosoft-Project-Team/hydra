@@ -1,5 +1,6 @@
 <div class="header">
-    <h1 class="header-title">{{title}}</h1>
+    <!-- <h1 class="header-title">{{title}}</h1> -->
+    <app-header [searchControl]="false" [dateControl]="false" [headerTitle]="title"></app-header>
     <div class="header-controls">
       <div class="header-profile">
         <div class="user">
@@ -14,4 +15,3 @@
       </div>
     </div>
   </div>
-  
