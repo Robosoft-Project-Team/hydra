@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cv-rejected.component.scss']
 })
 export class CvRejectedComponent implements OnInit {
-  user = { name: 'Kaushik Kumar', designation: 'Product Manager', location: 'Bangalore', phone: '+91 9876543210' }
 
-  constructor() { }
+  user = {
+    name: 'Kaushik Kumar', designation: 'Product Manager',
+    location: 'Bangalore', phone: '+91 9876543210'
+  };
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

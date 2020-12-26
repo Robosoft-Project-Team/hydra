@@ -1,89 +1,100 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-
 .background {
-  height: 100%;
-  width: 100%;
-  background-color: $color-blue-light;
-  padding: 2.5rem;
+    height: 100%;
+    width: 100%;
+    background-color: $color-blue-light;
+    padding: 4rem;
+}
+
+.column {
+    float: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .cv {
-  height: 14.438rem;
-  width: 15.625rem;
-  border-radius: 0.438rem;
-  background-color: $color-white;
-
-  &-profile {
-    display: flex;
-    align-items: center;
-    height: 4.5rem;
+    height: 14.438rem;
     width: 15.625rem;
-    padding: 0.938rem;
-  }
+    border-radius: 0.438rem;
+    background-color: $color-white;
+    margin-right: 40px;
+    margin-bottom: 30px;
 
-  &-image {
-    height: 2.625rem;
-    width: 2.625rem;
-    margin-top: 0.938rem;
-  }
-
-  &-details {
-    flex: 1;
-    font-family: Muli;
-    font-weight: bold;
-    margin-left: 0.75rem;
-    margin-top: 2rem;
-
-    &-name {
-      color: $color-black-light;
-      margin: 0;
-      font-size: 1rem;
-      letter-spacing: 0.23px;
-      line-height: 20px;
+    &-profile {
+        display: flex;
+        align-items: center;
+        height: 4.5rem;
+        width: 15.625rem;
+        padding: 0.938rem;
     }
 
-    &-designation {
-      color: $color-grey-light;
-      font-size: 0.875rem;
-      letter-spacing: 0.2px;
-      line-height: 20px;
-      margin-top: 0.313rem;
+    &-image {
+        height: 2.625rem;
+        width: 2.625rem;
+        margin-top: 0.938rem;
     }
-  }
-
-  .cv-contact {
-    padding-left: 1.25rem;
 
     &-details {
-      display: flex;
-
-      p {
-        margin-left: 1.188rem;
-        color: $color-black-light;
+        flex: 1;
         font-family: Muli;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.2px;
-        line-height: 20px;
-      }
+        font-weight: bold;
+        margin-left: 0.75rem;
+        margin-top: 2.2rem;
 
-      img {
-        height: 0.938rem;
-        width: 0.688rem;
-        margin-left: 0.313rem;
-      }
+        &-name {
+            color: $color-black-light;
+            margin: 0;
+            font-size: 1rem;
+            letter-spacing: 0.23px;
+            line-height: 20px;
+        }
+
+        &-designation {
+            color: $color-grey-light;
+            font-size: 0.875rem;
+            letter-spacing: 0.2px;
+            line-height: 20px;
+            margin-top: 0.313rem;
+        }
     }
 
-    @include button;
+    .cv-contact {
+        padding-left: 1.25rem;
 
-    .button-recruit {
-      margin-top: 0.313rem;
-      margin-left: 1.875rem;
-      height: 2.125rem;
-      width: 9.375rem;
-      font-size: 1rem;
+        &-details {
+            display: flex;
+
+            &-info {
+                margin-left: 1.188rem;
+                color: $color-black-lighter;
+                font-family: Muli;
+                font-size: 0.875rem;
+                font-weight: 600;
+                letter-spacing: 0.2px;
+                line-height: 20px;
+            }
+
+            &-icon {
+                height: 0.938rem;
+                width: 0.688rem;
+                margin-left: 0.313rem;
+            }
+        }
+
+        @include button;
+
+        .button-recruit {
+            margin-top: 0.313rem;
+            margin-left: 1.875rem;
+            height: 2.125rem;
+            width: 9.375rem;
+            font-size: 1rem;
+        }
     }
-  }
 }
