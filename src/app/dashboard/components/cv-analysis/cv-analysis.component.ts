@@ -67,7 +67,7 @@ export class CvAnalysisComponent implements OnInit {
 
   onItemSelected(index: number): void {
     console.log(this.data[index]);
-    this.router.navigate(['stats', this.data[index].Title], { relativeTo: this.route });
+    this.router.navigate(['stats'], { relativeTo: this.route });
   }
 
 }
