@@ -9,20 +9,32 @@ export class InviteComponent implements OnInit {
   showFormBackground: false;
   list = [
     {
-      designation: 'UI/UX Designer',
-      location: 'Udupi'
+      designation: 'Invite Candidates',
+      location: ''
     },
     {
-      designation: 'Figma designer',
-      location: 'Udupi'
+      designation: 'Today (04 Mar 2020)',
+      location: '09 Invited'
     },
     {
-      designation: 'PHP Developer',
-      location: 'Bangaluru'
+      designation: 'Yesterday',
+      location: '03 Invited'
     },
     {
-      designation: 'Angular Dev',
-      location: 'Udupi'
+      designation: 'Past One Month',
+      location: '24 Invited'
+    },
+    {
+      designation: 'November',
+      location: '20 Invited'
+    },
+    {
+      designation: '2019',
+      location: '302 Invited'
+    },
+    {
+      designation: '2018',
+      location: '520 Invited'
     }
   ];
 
