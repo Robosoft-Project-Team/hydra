@@ -103,7 +103,6 @@ p,
 
     &-item {
       padding: 1rem 0rem 1rem 2.5rem;
-      background-color: #c1bebe33;
       margin-bottom: 0.5rem;
     }
 
@@ -118,5 +117,6 @@ p,
   }
 
   .selected {
+    background-color: #c1bebe33;
     border-right: 5px solid #F52851;
   }
