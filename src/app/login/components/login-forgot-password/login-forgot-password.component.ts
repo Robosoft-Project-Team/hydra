@@ -39,14 +39,12 @@ export class LoginForgotPasswordComponent implements OnInit {
   validationCheck(): boolean {
     this.passwordService.checkUserExists(this.email.value)
       .subscribe(
-        res => {
-          if (res.status === 200) {
+        response => {
+          if (response.status === 200) {
             return true;
-          } else if (res.status === 404) {
-            this.email.error = res.message;
           }
         },
-        err => {
+        error => {
           this.email.error = 'Please check your email address';
         }
       );

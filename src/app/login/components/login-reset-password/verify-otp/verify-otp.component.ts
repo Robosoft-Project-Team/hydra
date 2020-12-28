@@ -78,23 +78,27 @@ export class VerifyOtpComponent implements OnInit {
 
   resendOtp(): void {
     this.resetOtp();
-    const response = this.passwordService.sendOtp();
-    if (response) {
-      this.message = response;
-    }
+    this.passwordService.sendOtp()
+    .subscribe(
+      response => {
+      },
+      error => {
+        this.message = error.error.error;
+      }
+    );
   }
 
   onVerify(): void {
     this.passwordService.verifyOtp(this.otp)
       .subscribe(
-        res => {
-          if (res.status === 200) {
+        response => {
+          if (response.status === 200) {
             this.router.navigate(['../change-password'], { relativeTo: this.route });
-          } else if (res.status === 401) {
-            this.message = res.message;
+          } else if (response.status === 401) {
+            this.message = response.message;
           }
         },
-        err => this.message = err.statusText
+        error => this.message = error.statusText
       );
   }
 

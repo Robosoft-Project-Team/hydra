@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,45 +16,29 @@ export class ChangePasswordService {
   }
 
   checkUserExists(email: string): Observable<any> {
-    let params = new HttpParams();
-    params = params.append('email', email);
-    // tslint:disable-next-line: object-literal-shorthand
-    return this.http.get(`${environment.baseUrl}forgotPassword`, { params: params });
+    const body = {
+      username: email
+    };
+    return this.http.post(`forgotPassword`, body);
   }
 
-  sendOtp(): void | string {
-    let params = new HttpParams();
-    if (!this.email) {
-      return 'Email not exists';
-    }
-    params = params.append('email', this.email);
-    // tslint:disable-next-line: object-literal-shorthand
-    this.http.get(`${environment.baseUrl}forgotPassword`, { params: params })
-      .subscribe(
-        res => {
-          if (res) {
-            return 'OTP sent to your Email';
-          }
-        },
-        error => {
-          return error.message;
-        }
-      );
+  sendOtp(): Observable<any> {
+    return this.checkUserExists(this.email);
   }
 
-  verifyOtp(otp: string): Observable<any> {
-    let params = new HttpParams();
-    params = params.append('email', this.email);
-    params = params.append('otp', otp);
-    // tslint:disable-next-line: object-literal-shorthand
-    return this.http.get(`${environment.baseUrl}verifyOtp`, { params: params });
+  verifyOtp(userOtp: string): Observable<any> {
+    const body = {
+      username: this.email,
+      otp: userOtp
+    };
+    return this.http.post(`verifyOtp`, body);
   }
 
   changePassword(newPassword: string): any {
     const putbody = {
-      emailId: this.email,
+      username: this.email,
       password: newPassword
     };
-    return this.http.put(`${environment.baseUrl}changePassword`, { body: putbody });
+    return this.http.put(`changePassword`, { body: putbody });
   }
 }
