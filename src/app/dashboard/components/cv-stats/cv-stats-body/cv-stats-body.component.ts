@@ -31,7 +31,6 @@ export class CvStatsBodyComponent implements OnInit, OnChanges {
   }
 
   divideByStatus(): void {
-    console.log(this.resumes);
     this.totalLength = this.resumes.length;
     this.resumes.forEach(element => {
       switch (element.applicationStatus) {

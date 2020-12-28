@@ -15,39 +15,43 @@ export class CvAnalysisComponent implements OnInit {
     {
       Title: 'UI/UX design',
       Applicants: 10,
-      Date: '2020-03-12',
+      Date: '2020-12-27',
       Status: true,
       Location: 'Udupi'
     },
     {
       Title: 'PHP Dev',
       Applicants: 10,
-      Date: '2020-03-12',
+      Date: '2020-12-27',
       Status: false,
       Location: 'Udupi/Bangaluru'
     },
     {
       Title: 'UI/UX design',
       Applicants: 99,
-      Date: '2020-03-03',
+      Date: '2020-12-27',
       Status: true,
       Location: 'Udupi'
     },
     {
       Title: 'UI/UX design',
       Applicants: 9,
-      Date: '2020-03-12',
+      Date: '2020-12-27',
       Status: false,
       Location: 'Bangaluru'
     },
     {
       Title: 'UI/UX design',
       Applicants: 10,
-      Date: '2020-03-03',
+      Date: '2020-12-28',
       Status: true,
       Location: 'Mumbai'
     },
   ];
+
+  filterDate;
+  filterSearch;
+  filteredData: JobSummary[];
 
   constructor(
     private router: Router,
@@ -55,14 +59,24 @@ export class CvAnalysisComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.filterDate = new Date().toISOString().split('T')[0];
+    this.filterSearch = '';
+    this.filterDataOnSearch(this.filterDate, this.filterSearch);
   }
 
   onDateSelected(date: string): void {
-    console.log(date);
+    this.filterDate = date;
+    this.filterDataOnSearch(this.filterDate, this.filterSearch);
   }
 
   onSearchItem(data: string): void {
-    console.log(data);
+    this.filterSearch = data;
+    this.filterDataOnSearch(this.filterDate, this.filterSearch);
+  }
+
+  filterDataOnSearch(date, search): void {
+    this.filteredData = this.data.filter(item => item.Date === date)
+    .filter(item => item.Title.toLowerCase().includes(search.toLowerCase()));
   }
 
   onItemSelected(index: number): void {

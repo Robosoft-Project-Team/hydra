@@ -167,7 +167,6 @@ export class CvStatsComponent implements OnInit {
     .filter(item =>
       item.designation === this.selectedDesignation.designation
     );
-    console.log('sele', this.selectedResume);
   }
 
 }

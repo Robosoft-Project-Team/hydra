@@ -46,8 +46,8 @@ export class HeaderComponent implements OnInit {
     this.dateSelected.emit(date.value.format('YYYY-MM-DD'));
   }
 
-  handleInput(input: any): void {
-    this.searchItem.emit(input.data);
+  handleInput(): void {
+    this.searchItem.emit(this.search.value);
   }
 
 }
