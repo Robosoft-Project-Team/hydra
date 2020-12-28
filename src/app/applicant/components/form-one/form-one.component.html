@@ -54,37 +54,23 @@
     <div class="row">
       <div class="input-group">
         <label class="input-label">Job Location</label>
-        <div class="input-control placeholder">
-          <select class="dropdown input-control" name="location" id="location" formControlName="jobLocation">
-            <option [value]="_location" selectedValueChange="alert(_location)" *ngFor="let _location of jobLocations">{{_location}}</option>
-          </select>
-        </div>
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="form.jobLocation?.errors?.required && form.jobLocation?.touched">
-            Select preferred job location</p>
-        </div>
+        <app-custom-dropdown class="input-control placeholder" [data]="jobLocations"
+          (selectedItem)="selectedLocation = $event"></app-custom-dropdown>
+        <div class="input-error-wrapper">&nbsp;</div>
       </div>
       <div class="input-group">
         <label class="input-label">Gender</label>
-        <div class="input-control placeholder">
-          <select class="dropdown input-control" name="gender" id="gender" formControlName="gender">
-            <option [value]="_gender" *ngFor="let _gender of genders">{{_gender}}</option>
-          </select>
-        </div>
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="form.gender?.errors?.required && form.gender?.touched">
-            Select your Gender</p>
-        </div>
+        <app-custom-dropdown class="input-control placeholder" [data]="genders"
+          (selectedItem)="selectedGender = $event"></app-custom-dropdown>
+        <div class="input-error-wrapper">&nbsp;</div>
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">What position are you applying for?</label>
-        <input class="input-control" type="text" placeholder="Designation" formControlName="designation">
-        <div class="input-error-wrapper">&nbsp;
-          <p class="input-error" *ngIf="form.designation?.errors?.required && form.designation?.touched">
-            Enter valid designation</p>
-        </div>
+        <app-custom-dropdown class="input-control placeholder" [data]="jobDesignations"
+          (selectedItem)="selectedDesignation = $event"></app-custom-dropdown>
+        <div class="input-error-wrapper">&nbsp;</div>
       </div>
       <div class="input-group">
         <label class="input-label">Previous Experience</label>

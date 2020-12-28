@@ -117,9 +117,8 @@
       </div>
       <div class="row">
         <div class="form-info-wrapper">
-          <p class="form-error" *ngIf="educationHistory.invalid && form.educationHistory.touched">Enter
-            Education
-            Details</p>
+          <p class="form-error" *ngIf="educationHistory.invalid && form.educationHistory?.touched">Enter
+            Education Details</p>
           <a class="form-add-control" (click)="isValid(form.educationForm.controls, addEducationForm)">+ Add Other
             Institution</a>
         </div>

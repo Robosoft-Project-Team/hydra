@@ -32,6 +32,7 @@ interface Reference {
   styleUrls: ['./form-one.component.scss']
 })
 export class FormOneComponent implements OnInit {
+  isOpen = false;
 
   // Mock Data
   jobLocations = [
@@ -46,6 +47,29 @@ export class FormOneComponent implements OnInit {
     'Others'
   ];
 
+  jobDesignations = [
+    'UI/UX Designer',
+    'Angular Developer',
+    'Java Developer',
+    'Ruby Rails Developer',
+    'React Developer',
+    'iOS Developer',
+    'Kotlin Developer',
+    'C# Developer',
+    'Marketing Manager',
+    'HR Manager',
+    'Technical Architect',
+    'System Admin',
+    'Analyst',
+    'Project Engineer',
+    'Intern',
+    'Trainee Engineer'
+  ];
+
+  selectedLocation = this.jobLocations[0];
+  selectedGender = this.genders[0];
+  selectedDesignation = this.jobDesignations[0];
+
   // Reactive Forms
   applicantFormOne: FormGroup;
   formData: ApplicantFormOne = {
@@ -53,9 +77,9 @@ export class FormOneComponent implements OnInit {
     emailid: '',
     mobile_no: '',
     dob: '',
-    jobLocation: '',
-    gender: '',
-    designation: '',
+    jobLocation: this.selectedLocation,
+    gender: this.selectedGender,
+    designation: this.selectedDesignation,
     experienceYear: 0,
     experienceMonth: 0,
     applicationType: '',
@@ -91,14 +115,14 @@ export class FormOneComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private formStore: FormStorageService
+    private formStore: FormStorageService,
   ) { }
 
   ngOnInit(): void {
     this.applicantFormOne = new FormGroup({});
     this.populateForm(this.formData);
 
-    if (this.formStore.hasForm('formOne')){
+    if (this.formStore.hasForm('formOne')) {
       this.populateForm(this.formStore.getForm('formOne'));
     }
   }
@@ -113,9 +137,6 @@ export class FormOneComponent implements OnInit {
       dob: new FormControl(data.dob, [Validators.required, FormValidator.isDOBValid()]),
       mobile_no: new FormControl(data.mobile_no, [Validators.required, FormValidator.isValidMobileNumber()]),
       emailid: new FormControl(data.emailid, [Validators.required, FormValidator.isValidEmail()]),
-      jobLocation: new FormControl(data ? data.jobLocation : '', Validators.required),
-      gender: new FormControl(data ? data.gender : '', Validators.required),
-      designation: new FormControl(data.designation, Validators.required),
       experienceYear: new FormControl(data.experienceYear, Validators.required),
       experienceMonth: new FormControl(data.experienceMonth, Validators.required),
       applicationType: new FormControl(data.applicationType, Validators.required),
@@ -123,10 +144,19 @@ export class FormOneComponent implements OnInit {
       languages: new FormControl(data.languages, Validators.required),
     });
     this.applicantFormOne = formGroup;
+    this.selectedLocation = data.jobLocation;
+    this.selectedGender = data.gender;
+    this.selectedDesignation = data.designation;
   }
 
   getFormData(): ApplicantFormOne {
-    return { ...this.applicantFormOne.value, reference: this.processReferenceData(this.form.reference?.value) };
+    return {
+      ...this.applicantFormOne.value,
+      reference: this.processReferenceData(this.form.reference?.value),
+      gender: this.selectedGender,
+      jobLocation: this.selectedLocation,
+      designation: this.selectedDesignation
+    };
   }
 
   onSubmit(): void {
