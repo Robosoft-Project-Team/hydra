@@ -32,46 +32,8 @@ form {
 
 .placeholder.input-control {
   position: relative;
-  border: none;
-  background-color: transparent;
-
-  &::after {
-    content: "";
-    background: url('../../../../assets/icn_dropdown_down/icn_dropdown_down@1.5x.svg') no-repeat center;
-    font-size: 12px;
-    font-weight: 700;
-    font-family: Muli;
-    padding: 12px;
-    object-fit: cover;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 40px;
-    width: 40px;
-    border-radius: 0 6px 6px 0;
-    pointer-events: none;
-  }
-}
-
-.dropdown {
-  position: absolute;
-  left: 0;
-  top: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  &.ng-invalid.ng-touched {
-    border-color: $color-primary-dark;
-  }
-
-  option {
-    color: #000000;
-  }
-
-  &:focus {
-    outline: none;
-  }
+  margin: 0;
+  padding: 0;
 }
 
 @mixin experience($width, $margin-left) {
