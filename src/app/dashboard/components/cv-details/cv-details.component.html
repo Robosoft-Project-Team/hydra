@@ -1,6 +1,98 @@
-<div class="overlay" (click)="goBack()"></div>
+<div class="overlay" [@overlay]="'show'" (click)="goBack()"></div>
 <!--  [@openClose]="'open'" -->
-<div class="container">
-    <app-left-sidebar></app-left-sidebar>
-    <p>cv-details works! with id {{id}}</p>
+<div class="container" [@openClose]="'open'">
+  <div class="container-left-sidebar">
+    <app-left-sidebar [applicant]="applicant"></app-left-sidebar>
+  </div>
+  <div class="container-right-sidebar">
+    <div class="applicant">
+      <div class="name-and-age">
+        <p class="name">{{applicant.applicantName}}</p>
+        <p class="age">{{calculateAge(applicant.dob)}} years</p>
+      </div>
+      <p class="designation">{{applicant.designation}}</p>
+      <div class="buttons">
+        <a download="cv.pdf" href="" class="button download">Download CV</a>
+        <a href="" class="button assign">Assign To</a>
+        <a href="" class="button reject">Reject</a>
+      </div>
+      <div class="about-para">
+        <p>{{applicant.aboutYou}}</p>
+      </div>
+      <hr class="hr">
+      <div class="section">
+        <div class="heading">
+          Work experiance
+        </div>
+        <div class="section-content" *ngFor="let item of applicant.workHistory">
+          <img src="assets/dashboard-cv/img_amazon.png" alt="">
+          <div class="section-content-details">
+            <p class="main-text">{{item.position}}</p>
+            <div class="years-spent">
+              <p class="sub-text">{{item.companyName}}</p>
+              <p class="sub-text">{{diff(item.from, item.to)}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="hr">
+      <div class="skills">
+        <div class="heading">
+          Skills
+        </div>
+        <ul class="skills-list">
+          <li class="skills-list-item" *ngFor="let item of applicant.skill.split(',')">{{item}}</li>
+        </ul>
+      </div>
+      <hr class="hr">
+      <div class="section">
+        <div class="heading">
+          Education
+        </div>
+        <div class="section-content" *ngFor="let item of applicant.educationHistory">
+          <div class="section-content-details">
+            <p class="main-text">{{item.instituitionName}}</p>
+            <div class="years-spent">
+              <p class="sub-text">{{item.location}}</p>
+              <p class="sub-text">{{diff(item.from, item.to)}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="hr">
+      <div class="referance">
+        <div class="heading">
+          Referance
+        </div>
+        <p class="name">{{applicant.reference.reference_name}}</p>
+        <p class="company">{{applicant.reference.reference_desig}}</p>
+        <p class="extra"><span>Phone: </span>{{applicant.reference.reference_mobile}}</p>
+        <p class="extra"><span>Email: </span>{{applicant.reference.reference_mail}}</p>
+      </div>
+      <hr class="hr">
+      <div class="skills">
+        <div class="heading">
+          Software
+        </div>
+        <ul class="skills-list">
+          <li class="skills-list-item" *ngFor="let item of applicant.softwares.split(',')">{{item}}</li>
+        </ul>
+      </div>
+      <hr class="hr">
+      <div class="attachment">
+        <div class="heading">
+          Attachment
+        </div>
+        <div class="attachment-files">
+          <div class="file" *ngFor="let item of applicant.attachmentEntities">
+            <div class="file-preview"><img width="100%" height="100%" src="assets/dashboard-cv/download.jpeg" alt="">
+            </div>
+            <p class="file-name">{{item.file_name}}</p>
+            <p class="file-size">{{item.file_size}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="side-button"></div>
+  </div>
 </div>
