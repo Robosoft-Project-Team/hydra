@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CvAnalysisService } from '../../services/cv-analysis.service';
+import { allResumes, list } from '../../services/mockData';
 
 @Component({
   selector: 'app-cv-stats',
@@ -7,166 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvStatsComponent implements OnInit {
 
-  list = [
-    {
-      designation: 'UI/UX Designer',
-      location: 'Udupi'
-    },
-    {
-      designation: 'Figma designer',
-      location: 'Udupi'
-    },
-    {
-      designation: 'PHP Developer',
-      location: 'Bangaluru'
-    },
-    {
-      designation: 'Angular Dev',
-      location: 'Udupi'
-    }
-  ];
-
-  allResumes = [
-    {
-      applicantid: 1,
-      applicantName: 'Vishwas',
-      designation: 'UI/UX Designer',
-      skill: 'Photoshop',
-      applicationStatus: 'new',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 2,
-      applicantName: 'Vishwas',
-      designation: 'UI/UX Designer',
-      skill: 'Photoshop',
-      applicationStatus: 'new',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 4,
-      applicantName: 'Vishwas',
-      designation: 'UI/UX Designer',
-      skill: 'Photoshop',
-      applicationStatus: 'shortlist',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 6,
-      applicantName: 'Vishwas',
-      designation: 'UI/UX Designer',
-      skill: 'Photoshop',
-      applicationStatus: 'rejected',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 1,
-      applicantName: 'Vishwas',
-      designation: 'Figma designer',
-      skill: 'Photoshop',
-      applicationStatus: 'new',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 2,
-      applicantName: 'Vishwas',
-      designation: 'Figma designer',
-      skill: 'Photoshop',
-      applicationStatus: 'new',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 3,
-      applicantName: 'Vishwas',
-      designation: 'Figma designer',
-      skill: 'Photoshop',
-      applicationStatus: 'rejected',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 4,
-      applicantName: 'Vishwas',
-      designation: 'Figma designer',
-      skill: 'Photoshop',
-      applicationStatus: 'shortlist',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 5,
-      applicantName: 'Vishwas',
-      designation: 'Figma designer',
-      skill: 'Photoshop',
-      applicationStatus: 'shortlist',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 6,
-      applicantName: 'Vishwas',
-      designation: 'PHP Developer',
-      skill: 'Photoshop,               fh',
-      applicationStatus: 'new',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 7,
-      applicantName: 'Vishwas',
-      designation: 'PHP Developer',
-      skill: 'Photoshop',
-      applicationStatus: 'new',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 5,
-      applicantName: 'Vishwas',
-      designation: 'PHP Developer',
-      skill: 'Photoshop',
-      applicationStatus: 'shortlist',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 4,
-      applicantName: 'Vishwas',
-      designation: 'Angular Dev',
-      skill: 'Photoshop, ui',
-      applicationStatus: 'shortlist',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 5,
-      applicantName: 'Vishwas',
-      designation: 'Angular Dev',
-      skill: 'Photoshop',
-      applicationStatus: 'shortlist',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    },
-    {
-      applicantid: 6,
-      applicantName: 'Vishwas',
-      designation: 'Angular Dev',
-      skill: 'Photoshop',
-      applicationStatus: 'rejected',
-      profilePhoto: 'assets/dashboard-home/icn_hr.png'
-    }
-  ];
-
+  allResumes;
+  list;
   selectedResume = [];
-  index = 0;
   selectedDesignation;
 
-  constructor() { }
+  constructor(
+    private cvService: CvAnalysisService
+  ) { }
 
   ngOnInit(): void {
-    this.disp(0);
+    this.selectedDesignation = this.cvService.getDesignation();
+    this.list = this.cvService.getList();
+    this.allResumes = this.cvService.getAllResumes();
+    this.filter();
   }
 
-  disp(index): void {
-    this.index = index;
-    this.selectedDesignation = this.list[this.index];
+  disp(designation): void {
+    this.selectedDesignation = designation;
+    this.filter();
+  }
 
+  filter(): void {
     this.selectedResume = this.allResumes
-    .filter(item =>
-      item.designation === this.selectedDesignation.designation
-    );
+      .filter(item =>
+        item.designation === this.selectedDesignation
+      );
   }
 
 }

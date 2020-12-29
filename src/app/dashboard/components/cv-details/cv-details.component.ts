@@ -47,7 +47,11 @@ export class CvDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params.id;
-    this.applicant = this.cv.getApplicant(id);
+    this.cv.getApplicant(33).subscribe(
+      response => {
+        this.applicant = response.data.applicant;
+      }
+    );
   }
 
   goBack(): void {

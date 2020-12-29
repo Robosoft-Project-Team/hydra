@@ -1,4 +1,4 @@
-<img src="assets/dashboard-cv/download.jpeg" alt="">
+<img [src]="getProfileImage()" alt="">
 <div class="general-information">
     <div class="general-information-row">
         <img class="icon" src="assets/dashboard-cv/icn_workexp.png">
@@ -8,21 +8,21 @@
         </div>
     </div>    
     <div class="general-information-row">
-        <img class="icon" src="assets/dashboard-cv/icn_workexp.png">
+        <img class="icon" src="assets/dashboard-cv/icn_walkin.png">
         <div class="general-information-text">
             <p class="main-text">{{applicant.applicationType}}</p>
             <p class="sub-text">Reference</p>
         </div>
     </div>    
     <div class="general-information-row">
-        <img class="icon" src="assets/dashboard-cv/icn_workexp.png">
+        <img class="icon" src="assets/dashboard-cv/icn_location.png">
         <div class="general-information-text">
             <p class="main-text">{{applicant.jobLocation}}</p>
             <p class="sub-text">Work Location</p>
         </div>
     </div>    
     <div class="general-information-row">
-        <img class="icon" src="assets/dashboard-cv/icn_workexp.png">
+        <img class="icon" src="assets/dashboard-cv/icn_salary.png">
         <div class="general-information-text">
             <p class="main-text">{{applicant.expectedCTC}} per Annum</p>
             <p class="sub-text">Salary Expectation</p>

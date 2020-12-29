@@ -20,10 +20,13 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     if (this.storage.hasJwtToken()) {
       reqUrl = req.clone({
-        setHeaders: { Authorization: `Bearer ${this.storage.getJwtToken()}`}
+        setHeaders: { Authorization: `Bearer ${this.storage.getJwtToken()}`},
+        url: 'http://ec2-3-138-235-228.us-east-2.compute.amazonaws.com:5000/' + req.url
       });
     } else {
-      reqUrl = req;
+      reqUrl = req.clone({
+        url: 'http://ec2-3-138-235-228.us-east-2.compute.amazonaws.com:5000/' + req.url
+      });
     }
 
     return next.handle(reqUrl).pipe(

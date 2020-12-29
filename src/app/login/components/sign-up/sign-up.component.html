@@ -19,12 +19,12 @@
         </div>
         <div class="input-group">
           <label class="input-label">Email ID</label>
-          <input class="input-control" type="text" placeholder="Your Robosoft Mail ID" formControlName="email">
+          <input class="input-control" type="text" placeholder="Your Robosoft Mail ID" formControlName="username">
           <div class="input-error-wrapper">&nbsp;
-            <p class="input-error" *ngIf="signup.email?.errors?.invalidEmail && signup.email?.touched">
+            <p class="input-error" *ngIf="signup.username?.errors?.invalidEmail && signup.username?.touched">
               Enter valid Email ID</p>
             <p class="input-error"
-              *ngIf="!signup.email?.errors?.invalidEmail && signup.email?.errors?.invalidCompanyEmail && signup.email?.touched">
+              *ngIf="!signup.username?.errors?.invalidEmail && signup.username?.errors?.invalidCompanyEmail && signup.username?.touched">
               Enter valid Company Email ID</p>
           </div>
         </div>
@@ -32,9 +32,9 @@
       <div class="row">
         <div class="input-group">
           <label class="input-label">Mobile Number</label>
-          <input class="input-control" type="text" placeholder="Your Mobile Number" formControlName="mobile">
+          <input class="input-control" type="text" placeholder="Your Mobile Number" formControlName="mobile_no">
           <div class="input-error-wrapper">&nbsp;
-            <p class="input-error" *ngIf="signup.mobile?.errors?.invalidMobileNumber && signup.mobile?.touched ">
+            <p class="input-error" *ngIf="signup.mobile_no?.errors?.invalidMobileNumber && signup.mobile_no?.touched ">
               Enter valid Mobile Number</p>
           </div>
         </div>
@@ -51,18 +51,18 @@
         <div class="input-group">
           <label class="input-label">Position</label>
           <div class="input-control-radio">
-            <input type="radio" formControlName="position" name="position" id="recruiter" value="recruiter"
+            <input type="radio" formControlName="role" name="role" id="recruiter" value="recruiter"
               checked="true">
             <label class="input-label radio-label" for="recruiter">
               <div class="radio"></div>
               Recruiter
             </label>
-            <input type="radio" formControlName="position" name="position" id="organizer" value="organizer">
+            <input type="radio" formControlName="role" name="role" id="organizer" value="organizer">
             <label class="input-label radio-label" for="organizer">
               <div class="radio"></div>
               Organizer
             </label>
-            <input type="radio" formControlName="position" name="position" id="approval" value="approval">
+            <input type="radio" formControlName="role" name="role" id="approval" value="approval">
             <label class="input-label radio-label" for="approval">
               <div class="radio"></div>
               Approval Authority
