@@ -5,7 +5,7 @@
   </div>
   <div class="cv-table">
     <app-table [headings]="tableHeadings">
-      <tr class="table-row" *ngFor="let item of filteredData; let i = index;" (click)="onItemSelected(i)">
+      <tr class="table-row" *ngFor="let item of filteredData; let i = index;" (click)="onItemSelected(item.Title)">
         <td class="table-data">{{item.Title}}</td>
         <td class="table-data">
           <span class="chip" [ngClass]="{'closed': !item.Status}">{{item.Applicants}}</span>

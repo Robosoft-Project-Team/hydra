@@ -2,6 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Profile } from 'src/app/core/models/profile.model';
 import { Component, OnInit } from '@angular/core';
 import { JobSummary } from 'src/app/core/models/job-summary.model';
+import { CvAnalysisService } from '../../services/cv-analysis.service';
 
 @Component({
   selector: 'app-cv-analysis',
@@ -13,14 +14,14 @@ export class CvAnalysisComponent implements OnInit {
   tableHeadings: string[] = ['Title', 'Applicants', 'Date', 'Status', 'Location'];
   data: JobSummary[] = [
     {
-      Title: 'UI/UX design',
+      Title: 'UI/UX Designer',
       Applicants: 10,
       Date: '2020-12-27',
       Status: true,
       Location: 'Udupi'
     },
     {
-      Title: 'PHP Dev',
+      Title: 'PHP Developer',
       Applicants: 10,
       Date: '2020-12-27',
       Status: false,
@@ -41,7 +42,7 @@ export class CvAnalysisComponent implements OnInit {
       Location: 'Bangaluru'
     },
     {
-      Title: 'UI/UX design',
+      Title: 'UI/UX Designer',
       Applicants: 10,
       Date: '2020-12-28',
       Status: true,
@@ -52,11 +53,14 @@ export class CvAnalysisComponent implements OnInit {
   filterDate;
   filterSearch;
   filteredData: JobSummary[];
+  selectedDesignation;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private cvService: CvAnalysisService
+  ) {
+  }
 
   ngOnInit(): void {
     this.filterDate = new Date().toISOString().split('T')[0];
@@ -79,8 +83,8 @@ export class CvAnalysisComponent implements OnInit {
     .filter(item => item.Title.toLowerCase().includes(search.toLowerCase()));
   }
 
-  onItemSelected(index: number): void {
-    console.log(this.data[index]);
+  onItemSelected(designation: string): void {
+    this.cvService.setDesignation(designation);
     this.router.navigate(['stats'], { relativeTo: this.route });
   }
 
