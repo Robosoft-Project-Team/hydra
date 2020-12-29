@@ -71,23 +71,26 @@
 }
 
 .notification {
+    height: calc(100vh - 6.5rem);
+    overflow-y: auto;
 
-    // &::-webkit-scrollbar {
-    //     width: 10px;
-    // }
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
 
-    // &::-webkit-scrollbar-thumb {
-    //     border: 3px solid rgba(0, 0, 0, 0);
-    //     opacity: 0;
-    //     background-clip: padding-box;
-    //     background-color: #808087;
-    //     box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
-    // }
+    &::-webkit-scrollbar-thumb {
+        border: 3px solid rgba(0, 0, 0, 0);
+        opacity: 0;
+        background-clip: padding-box;
+        background-color: #808087;
+        box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
 
     &-list {
         padding: 30px;
-        padding-right: 60px;
+        padding-right: 120px;
         height: 114px;
+        position: relative;
     }
 
     .event {
@@ -100,7 +103,6 @@
         font-size: 16px;
         letter-spacing: 0.23px;
         line-height: 20px;
-
     }
 
     &-list:nth-child(even) {
@@ -135,7 +137,7 @@
         text-align: right;
         cursor: pointer;
         position: absolute;
-        right: 50px;
+        right: 35px;
     }
 
     &-schedule {
@@ -168,7 +170,6 @@
         background-color: $color-primary-dark;
         outline: none;
         border: none;
-
     }
 
     .button-decline {
