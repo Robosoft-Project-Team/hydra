@@ -19,7 +19,8 @@ import {
   InviteHeaderComponent,
   InviteBodyComponent,
   CvRejectedComponent,
-  InviteSentBodyComponent
+  InviteSentBodyComponent,
+  ChartComponent
 } from './components';
 
 import {
@@ -50,7 +51,8 @@ import {
     InviteHeaderComponent,
     InviteBodyComponent,
     CvRejectedComponent,
-    InviteSentBodyComponent
+    InviteSentBodyComponent,
+    ChartComponent
   ],
   imports: [
     DashboardRoutingModule,
