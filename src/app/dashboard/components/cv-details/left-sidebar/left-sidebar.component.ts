@@ -17,9 +17,9 @@ export class LeftSidebarComponent implements OnInit {
   }
 
   getProfileImage(): any {
-    const link = this.applicant.attachmentEntities.filter(item => item.type === 'Profile')[0].download_link;
-    const result = this.http.get(link);
-    console.log(result);
+    const attachment = this.applicant.attachmentEntities.filter(item => item.type === 'Profile')[0];
+    if (attachment) {
+      return attachment.download_link.split('0/')[1];
+    }
   }
-
 }

@@ -1,4 +1,4 @@
-<img [src]="getProfileImage()" alt="">
+<img src="{{getProfileImage() | imagePipe | async}}" alt="Loading Image...">
 <div class="general-information">
     <div class="general-information-row">
         <img class="icon" src="assets/dashboard-cv/icn_workexp.png">

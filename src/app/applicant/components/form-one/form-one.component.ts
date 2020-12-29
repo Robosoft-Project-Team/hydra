@@ -6,7 +6,7 @@ import { FormStorageService } from '../../services/form-storage.service';
 
 interface ApplicantFormOne {
   applicantName: string;
-  emailid: string;
+  emailId: string;
   mobile_no: string;
   dob: string;
   jobLocation: string;
@@ -74,7 +74,7 @@ export class FormOneComponent implements OnInit {
   applicantFormOne: FormGroup;
   formData: ApplicantFormOne = {
     applicantName: '',
-    emailid: '',
+    emailId: '',
     mobile_no: '',
     dob: '',
     jobLocation: this.selectedLocation,
@@ -94,7 +94,7 @@ export class FormOneComponent implements OnInit {
 
   MOCK_DATA_FROM_SERVICE = {
     applicantName: 'John',
-    emailid: 'john@hmail.co',
+    emailId: 'john@hmail.co',
     mobile_no: '8855664488',
     dob: '10/06/1998',
     jobLocation: 'Udupi',
@@ -136,7 +136,7 @@ export class FormOneComponent implements OnInit {
       applicantName: new FormControl(data.applicantName, [Validators.required, FormValidator.isValidUsername()]),
       dob: new FormControl(data.dob, [Validators.required, FormValidator.isDOBValid()]),
       mobile_no: new FormControl(data.mobile_no, [Validators.required, FormValidator.isValidMobileNumber()]),
-      emailid: new FormControl(data.emailid, [Validators.required, FormValidator.isValidEmail()]),
+      emailId: new FormControl(data.emailId, [Validators.required, FormValidator.isValidEmail()]),
       experienceYear: new FormControl(data.experienceYear, Validators.required),
       experienceMonth: new FormControl(data.experienceMonth, Validators.required),
       applicationType: new FormControl(data.applicationType, Validators.required),

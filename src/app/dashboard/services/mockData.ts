@@ -1,6 +1,6 @@
 import { Applicant } from '../shared/interface';
 
-export const applicants: Applicant[] = [
+export const applicants = [
     {
         applicantName: 'id 1',
         applicantId: 1,

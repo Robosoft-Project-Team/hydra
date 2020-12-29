@@ -27,6 +27,7 @@ import {
   HeaderComponent,
   TableComponent,
 } from './shared';
+import { ImagePipePipe } from './shared/pipes/image-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {
     InviteHeaderComponent,
     InviteBodyComponent,
     CvRejectedComponent,
-    InviteSentBodyComponent
+    InviteSentBodyComponent,
+    ImagePipePipe
   ],
   imports: [
     DashboardRoutingModule,

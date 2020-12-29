@@ -33,4 +33,8 @@ export class CvAnalysisService {
   getAllResumes(): any {
     return allResumes;
   }
+
+  getAttachment(url: string): Observable<any> {
+    return this.http.get(url, { responseType: 'blob' });
+  }
 }
