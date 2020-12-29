@@ -9,7 +9,8 @@ import {
   CvDetailsComponent,
   AssignBoardComponent,
   InviteComponent,
-  CvRejectedComponent
+  CvRejectedComponent,
+  InviteSentBodyComponent
 } from './components';
 
 const routes: Routes = [

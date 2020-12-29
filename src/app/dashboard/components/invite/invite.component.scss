@@ -1,11 +1,36 @@
+@import 'src/variables';
+
+@mixin sub-text {
+  @include set-font(#C1BEBE, 14px, bold, 0.2px, 20px);
+}
+
+@mixin main-text {
+  @include set-font(#333539, 16px, bold, 0.23px, 20px);
+}
+
+@mixin set-font($color, $size, $weight, $spacing, $height) {
+  font-family: Muli;
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
+}
+
+p,
+h1 {
+  margin: 0;
+}
+
+
 .invite {
   height: 100vh;
   position: relative;
   border-radius: 2.5rem 0 0 2.5rem;
-  background-color: #F6F9FD;
+  background-color: $color-blue-light;
   width: 100%;
 
-  &-left-side {
+  &-left {
     width: 25%;
     height: 100vh;
     position: absolute;
@@ -14,9 +39,66 @@
     border-radius: 2.5rem;
     background-color: white;
     padding-top: 2.5rem;
+    z-index: 100;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0rem 2.5rem;
+    }
+
+    &-heading {
+      @include set-font($color-black-light, 22px, bold, 0.22px, 26px);
+      transform: translateY(4px);
+    }
+
+    &-icon {
+      height: 50px;
+      width: 50px;
+      border-radius: 15px;
+      text-align: center;
+      background-color: rgba($color-primary-dark, 0.16);
+      display: inline-flex;
+      align-items: center;
+
+      img {
+        color: $color-primary-dark;
+        margin: 0 auto;
+        opacity: 1;
+      }
+    }
+
+    &-list {
+      margin-top: 1.5rem;
+      list-style: none;
+      padding: 0;
+
+      &-item {
+        cursor: pointer;
+        height: 4.5rem;
+        padding: 1rem 0rem 1rem 2.5rem;
+        margin-bottom: 0;
+
+        &.selected {
+          background-color: rgba($color-grey-light, .16);
+          border-right: 5px solid $color-primary-dark;
+        }
+      }
+
+      &-main {
+        @include main-text();
+      }
+
+      &-sub {
+        @include sub-text();
+        transform: translateY(4px);
+      }
+    }
   }
 
-  &-right-side {
+  &-right {
     width: 75%;
     height: 100vh;
     position: relative;
@@ -33,90 +115,14 @@
       width: 110%;
       object-fit: cover;
     }
+  }
 
-    hr {
-      background-color: #E6E5F2;
-      z-index: 10;
-      height: 1px;
-      position: relative;
-      margin: 1.25rem 0 0;
+  hr {
+    background-color: $color-grey-lighter;
+    z-index: 10;
+    height: 1px;
+    position: relative;
+    margin: 1.25rem 0 0;
 
-    }
   }
 }
-
-p,
-  h1 {
-    margin: 0;
-  }
-
-  @mixin sub-text {
-    @include set-font(#C1BEBE, 14px, bold, 0.2px, 20px);
-  }
-
-  @mixin main-text {
-    @include set-font(#333539, 16px, bold, 0.23px, 20px);
-  }
-
-  @mixin set-font($color, $size, $weight, $spacing, $height) {
-    font-family: Muli;
-    color: $color;
-    font-size: $size;
-    font-weight: $weight;
-    letter-spacing: $spacing;
-    line-height: $height;
-  }
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 0rem 2.5rem;
-
-    h1 {
-      @include set-font(#333539, 22px, bold, 0.22px, 26px);
-      transform: translateY(4px);
-    }
-
-    .icon {
-      height: 50px;
-      width: 50px;
-      border-radius: 15px;
-      text-align: center;
-      background-color: #f5285129;
-      display: inline-flex;
-      align-items: center;
-
-      img {
-        color: #F52851;
-        margin: 0 auto;
-        opacity: 1;
-      }
-    }
-  }
-
-  .list {
-    margin-top: 1.5rem;
-    list-style: none;
-    padding: 0;
-
-    &-item {
-      padding: 1rem 0rem 1rem 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    &-main-text {
-      @include main-text();
-    }
-
-    &-sub-text {
-      @include sub-text();
-      transform: translateY(4px);
-    }
-  }
-
-  .selected {
-    background-color: #c1bebe33;
-    border-right: 5px solid #F52851;
-  }
