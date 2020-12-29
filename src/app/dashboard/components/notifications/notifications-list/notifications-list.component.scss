@@ -1,12 +1,6 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-$color-blue-lighter: #f6f9fd;
-$color-brown-dark: #383D4A;
-$color-brown-light: #4D4D4D;
-
-// @include button();
-
 .notifications {
     height: 100vh;
     width: 100%;
@@ -32,7 +26,6 @@ $color-brown-light: #4D4D4D;
 
     &-toggle-switch {
         img {
-
             margin-left: -550px;
         }
     }
@@ -45,9 +38,9 @@ $color-brown-light: #4D4D4D;
         background-color: #f5285129;
         display: inline-flex;
         align-items: center;
-    
+
         img {
-            color: #F52851;
+            color: $color-primary-dark;
             margin: 0 auto;
             opacity: 1;
         }
@@ -78,29 +71,63 @@ $color-brown-light: #4D4D4D;
 }
 
 .notification {
-    .list {
-        padding: 30px;
-        height: 114px;
 
-        .message {
-            color: #333539;
-            font-family: Muli;
-            font-size: 16px;
-            letter-spacing: 0.23px;
-            line-height: 20px;
-        }
+    // &::-webkit-scrollbar {
+    //     width: 10px;
+    // }
+
+    // &::-webkit-scrollbar-thumb {
+    //     border: 3px solid rgba(0, 0, 0, 0);
+    //     opacity: 0;
+    //     background-clip: padding-box;
+    //     background-color: #808087;
+    //     box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    // }
+
+    &-list {
+        padding: 30px;
+        padding-right: 60px;
+        height: 114px;
     }
 
-    .list:nth-child(even) {
-        background-color: #F6F9FD;
+    .event {
+        height: 178px;
+    }
+
+    &-message {
+        color: $color-black-light;
+        font-family: Muli;
+        font-size: 16px;
+        letter-spacing: 0.23px;
+        line-height: 20px;
+
+    }
+
+    &-list:nth-child(even) {
+        background-color: $color-blue-light;
     }
 
     span {
         font-weight: bold;
     }
 
+    .button {
+        height: 40px;
+        width: 155px;
+        font-family: Muli;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
     .dot {
-        color: #535353;
+        color: $color-black-lighter;
         font-family: Muli;
         font-size: 16px;
         letter-spacing: 0.23px;
@@ -111,25 +138,43 @@ $color-brown-light: #4D4D4D;
         right: 50px;
     }
 
-    .one {
+    &-schedule {
         display: flex;
         align-items: center;
-        margin: .5rem 0;
+        // margin: .5rem 0;
 
-        .icon1 {
+        .icon {
             width: 12px;
             height: 12px;
         }
 
-        .date1 {
-            color: $color-brown-light;
+        .time {
             font-size: 12px;
-            font-weight: normal;
             letter-spacing: 0.17px;
-            line-height: 12px;
-            height: 10px; // Added to nullify the font kerning
             margin-bottom: 0;
             margin-left: .5rem;
+            margin-top: 3px;
+            color: $color-grey-light;
+            font-family: Muli;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.17px;
+            line-height: 20px;
         }
+    }
+
+    .button-accept {
+        color: $color-white;
+        background-color: $color-primary-dark;
+        outline: none;
+        border: none;
+
+    }
+
+    .button-decline {
+        color: $color-primary-dark;
+        margin-left: 20px;
+        border: 2px solid $color-primary-dark;
+        background-color: $color-white;
     }
 }
