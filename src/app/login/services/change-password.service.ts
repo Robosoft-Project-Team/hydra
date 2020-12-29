@@ -39,6 +39,6 @@ export class ChangePasswordService {
       username: this.email,
       password: newPassword
     };
-    return this.http.put(`changePassword`, { body: putbody });
+    return this.http.put(`changePassword`, putbody );
   }
 }

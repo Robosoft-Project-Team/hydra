@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/internal/operators';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 import { ChangePasswordService } from '../../services/change-password.service';
 
@@ -36,25 +37,28 @@ export class LoginForgotPasswordComponent implements OnInit {
     }
   }
 
-  validationCheck(): boolean {
+  validationCheck(): void {
     this.passwordService.checkUserExists(this.email.value)
       .subscribe(
         response => {
           if (response.status === 200) {
-            return true;
+            this.navigate();
+          } else if (response.status === 404) {
+            this.email.error = response.message;
           }
         },
         error => {
           this.email.error = 'Please check your email address';
         }
       );
-    return false;
   }
 
   onClickSubmitEmail(): void {
-    if (this.validationCheck()) {
-      this.passwordService.setUserEmail(this.email.value);
-      this.router.navigate(['../verify'], { relativeTo: this.route });
-    }
+    this.validationCheck();
+  }
+
+  navigate(): void {
+    this.passwordService.setUserEmail(this.email.value);
+    this.router.navigate(['../verify'], { relativeTo: this.route });
   }
 }

@@ -49,19 +49,20 @@ export class ChangePasswordComponent implements OnInit {
 
     this.message = '';
     this.buttonDisabled = false;
-
   }
 
   submitPassword(): void {
     this.passwordService.changePassword(this.changePasswordForm.get('newPassword').value)
       .subscribe(
-        res => {
-          if (res.status === 200) {
+        response => {
+          if (response.status === 200) {
             this.router.navigate(['../reset-success'], { relativeTo: this.route });
+          } else if (response.status === 404) {
+            this.message = response.message;
           }
         },
-        err => {
-          this.message = err.messageText;
+        error => {
+          this.message = error.messageText;
         }
       );
   }

@@ -68,6 +68,7 @@ export class LoginFormComponent implements OnInit {
       .subscribe(
         response => {
           if (response.status === 200) {
+            this.router.navigate(['/dashboard']);
             this.signInService.storeCredentials(response.data.accessToken);
           }
         },
@@ -75,7 +76,5 @@ export class LoginFormComponent implements OnInit {
           this.email.error = 'Invalid username or password';
         }
       );
-    this.router.navigate(['/dashboard']);
-
   }
 }

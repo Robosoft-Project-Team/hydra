@@ -89,6 +89,8 @@ export class SignUpComponent implements OnInit {
         response => {
           if (response.status === 201) {
             this.router.navigate(['../form'], { relativeTo: this.route });
+          } else if (response.status === 409) {
+            alert(response.message);
           }
         },
         error => console.log('user exists', error)
