@@ -1,0 +1,135 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+$color-blue-lighter: #f6f9fd;
+$color-brown-dark: #383D4A;
+$color-brown-light: #4D4D4D;
+
+// @include button();
+
+.notifications {
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+    }
+
+    &-title {
+        flex: 2;
+        color: $color-black-light;
+        font-size: 26px;
+        font-family: Muli;
+        font-weight: bold;
+        letter-spacing: 0.22px;
+        line-height: 26px;
+        margin: 0;
+    }
+
+    &-toggle-switch {
+        img {
+
+            margin-left: -550px;
+        }
+    }
+
+    &-search-icon {
+        height: 50px;
+        width: 50px;
+        border-radius: 15px;
+        text-align: center;
+        background-color: #f5285129;
+        display: inline-flex;
+        align-items: center;
+    
+        img {
+            color: #F52851;
+            margin: 0 auto;
+            opacity: 1;
+        }
+    }
+
+    &-date {
+        height: 3.125rem;
+        width: auto;
+        border-radius: 0.937rem;
+        background-color: $color-blue-dark;
+        color: $color-grey-medium;
+        font-size: 14px;
+        letter-spacing: 0.54px;
+        line-height: 24px;
+        padding: 0 1rem;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 30px;
+
+        span {
+            color: $color-black;
+            margin-left: .5rem;
+            font-weight: 500;
+        }
+    }
+}
+
+.notification {
+    .list {
+        padding: 30px;
+        height: 114px;
+
+        .message {
+            color: #333539;
+            font-family: Muli;
+            font-size: 16px;
+            letter-spacing: 0.23px;
+            line-height: 20px;
+        }
+    }
+
+    .list:nth-child(even) {
+        background-color: #F6F9FD;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
+    .dot {
+        color: #535353;
+        font-family: Muli;
+        font-size: 16px;
+        letter-spacing: 0.23px;
+        line-height: 20px;
+        text-align: right;
+        cursor: pointer;
+        position: absolute;
+        right: 50px;
+    }
+
+    .one {
+        display: flex;
+        align-items: center;
+        margin: .5rem 0;
+
+        .icon1 {
+            width: 12px;
+            height: 12px;
+        }
+
+        .date1 {
+            color: $color-brown-light;
+            font-size: 12px;
+            font-weight: normal;
+            letter-spacing: 0.17px;
+            line-height: 12px;
+            height: 10px; // Added to nullify the font kerning
+            margin-bottom: 0;
+            margin-left: .5rem;
+        }
+    }
+}

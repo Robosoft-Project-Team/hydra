@@ -6,6 +6,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MomentDateModule } from '@angular/material-moment-adapter';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
     MatChipsModule,
     MatNativeDateModule,
     MatIconModule,
-    MomentDateModule
+    MomentDateModule,
+    MatSlideToggleModule
   ]
 })
 export class SharedModule { }
