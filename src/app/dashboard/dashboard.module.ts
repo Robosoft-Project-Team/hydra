@@ -27,6 +27,9 @@ import {
   HeaderComponent,
   TableComponent,
 } from './shared';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { NotificationsListComponent } from './components/notifications/notifications-list/notifications-list.component';
+import { CreateEventFormComponent } from './components/notifications/create-event-form/create-event-form.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import {
     InviteHeaderComponent,
     InviteBodyComponent,
     CvRejectedComponent,
-    InviteSentBodyComponent
+    InviteSentBodyComponent,
+    NotificationsComponent,
+    NotificationsListComponent,
+    CreateEventFormComponent
   ],
   imports: [
     DashboardRoutingModule,
