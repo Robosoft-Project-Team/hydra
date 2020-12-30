@@ -19,7 +19,8 @@ import {
   InviteHeaderComponent,
   InviteBodyComponent,
   CvRejectedComponent,
-  InviteSentBodyComponent
+  InviteSentBodyComponent,
+  ChartComponent
 } from './components';
 
 import {
@@ -56,7 +57,8 @@ import { CreateEventFormComponent } from './components/notifications/create-even
     InviteSentBodyComponent,
     NotificationsComponent,
     NotificationsListComponent,
-    CreateEventFormComponent
+    CreateEventFormComponent,
+    ChartComponent
   ],
   imports: [
     DashboardRoutingModule,

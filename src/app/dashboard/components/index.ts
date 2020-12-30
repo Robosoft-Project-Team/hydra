@@ -1,5 +1,6 @@
 export * from './home/home.component';
 export * from './home/statistics/statistics.component';
+export * from './home/statistics/chart/chart.component';
 export * from './home/summary/summary.component';
 export * from './home/organizer-list/organizer-list.component';
 export * from './home/notification-item/notification-item.component';
