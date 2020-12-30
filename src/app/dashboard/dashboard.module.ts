@@ -20,6 +20,9 @@ import {
   InviteBodyComponent,
   CvRejectedComponent,
   InviteSentBodyComponent,
+  NotificationsComponent,
+  NotificationsListComponent,
+  CreateEventFormComponent,
   ChartComponent
 } from './components';
 
@@ -27,11 +30,8 @@ import {
   SidebarComponent,
   HeaderComponent,
   TableComponent,
+  ImagePipePipe
 } from './shared';
-import { NotificationsComponent } from './components/notifications/notifications.component';
-import { NotificationsListComponent } from './components/notifications/notifications-list/notifications-list.component';
-import { CreateEventFormComponent } from './components/notifications/create-event-form/create-event-form.component';
-import { ImagePipePipe } from './shared/pipes/image-pipe.pipe';
 
 @NgModule({
   declarations: [
