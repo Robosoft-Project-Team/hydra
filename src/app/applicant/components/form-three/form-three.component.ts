@@ -55,7 +55,6 @@ export class FormThreeComponent implements OnInit {
   fileArray = [];
   fileSize = 0;
   profileImage: FileList;
-  profileImageArray = [];
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(
@@ -102,7 +101,7 @@ export class FormThreeComponent implements OnInit {
     }
     this.getFormData();
     this.formStore.storeForm('formThree', this.formData);
-    this.submitForm.submitDetails(this.fileArray, this.profileImageArray);
+    this.submitForm.submitDetails(this.fileArray, this.profileImage);
     if (this.fileArray !== [] && this.profileImage) {
       this.router.navigate(['../success'], { relativeTo: this.route });
     }
@@ -139,8 +138,6 @@ export class FormThreeComponent implements OnInit {
   }
 
   uploadImage(files): void {
-    this.profileImageArray = [];
-    this.profileImageArray.push(files.item(0));
-    this.profileImage = this.profileImageArray[0];
+    this.profileImage = files.item(0);
   }
 }
