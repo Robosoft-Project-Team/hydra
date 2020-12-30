@@ -7,10 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NotificationsListComponent implements OnInit {
 
-  item = {
-    message: 'aaaaaaaaaaaaa', date: 'Today at 10.20am'
-  }
-
   constructor() { }
 
   ngOnInit(): void {

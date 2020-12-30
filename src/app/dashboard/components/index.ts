@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+
 export * from './home/home.component';
 export * from './home/statistics/statistics.component';
 export * from './home/statistics/chart/chart.component';
@@ -23,3 +25,7 @@ export * from './invite/invite-body/invite-body.component';
 export * from './invite/invite-sent-body/invite-sent-body.component';
 
 export * from './cv-rejected/cv-rejected.component';
+
+export * from './notifications/notifications.component';
+export * from './notifications/notifications-list/notifications-list.component';
+export * from './notifications/create-event-form/create-event-form.component';
