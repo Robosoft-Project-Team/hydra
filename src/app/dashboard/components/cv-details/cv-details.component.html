@@ -85,9 +85,9 @@
         </div>
         <div class="attachment-files">
           <div class="file" *ngFor="let item of applicant.attachmentEntities; let i = index" (click)="downloadAttachment(i)">
-            <div class="file-preview"><img width="100%" height="100%" src="assets/dashboard-cv/download.jpeg" alt="">
+            <div class="file-preview"><img width="100%" height="100%" src="assets/dashboard-cv/img_pdf_thumbnail.png" alt="">
             </div>
-            <p class="file-name">{{item.file_name}}</p>
+            <p class="file-name">{{item.file_name | slice:0:14}}</p>
             <p class="file-size">{{item.file_size}}</p>
           </div>
         </div>

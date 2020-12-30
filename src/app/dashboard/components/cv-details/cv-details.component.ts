@@ -111,7 +111,7 @@ export class CvDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params.id;
-    this.cv.getApplicant(127).subscribe(
+    this.cv.getApplicant(279).subscribe(
       response => {
         this.applicant = response.data.applicant;
       }

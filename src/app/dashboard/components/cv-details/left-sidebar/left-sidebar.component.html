@@ -39,6 +39,6 @@
 <div class="social">
     <p class="heading">Socials</p>
     <div class="social-links">
-        <a *ngFor="let link of applicant.websiteUrl" [href]="link.url"><img [src]="'assets/dashboard-cv/'+link.websiteName+'.jpeg'" alt=""></a>
+        <a *ngFor="let link of applicant.websiteUrl" [href]="link.url"><img [src]="'assets/dashboard-cv/img_'+link.websiteName.toLowerCase()+'.png'" alt=""></a>
     </div>
 </div>

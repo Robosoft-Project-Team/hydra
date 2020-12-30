@@ -12,44 +12,7 @@ import { CvAnalysisService } from '../../services/cv-analysis.service';
 export class CvAnalysisComponent implements OnInit {
 
   tableHeadings: string[] = ['Title', 'Applicants', 'Date', 'Status', 'Location'];
-  data: JobSummary[] = [
-    {
-      Title: 'UI/UX Designer',
-      Applicants: 10,
-      Date: '2020-12-27',
-      Status: true,
-      Location: 'Udupi'
-    },
-    {
-      Title: 'PHP Developer',
-      Applicants: 10,
-      Date: '2020-12-27',
-      Status: false,
-      Location: 'Udupi/Bangaluru'
-    },
-    {
-      Title: 'UI/UX design',
-      Applicants: 99,
-      Date: '2020-12-27',
-      Status: true,
-      Location: 'Udupi'
-    },
-    {
-      Title: 'UI/UX design',
-      Applicants: 9,
-      Date: '2020-12-27',
-      Status: false,
-      Location: 'Bangaluru'
-    },
-    {
-      Title: 'UI/UX Designer',
-      Applicants: 10,
-      Date: '2020-12-28',
-      Status: true,
-      Location: 'Mumbai'
-    },
-  ];
-
+  data: JobSummary[];
   filterDate;
   filterSearch;
   filteredData: JobSummary[];
@@ -79,8 +42,14 @@ export class CvAnalysisComponent implements OnInit {
   }
 
   filterDataOnSearch(date, search): void {
-    this.filteredData = this.data.filter(item => item.Date === date)
-    .filter(item => item.Title.toLowerCase().includes(search.toLowerCase()));
+    const epoch = new Date(date).getTime();
+    this.cvService.getAllCv(this.filterDate).subscribe(
+      response => {
+        this.data = response.data;
+        this.filteredData = response.data.filter(item => item.receivedDate === epoch)
+        .filter(item => item.designation.toLowerCase().includes(search.toLowerCase()));
+      }
+    );
   }
 
   onItemSelected(designation: string): void {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import { MatDatepicker } from '@angular/material/datepicker';
+// import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 @Component({
   selector: 'app-create-event-form',
@@ -7,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventFormComponent implements OnInit {
 
+  jobLocations = [
+    '1.00',
+    '2.00',
+    '3.00'
+  ];
+  
   constructor() { }
 
   ngOnInit(): void {

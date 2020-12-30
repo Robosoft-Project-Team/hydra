@@ -6,7 +6,7 @@
     </div>
     <hr>
     <ul class="list">
-      <li class="list-item" *ngFor="let item of list; let i = index" (click)="disp(item.designation)"
+      <li class="list-item" *ngFor="let item of list; let i = index" (click)="display(item.designation)"
       [class.selected]="selectedDesignation === item.designation">
         <p class="list-main-text">{{item.designation}}</p>
         <p class="list-sub-text">{{item.location}}</p>

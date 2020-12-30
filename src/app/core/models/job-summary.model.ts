@@ -1,9 +1,9 @@
 export interface JobSummary {
-    Title: string;
-    Applicants: number;
-    Date: string;
-    Status: boolean;
-    Location: string;
+    designation: string;
+    applicants: number;
+    receivedDate: number;
+    status: string;
+    location: string;
 }
 
 export interface AssignBoard {

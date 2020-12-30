@@ -37,4 +37,12 @@ export class CvAnalysisService {
   getAttachment(url: string): Observable<any> {
     return this.http.get(url, { responseType: 'blob' });
   }
+
+  getAllCv(date): Observable<any> {
+    return this.http.get(`getDesignationCount/${date}`);
+  }
+
+  getDesignationList(): Observable<any> {
+    return this.http.get('getDesignationList');
+  }
 }
