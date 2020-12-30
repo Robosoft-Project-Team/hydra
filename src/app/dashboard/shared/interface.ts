@@ -31,6 +31,7 @@ export interface AttachmentEntity {
     file_type: string;
     file_size: number;
     type?: any;
+    download_link: string;
 }
 
 export interface Applicant {

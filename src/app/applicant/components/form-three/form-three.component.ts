@@ -84,8 +84,8 @@ export class FormThreeComponent implements OnInit {
       aboutYou: new FormControl(data.aboutYou, Validators.required),
       currentCTC: new FormControl(data.currentCTC, Validators.required),
       expectedCTC: new FormControl(data.expectedCTC, Validators.required),
-      facebookLink: new FormControl(data.facebookLink, Validators.required),
-      linkedInLink: new FormControl(data.linkedInLink, Validators.required)
+      facebookLink: new FormControl(data.facebookLink),
+      linkedInLink: new FormControl(data.linkedInLink)
     });
     this.applicantFormThree = formGroup;
   }
@@ -99,13 +99,18 @@ export class FormThreeComponent implements OnInit {
       this.formError = true;
       return;
     }
-
     this.getFormData();
-    this.submitForm.submitForm();
+    this.formStore.storeForm('formThree', this.formData);
     if (this.fileArray !== [] && this.profileImage) {
-      this.router.navigate(['../success'], { relativeTo: this.route });
+      this.submitForm.submitDetails(this.fileArray, this.profileImage).subscribe(
+        response => {
+          if (response.status === 200){
+            this.formStore.resetForms();
+            this.router.navigate(['../success'], { relativeTo: this.route });
+          }
+        }
+      );
     }
-    this.submitForm.submitFiles(this.fileArray, this.profileImage);
   }
 
   goBack(): void {
