@@ -10,9 +10,8 @@ import {
   AssignBoardComponent,
   InviteComponent,
   CvRejectedComponent,
-  InviteSentBodyComponent
+  NotificationsComponent
 } from './components';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -34,7 +33,7 @@ const routes: Routes = [
         ]
       },
       { path: 'invite', component: InviteComponent },
-      {path: 'notifications', component: NotificationsComponent}
+      { path: 'notifications', component: NotificationsComponent }
     ]
   }
 ];

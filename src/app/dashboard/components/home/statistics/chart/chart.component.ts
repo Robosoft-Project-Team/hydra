@@ -96,10 +96,10 @@ export class ChartComponent implements OnInit {
               fontColor: '#333333',
               fontFamily: 'Muli, Helvetica, sans-serif',
               minRotation: 90,
-              padding: 10,
+              // padding: 10,
               stepSize: 100,
               callback(value: number): string {
-                return (value < 0 ? '' : '+') + (value / 10).toFixed(0) + '% '; // convert it to percentage
+                return (value < 0 ? '' : '+') + (value / 10).toFixed(0) + '%'; // convert it to percentage
               },
             }
           }]

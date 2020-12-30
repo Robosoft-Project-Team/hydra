@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   user: Profile = {
     name: 'Renuka Shetty',
     designation: 'Recruiter',
-    imageURL: 'https://randomuser.me/api/portraits/women/11.jpg'
+    imageURL: 'https://randomuser.me/api/portraits/women/85.jpg'
   };
 
   constructor() { }
