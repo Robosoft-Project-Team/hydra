@@ -101,9 +101,15 @@ export class FormThreeComponent implements OnInit {
     }
     this.getFormData();
     this.formStore.storeForm('formThree', this.formData);
-    this.submitForm.submitDetails(this.fileArray, this.profileImage);
     if (this.fileArray !== [] && this.profileImage) {
-      this.router.navigate(['../success'], { relativeTo: this.route });
+      this.submitForm.submitDetails(this.fileArray, this.profileImage).subscribe(
+        response => {
+          if (response.status === 200){
+            this.formStore.resetForms();
+            this.router.navigate(['../success'], { relativeTo: this.route });
+          }
+        }
+      );
     }
   }
 

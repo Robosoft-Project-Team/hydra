@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FormStorageService } from './form-storage.service';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class SubmitFormService {
     const obj = this.formStore.getForm('formThree');
     obj.websiteUrl = [
       {
-        websiteName: 'facebook',
+        websiteName: 'Facebook',
         url: obj.facebookLink
       },
       {
@@ -26,30 +27,26 @@ export class SubmitFormService {
     ];
     delete obj.facebookLink;
     delete obj.linkedInLink;
-
     return { ...this.formStore.getForm('formOne'), ...this.formStore.getForm('formTwo'), ...obj };
-    // this.formStore.resetForms();
   }
 
-  submitDetails(attachments, profileImage): void {
+  submitDetails(attachments, profileImage): Observable<any> {
     const formDetails = this.submitForm();
-    console.log(attachments);
-    console.log(profileImage);
-    this.onSubmit(attachments, profileImage, formDetails);
+    return this.onSubmit(attachments, profileImage, formDetails);
   }
 
-  onSubmit(attachments, profileImage, formDetails): void {
+  onSubmit(attachments, profileImage, formDetails): Observable<any> {
     // formDetails.pincode = '574222';
     // formDetails.educationHistory[0].instituitionName = 'slnp';
     // delete formDetails.educationHistory[0].institutionName;
     // console.log(formDetails);
     // const formDet = {
     //   applicantName: formDetails.applicantName,
-    //   mobile_no: formDetails.mobile_no,
     //   emailId: formDetails.emailId,
+    //   mobile_no: formDetails.mobile_no,
     //   dob: formDetails.dob,
-    //   jobLocation: formDetails.dob,
-    //   gender: formDetails.dob,
+    //   jobLocation: formDetails.jobLocation,
+    //   gender: formDetails.gender,
     //   designation: formDetails.designation,
     //   experienceYear: formDetails.experienceYear,
     //   experienceMonth: formDetails.experienceMonth,
@@ -73,7 +70,7 @@ export class SubmitFormService {
     //   websiteUrl:
     //     [
     //       {
-    //         websiteName: formDetails.websiteUrl[0].websiteName,
+    //         websiteName: 'Facebook',
     //         url: formDetails.websiteUrl[0].url
     //       }
     //     ],
@@ -97,92 +94,18 @@ export class SubmitFormService {
     //     }
     //   ]
     // };
-    // formDet.emailId = 'muktha12345aa12852@gmail.com';
-    const formDet = {
-      applicantName: 'Mukthaaa',
-      emailId: 'muktha12345aa123@gmail.com',
-      mobile_no: '1234567890',
-      dob: '06/06/06',
-      jobLocation: 'Bangalore',
-      gender: 'Female',
-      designation: 'PHP Developer',
-      experienceYear: 2,
-      experienceMonth: 0,
-      applicationType: 'Referral',
-      reference:
-      {
-        reference_name: 'abc',
-        reference_desig: 'desig',
-        reference_mobile: 123,
-        reference_mail: 'mail'
-      },
-      languages: 'java,C',
-      address: 'address',
-      state: 'kar',
-      pincode: '56',
-      softwares: 'abc',
-      skill: 'skill',
-      aboutYou: 'y',
-      currentCTC: '123',
-      expectedCTC: '234',
-      websiteUrl:
-        [
-          {
-            websiteName: 'Facebook',
-            url: 'soumya@facebook.com'
-          },
-          {
-            websiteName: 'LinkedIn',
-            url: 'soumya@linkedin.com'
-          },
-          {
-            websiteName: 'Twitter',
-            url: 'soumya@twitter.com'
-          },
-          {
-            websiteName: 'Github',
-            url: 'soumya@github.com'
-          }
-        ],
-      educationHistory:
-        [
-          {
-            instituitionName: 'JNV',
-            grade: '10',
-            from: '2014-06-01',
-            to: '2016-06-30',
-            location: 'Mangalore'
-          },
-          {
-            instituitionName: 'SJEC',
-            grade: '8',
-            from: '2016-07-01',
-            to: '2020-06-30',
-            location: 'Mangalore'
-          }
-        ],
-      workHistory: [
-        {
-          companyName: 'robo',
-          position: 'java',
-          from: '2014-06-01',
-          to: '2016-06-30',
-          location: 'Mangalore'
-        }
-      ]
-    };
-    // formDet.emailId = 'muktha12345aa124@gmail.com';
-    console.log(formDet);
+    // console.log(formDet);
 
     const formData = new FormData();
-    formData.append('CVFiles', attachments[0]);
+    attachments.forEach((element) => {
+      formData.append('CVFiles', element);
+    });
     formData.append('ImageFile', profileImage);
-    formData.append('Applicant', JSON.stringify(formDet));
+    formData.append('Applicant', JSON.stringify(formDetails));
+    return this.http.post('registration', formData);
+  }
 
-
-    this.http.post('registration', formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
+  getDesignationList(): Observable<any> {
+    return this.http.get('getDesignationList');
   }
 }

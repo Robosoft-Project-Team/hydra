@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormStorageService } from '../../services/form-storage.service';
+import { HttpClient } from '@angular/common/http';
+import { SubmitFormService } from '../../services/submit-form.service';
 
 interface ApplicantFormOne {
   applicantName: string;
@@ -48,22 +50,22 @@ export class FormOneComponent implements OnInit {
   ];
 
   jobDesignations = [
-    'UI/UX Designer',
-    'Angular Developer',
-    'Java Developer',
-    'Ruby Rails Developer',
-    'React Developer',
-    'iOS Developer',
-    'Kotlin Developer',
-    'C# Developer',
-    'Marketing Manager',
-    'HR Manager',
-    'Technical Architect',
-    'System Admin',
-    'Analyst',
-    'Project Engineer',
-    'Intern',
-    'Trainee Engineer'
+    // 'PHP Developer',
+    // 'Angular Developer',
+    // 'Java Developer',
+    // 'Ruby Rails Developer',
+    // 'React Developer',
+    // 'iOS Developer',
+    // 'Kotlin Developer',
+    // 'C# Developer',
+    // 'Marketing Manager',
+    // 'HR Manager',
+    // 'Technical Architect',
+    // 'System Admin',
+    // 'Analyst',
+    // 'Project Engineer',
+    // 'Intern',
+    // 'Trainee Engineer'
   ];
 
   selectedLocation = this.jobLocations[0];
@@ -94,12 +96,12 @@ export class FormOneComponent implements OnInit {
 
   MOCK_DATA_FROM_SERVICE = {
     applicantName: 'John',
-    emailId: 'john@hmail.co',
+    emailId: 'john@gmail.co',
     mobile_no: '8855664488',
     dob: '10/06/1998',
     jobLocation: 'Udupi',
     gender: 'Others',
-    designation: 'Engineer',
+    designation: '',
     experienceYear: 6,
     experienceMonth: 3,
     applicationType: 'Organizer',
@@ -116,6 +118,7 @@ export class FormOneComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formStore: FormStorageService,
+    private submitService: SubmitFormService
   ) { }
 
   ngOnInit(): void {
@@ -125,6 +128,15 @@ export class FormOneComponent implements OnInit {
     if (this.formStore.hasForm('formOne')) {
       this.populateForm(this.formStore.getForm('formOne'));
     }
+
+    this.submitService.getDesignationList().subscribe(
+      response => {
+        response.data.forEach(element => {
+          this.jobDesignations.push(element.designation);
+        });
+      },
+      error => console.log(error)
+    );
   }
 
   get form(): any {
@@ -163,7 +175,6 @@ export class FormOneComponent implements OnInit {
     if (this.applicantFormOne.invalid) {
       return;
     }
-    console.log(JSON.stringify(this.getFormData()));
     this.formStore.storeForm('formOne', this.getFormData());
     this.router.navigate(['../form-2'], { relativeTo: this.route });
   }
