@@ -111,7 +111,7 @@ export class CvDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params.id;
-    this.cv.getApplicant(279).subscribe(
+    this.cv.getApplicant(320).subscribe(
       response => {
         this.applicant = response.data.applicant;
       }
@@ -157,6 +157,12 @@ export class CvDetailsComponent implements OnInit {
         fileSaver.saveAs(blob, filename);
       }
     );
+  }
+
+  convertSize(fileSize: number): string {
+    return fileSize < 1024000
+      ? (fileSize / 1024).toFixed(2) + ' KB'
+      : (fileSize / 1024000).toFixed(2) + ' MB';
   }
 
 }

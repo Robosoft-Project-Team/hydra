@@ -7,9 +7,10 @@ export interface JobSummary {
 }
 
 export interface AssignBoard {
-    Name: string;
-    Designation: string;
-    Location: string;
-    AssignedDate: string;
-    Organizer: string;
+    applicantId: number;
+    applicantName: string;
+    designation: string;
+    assignedDate: number;
+    location: string;
+    organizer: string;
 }

@@ -22,7 +22,7 @@
       <hr class="hr">
       <div class="section">
         <div class="heading">
-          Work experiance
+          Work experience
         </div>
         <div class="section-content" *ngFor="let item of applicant.workHistory">
           <img src="assets/dashboard-cv/img_amazon.png" alt="">
@@ -60,9 +60,9 @@
         </div>
       </div>
       <hr class="hr">
-      <div class="referance">
+      <div class="reference">
         <div class="heading">
-          Referance
+          Reference
         </div>
         <p class="name">{{applicant.reference.reference_name}}</p>
         <p class="company">{{applicant.reference.reference_desig}}</p>
@@ -88,7 +88,7 @@
             <div class="file-preview"><img width="100%" height="100%" src="assets/dashboard-cv/img_pdf_thumbnail.png" alt="">
             </div>
             <p class="file-name">{{item.file_name | slice:0:14}}</p>
-            <p class="file-size">{{item.file_size}}</p>
+            <p class="file-size">{{convertSize(item.file_size)}}</p>
           </div>
         </div>
       </div>

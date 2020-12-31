@@ -45,4 +45,16 @@ export class CvAnalysisService {
   getDesignationList(): Observable<any> {
     return this.http.get('getDesignationList');
   }
+
+  assignApplicantToOrganiser(applicantId, employeeId): Observable<any> {
+    const putBody = {
+      applicant_id: applicantId,
+      employee_id: employeeId
+    };
+    return this.http.put('assignTo', putBody);
+  }
+
+  getAssignedList(): Observable<any> {
+    return this.http.get('assignedApplicant');
+  }
 }
