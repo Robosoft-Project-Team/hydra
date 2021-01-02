@@ -11,7 +11,7 @@ export interface User {
     name: string;
     designation: string;
     image: Image;
-    cvCount: number;
+    cvCount?: number;
 }
 
 export interface Summary {

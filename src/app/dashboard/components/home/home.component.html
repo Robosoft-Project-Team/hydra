@@ -11,8 +11,8 @@
           <p class="user-name">{{dashboardData.user.name}}</p>
           <p class="user-designation">{{dashboardData.user.designation}}</p>
         </div>
-        <div class="user-image">
-          <img [src]="dashboardData.user.image.url" alt="User Image">
+        <div>
+          <img class="user-image" [src]="dashboardData.user.image.url" alt="User Image">
         </div>
       </div>
     </div>
@@ -22,8 +22,9 @@
     </div>
     <div class="dashboard-section-title">
       <span class="title-text">Notification</span>
-      <div class="title-action">
+      <div class="title-action" [routerLink]="['.', 'notifications']">
         <a>View All</a>
+        <mat-icon class="title-action-btn">keyboard_arrow_right</mat-icon>
       </div>
     </div>
     <div class="dashboard-notifications">
@@ -33,7 +34,5 @@
     <div class="dashboard-organizers">
       <app-organizer-list [organizers]="dashboardData.organizers"></app-organizer-list>
     </div>
-
   </div>
-
 </div>

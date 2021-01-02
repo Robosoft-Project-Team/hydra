@@ -1,12 +1,12 @@
 <div class="card" (click)="displayDetails(card.applicantId)">
-    <div class="card-info">
-        <img class="card-image" src="{{getImageEndPoint(card.attachmentEntities[0]) | imagePipe | async}}">
-        <div class="card-name">
-            <p class="card-main-text">{{card.name}}</p>
-            <p class="card-sub-text">{{card.designation}}</p>
-        </div>
+  <div class="card-info">
+    <img class="card-image" src="{{getImageEndPoint(card.attachmentEntities[0]) | imagePipe | async}}">
+    <div class="card-name">
+      <p class="card-main-text">{{card.name}}</p>
+      <p class="card-sub-text">{{card.designation}}</p>
     </div>
-    <div class="card-skills">
-        <p *ngFor="let skill of skills"><span>{{skill}}</span></p>
-    </div>
+  </div>
+  <div class="card-skills">
+    <p *ngFor="let skill of skills"><span>{{skill}}</span></p>
+  </div>
 </div>

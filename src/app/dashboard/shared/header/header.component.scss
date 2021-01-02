@@ -152,13 +152,7 @@
         background-color: $color-primary-dark;
         position: relative;
         margin-left: 4rem;
-
-        img {
-          @include position-middle();
-          height: 25px;
-          width: 25px;
-          border-radius: 50%;
-        }
+        margin-bottom: .5rem;
       }
     }
   }

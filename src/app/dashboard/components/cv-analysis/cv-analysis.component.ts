@@ -18,6 +18,8 @@ export class CvAnalysisComponent implements OnInit {
   filteredData: JobSummary[];
   selectedDesignation;
 
+  isDataExists = false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -47,7 +49,8 @@ export class CvAnalysisComponent implements OnInit {
       response => {
         this.data = response.data;
         this.filteredData = response.data.filter(item => item.receivedDate === epoch)
-        .filter(item => item.designation.toLowerCase().includes(search.toLowerCase()));
+          .filter(item => item.designation.toLowerCase().includes(search.toLowerCase()));
+        this.isDataExists = this.filteredData.length > 0 ? true : false;
       }
     );
   }

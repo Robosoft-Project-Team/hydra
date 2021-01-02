@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { Subject } from 'rxjs';
-import { DashboardData, User } from 'src/app/core/models';
+import { DashboardData, NotificationList, User } from 'src/app/core/models';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 interface ResponseData {
   data: any;
@@ -16,11 +17,11 @@ interface ResponseData {
 export class DashboardService {
   dashboardData: DashboardData = {
     user: {
-      name: 'Renuka Shetty',
-      designation: 'Recruiter',
+      name: '',
+      designation: '',
       cvCount: 0,
       image: {
-        url: 'https://randomuser.me/api/portraits/women/85.jpg'
+        url: 'https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg'
       }
     },
     date: moment(),
@@ -32,9 +33,9 @@ export class DashboardService {
     },
     notification: [
       {
-        message: 'Campus Interview at Nitte Institution',
-        date: moment(new Date(2020, 3, 7)).format('DD MMM, YYYY'),
-        time: moment(new Date().getTime()).format('hh:mm A'),
+        message: 'NA',
+        date: 'NA',
+        time: 'NA',
         usersList: [
           { url: 'https://randomuser.me/api/portraits/men/32.jpg' },
           { url: 'https://randomuser.me/api/portraits/men/11.jpg' },
@@ -53,10 +54,13 @@ export class DashboardService {
 
   dashboardDataChanged = new Subject<DashboardData>();
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private storageService: StorageService
   ) { }
 
   getData(): DashboardData {
+    this.dashboardData.user.name = this.storageService.getUserProfile()?.employeeName || 'User';
+    this.dashboardData.user.designation = this.storageService.getUserProfile()?.employeeRole || 'Employee';
     this.getCVCount();
     this.getOrganizersList();
     this.getSummary(moment().startOf('month'), moment().endOf('month'));
@@ -65,6 +69,7 @@ export class DashboardService {
     this.getOldSummary(2, moment().startOf('month'), moment().endOf('month'));
     this.getOldSummary(3, moment().startOf('year'), moment().endOf('year'));
     this.getOldSummary(4, moment().startOf('year'), moment().endOf('year'));
+    this.getNotification();
     return this.dashboardData;
   }
 
@@ -164,4 +169,23 @@ export class DashboardService {
       }
     );
   }
+
+  getNotification(): void {
+    this.http.get<ResponseData>('notification').subscribe(
+      response => {
+        this.dashboardData.notification[0].message = response.data[0]?.notificationMessage || 'NA';
+        const date = this.formatDate(response.data[0]?.time) || new Date();
+        this.dashboardData.notification[0].date = moment(date).format('DD MMM, YYYY');
+        this.dashboardData.notification[0].time = moment(date.getTime()).format('hh:mm A');
+      },
+      error => {
+        console.error('Error Fetching Notifications: ', error.message);
+      }
+    );
+  }
+
+  formatDate(date: number[]): Date {
+    return date ? new Date(date[0], date[1], date[2], date[3], date[4], date[5]) : null;
+  }
+
 }

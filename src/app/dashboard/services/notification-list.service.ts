@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class NotificationListService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getNotificationList(): Observable<any>{
+  getNotificationList(): Observable<any> {
     return this.http.get('notification');
   }
 }

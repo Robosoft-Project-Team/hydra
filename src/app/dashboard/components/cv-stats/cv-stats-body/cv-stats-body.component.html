@@ -1,36 +1,36 @@
 <div class="content">
-    <div class="content-item">
-        <div class="content-label new">
-            <p><img src="assets/dashboard-cv/icn_new.png" alt="">New</p>
-            <span class="count">{{newResume.length}} / {{totalLength}}</span>
-        </div>
-        <div class="content-resume">
-            <div *ngFor="let item of newResume">
-                <app-applicant-card [card]="item"></app-applicant-card>
-            </div>
-        </div>
-    </div>            
-    <div class="content-item">
-        <div class="content-label shortlist">
-            <p><img src="assets/dashboard-cv/icn_shortlist.png" alt="">Shortlist</p>
-            <span class="count">{{shortlistResume.length}} / {{totalLength}}</span>
-        </div>
-        <div class="content-resume">
-            <div *ngFor="let item of shortlistResume">
-                <app-applicant-card [card]="item"></app-applicant-card>
-            </div>
-        </div>
+  <div class="content-item">
+    <div class="content-label new">
+      <p><img src="assets/dashboard-cv/icn_new.png" alt="">New</p>
+      <span class="count">{{newResume.length}} / {{totalLength}}</span>
     </div>
-    <div class="content-item">
-        <div class="content-label reject">
-            <p><img src="assets/dashboard-cv/icn_rejected.png" alt="">Rejected</p>
-            <span class="count">{{rejectedResume.length}} / {{totalLength}}</span>
-        </div>
-        <div class="content-resume">
-            <div *ngFor="let item of rejectedResume">
-                <app-applicant-card [card]="item"></app-applicant-card>
-            </div>
-        </div>
+    <div class="content-resume">
+      <div *ngFor="let item of newResume">
+        <app-applicant-card [card]="item"></app-applicant-card>
+      </div>
     </div>
+  </div>
+  <div class="content-item">
+    <div class="content-label shortlist">
+      <p><img src="assets/dashboard-cv/icn_shortlist.png" alt="">Shortlist</p>
+      <span class="count">{{shortlistResume.length}} / {{totalLength}}</span>
+    </div>
+    <div class="content-resume">
+      <div *ngFor="let item of shortlistResume">
+        <app-applicant-card [card]="item"></app-applicant-card>
+      </div>
+    </div>
+  </div>
+  <div class="content-item">
+    <div class="content-label reject">
+      <p><img src="assets/dashboard-cv/icn_rejected.png" alt="">Rejected</p>
+      <span class="count">{{rejectedResume.length}} / {{totalLength}}</span>
+    </div>
+    <div class="content-resume">
+      <div *ngFor="let item of rejectedResume">
+        <app-applicant-card [card]="item"></app-applicant-card>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- <app-applicant-card></app-applicant-card> -->

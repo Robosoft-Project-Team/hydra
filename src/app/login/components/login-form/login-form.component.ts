@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
-import { SignInService } from '../../services/sign-in.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { SignInService } from 'src/app/login/services/sign-in.service';
 
 @Component({
   selector: 'app-login-form',
@@ -20,7 +21,8 @@ export class LoginFormComponent implements OnInit {
     private validation: FormValidationService,
     private router: Router,
     private route: ActivatedRoute,
-    private signInService: SignInService
+    private signInService: SignInService,
+    private storageService: StorageService
   ) { }
 
   ngOnInit(): void {
@@ -70,6 +72,7 @@ export class LoginFormComponent implements OnInit {
           if (response.status === 200) {
             this.router.navigate(['/dashboard']);
             this.signInService.storeCredentials(response.data.accessToken);
+            this.storageService.setUserProfile(response.data.employeeName, response.data.roles[0].id);
           }
         },
         error => {

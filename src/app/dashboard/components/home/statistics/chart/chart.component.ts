@@ -106,7 +106,7 @@ export class ChartComponent implements OnInit, OnDestroy {
                 // padding: 10,
                 stepSize: 10,
                 callback(value: number): string {
-                  return (value < 0 ? '' : '+') + (value / 10).toFixed(0) + '%'; // convert it to percentage
+                  return (value < 0 ? '' : '+') + value.toFixed(0) + '%'; // convert it to percentage
                 },
               }
             }]

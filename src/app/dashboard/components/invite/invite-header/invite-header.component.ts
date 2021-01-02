@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from 'src/app/core/models';
+import { Profile, User } from 'src/app/core/models';
+import { DashboardService } from 'src/app/dashboard/services/dashboard.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-invite-header',
@@ -7,14 +9,22 @@ import { Profile } from 'src/app/core/models';
   styleUrls: ['./invite-header.component.scss']
 })
 export class InviteHeaderComponent implements OnInit {
-  user: Profile = {
-    name: 'Renuka Shetty',
-    designation: 'Recruiter',
-    imageURL: 'https://randomuser.me/api/portraits/women/11.jpg'
+  user: User = {
+    name: '',
+    designation: '',
+    image: {
+      url: ''
+    }
   };
-  constructor() { }
+  constructor(
+    private storageService: StorageService,
+    private dashboardService: DashboardService
+  ) { }
 
   ngOnInit(): void {
+    this.user.name = this.storageService.getUserProfile()?.employeeName || 'User';
+    this.user.designation = this.storageService.getUserProfile()?.employeeRole || 'Employee';
+    this.user.image.url = this.dashboardService.dashboardData.user.image.url;
   }
 
 }

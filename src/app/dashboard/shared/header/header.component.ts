@@ -4,6 +4,9 @@ import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepi
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import * as moment from 'moment';
 import { FormControl } from '@angular/forms';
+import { DashboardService } from '../../services/dashboard.service';
+import { User } from 'src/app/core/models';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 const MY_FORMATS = {
   parse: {
@@ -31,15 +34,23 @@ export class HeaderComponent implements OnInit {
 
   filterDate = new FormControl(moment());
   search = new FormControl();
-  user: Profile = {
-    name: 'Renuka Shetty',
-    designation: 'Recruiter',
-    imageURL: 'https://randomuser.me/api/portraits/women/85.jpg'
+  user: User = {
+    name: '',
+    designation: '',
+    image: {
+      url: ''
+    }
   };
 
-  constructor() { }
+  constructor(
+    private dashboardService: DashboardService,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
+    this.user.name = this.storageService.getUserProfile()?.employeeName || 'User';
+    this.user.designation = this.storageService.getUserProfile()?.employeeRole || 'Employee';
+    this.user.image.url = this.dashboardService.dashboardData.user.image.url;
   }
 
   selectedDate(date: MatDatepickerInputEvent<moment.Moment>): void {

@@ -100,6 +100,7 @@ $color-blue-dark: #121432;
       &.active {
         font-weight: 800;
         color: $color-white;
+        z-index: 10;
 
         &::before {
           content: '';
@@ -118,6 +119,7 @@ $color-blue-dark: #121432;
           background-color: rgba($color-primary-dark, .2);
           position: absolute;
           left: -1.125rem;
+          z-index: -1;
         }
       }
 

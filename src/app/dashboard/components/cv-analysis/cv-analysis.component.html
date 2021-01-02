@@ -4,18 +4,28 @@
       (dateSelected)="onDateSelected($event)" (searchItem)="onSearchItem($event)"></app-header>
   </div>
   <div class="cv-table">
-    <app-table [headings]="tableHeadings">
-      <ng-container *ngFor="let item of filteredData; let i = index">
-        <tr class="table-row" *ngIf="item.applicants !== 0" (click)="onItemSelected(item.designation)">
-          <td class="table-data">{{item.designation}}</td>
-          <td class="table-data">
-            <span class="chip" [ngClass]="{'closed': !item.status}">{{item.applicants}}</span>
-          </td>
-          <td class="table-data">{{item.receivedDate | date : 'dd MMM, y'}}</td>
-          <td class="table-data">{{item.status ? 'Active' : 'Closed'}}</td>
-          <td class="table-data">{{getLocationString(item.location)}}</td>
-        </tr>
+    <app-table [headings]="tableHeadings" *ngIf="filteredData; else loading;">
+      <ng-container *ngIf="isDataExists; else noData">
+        <ng-container *ngFor="let item of filteredData; let i = index">
+          <tr class="table-row" *ngIf="item.applicants !== 0" (click)="onItemSelected(item.designation)">
+            <td class="table-data">{{item.designation}}</td>
+            <td class="table-data">
+              <span class="chip" [ngClass]="{'closed': !item.status}">{{item.applicants}}</span>
+            </td>
+            <td class="table-data">{{item.receivedDate | date : 'dd MMM, y'}}</td>
+            <td class="table-data">{{item.status ? 'Active' : 'Closed'}}</td>
+            <td class="table-data">{{getLocationString(item.location)}}</td>
+          </tr>
+        </ng-container>
       </ng-container>
     </app-table>
+    <ng-template #loading>
+      <h2>Loading Data...</h2>
+    </ng-template>
+    <ng-template #noData>
+      <div class="table-row">
+        <h2 class="table-data" style="margin: 0; font-family: Muli;">No Data Found</h2>
+      </div>
+    </ng-template>
   </div>
 </div>

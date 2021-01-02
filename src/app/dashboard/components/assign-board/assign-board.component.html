@@ -4,14 +4,24 @@
       (searchItem)="onSearchItem($event)"></app-header>
   </div>
   <div class="assign-table">
-    <app-table [headings]="tableHeadings">
-      <tr class="table-row" *ngFor="let item of data; let i = index;" (click)="onItemSelected(i)">
-        <td class="table-data">{{item.applicantName}}</td>
-        <td class="table-data">{{item.designation}}</td>
-        <td class="table-data">{{item.location}}</td>
-        <td class="table-data">{{item.assignedDate | date : 'dd MMM, y'}}</td>
-        <td class="table-data">{{item.organizer}}</td>
-      </tr>
+    <app-table [headings]="tableHeadings" *ngIf="filteredData; else loading;">
+      <ng-container *ngIf="isDataExists; else noData">
+        <tr class="table-row" *ngFor="let item of filteredData; let i = index;" (click)="onItemSelected(i)">
+          <td class="table-data">{{item.applicantName}}</td>
+          <td class="table-data">{{item.designation}}</td>
+          <td class="table-data">{{item.location}}</td>
+          <td class="table-data">{{item.assignedDate | date : 'dd MMM, y'}}</td>
+          <td class="table-data">{{item.organizer}}</td>
+        </tr>
+      </ng-container>
     </app-table>
+    <ng-template #loading>
+      <h2>Loading Data...</h2>
+    </ng-template>
+    <ng-template #noData>
+      <div class="table-row">
+        <h2 class="table-data" style="margin: 0; font-family: Muli;">No Data Found</h2>
+      </div>
+    </ng-template>
   </div>
 </div>

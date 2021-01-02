@@ -13,8 +13,6 @@ export class NotificationsListComponent implements OnInit {
   date = moment().format('YYYY, MMMM DD');
   notifications: NotificationList[];
 
-
-
   constructor(private notification: NotificationListService) { }
 
   ngOnInit(): void {

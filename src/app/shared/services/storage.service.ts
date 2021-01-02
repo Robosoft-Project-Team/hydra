@@ -22,4 +22,16 @@ export class StorageService {
   removeJwtToken(): void {
     localStorage.removeItem('jwtToken');
   }
+
+  setUserProfile(employeeName: string, role: number): void {
+    const userProfile = {
+      employeeName,
+      employeeRole: role === 1 ? 'Recruiter' : 'Employee'
+    };
+    localStorage.setItem('userProfile', JSON.stringify(userProfile));
+  }
+
+  getUserProfile(): any {
+    return JSON.parse(localStorage.getItem('userProfile'));
+  }
 }
