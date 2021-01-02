@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { sendInvite } from 'src/app/core/models';
+
 
 @Component({
   selector: 'app-invite-sent-body',
@@ -6,9 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./invite-sent-body.component.scss']
 })
 export class InviteSentBodyComponent implements OnInit {
-  @Input() users;
-
-  constructor() { }
+  @Input() invitedCandidates: sendInvite[];
 
   ngOnInit(): void {
   }

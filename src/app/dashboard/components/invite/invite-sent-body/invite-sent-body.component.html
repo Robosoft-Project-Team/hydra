@@ -1,11 +1,11 @@
 <div class="sent-invite">
   <div class="sent-invite-body">
     <div class="container card-container">
-      <div class="cv-card" *ngFor="let user of users">
+      <div class="cv-card" *ngFor="let user of invitedCandidates">
         <div class="cv-card-header">
           <div class="cv-card-profile">
-            <p class="cv-card-profile-name">{{user.name}}</p>
-            <p class="cv-card-profile-designation">{{user.designation}}</p>
+            <p class="cv-card-profile-name">{{user.name | titlecase}}</p>
+            <p class="cv-card-profile-designation">{{user.designation | titlecase}}</p>
           </div>
         </div>
         <hr>
@@ -13,12 +13,12 @@
           <div class="cv-card-details">
             <img class="cv-card-details-icon" src="../../../../../assets/cv-rejected/icn_location_recruit.png"
               alt="Map Icon">
-            <p class="cv-card-details-info">{{user.location}}</p>
+            <p class="cv-card-details-info">{{user.location | titlecase}}</p>
           </div>
           <div class="cv-card-details">
             <img class="cv-card-details-icon email" src="../../../../../assets/send-invite/icn_email_sentinvite.png"
               alt="Phone Icon">
-            <p class="cv-card-details-info">{{user.email}}</p>
+            <p class="cv-card-details-info">{{user.emailId}}</p>
           </div>
           <button class="button button-invite">Resend Invite</button>
         </div>

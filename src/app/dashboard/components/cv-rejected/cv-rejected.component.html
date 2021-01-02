@@ -5,9 +5,9 @@
   </div>
   <div class="cv-rejected-body">
     <div class="container card-container">
-        <div class="cv-card" *ngFor="let user of RejectedUserData; let i = index;" (click)="details()">
+        <div class="cv-card" *ngFor="let user of RejectedUserData; let i = index;" (click)="details(user.applicantId)">
         <div class="cv-card-header">
-          <img class="cv-card-image" src="../../../../../assets/cv-rejected/icn_photo_thumbnail.png"
+          <img class="cv-card-image" [src]="user.attachmentEntities[0].download_link"
             alt="Profile Image">
           <div class="cv-card-profile">
             <p class="cv-card-profile-name">{{user.applicantName}}</p>

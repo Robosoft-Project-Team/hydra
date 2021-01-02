@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
-import { RejectedCV} from 'src/app/core/models/dashboard/rejected-cv.model';
+import { RejectedCV } from 'src/app/core/models';
 import { CvRejectedService } from '../../services/cv-rejected.service';
 
 @Component({
@@ -11,12 +10,12 @@ import { CvRejectedService } from '../../services/cv-rejected.service';
 })
 export class CvRejectedComponent implements OnInit {
 
-  RejectedUserData : RejectedCV[];
-  
+  RejectedUserData: RejectedCV[];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private cvRejectedService : CvRejectedService
+    private cvRejectedService: CvRejectedService
   ) {
   }
 
@@ -32,8 +31,8 @@ export class CvRejectedComponent implements OnInit {
     console.log(data);
   }
 
-  details(): void {
-    this.router.navigate(['./2'], { relativeTo: this.route});
+  details(id: number): void {
+    this.router.navigate([id], { relativeTo: this.route });
   }
 
   // onSearchItem(data: string): void {

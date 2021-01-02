@@ -1,191 +1,31 @@
 <div class="container notifications">
   <div class="notifications-header">
+    <div class="notifications-header-wrapper">
     <p class="notifications-title">Notifications</p>
     <!-- <div class="notifications-toggle-switch"><mat-slide-toggle></mat-slide-toggle></div> -->
-    <div class="notifications-toggle-switch"><img src="../../../../../assets/notifications/on.png" alt=""></div>
+    <div class="notifications-toggle-switch">
+      <label>
+        <input type="checkbox" class="notifications-toggle-switch-control">
+        <span class="switch-label"></span>
+      </label>
+    </div>
+  </div>
+    <!-- <div class="notifications-toggle-switch"><img src="../../../../../assets/notifications/on.png" alt=""></div> -->
+    <div class="notifications-header-wrapper">
     <div class="notifications-search-icon"><img src="assets/dashboard-cv/icn_search.png" alt=""></div>
-    <p class="notifications-date">Date:<span>2020, December 30</span></p>
+    <p class="notifications-date">Date:<span>{{date}}</span></p>
+    </div>
   </div>
   <hr>
   <div class="notification">
-    <div class="notification-list">
-      <p class="notification-message">Event <span>Nitte Campus</span> created successfully on 2020, May 20
-        <span class="dot">•••</span></p>
+    <div class="notification-list" *ngFor="let item of notifications">
+    <!-- <div class="notification-list event"> -->
+      <p class="notification-message">{{item.notificationMessage}}<span class="dot">•••</span></p>
+      <button *ngIf="item.joinDeclineButton" class="button button-accept">Join</button>
+      <button *ngIf="item.joinDeclineButton" class="button button-decline">Decline</button>
       <div class="notification-schedule">
         <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">10 minutes ago</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have got <span>10</span> new registrations today <span class="dot">•••</span>
-      </p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">Today at 10.20am</p>
-      </div>
-    </div>
-    <div class="notification-list event">
-      <p class="notification-message">Nisha invited you to join a Event <span>Trainee Walkins</span> in
-        Robosoft Technologies on 2021, January 1. Would you like to join this Event?<span class="dot">•••</span></p>
-      <button class="button button-accept">Join</button>
-      <button class="button button-decline">Decline</button>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">Today at 9am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have changed your password successfully <span class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">Yesterday at 10am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message"> <span>Reminder:</span> You have an event coming up this week <span> Digi Expo
-          2020</span> on
-        2020, April 26 at Garden Hall, Udupi. Created by Ashwath <span class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 30 at 10am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Raksha accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 29 at 9am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Ashwath accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 28 at 2pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have got <span>10</span> new registrations today <span class="dot">•••</span>
-      </p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 27 at 10.20am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Raksha accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 27 at 9am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Ashwath accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 26 at 2pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Event <span>Nitte Campus</span> created successfully on 2020, May 20
-        <span class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 24 at 3pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have got <span>10</span> new registrations today <span class="dot">•••</span>
-      </p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 24 at 11am</p>
-      </div>
-    </div>
-    <div class="notification-list event">
-      <p class="notification-message">Nisha invited you to join a Event <span>Trainee Walkins</span> in
-        Robosoft Technologies on 2021, January 1. Would you like to join this Event?<span class="dot">•••</span></p>
-      <button class="button button-accept">Join</button>
-      <button class="button button-decline">Decline</button>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 23 at 1pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Ashwath accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 22 at 2pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Event <span>Nitte Campus</span> created successfully on 2020, May 20
-        <span class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 22 at 11.30am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have got <span>10</span> new registrations today <span class="dot">•••</span>
-      </p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 22 at 10.20am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Ashwath accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 21 at 2pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Event <span>Nitte Campus</span> created successfully on 2020, May 20
-        <span class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 21 at 10am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have got <span>10</span> new registrations today <span class="dot">•••</span>
-      </p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 20 at 3pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Ashwath accepted your event <span> BB Conference</span> <span
-          class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 20 at 2pm</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">Event <span>Nitte Campus</span> created successfully on 2020, May 20
-        <span class="dot">•••</span></p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 20 at 10.30am</p>
-      </div>
-    </div>
-    <div class="notification-list">
-      <p class="notification-message">You have got <span>10</span> new registrations today <span class="dot">•••</span>
-      </p>
-      <div class="notification-schedule">
-        <img class="icon" src="../../../../../assets/notifications/icn_notification time.png" alt="Date Time Icon">
-        <p class="time">December 19 at 9am</p>
+        <!-- <p class="time">{{item.time}}</p> -->
       </div>
     </div>
   </div>

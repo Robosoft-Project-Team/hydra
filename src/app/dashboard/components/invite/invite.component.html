@@ -6,10 +6,12 @@
     </div>
     <hr>
     <ul class="invite-left-list">
-      <li class="invite-left-list-item" *ngFor="let item of list; let i = index"
-        [ngClass]="{'selected': selectedIndex === i}" (click)="selectedIndex = i">
-        <p class="invite-left-list-main">{{item.designation}}</p>
-        <p class="invite-left-list-sub">{{item.location}}</p>
+      <!-- <li class="invite-left-list-item" *ngFor="let item of list; let i = index"
+        [ngClass]="{'selected': selectedIndex === i}" (click)="selectedIndex = i"> -->
+        <li class="invite-left-list-item" *ngFor="let item of list; let i = index"
+        [ngClass]="{'selected': selectedIndex === i}" (click)="disp(selectedIndex = i)">
+        <p class="invite-left-list-main">{{item.timePeriod}}</p>
+        <p class="invite-left-list-sub">{{item.count}}</p>
       </li>
     </ul>
   </div>
@@ -23,7 +25,7 @@
     <ng-template #sentInvite>
       <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Sent Invite'"></app-header>
       <hr>
-      <app-invite-sent-body [users]="getUsers(selectedIndex)"></app-invite-sent-body>
+      <app-invite-sent-body [invitedCandidates]="invitedCandidates"></app-invite-sent-body>
     </ng-template>
   </div>
 </div>
