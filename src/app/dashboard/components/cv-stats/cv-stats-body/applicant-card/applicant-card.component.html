@@ -1,8 +1,8 @@
-<div class="card" (click)="displayDetails(card.applicantid)">
+<div class="card" (click)="displayDetails(card.applicantId)">
     <div class="card-info">
-        <img class="card-image" src="{{card.profilePhoto}}">
+        <img class="card-image" src="{{getImageEndPoint(card.attachmentEntities[0]) | imagePipe | async}}">
         <div class="card-name">
-            <p class="card-main-text">{{card.applicantName}}</p>
+            <p class="card-main-text">{{card.name}}</p>
             <p class="card-sub-text">{{card.designation}}</p>
         </div>
     </div>

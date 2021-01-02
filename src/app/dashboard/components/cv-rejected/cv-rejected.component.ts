@@ -21,7 +21,8 @@ export class CvRejectedComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }

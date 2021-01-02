@@ -69,6 +69,7 @@ p {
       border-radius: 15px;
       padding: .25rem .5rem;
       margin-right: 0.5rem;
+      text-transform: capitalize;
 
       span {
         @include set-font(#C1BEBE, 10px, bold, 0.23px, 10px);

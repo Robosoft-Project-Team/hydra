@@ -52,6 +52,15 @@ export class CvAnalysisComponent implements OnInit {
     );
   }
 
+  getLocationString(locationArray): string {
+    let LocationString = '';
+    locationArray.forEach(element => {
+      LocationString += element.location;
+      LocationString += '/';
+    });
+    return LocationString.slice(0, -1);
+  }
+
   onItemSelected(designation: string): void {
     this.cvService.setDesignation(designation);
     this.router.navigate(['stats'], { relativeTo: this.route });

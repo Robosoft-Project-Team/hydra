@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-statistics',
@@ -7,31 +8,23 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class StatisticsComponent implements OnInit {
 
-  // date = new Date();
-  // month = this.date.getUTCMonth() + 1;
-  // day = this.date.getUTCDate();
-  // year = this.date.getUTCFullYear();
-  // todayDate = this.year + "," + this.month + " " + this.day;
-
   user = { firstName: 'Renuka', lastName: 'Shetty' };
   numberOfCv = 36;
+  labels: string[];
 
-  summary = {
-    applications: [60, 42, 45, 38, 55],
-    shortlisted: [35, 10, 24, 22, 23],
-    onHold: [15, 12, 20, 10, 15],
-    rejected: [-10, -12, -1, -6, -17]
-  };
-
-  labels = ['Mar', 'Feb', 'Jan', '2019', '2018'];
-
-  @Input() date: moment.Moment;
   @Input() count: number;
   @Input() userName: string;
-
+  @Input() date: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.labels = [
+      moment().startOf('month').subtract(0, 'month').format('MMM'),
+      moment().startOf('month').subtract(1, 'month').format('MMM'),
+      moment().startOf('month').subtract(2, 'month').format('MMM'),
+      moment().startOf('year').subtract(1, 'year').format('YYYY'),
+      moment().startOf('year').subtract(2, 'year').format('YYYY'),
+    ];
   }
 
 }

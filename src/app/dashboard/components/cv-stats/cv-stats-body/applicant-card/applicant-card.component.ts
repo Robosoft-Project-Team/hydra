@@ -17,7 +17,11 @@ export class ApplicantCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.skills = this.card.skill.split(',');
+    this.skills = this.card.skills.split(',');
+  }
+
+  getImageEndPoint(attachment): string {
+    return attachment.download_link.split('0/')[1];
   }
 
   displayDetails(id): void {

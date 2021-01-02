@@ -33,12 +33,12 @@ export class CvStatsBodyComponent implements OnInit, OnChanges {
   divideByStatus(): void {
     this.totalLength = this.resumes.length;
     this.resumes.forEach(element => {
-      switch (element.applicationStatus) {
-        case 'new': this.newResume.push(element);
+      switch (element.status) {
+        case 'New': this.newResume.push(element);
                     break;
-        case 'shortlist': this.shortlistResume.push(element);
-                          break;
-        case 'rejected': this.rejectedResume.push(element);
+        case 'Assigned': this.shortlistResume.push(element);
+                         break;
+        case 'Rejected': this.rejectedResume.push(element);
                          break;
         default: break;
       }

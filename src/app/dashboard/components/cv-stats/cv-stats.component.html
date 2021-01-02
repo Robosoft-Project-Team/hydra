@@ -6,10 +6,10 @@
     </div>
     <hr>
     <ul class="list">
-      <li class="list-item" *ngFor="let item of list; let i = index" (click)="display(item.designation)"
+      <li class="list-item" *ngFor="let item of designationList; let i = index" (click)="filterResumes(item.id)"
       [class.selected]="selectedDesignation === item.designation">
         <p class="list-main-text">{{item.designation}}</p>
-        <p class="list-sub-text">{{item.location}}</p>
+        <p class="list-sub-text">{{getLocationString(item.location)}}</p>
       </li>
     </ul>
   </div>

@@ -22,12 +22,7 @@ export class CvAnalysisService {
   }
 
   getApplicant(id: number): Observable<any> {
-    // return applicants.filter(item => item.applicantId === id)[0];
     return this.http.get(`getApplicant/${id}`);
-  }
-
-  getList(): any {
-    return list;
   }
 
   getAllResumes(): any {
@@ -56,5 +51,9 @@ export class CvAnalysisService {
 
   getAssignedList(): Observable<any> {
     return this.http.get('assignedApplicant');
+  }
+
+  getApplications(id): Observable<any> {
+    return this.http.get(`getApplications/${id}`);
   }
 }

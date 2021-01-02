@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -11,7 +9,7 @@ export class LeftSidebarComponent implements OnInit {
 
   @Input() applicant;
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -21,5 +19,10 @@ export class LeftSidebarComponent implements OnInit {
     if (attachment) {
       return attachment.download_link.split('0/')[1];
     }
+  }
+
+  convertCTC(ctc: string): string {
+    const CTC = +ctc.split('.')[0];
+    return CTC < 99999 ? Math.floor(CTC / 1000) + 'K' : (CTC < 9999999) ? Math.floor(CTC / 100000) + 'L' : (CTC / 10000000).toFixed(2) + 'Cr';
   }
 }

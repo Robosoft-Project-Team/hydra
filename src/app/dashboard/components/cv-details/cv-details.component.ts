@@ -111,7 +111,7 @@ export class CvDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.params.id;
-    this.cv.getApplicant(320).subscribe(
+    this.cv.getApplicant(id).subscribe(
       response => {
         this.applicant = response.data.applicant;
       }
@@ -122,10 +122,6 @@ export class CvDetailsComponent implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  dontGo(): void {
-    console.log('no go');
-  }
-
   calculateAge(birthday): number {
     const birthdayArray = birthday.split('/');
     const birthDate = birthdayArray[1] + '-' + birthdayArray[0] + '-' + birthdayArray[2];
@@ -134,7 +130,7 @@ export class CvDetailsComponent implements OnInit {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
-  diff(from, to): string {
+  dateDifference(from, to): string {
     const fromDateArray = from.split('-');
     const toDateArray = to.split('-');
     const monthDiff = +toDateArray[1] - +fromDateArray[1];
@@ -153,7 +149,6 @@ export class CvDetailsComponent implements OnInit {
     this.cv.getAttachment(url).subscribe(
       response => {
         const blob = new Blob([response], { type: `${attachment.file_type}; charset=utf-8` });
-        const respurl = window.URL.createObjectURL(blob);
         fileSaver.saveAs(blob, filename);
       }
     );

@@ -134,6 +134,10 @@
           cursor: pointer;
         }
 
+        span {
+          transform: translateY(1px);
+        }
+
         .download {
           color: #ffffff;
           background-color: #F52851;
@@ -207,7 +211,7 @@
 
           &-item {
             display: inline-flex;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border: 1px solid #C1BEBE;
             border-radius: 1.5rem;
             font-size: 14px;
@@ -215,6 +219,10 @@
             font-weight: bold;
             color: #C1BEBE;
             margin: 0px 1rem 1rem 0rem;
+
+            span {
+              transform: translateY(2px);
+            }
           }
         }
       }
@@ -351,4 +359,8 @@
 
 hr {
   margin: 1rem 0rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }

@@ -521,3 +521,40 @@ export const allResumes = [
         profilePhoto: 'assets/dashboard-home/icn_hr.png'
     }
 ];
+
+// data: {, … }
+// applicant: { applicantId: 272, applicantName: "John", emailId: "johnBro@gmail.com", mobile_no: "8205442323", … }
+// aboutYou: "Nothing"
+// address: "12 cross, HSR Layout"
+// applicantId: 272
+// applicantName: "John"
+// applicationStatus: "Rejected"
+// applicationType: "Referral"
+// assigned: false
+// attachmentEntities: [{ file_name: "JS.pdf", file_type: "application/pdf", … }, …]
+// currentCTC: "250000"
+// deleted: false
+// designation: "Java Developer"
+// dob: "12/12/1998"
+// educationHistory: [{ instituitionName: "XYZ ", grade: "8", from: "2017-01-30", to: "2017-02-28", location: "Bangaluru" }]
+// emailId: "johnBro@gmail.com"
+// expectedCTC: "300000"
+// experienceMonth: 0
+// experienceYear: 2
+// gender: "Male"
+// jobId: 13
+// jobLocation: "Bangalore"
+// languages: "Kannada"
+// mobile_no: "8205442323"
+// pincode: "547214"
+// reference: { reference_name: "John", reference_desig: "UIUX", reference_mobile: "8205442323", … }
+// skill: "JAVA"
+// softwares: "Trello, SKype"
+// state: "Karnataka"
+// submitDate: 1609286400000
+// websiteUrl: [{ websiteName: "Facebook", url: "hhtps://facebook" }, { websiteName: "LinkedIn", url: "" }]
+// workHistory: [, …]
+// emp_id: 0
+// employee_name: null
+// message: "Success"
+// status: 200

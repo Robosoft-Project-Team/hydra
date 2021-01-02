@@ -1,7 +1,7 @@
 <div class="dashboard">
   <div class="dashboard-statistics">
     <app-statistics [userName]="dashboardData.user.name" [count]="dashboardData.user.cvCount"
-      [date]="dashboardData.date"></app-statistics>
+      [date]="dashboardData.date.format('YYYY, MMMM DD')"></app-statistics>
   </div>
   <div class="dashboard-right">
     <div class="dashboard-profile">
