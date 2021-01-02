@@ -9,7 +9,8 @@ import {
   CvDetailsComponent,
   AssignBoardComponent,
   InviteComponent,
-  CvRejectedComponent
+  CvRejectedComponent,
+  NotificationsComponent
 } from './components';
 
 const routes: Routes = [
@@ -25,8 +26,14 @@ const routes: Routes = [
         ]
       },
       { path: 'assign', component: AssignBoardComponent },
-      { path: 'rejected', component: CvRejectedComponent },
+      {
+        path: 'rejected', component: CvRejectedComponent,
+        children: [
+          { path: ':id', component: CvDetailsComponent },
+        ]
+      },
       { path: 'invite', component: InviteComponent },
+      { path: 'notifications', component: NotificationsComponent }
     ]
   }
 ];

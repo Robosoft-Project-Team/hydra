@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invite.component.scss']
 })
 export class InviteComponent implements OnInit {
-  showFormBackground: false;
+  selectedIndex = 0;
   list = [
     {
       designation: 'Invite Candidates',
@@ -38,16 +39,61 @@ export class InviteComponent implements OnInit {
     }
   ];
 
-  index = 0;
+  users = [
+    {
+      name: 'Kaushik Kumar',
+      designation: 'Product Manager',
+      location: 'Bangalore',
+      phone: '+91 9876543210',
+      email: 'kaushik_kumar@gmail.com'
+    },
+    {
+      name: 'John Doe',
+      designation: 'Product Manager',
+      location: 'Bangalore',
+      phone: '+91 9876543210',
+      email: 'john_doe@gmail.com'
+    },
+    {
+      name: 'James Adams',
+      designation: 'Content Manager',
+      location: 'Udupi',
+      phone: '+91 9876543210',
+      email: 'james_adams@gmail.com'
+    },
+    {
+      name: 'Kaushik Kumar',
+      designation: 'Product Manager',
+      location: 'Bangalore',
+      phone: '+91 9876543210',
+      email: 'kaushik_kumar@gmail.com'
+    },
+    {
+      name: 'John Doe',
+      designation: 'Product Manager',
+      location: 'Bangalore',
+      phone: '+91 9876543210',
+      email: 'john_doe@gmail.com'
+    }
+  ];
+
   constructor() { }
 
-  ngOnInit(): void {
-    this.disp(0);
+  ngOnInit(): void { }
+
+  disp(index: number): void {
+    this.selectedIndex = index;
   }
 
-  disp(index): void {
-    this.index = index;
-    console.log('selected index: ', index);
+  getUsers(mode: number): any {
+    switch (mode) {
+      case 1: return this.users.slice(0, 3);
+      case 2: return this.users.slice(2, 3);
+      case 3: return this.users.slice(1);
+      case 4: return this.users.slice(0, 4);
+      case 5: return this.users.slice(3);
+      case 5: return this.users.slice();
+      default: return this.users.slice();
+    }
   }
-
 }

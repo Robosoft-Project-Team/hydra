@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   user: Profile = {
     name: 'Renuka Shetty',
     designation: 'Recruiter',
-    imageURL: 'https://randomuser.me/api/portraits/women/11.jpg'
+    imageURL: 'https://randomuser.me/api/portraits/women/85.jpg'
   };
 
   constructor() { }
@@ -46,8 +46,8 @@ export class HeaderComponent implements OnInit {
     this.dateSelected.emit(date.value.format('YYYY-MM-DD'));
   }
 
-  handleInput(input: any): void {
-    this.searchItem.emit(input.data);
+  handleInput(): void {
+    this.searchItem.emit(this.search.value);
   }
 
 }

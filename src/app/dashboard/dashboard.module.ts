@@ -19,13 +19,18 @@ import {
   InviteHeaderComponent,
   InviteBodyComponent,
   CvRejectedComponent,
-  InviteSentBodyComponent
+  InviteSentBodyComponent,
+  NotificationsComponent,
+  NotificationsListComponent,
+  CreateEventFormComponent,
+  ChartComponent
 } from './components';
 
 import {
   SidebarComponent,
   HeaderComponent,
   TableComponent,
+  ImagePipePipe
 } from './shared';
 
 @NgModule({
@@ -50,7 +55,12 @@ import {
     InviteHeaderComponent,
     InviteBodyComponent,
     CvRejectedComponent,
-    InviteSentBodyComponent
+    InviteSentBodyComponent,
+    NotificationsComponent,
+    NotificationsListComponent,
+    CreateEventFormComponent,
+    ChartComponent,
+    ImagePipePipe
   ],
   imports: [
     DashboardRoutingModule,

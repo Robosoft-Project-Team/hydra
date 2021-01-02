@@ -5,14 +5,14 @@
   </div>
   <div class="cv-table">
     <app-table [headings]="tableHeadings">
-      <tr class="table-row" *ngFor="let item of data; let i = index;" (click)="onItemSelected(i)">
-        <td class="table-data">{{item.Title}}</td>
+      <tr class="table-row" *ngFor="let item of filteredData; let i = index;" (click)="onItemSelected(item.designation)">
+        <td class="table-data">{{item.designation}}</td>
         <td class="table-data">
-          <span class="chip" [ngClass]="{'closed': !item.Status}">{{item.Applicants}}</span>
+          <span class="chip" [ngClass]="{'closed': !item.status}">{{item.applicants}}</span>
         </td>
-        <td class="table-data">{{item.Date | date : 'dd MMM, y'}}</td>
-        <td class="table-data">{{item.Status ? 'Active' : 'Closed'}}</td>
-        <td class="table-data">{{item.Location}}</td>
+        <td class="table-data">{{item.receivedDate | date : 'dd MMM, y'}}</td>
+        <td class="table-data">{{item.status ? 'Active' : 'Closed'}}</td>
+        <td class="table-data">{{item.location}}</td>
       </tr>
     </app-table>
   </div>

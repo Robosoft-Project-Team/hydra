@@ -1,24 +1,29 @@
 <div class="invite">
-  <div class="invite-left-side">
-    <div class="header">
-      <h1>Invite</h1>
-      <div class="icon"><img src="assets/dashboard-cv/icn_search.png" alt=""></div>
+  <div class="invite-left">
+    <div class="invite-left-header">
+      <h1 class="invite-left-heading">Invite</h1>
+      <div class="invite-left-icon"><img src="assets/dashboard-cv/icn_search.png" alt="Search Icon"></div>
     </div>
     <hr>
-    <ul class="list">
-      <li class="list-item" *ngFor="let item of list; let i = index" (click)="disp(i)" [class.selected]="i === index">
-        <p class="list-main-text">{{item.designation}}</p>
-        <p class="list-sub-text">{{item.location}}</p>
+    <ul class="invite-left-list">
+      <li class="invite-left-list-item" *ngFor="let item of list; let i = index"
+        [ngClass]="{'selected': selectedIndex === i}" (click)="selectedIndex = i">
+        <p class="invite-left-list-main">{{item.designation}}</p>
+        <p class="invite-left-list-sub">{{item.location}}</p>
       </li>
     </ul>
   </div>
-  <div class="invite-right-side">
-    <img src="../../../../assets/background-image/img_bg.svg" *ngIf="showFormBackground">
-    <app-invite-header *ngIf="showFormBackground"></app-invite-header>
-    <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Sent Invite'"></app-header>
-    <hr>
-    <!-- <router-outlet></router-outlet> -->
-    <app-invite-body *ngIf="showFormBackground"></app-invite-body>
-    <app-invite-sent-body *ngIf="!showFormBackground"></app-invite-sent-body>
+  <div class="invite-right">
+    <ng-container *ngIf="selectedIndex === 0; else sentInvite">
+      <img src="../../../../assets/background-image/img_bg.svg" alt="Background">
+      <app-invite-header></app-invite-header>
+      <hr>
+      <app-invite-body></app-invite-body>
+    </ng-container>
+    <ng-template #sentInvite>
+      <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Sent Invite'"></app-header>
+      <hr>
+      <app-invite-sent-body [users]="getUsers(selectedIndex)"></app-invite-sent-body>
+    </ng-template>
   </div>
 </div>

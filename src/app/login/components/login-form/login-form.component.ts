@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidationService } from 'src/app/shared/services/form-validation.service';
 import { SignInService } from '../../services/sign-in.service';
 
@@ -14,11 +14,12 @@ export class LoginFormComponent implements OnInit {
   password = { value: '', error: '' };
   showMark: boolean;
   buttonDisabled: boolean;
-  role = 'recruiter';
+  role = 'ROLE_RECRUITER';
 
   constructor(
     private validation: FormValidationService,
     private router: Router,
+    private route: ActivatedRoute,
     private signInService: SignInService
   ) { }
 
@@ -65,17 +66,14 @@ export class LoginFormComponent implements OnInit {
   onClickSignIn(): void {
     this.signInService.signInDetails(this.email.value, this.password.value, this.role)
       .subscribe(
-        res => {
-          if (res.status === 200) {
-            this.signInService.storeCredentials(res);
+        response => {
+          if (response.status === 200) {
             this.router.navigate(['/dashboard']);
-          } else if (res.status === 401) {
-            this.email.error = res.message;
+            this.signInService.storeCredentials(response.data.accessToken);
           }
         },
-        err => {
-          this.email.error = err.statusText;
-          console.log('Error : ', err);
+        error => {
+          this.email.error = 'Invalid username or password';
         }
       );
   }

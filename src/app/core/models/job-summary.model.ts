@@ -1,15 +1,16 @@
 export interface JobSummary {
-    Title: string;
-    Applicants: number;
-    Date: string;
-    Status: boolean;
-    Location: string;
+    designation: string;
+    applicants: number;
+    receivedDate: number;
+    status: string;
+    location: string;
 }
 
 export interface AssignBoard {
-    Name: string;
-    Designation: string;
-    Location: string;
-    AssignedDate: string;
-    Organizer: string;
+    applicantId: number;
+    applicantName: string;
+    designation: string;
+    assignedDate: number;
+    location: string;
+    organizer: string;
 }

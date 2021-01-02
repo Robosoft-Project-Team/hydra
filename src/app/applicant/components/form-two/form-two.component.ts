@@ -35,7 +35,7 @@ interface WorkHistory {
 }
 
 interface EducationHistory {
-  institutionName: string;
+  instituitionName: string;
   grade: number;
   from: string;
   to: string;
@@ -65,7 +65,7 @@ export class FormTwoComponent implements OnInit {
     ],
     educationHistory: [
       {
-        institutionName: '',
+        instituitionName: '',
         grade: null,
         from: moment().format('YYYY-MM-DD'),
         to: moment().format('YYYY-MM-DD'),
@@ -89,7 +89,7 @@ export class FormTwoComponent implements OnInit {
     ],
     educationHistory: [
       {
-        institutionName: 'St. Xaviers College of Engineering',
+        instituitionName: 'St. Xaviers College of Engineering',
         grade: 8.4,
         from: '1995-10-25',
         to: '1998-9-25',
@@ -166,7 +166,7 @@ export class FormTwoComponent implements OnInit {
   // Add New Education Form
   addEducationForm = (data: EducationHistory): void => {
     const formGroup = new FormGroup({
-      institutionName: new FormControl(data?.institutionName || '', Validators.required),
+      instituitionName: new FormControl(data?.instituitionName || '', Validators.required),
       grade: new FormControl(data?.grade || null, Validators.required),
       from: new FormControl(data ? moment(data.from, 'YYYY-MM-DD') : moment(), Validators.required),
       to: new FormControl(data ? moment(data.to, 'YYYY-MM-DD') : moment(), Validators.required),
@@ -219,10 +219,10 @@ export class FormTwoComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.applicantFormTwo.valid) {
-      this.showError = true;
-      return;
-    }
+    // if (!this.applicantFormTwo.valid) {
+    //   this.showError = true;
+    //   return;
+    // }
     this.getFormData();
     this.formStore.storeForm('formTwo', this.formData);
     this.router.navigate(['../form-3'], { relativeTo: this.route });
@@ -243,11 +243,9 @@ export class FormTwoComponent implements OnInit {
   }
 
   isValid(referance, refFunction): void {
-    console.log(referance);
     const lastIndex = referance.length - 1;
     if (!referance[lastIndex].invalid) {
       refFunction();
     }
-    // console.log(referance[lastIndex].invalid);
   }
 }

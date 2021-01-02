@@ -1,0 +1,142 @@
+@import '../../../../../variables';
+@import '../../../../../mixins';
+
+.notification {
+
+  &-title {
+    height: 26px;
+    color: #333539;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 26px;
+  }
+
+  .input-group {
+    margin: 0;
+
+    .label {
+      height: 18px;
+      color: #333539;
+      font-family: Muli;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 18px;
+      @include input-text-style(14px, #020202);
+    }
+
+    input {
+      box-sizing: border-box;
+      height: 40px;
+      width: 330px;
+      border: 1px solid #535353;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.06);
+      @include input-text-style(14px, #020202);
+
+      &::placeholder {
+        height: 18px;
+        color: #C1BEBE;
+        font-family: Muli;
+        font-size: 14px;
+        letter-spacing: 0;
+      }
+    }
+
+    .date-label {
+      margin-left: 16px;
+      color: #333539;
+    }
+
+    .input-date {
+      width: 150px;
+      margin-left: 16px;
+      margin-right: 0;
+      height: 40px;
+    }
+
+    .time-label {
+      margin-left: 25px;
+      color: #333539;
+    }
+
+    .input-time {
+      width: 70px;
+      margin-left: 25px;
+      color: black;
+      border-color: black;
+      padding: 0;
+    }
+
+    .input-meridiem {
+      width: 70px;
+      margin-top: 28px;
+      margin-left: 10px;
+      color: black;
+      border-color: black;
+      padding: 0;
+    }
+
+    i{
+      background-image: url(../../../../../assets/btn_calendar_task_unselected@1.5x.svg);
+    }
+
+    textarea {
+      box-sizing: border-box;
+      height: 80px;
+      width: 330px;
+      border: 1px solid #535353;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      @include input-text-style(14px, #020202);
+    }
+
+    .image-group {
+      width: 330px;
+
+      & img {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .form-input {
+    margin-top: 1.3rem;
+  }
+
+  .input-container {
+    display: flex;
+    position: relative;
+
+    .mat-datepicker-toggle {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  @include button;
+
+  .clear-button {
+    box-sizing: border-box;
+    height: 40px;
+    width: 155px;
+    border: 2px solid #F52851;
+    border-radius: 8px;
+    color: #F52851;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    background-color: transparent;
+    margin-left: 20px;
+  }
+
+  .create-button {
+    width: 155px;
+    margin-top: 0;
+    margin-left: 20px;
+  }
+}

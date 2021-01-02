@@ -6,14 +6,15 @@
     </div>
     <hr>
     <ul class="list">
-      <li class="list-item" *ngFor="let item of list; let i = index" (click)="disp(i)" [class.selected]="i === index">
+      <li class="list-item" *ngFor="let item of list; let i = index" (click)="display(item.designation)"
+      [class.selected]="selectedDesignation === item.designation">
         <p class="list-main-text">{{item.designation}}</p>
         <p class="list-sub-text">{{item.location}}</p>
       </li>
     </ul>
   </div>
   <div class="cv-stats-right-side">
-    <app-header [searchControl]="false" [dateControl]="false" [headerTitle]="selectedDesignation.designation"></app-header>
+    <app-header [searchControl]="false" [dateControl]="false" [headerTitle]="selectedDesignation"></app-header>
     <hr>
     <app-cv-stats-body [resumes]="selectedResume"></app-cv-stats-body>
   </div>

@@ -5,7 +5,7 @@
   </div>
   <div class="cv-rejected-body">
     <div class="container card-container">
-      <div class="cv-card" *ngFor="let i of [1,2,3,1,2,3,3,4,5,5,5]">
+        <div class="cv-card" *ngFor="let i of [1,2,3,1,2,3,3,4,5,5,5]" (click)="details()">
         <div class="cv-card-header">
           <img class="cv-card-image" src="../../../../../assets/cv-rejected/icn_photo_thumbnail.png"
             alt="Profile Image">
@@ -31,4 +31,5 @@
       </div>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>

@@ -68,10 +68,10 @@ export class HomeComponent implements OnInit {
       designation: 'Recruiter',
       cvCount: 36,
       image: {
-        url: 'https://randomuser.me/api/portraits/women/21.jpg'
+        url: 'https://randomuser.me/api/portraits/women/85.jpg'
       }
     },
-    date: moment(new Date('2020,03,05')),
+    date: moment(),
     summary: {
       applicants: 60,
       shortlisted: 40,

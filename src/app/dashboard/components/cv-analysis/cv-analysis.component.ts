@@ -2,6 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Profile } from 'src/app/core/models/profile.model';
 import { Component, OnInit } from '@angular/core';
 import { JobSummary } from 'src/app/core/models/job-summary.model';
+import { CvAnalysisService } from '../../services/cv-analysis.service';
 
 @Component({
   selector: 'app-cv-analysis',
@@ -11,62 +12,48 @@ import { JobSummary } from 'src/app/core/models/job-summary.model';
 export class CvAnalysisComponent implements OnInit {
 
   tableHeadings: string[] = ['Title', 'Applicants', 'Date', 'Status', 'Location'];
-  data: JobSummary[] = [
-    {
-      Title: 'UI/UX design',
-      Applicants: 10,
-      Date: '2020-03-12',
-      Status: true,
-      Location: 'Udupi'
-    },
-    {
-      Title: 'PHP Dev',
-      Applicants: 10,
-      Date: '2020-03-12',
-      Status: false,
-      Location: 'Udupi/Bangaluru'
-    },
-    {
-      Title: 'UI/UX design',
-      Applicants: 99,
-      Date: '2020-03-03',
-      Status: true,
-      Location: 'Udupi'
-    },
-    {
-      Title: 'UI/UX design',
-      Applicants: 9,
-      Date: '2020-03-12',
-      Status: false,
-      Location: 'Bangaluru'
-    },
-    {
-      Title: 'UI/UX design',
-      Applicants: 10,
-      Date: '2020-03-03',
-      Status: true,
-      Location: 'Mumbai'
-    },
-  ];
+  data: JobSummary[];
+  filterDate;
+  filterSearch;
+  filteredData: JobSummary[];
+  selectedDesignation;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private cvService: CvAnalysisService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.filterDate = new Date().toISOString().split('T')[0];
+    this.filterSearch = '';
+    this.filterDataOnSearch(this.filterDate, this.filterSearch);
   }
 
   onDateSelected(date: string): void {
-    console.log(date);
+    this.filterDate = date;
+    this.filterDataOnSearch(this.filterDate, this.filterSearch);
   }
 
   onSearchItem(data: string): void {
-    console.log(data);
+    this.filterSearch = data;
+    this.filterDataOnSearch(this.filterDate, this.filterSearch);
   }
 
-  onItemSelected(index: number): void {
-    console.log(this.data[index]);
+  filterDataOnSearch(date, search): void {
+    const epoch = new Date(date).getTime();
+    this.cvService.getAllCv(this.filterDate).subscribe(
+      response => {
+        this.data = response.data;
+        this.filteredData = response.data.filter(item => item.receivedDate === epoch)
+        .filter(item => item.designation.toLowerCase().includes(search.toLowerCase()));
+      }
+    );
+  }
+
+  onItemSelected(designation: string): void {
+    this.cvService.setDesignation(designation);
     this.router.navigate(['stats'], { relativeTo: this.route });
   }
 

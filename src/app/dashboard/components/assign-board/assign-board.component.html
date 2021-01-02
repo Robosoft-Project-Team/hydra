@@ -6,11 +6,11 @@
   <div class="assign-table">
     <app-table [headings]="tableHeadings">
       <tr class="table-row" *ngFor="let item of data; let i = index;" (click)="onItemSelected(i)">
-        <td class="table-data">{{item.Name}}</td>
-        <td class="table-data">{{item.Designation}}</td>
-        <td class="table-data">{{item.Location}}</td>
-        <td class="table-data">{{item.AssignedDate | date : 'dd MMM, y'}}</td>
-        <td class="table-data">{{item.Organizer}}</td>
+        <td class="table-data">{{item.applicantName}}</td>
+        <td class="table-data">{{item.designation}}</td>
+        <td class="table-data">{{item.location}}</td>
+        <td class="table-data">{{item.assignedDate | date : 'dd MMM, y'}}</td>
+        <td class="table-data">{{item.organizer}}</td>
       </tr>
     </app-table>
   </div>

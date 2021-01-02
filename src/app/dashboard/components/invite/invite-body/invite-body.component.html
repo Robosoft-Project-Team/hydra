@@ -1,5 +1,45 @@
-<div class="container invite-body">
-    <div class="invite-body-form">
-        
+<div class="invite">
+  <img class="invite-image"
+    src="../../../../../assets/dashboard/img_sendinvite_illustration/img_sendinvite_illustration-2@1.5x.svg"
+    alt="Send Invite Image">
+  <form class="invite-form" [formGroup]="inviteForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Name</label>
+        <input class="input-control" type="text" placeholder="Candidate Name" formControlName="name">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Designation</label>
+        <input class="input-control" type="text" placeholder="Enter his/her Designation" formControlName="designation">
+      </div>
     </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Mobile Number</label>
+        <input class="input-control" type="text" placeholder="Candidate Mobile Number" formControlName="mobile_no">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Location</label>
+        <input class="input-control" type="text" placeholder="Job Location" formControlName="location">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Job Detail</label>
+        <textarea class="input-control large no-resize" type="text" placeholder="Provide Job Detail here"
+          formControlName="jobDetail"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Email ID</label>
+        <input class="input-control" type="text" placeholder="Candidate Email ID" formControlName="email">
+      </div>
+      <div class="input-group">
+        <button class="button button-send" type="submit" [ngClass]="{'disabled': inviteForm.invalid}"
+          [disabled]="inviteForm.invalid">Send
+          Invite</button>
+      </div>
+    </div>
+  </form>
 </div>

@@ -16,19 +16,21 @@ export class SignInService {
 
   signInDetails(userEmail, userPassword, userRole): any {
     const postBody = {
-      email: userEmail,
+      username: userEmail,
       password: userPassword,
       role: userRole
     };
-    return this.http.post(`${environment.baseUrl}signIn`, postBody);
+    return this.http.post(`signIn`, postBody);
   }
 
-  storeCredentials(response): void {
-    this.storage.setJwtToken(response.token);
+  storeCredentials(token): void {
+    this.storage.setJwtToken(token);
     // store some details in dashboard services
   }
 
   registerUser(userDetails): any {
-    return this.http.post(`${environment.baseUrl}signUp`, userDetails);
+    userDetails.role = [userDetails.role];
+    console.log(userDetails);
+    return this.http.post(`signUp`, userDetails);
   }
 }
