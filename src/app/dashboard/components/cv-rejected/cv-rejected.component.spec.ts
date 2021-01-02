@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CvStatsHeaderComponent } from './cv-stats-header.component';
+import { CvRejectedComponent } from './cv-rejected.component';
 
-describe('CvStatsHeaderComponent', () => {
-  let component: CvStatsHeaderComponent;
-  let fixture: ComponentFixture<CvStatsHeaderComponent>;
+describe('CvRejectedComponent', () => {
+  let component: CvRejectedComponent;
+  let fixture: ComponentFixture<CvRejectedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CvStatsHeaderComponent ]
+      declarations: [ CvRejectedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CvStatsHeaderComponent);
+    fixture = TestBed.createComponent(CvRejectedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

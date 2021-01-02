@@ -26,6 +26,8 @@
   }
 }
 
+@include button();
+
 .statistics {
   height: 100vh;
   width: 100%;
@@ -49,11 +51,9 @@
     margin: 0;
   }
 
-  @include button;
-
   .button-register {
     height: 3.125rem;
-    width: 9rem;
+    min-width: 9rem;
     border-radius: 0.937rem;
     margin: 0 1.5rem;
     flex: 1;
@@ -78,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 
     span {
       color: $color-black;
@@ -104,11 +104,10 @@
       left: 40px;
       transform: translateY(-50%);
 
-      @include button;
 
       .button-cta {
         height: 2.5rem;
-        width: 9rem;
+        width: 40%;
         margin: 3rem 0 0;
       }
     }
@@ -151,8 +150,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include button;
 
     .button-invite {
       margin: 0;

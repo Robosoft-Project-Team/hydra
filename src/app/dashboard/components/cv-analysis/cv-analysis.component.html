@@ -1,8 +1,19 @@
 <div class="cv">
   <div class="cv-header">
-    <app-header></app-header>
+    <app-header [searchControl]="true" [dateControl]="true" [headerTitle]="'CV Analysis'"
+      (dateSelected)="onDateSelected($event)" (searchItem)="onSearchItem($event)"></app-header>
   </div>
   <div class="cv-table">
-    <app-table></app-table>
+    <app-table [headings]="tableHeadings">
+      <tr class="table-row" *ngFor="let item of data; let i = index;" (click)="onItemSelected(i)">
+        <td class="table-data">{{item.Title}}</td>
+        <td class="table-data">
+          <span class="chip" [ngClass]="{'closed': !item.Status}">{{item.Applicants}}</span>
+        </td>
+        <td class="table-data">{{item.Date | date : 'dd MMM, y'}}</td>
+        <td class="table-data">{{item.Status ? 'Active' : 'Closed'}}</td>
+        <td class="table-data">{{item.Location}}</td>
+      </tr>
+    </app-table>
   </div>
 </div>

@@ -3,23 +3,30 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
 import {
-  SidebarComponent,
   HomeComponent,
   StatisticsComponent,
   SummaryComponent,
   NotificationItemComponent,
   OrganizerListComponent,
   CvAnalysisComponent,
-  HeaderComponent,
-  TableComponent,
   CvStatsComponent,
-  CvStatsHeaderComponent,
   CvStatsBodyComponent,
   CvDetailsComponent,
   ApplicantCardComponent,
   LeftSidebarComponent,
+  AssignBoardComponent,
+  InviteComponent,
+  InviteHeaderComponent,
+  InviteBodyComponent,
+  CvRejectedComponent,
+  InviteSentBodyComponent
 } from './components';
 
+import {
+  SidebarComponent,
+  HeaderComponent,
+  TableComponent,
+} from './shared';
 
 @NgModule({
   declarations: [
@@ -34,11 +41,16 @@ import {
     HeaderComponent,
     TableComponent,
     CvStatsComponent,
-    CvStatsHeaderComponent,
     CvStatsBodyComponent,
     CvDetailsComponent,
     ApplicantCardComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    AssignBoardComponent,
+    InviteComponent,
+    InviteHeaderComponent,
+    InviteBodyComponent,
+    CvRejectedComponent,
+    InviteSentBodyComponent
   ],
   imports: [
     DashboardRoutingModule,

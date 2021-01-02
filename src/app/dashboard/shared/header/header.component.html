@@ -1,25 +1,26 @@
 <div class="header">
-  <h1 class="header-title">CV Analysis</h1>
+  <p class="header-title">{{headerTitle}}</p>
   <div class="header-controls">
-    <div class="header-date">
+    <div class="header-date" *ngIf="dateControl">
       <input type="text" id="date" [matDatepicker]="date" [formControl]="filterDate" (dateInput)="selectedDate($event)">
       <mat-datepicker-toggle [for]="date"><i class="date-icon" matDatepickerToggleIcon></i></mat-datepicker-toggle>
       <mat-datepicker #date></mat-datepicker>
     </div>
-    <div class="header-search">
+    <div class="header-search" *ngIf="searchControl">
       <label for="search">
         <mat-icon class="header-search-icon">search</mat-icon>
       </label>
-      <input id="search" class="header-search-box" type="text" placeholder="Search">
+      <input id="search" class="header-search-box" name="filter" type="text" placeholder="Search" [formControl]="search"
+        (input)="handleInput($event)">
     </div>
     <div class="header-profile">
       <div class="user">
         <div class="user-info">
-          <p class="user-name">Renuka Singh</p>
-          <p class="user-designation">Recruiter</p>
+          <p class="user-name">{{user.name}}</p>
+          <p class="user-designation">{{user.designation}}</p>
         </div>
         <div class="user-image">
-          <img src="../../../../assets/dashboard-home/icn_hr.png" alt="User Image">
+          <img [src]="user.imageURL" alt="User Image">
         </div>
       </div>
     </div>

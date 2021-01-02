@@ -1,0 +1,26 @@
+<div class="sent-invite-body">
+  <div class="container card-container">
+    <div class="cv-card" *ngFor="let i of [1,2,3,1,2,3,3,4,5,5,5]">
+      <div class="cv-card-header">
+        <div class="cv-card-profile">
+          <p class="cv-card-profile-name">{{user.name}}</p>
+          <p class="cv-card-profile-designation">{{user.designation}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="cv-card-body">
+        <div class="cv-card-details">
+          <img class="cv-card-details-icon" src="../../../../../assets/cv-rejected/icn_location_recruit.png"
+            alt="Map Icon">
+          <p class="cv-card-details-info">{{user.location}}</p>
+        </div>
+        <div class="cv-card-details">
+          <img class="cv-card-details-icon email" src="../../../../../assets/send-invite/icn_email_sentinvite.png"
+            alt="Phone Icon">
+          <p class="cv-card-details-info">{{user.email}}</p>
+        </div>
+        <button class="button button-invite">Resend Invite</button>
+      </div>
+    </div>
+  </div>
+</div>

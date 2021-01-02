@@ -2,7 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { HomeComponent, CvAnalysisComponent, CvStatsComponent, CvStatsBodyComponent, CvDetailsComponent } from './components';
+import {
+  HomeComponent,
+  CvAnalysisComponent,
+  CvStatsComponent,
+  CvDetailsComponent,
+  AssignBoardComponent,
+  InviteComponent,
+  CvRejectedComponent
+} from './components';
 
 const routes: Routes = [
   {
@@ -13,10 +21,12 @@ const routes: Routes = [
       {
         path: 'cv/stats', component: CvStatsComponent,
         children: [
-          { path: ':designation', component: CvStatsBodyComponent },
+          { path: ':id', component: CvDetailsComponent },
         ]
       },
-      { path: 'cv/details', component: CvDetailsComponent },
+      { path: 'assign', component: AssignBoardComponent },
+      { path: 'rejected', component: CvRejectedComponent },
+      { path: 'invite', component: InviteComponent },
     ]
   }
 ];

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-applicant-card',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicantCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() card;
+  skills;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.skills = this.card.skill.split(',');
+  }
+
+  displayDetails(id): void {
+    this.router.navigate(['./', id], {relativeTo: this.route});
   }
 
 }

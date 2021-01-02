@@ -1,0 +1,34 @@
+<div class="cv-rejected">
+  <div class="cv-rejected-header">
+    <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Rejected CV'"
+      (searchItem)="onSearchItem($event)"></app-header>
+  </div>
+  <div class="cv-rejected-body">
+    <div class="container card-container">
+      <div class="cv-card" *ngFor="let i of [1,2,3,1,2,3,3,4,5,5,5]">
+        <div class="cv-card-header">
+          <img class="cv-card-image" src="../../../../../assets/cv-rejected/icn_photo_thumbnail.png"
+            alt="Profile Image">
+          <div class="cv-card-profile">
+            <p class="cv-card-profile-name">{{user.name}}</p>
+            <p class="cv-card-profile-designation">{{user.designation}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="cv-card-body">
+          <div class="cv-card-details">
+            <img class="cv-card-details-icon" src="../../../../../assets/cv-rejected/icn_location_recruit.png"
+              alt="Map Icon">
+            <p class="cv-card-details-info">{{user.location}}</p>
+          </div>
+          <div class="cv-card-details">
+            <img class="cv-card-details-icon" src="../../../../../assets/cv-rejected/icn_contact_recruit.png"
+              alt="Phone Icon">
+            <p class="cv-card-details-info">{{user.phone}}</p>
+          </div>
+          <button class="button button-recruit">Recruit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

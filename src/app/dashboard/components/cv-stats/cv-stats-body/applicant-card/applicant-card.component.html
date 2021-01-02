@@ -1,7 +1,12 @@
-<a class="card" routerLink="../../details">
-    <img src="" alt="">
-    <p class="card-header">John</p>
-    <p class="card-body">UI/UX Designer</p>
-    <div class="skills">
+<div class="card" (click)="displayDetails(card.applicantid)">
+    <div class="card-info">
+        <img class="card-image" src="{{card.profilePhoto}}">
+        <div class="card-name">
+            <p class="card-main-text">{{card.applicantName}}</p>
+            <p class="card-sub-text">{{card.designation}}</p>
+        </div>
     </div>
-</a>
+    <div class="card-skills">
+        <p *ngFor="let skill of skills"><span>{{skill}}</span></p>
+    </div>
+</div>

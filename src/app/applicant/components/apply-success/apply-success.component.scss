@@ -1,50 +1,47 @@
 @import 'src/variables';
 
 .container {
-    .success {
-        font-size: 20px;
-        font-family: 'Muli';
-        color: $color-primary-dark;
-        margin-bottom: 0.1rem;
-        margin-bottom: 10px;
-    }
+  .success {
+    font-size: 20px;
+    font-family: 'Muli';
+    color: $color-primary-dark;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+  }
 
-    .thank-you {
-        color: $color-white;
-        font-family: Muli;
-        font-size: 28px;
-        font-weight: bold;
-        letter-spacing: 0.23px;
-        line-height: 2rem;
-    }
+  .thank-you {
+    color: $color-white;
+    font-family: Muli;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 2rem;
+  }
 
-    .image {
-        img {
-            height: 519px;
-            width: 520px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
+  .image {
+    img {
+      height: 519px;
+      width: 520px;
+      margin-top: 50px;
+      margin-bottom: 50px;
     }
+  }
 
-    .text {
-        color: #808087;
-        font-family: Muli;
-        font-size: 28px;
-        font-weight: 500;
-        letter-spacing: 0.31px;
-        line-height: 34px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+  .text {
+    color: $color-grey-darker;
+    font-family: Muli;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.31px;
+    line-height: 34px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-    .website {
-        text-align: center;
-
-        a {
-            color: $color-primary-dark;
-            font-weight: bold;
-            text-decoration: none;
-        }
-    }
+  .website {
+    color: $color-primary-dark;
+    font-weight: bold;
+    font-size: 28px;
+    text-decoration: none;
+  }
 }
