@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { from } from 'rxjs';
+import { RejectedCV} from 'src/app/core/models/dashboard/rejected-cv.model';
+import { CvRejectedService } from '../../services/cv-rejected.service';
 
 @Component({
   selector: 'app-cv-rejected',
@@ -8,23 +11,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CvRejectedComponent implements OnInit {
 
-  user = {
-    name: 'Kaushik Kumar', designation: 'Product Manager',
-    location: 'Bangalore', phone: '+91 9876543210'
-  };
-
-  // constructor(
-  //   private route: ActivatedRoute,
-  //   private router: Router
-  // )
-
+  RejectedUserData : RejectedCV[];
+  
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cvRejectedService : CvRejectedService
   ) {
   }
 
   ngOnInit(): void {
+    this.cvRejectedService.getRejectedList().subscribe(
+      response => {
+        this.RejectedUserData = response.data;
+      }
+    );
   }
 
   onSearchItem(data: string): void {
@@ -32,12 +33,8 @@ export class CvRejectedComponent implements OnInit {
   }
 
   details(): void {
-    this.router.navigate(['./2'], { relativeTo: this.route });
+    this.router.navigate(['./2'], { relativeTo: this.route});
   }
-
-
-  // ngOnInit(): void {
-  // }
 
   // onSearchItem(data: string): void {
   //   console.log(data);
