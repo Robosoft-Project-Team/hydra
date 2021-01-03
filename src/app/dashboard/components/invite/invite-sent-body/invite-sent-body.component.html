@@ -1,7 +1,7 @@
 <div class="sent-invite">
   <div class="sent-invite-body">
     <div class="container card-container">
-          <div class="cv-card" *ngFor="let user of invitedCandidates">
+          <div class="cv-card" *ngFor="let user of invitedCandidates; let i=index">
             <div class="cv-card-header">
               <div class="cv-card-profile">
                 <p class="cv-card-profile-name">{{user.name | titlecase}}</p>
@@ -19,7 +19,7 @@
                   alt="Phone Icon">
                 <p class="cv-card-details-info">{{user.emailId}}</p>
               </div>
-              <button class="button button-invite">Resend Invite</button>
+              <button class="button button-invite" (click)="resendInvites(i)">Resend Invite</button>
             </div>
           </div>
     </div>
