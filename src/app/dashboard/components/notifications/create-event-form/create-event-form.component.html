@@ -21,41 +21,44 @@
     </div>
     <div class="row">
       <div class="input-group">
-        <label class="input-label">Date</label>
-        <input class="input-control" placeholder="DD MMM YYYY" [matDatepicker]="eventDate" (click)="eventDate.open()">
-        <mat-datepicker-toggle matSuffix [for]="eventDate">
-          <i matDatepickerToggleIcon></i>
-        </mat-datepicker-toggle>
-        <mat-datepicker #eventDate startView="multi-year">
-        </mat-datepicker>
-      </div>
-      <div class="input-group">
         <div class="input-group sub">
-          <label class="input-label">Time</label>
+          <label class="input-label">Date</label>
           <div class="input-container">
-            <select id="10" class="input-control">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
+            <input class="input-control" placeholder="DD MMM YYYY" [matDatepicker]="eventDate"
+              (click)="eventDate.open()">
+            <mat-datepicker-toggle matSuffix [for]="eventDate"></mat-datepicker-toggle>
+            <mat-datepicker #eventDate>
+            </mat-datepicker>
           </div>
         </div>
         <div class="input-group sub">
-          <label class="input-label"></label>
-          <div class="input-container">
-            <select id="10" class="input-control">
-              <option value="AM">AM</option>
-              <option value="PM">PM</option>
-            </select>
+          <div class="input-group sub">
+            <label class="input-label">Time</label>
+            <div class="input-container">
+              <select id="10" class="input-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group sub">
+            <label class="input-label transparent">Time</label>
+            <div class="input-container">
+              <select id="10" class="input-control">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -67,11 +70,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="input-group">
+      <div class="input-group vertical">
         <label class="input-label">Members</label>
         <div class="image-group">
-          <img src="../../../../../assets/icn_member_placeholder.svg" alt="">
-          <img src="../../../../../assets/add member.svg" alt="">
+          <img class="icon-1" src="assets/icn_member_placeholder.svg" alt="">
+          <img src="assets/add member.svg" alt="">
         </div>
       </div>
     </div>
