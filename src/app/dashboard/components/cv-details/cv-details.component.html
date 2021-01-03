@@ -13,8 +13,10 @@
       <p class="designation">{{applicant.designation}}</p>
       <div class="buttons">
         <a (click)="downloadAttachment(0)" class="button download"><span>Download CV</span></a>
-        <a href="" class="button assign"><span>Assign To</span></a>
-        <a href="" class="button reject"><span>Reject</span></a>
+        <a href=""
+          class="button assign"><span>{{ currentURL.includes('/dashboard/cv/stats/') ? 'Assign To' : 'Recruit'}}</span></a>
+        <a href=""
+          class="button reject"><span>{{ currentURL.includes('/dashboard/cv/stats/') ? 'Reject' : 'Delete'}}</span></a>
       </div>
       <div class="about-para">
         <p>{{applicant.aboutYou}}</p>

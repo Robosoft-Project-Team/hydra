@@ -21,7 +21,7 @@ export class CvRejectedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filterDataOnSearch(null);
+    this.filterDataOnSearch('');
   }
 
   onSearchItem(data: string): void {
@@ -37,7 +37,7 @@ export class CvRejectedComponent implements OnInit {
       response => {
         if (search) {
           this.RejectedUserData = response.data.filter(item => {
-            return item.applicantName.toLowerCase().includes(search.toLowerCase());
+            return item.applicantName.toLowerCase().includes(search?.toLowerCase());
           });
           console.log(this.RejectedUserData, search);
         }
@@ -47,5 +47,12 @@ export class CvRejectedComponent implements OnInit {
         this.isDataExists = this.RejectedUserData.length > 0 ? true : false;
       }
     );
+  }
+
+  getProfileImage(user: RejectedCV): any {
+    const attachment = user.attachmentEntities[0].download_link;
+    if (attachment) {
+      return attachment.download_link;
+    }
   }
 }

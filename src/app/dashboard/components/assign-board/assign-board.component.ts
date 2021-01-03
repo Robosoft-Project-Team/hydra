@@ -33,7 +33,7 @@ export class AssignBoardComponent implements OnInit {
       response => {
         if (search) {
           this.filteredData = response.data.filter(item => {
-            return item.organizer.toLowerCase().includes(search.toLowerCase());
+            return item.organizer.toLowerCase().includes(search?.toLowerCase());
           });
           console.log(this.filteredData, search);
         }

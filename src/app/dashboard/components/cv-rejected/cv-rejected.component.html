@@ -10,7 +10,7 @@
           <div class="cv-card" *ngFor="let user of RejectedUserData; let i = index;"
             (click)="onSelectCard(user.applicantId)">
             <div class="cv-card-header">
-              <img class="cv-card-image" [src]="user.attachmentEntities[0].download_link" alt="Profile">
+              <img class="cv-card-image" [src]="getProfileImage(user) | imagePipe | async" alt="Loading...">
               <div class="cv-card-profile">
                 <p class="cv-card-profile-name">{{user.applicantName}}</p>
                 <p class="cv-card-profile-designation">{{user.designation}}</p>

@@ -103,6 +103,7 @@ export class CvDetailsComponent implements OnInit {
     ]
   };
 
+  currentURL: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -110,6 +111,8 @@ export class CvDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.currentURL = this.router.url;
+    console.log('URL is: ', this.currentURL);
     const id = +this.route.snapshot.params.id;
     this.cv.getApplicant(id).subscribe(
       response => {
