@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RejectedCV } from 'src/app/core/models';
-import { CvRejectedService } from '../../services/cv-rejected.service';
+import { CvRejectedService } from 'src/app/dashboard/services/cv-rejected.service';
 
 @Component({
   selector: 'app-cv-rejected',
@@ -11,6 +11,7 @@ import { CvRejectedService } from '../../services/cv-rejected.service';
 export class CvRejectedComponent implements OnInit {
 
   RejectedUserData: RejectedCV[];
+  isDataExists = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,23 +21,31 @@ export class CvRejectedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cvRejectedService.getRejectedList().subscribe(
-      response => {
-        this.RejectedUserData = response.data;
-      }
-    );
+    this.filterDataOnSearch(null);
   }
 
   onSearchItem(data: string): void {
-    console.log(data);
+    this.filterDataOnSearch(data);
   }
 
-  details(id: number): void {
+  onSelectCard(id: number): void {
     this.router.navigate([id], { relativeTo: this.route });
   }
 
-  // onSearchItem(data: string): void {
-  //   console.log(data);
-  // }
-
+  filterDataOnSearch(search: string): void {
+    this.cvRejectedService.getRejectedList().subscribe(
+      response => {
+        if (search) {
+          this.RejectedUserData = response.data.filter(item => {
+            return item.applicantName.toLowerCase().includes(search.toLowerCase());
+          });
+          console.log(this.RejectedUserData, search);
+        }
+        else {
+          this.RejectedUserData = response.data;
+        }
+        this.isDataExists = this.RejectedUserData.length > 0 ? true : false;
+      }
+    );
+  }
 }

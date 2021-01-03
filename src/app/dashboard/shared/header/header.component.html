@@ -11,7 +11,7 @@
         <mat-icon class="header-search-icon">search</mat-icon>
       </label>
       <input id="search" class="header-search-box" name="filter" type="text" placeholder="Search" [formControl]="search"
-        (input)="handleInput()">
+        (input)="handleInput()" (focusout)="handleFocusOut()">
     </div>
     <div class="header-profile">
       <div class="user">

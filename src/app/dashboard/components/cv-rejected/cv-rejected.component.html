@@ -1,34 +1,42 @@
 <div class="cv-rejected">
   <div class="cv-rejected-header">
     <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Rejected CV'"
-      (searchItem)="onSearchItem($event)"></app-header>
+      (searchValue)="onSearchItem($event)"></app-header>
   </div>
   <div class="cv-rejected-body">
     <div class="container card-container">
-        <div class="cv-card" *ngFor="let user of RejectedUserData; let i = index;" (click)="details(user.applicantId)">
-        <div class="cv-card-header">
-          <img class="cv-card-image" [src]="user.attachmentEntities[0].download_link"
-            alt="Profile Image">
-          <div class="cv-card-profile">
-            <p class="cv-card-profile-name">{{user.applicantName}}</p>
-            <p class="cv-card-profile-designation">{{user.designation}}</p>
+      <ng-container *ngIf="RejectedUserData; else loading">
+        <ng-container *ngIf="isDataExists; else noData">
+          <div class="cv-card" *ngFor="let user of RejectedUserData; let i = index;"
+            (click)="onSelectCard(user.applicantId)">
+            <div class="cv-card-header">
+              <img class="cv-card-image" [src]="user.attachmentEntities[0].download_link" alt="Profile">
+              <div class="cv-card-profile">
+                <p class="cv-card-profile-name">{{user.applicantName}}</p>
+                <p class="cv-card-profile-designation">{{user.designation}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="cv-card-body">
+              <div class="cv-card-details">
+                <img class="cv-card-details-icon" src="assets/cv-rejected/icn_location_recruit.png" alt="Map Icon">
+                <p class="cv-card-details-info">{{user.jobLocation}}</p>
+              </div>
+              <div class="cv-card-details">
+                <img class="cv-card-details-icon" src="assets/cv-rejected/icn_contact_recruit.png" alt="Phone Icon">
+                <p class="cv-card-details-info">+91 {{user.mobile_no}}</p>
+              </div>
+              <button class="button button-recruit">Recruit</button>
+            </div>
           </div>
-        </div>
-        <hr>
-        <div class="cv-card-body">
-          <div class="cv-card-details">
-            <img class="cv-card-details-icon" src="../../../../../assets/cv-rejected/icn_location_recruit.png"
-              alt="Map Icon">
-            <p class="cv-card-details-info">{{user.jobLocation}}</p>
-          </div>
-          <div class="cv-card-details">
-            <img class="cv-card-details-icon" src="../../../../../assets/cv-rejected/icn_contact_recruit.png"
-              alt="Phone Icon">
-            <p class="cv-card-details-info">+91 {{user.mobile_no}}</p>
-          </div>
-          <button class="button button-recruit">Recruit</button>
-        </div>
-      </div>
+        </ng-container>
+      </ng-container>
+      <ng-template #loading>
+        <h2>Loading Data...</h2>
+      </ng-template>
+      <ng-template #noData>
+        <h2 style="font-family: Muli; padding: 2rem;">No Data Found</h2>
+      </ng-template>
     </div>
   </div>
   <router-outlet></router-outlet>

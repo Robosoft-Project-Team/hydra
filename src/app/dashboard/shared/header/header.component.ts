@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   @Input() dateControl: boolean;
   @Output() dateSelected = new EventEmitter<string>();
   @Output() searchItem = new EventEmitter<string>();
+  @Output() searchValue = new EventEmitter<string>();
 
   filterDate = new FormControl(moment());
   search = new FormControl();
@@ -59,6 +60,10 @@ export class HeaderComponent implements OnInit {
 
   handleInput(): void {
     this.searchItem.emit(this.search.value);
+  }
+
+  handleFocusOut(): void {
+    this.searchValue.emit(this.search.value);
   }
 
 }
