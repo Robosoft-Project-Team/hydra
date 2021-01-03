@@ -1,65 +1,83 @@
 <div class="notification">
   <p class="notification-title">Create event</p>
-  <div class="input-group form-input">
-    <label class="input-label label">Event Title</label>
-    <input class="input-control" type="text" placeholder="Give a name for your event">
-  </div>
-  <div class="input-group form-input">
-    <label class="input-label label">Institution Name</label>
-    <input class="input-control" type="text" placeholder="Name if Institution">
-  </div>
-  <div class="input-group form-input">
-    <label class="input-label label">Location</label>
-    <input class="input-control" type="text" placeholder="Enetr Institution Loaction">
-  </div>
-  <div class="row form-input">
-    <div class="input-group">
-      <label class="input-label date-label">Date</label>
-      <input class="input-control input-date" matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker">
-        <i matDatepickerToggleIcon></i>
-      </mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+  <div class="form-group">
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Event Title</label>
+        <input class="input-control" type="text" placeholder="Give a name for your event">
+      </div>
     </div>
-    <div class="input-group ">
-      <label class="input-label time-label">Time</label>
-      <!-- <input class="input-control input-time" type="text" placeholder="8"> -->
-      <select id="10" class="input-control input-time">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Institution Name</label>
+        <input class="input-control" type="text" placeholder="Name of Institution">
+      </div>
     </div>
-    <div class="input-group">
-      <!-- <input class="input-control input-meridiem" type="text" placeholder="AM"> -->
-      <select id="am" class="input-control input-meridiem">
-        <option value="am">AM</option>
-        <option value="pm">PM</option>
-      </select>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Location</label>
+        <input class="input-control" type="text" placeholder="Enter Institution Location">
+      </div>
     </div>
-  </div>
-  <div class="input-group form-input">
-    <label class="input-label label">Description</label>
-    <textarea class="input-control" type="text" placeholder="Notes"></textarea>
-  </div>
-  <div class="input-group form-input">
-    <label class="input-label label">Members</label>
-    <div class="row image-group">
-      <img src="../../../../../assets/icn_member_placeholder.svg" alt="">
-      <img src="../../../../../assets/add member.svg" alt="">
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Date</label>
+        <input class="input-control" placeholder="DD MMM YYYY" [matDatepicker]="eventDate" (click)="eventDate.open()">
+        <mat-datepicker-toggle matSuffix [for]="eventDate">
+          <i matDatepickerToggleIcon></i>
+        </mat-datepicker-toggle>
+        <mat-datepicker #eventDate startView="multi-year">
+        </mat-datepicker>
+      </div>
+      <div class="input-group">
+        <div class="input-group sub">
+          <label class="input-label">Time</label>
+          <div class="input-container">
+            <select id="10" class="input-control">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group sub">
+          <label class="input-label"></label>
+          <div class="input-container">
+            <select id="10" class="input-control">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row form-input">
-    <button class="clear-button">Clear</button>
-    <button class="button create-button">Create</button>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Description</label>
+        <textarea class="input-control large no-resize" type="text" rows="3" cols="60" placeholder="Notes"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Members</label>
+        <div class="image-group">
+          <img src="../../../../../assets/icn_member_placeholder.svg" alt="">
+          <img src="../../../../../assets/add member.svg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="clear-button">Clear</button>
+      <button class="button create-button">Create</button>
+    </div>
   </div>
 </div>
