@@ -12,18 +12,13 @@ export class SentInviteService {
 
   getInvitedList(start: string, end: string): Observable<any> {
     const body: any = {
-      start: start,
-      end: end
+      start,
+      end
     };
-    console.log(start,end);
     return this.http.post('inviteesDetails', body);
   }
 
   getInviteCount(): Observable<any> {
-    // const body: any = {
-    //   start: start,
-    //   end: end
-    // };
     return this.http.get('sentInvitationCount');
   }
 }
