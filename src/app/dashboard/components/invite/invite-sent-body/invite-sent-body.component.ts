@@ -9,8 +9,10 @@ import { sendInvite } from 'src/app/core/models';
 })
 export class InviteSentBodyComponent implements OnInit {
   @Input() invitedCandidates: sendInvite[];
+  isDataExists = false;
 
   ngOnInit(): void {
+    this.isDataExists = this.invitedCandidates?.length > 0 ? true : false;
   }
 
 }

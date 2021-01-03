@@ -23,11 +23,7 @@ export class InviteComponent implements OnInit {
   displayItem(index: number): void {
     this.selectedIndex = index;
     this.getDate(this.selectedIndex);
-    this.sentInvite.getInvitedList(this.start, this.end).subscribe(
-      response => {
-        this.invitedCandidates = response.data;
-      }
-    );
+   this.onFilterData('');
   }
 
 
@@ -96,5 +92,20 @@ export class InviteComponent implements OnInit {
         count: this.inviteeCountList[4].countOfInvitees + ' Invited'
       }
     ];
+  }
+
+  onSearchItem(data: string) {
+    this.onFilterData(data);
+  }
+
+  onFilterData(search: string) {
+    this.sentInvite.getInvitedList(this.start, this.end).subscribe(
+      response => {
+        this.invitedCandidates = response.data.filter( item=> {
+          return item.name.toLowerCase().includes(search?.toLowerCase());
+        }
+        )
+      }
+    );
   }
 }

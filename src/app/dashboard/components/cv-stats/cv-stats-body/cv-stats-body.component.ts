@@ -37,7 +37,7 @@ export class CvStatsBodyComponent implements OnInit, OnChanges {
         case 'New':
           this.newResume.push(element);
           break;
-        case 'Assigned':
+        case 'Shortlisted':
           this.shortlistResume.push(element);
           break;
         case 'Rejected':

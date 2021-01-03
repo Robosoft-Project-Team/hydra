@@ -41,7 +41,7 @@
   <div class="social-links">
     <div *ngFor="let link of applicant.websiteUrl">
       <a *ngIf="link.url" [href]="link.url">
-        <img [src]="'assets/dashboard-cv/img_'+link.websiteName?.toLowerCase()+'.png'" alt="">
+        <img [src]="'assets/dashboard-cv/img_'+link.websiteName.toLowerCase()+'.png'" alt="">
       </a>
     </div>
   </div>
