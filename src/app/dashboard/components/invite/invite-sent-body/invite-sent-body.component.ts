@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { sendInvite } from 'src/app/core/models';
+import { SendInvite } from 'src/app/core/models';
 import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.service';
 
 
@@ -9,7 +9,7 @@ import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.se
   styleUrls: ['./invite-sent-body.component.scss']
 })
 export class InviteSentBodyComponent implements OnInit {
-  @Input() invitedCandidates: sendInvite[];
+  @Input() invitedCandidates: SendInvite[];
   isDataExists = false;
   invitees: any;
 
