@@ -10,10 +10,10 @@
           <tr class="table-row" *ngIf="item.applicants !== 0" (click)="onItemSelected(item.designation)">
             <td class="table-data">{{item.designation}}</td>
             <td class="table-data">
-              <span class="chip" [ngClass]="{'closed': !item.status}">{{item.applicants}}</span>
+              <span class="chip" [ngClass]="{'closed': item.status === 'Closed'}">{{item.applicants}}</span>
             </td>
             <td class="table-data">{{item.receivedDate | date : 'dd MMM, y'}}</td>
-            <td class="table-data">{{item.status ? 'Active' : 'Closed'}}</td>
+            <td class="table-data">{{item.status === 'Active' ? 'Active' : 'Closed'}}</td>
             <td class="table-data">{{getLocationString(item.location)}}</td>
           </tr>
         </ng-container>

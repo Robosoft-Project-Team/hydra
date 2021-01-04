@@ -2,6 +2,7 @@
   padding: 0%;
   margin: 0;
   box-sizing: border-box;
+  font-family: Muli;
 }
 
 .overlay {
@@ -16,24 +17,21 @@
   background: #00000041;
 }
 
+@mixin set-font($color, $size, $weight, $spacing, $height) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
+}
 
 @mixin side-heading {
-  color: #808087;
-  font-family: Muli;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  line-height: 20px;
+  @include set-font(#808087, 14px, 600, 0.2px, 20px);
 }
 
 @mixin heading {
   .heading {
-    color: #333539;
-    font-family: Muli;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0.17px;
-    line-height: 26px;
+    @include set-font(#333539, 1.25rem, bold, 0.17px, 26px);
     margin-bottom: 1.75rem;
   }
 }
@@ -85,31 +83,16 @@
         margin-top: 1rem;
 
         .name {
-          color: #333539;
-          font-family: Muli;
-          font-size: 30px;
-          font-weight: bold;
-          letter-spacing: 0.25px;
-          line-height: 26px;
+          @include set-font(#333539, 30px, bold, 0.25px, 26px);
         }
 
         .age {
-          color: #C1BEBE;
-          font-family: Muli;
-          font-size: 16px;
-          font-weight: bold;
-          letter-spacing: 0.13px;
-          line-height: 26px;
+          @include set-font(#C1BEBE, 1rem, bold, 0.13px, 26px);
         }
       }
 
       .designation {
-        color: #C1BEBE;
-        font-family: Muli;
-        font-size: 16px;
-        font-weight: bold;
-        letter-spacing: 0.13px;
-        line-height: 26px;
+        @include set-font(#C1BEBE, 1rem, bold, 0.13px, 26px);
         margin: 1.5rem 0px;
       }
 
@@ -123,12 +106,7 @@
           margin-right: 1rem;
           display: inline-flex;
           align-items: center;
-          color: #F52851;
-          font-family: Muli;
-          font-size: 16px;
-          font-weight: bold;
-          letter-spacing: 0;
-          line-height: 18px;
+          @include set-font(#F52851, 1rem, bold, 0px, 18px);
           text-decoration: none;
           border-radius: 8px;
           cursor: pointer;
@@ -145,6 +123,44 @@
 
         .assign {
           border: 2px solid #F52851;
+          position: relative;
+
+          .dropdown {
+            position: absolute;
+            top: calc(100% + 1rem);
+            left: 0%;
+            width: auto;
+            border-radius: 15px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 8px 0 #94949457;
+            z-index: 1000;
+            padding: 1.5rem 1.5rem 1rem;
+
+            ul {
+              list-style: none;
+              display: inline-block;
+              cursor: pointer;
+
+              li {
+                display: flex;
+                max-width: 100%;
+                align-items: center;
+                margin-bottom: .5rem;
+
+                img {
+                  height: 2.5rem;
+                  width: 2.5rem;
+                  border-radius: 50%;
+                  margin-right: 1rem;
+                }
+
+                span {
+                  @include set-font(#333539, 1rem, bold, 0.23px, 20px);
+                  transform: translateY(2px);
+                }
+              }
+            }
+          }
         }
 
         .reject {
@@ -154,12 +170,7 @@
 
       .about-para {
         p {
-          color: #808087;
-          font-family: Muli;
-          font-size: 16px;
-          font-weight: bold;
-          letter-spacing: 0;
-          line-height: 21px;
+          @include set-font(#808087, 1rem, bold, 0px, 21px);
         }
       }
 
@@ -183,12 +194,7 @@
             width: 100%;
 
             .main-text {
-              color: #333539;
-              font-family: Muli;
-              font-size: 16px;
-              font-weight: bold;
-              letter-spacing: 0.23px;
-              line-height: 20px;
+              @include set-font(#333539, 1rem, bold, 0.23px, 20px);
             }
 
             .years-spent {
@@ -212,12 +218,9 @@
           &-item {
             display: inline-flex;
             padding: 0.4rem 1rem;
-            border: 1px solid #C1BEBE;
+            @include set-font(#C1BEBE, 14px, bold, 0.23px, 20px);
             border-radius: 1.5rem;
-            font-size: 14px;
-            font-family: Muli;
-            font-weight: bold;
-            color: #C1BEBE;
+            border: 1px solid #C1BEBE;
             margin: 0px 1rem 1rem 0rem;
 
             span {
@@ -229,32 +232,17 @@
 
       .reference {
         .name {
-          color: #333539;
-          font-family: Muli;
-          font-size: 16px;
-          font-weight: bold;
-          letter-spacing: 0.23px;
-          line-height: 20px;
+          @include set-font(#333539, 1rem, bold, 0.23px, 20px);
         }
 
         .company,
         span {
-          color: #808087;
-          font-family: Muli;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.2px;
-          line-height: 20px;
+          @include set-font(#808087, 14px, 600, 0.2px, 20px);
           margin-bottom: 0.75rem;
         }
 
         .extra {
-          color: #C1BEBE;
-          font-family: Muli;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.2px;
-          line-height: 20px;
+          @include set-font(#C1BEBE, 14px, 600, 0.2px, 20px);
         }
       }
 
@@ -272,7 +260,7 @@
             padding: 0.5rem;
             border-radius: 8px;
             background-color: #FFFFFF;
-            box-shadow: 0 2px 8px 0 rgba(148, 148, 148, 0.34);
+            box-shadow: 0 2px 8px 0 #94949457;
 
             &-preview {
               width: 100%;
@@ -282,22 +270,12 @@
             }
 
             &-name {
-              color: #333539;
-              font-family: Muli;
-              font-size: 0.6rem;
-              font-weight: bold;
-              letter-spacing: 0.11px;
-              line-height: 10px;
+              @include set-font(#333539, 0.6rem, bold, 0.11px, 10px);
               margin-bottom: 0.25rem;
             }
 
             &-size {
-              color: #808087;
-              font-family: Muli;
-              font-size: 0.5rem;
-              font-weight: 600;
-              letter-spacing: 0.1px;
-              line-height: 10px;
+              @include set-font(#808087, 00.5rem, 600, 0.1px, 10px);
             }
           }
         }
@@ -308,11 +286,11 @@
       }
 
       &::-webkit-scrollbar-thumb {
-        border: 5px solid rgba(0, 0, 0, 0);
+        border: 5px solid #00000000;
         background-clip: padding-box;
         border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.15);
-        box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+        background-color: #00000026;
+        box-shadow: inset -1px -1px 0px #0000000d, inset 1px 1px 0px #0000000d;
       }
     }
   }

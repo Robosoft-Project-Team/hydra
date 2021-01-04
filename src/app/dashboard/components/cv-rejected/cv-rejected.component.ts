@@ -52,7 +52,7 @@ export class CvRejectedComponent implements OnInit {
   getProfileImage(user: RejectedCV): any {
     const attachment = user.attachmentEntities[0].download_link;
     if (attachment) {
-      return attachment.download_link;
+      return attachment.split('0/')[1];
     }
   }
 }

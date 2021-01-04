@@ -1,10 +1,9 @@
-@mixin side-heading {
-  color: #808087;
-  font-family: Muli;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  line-height: 20px;
+@mixin set-font($color, $size, $weight, $spacing, $height) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
 }
 
 * {
@@ -46,21 +45,15 @@ img {
     width: 100%;
 
     .main-text {
-      color: #333539;
-      font-family: Muli;
-      font-size: 16px;
-      font-weight: bold;
-      letter-spacing: 0.23px;
-      line-height: 20px;
+      @include set-font(#333539, 16px, bold, 0.23px, 20px);
     }
 
     .sub-text {
-      @include side-heading();
+      @include set-font(#808087, 14px, 600, 0.2px, 20px);
       transform: translateY(2px);
     }
   }
 }
-
 
 .contact {
   &-info {
@@ -87,7 +80,7 @@ img {
 }
 
 .heading {
-  @include side-heading();
+  @include set-font(#808087, 14px, 600, 0.2px, 20px);
   font-size: 1rem;
   margin: 1rem 0rem;
 }

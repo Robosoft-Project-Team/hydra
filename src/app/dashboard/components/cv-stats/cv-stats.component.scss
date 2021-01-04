@@ -99,6 +99,10 @@ h1 {
     @include sub-text();
     transform: translateY(4px);
   }
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
 }
 
 .selected {

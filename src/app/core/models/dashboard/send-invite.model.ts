@@ -1,4 +1,4 @@
-export interface sendInvite {
+export interface SendInvite {
     name: string;
     designation: string;
     location: string;

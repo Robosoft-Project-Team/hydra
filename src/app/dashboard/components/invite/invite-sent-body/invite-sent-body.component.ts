@@ -25,10 +25,10 @@ export class InviteSentBodyComponent implements OnInit {
     let location = this.invitedCandidates[id].location;
     let emailId = this.invitedCandidates[id].emailId;
     this.resendInvite.resendInvite(inviteeName, designation, location, emailId).subscribe(
-     error => {
-       console.log(error.message);
-     }
-     
+      error => {
+        console.log(error.message);
+      }
+
     );
   }
 }

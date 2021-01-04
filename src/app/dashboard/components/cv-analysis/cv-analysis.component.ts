@@ -1,8 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Profile } from 'src/app/core/models/profile.model';
 import { Component, OnInit } from '@angular/core';
-import { JobSummary } from 'src/app/core/models/job-summary.model';
-import { CvAnalysisService } from '../../services/cv-analysis.service';
+import { JobSummary } from 'src/app/core/models';
+import { CvAnalysisService } from 'src/app/dashboard/services/cv-analysis.service';
 
 @Component({
   selector: 'app-cv-analysis',

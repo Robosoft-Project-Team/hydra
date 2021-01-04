@@ -1,3 +1,5 @@
+import { AttachmentEntity } from './rejected-cv.model';
+
 export interface Reference {
     reference_name: string;
     reference_desig: string;
@@ -26,12 +28,13 @@ export interface WorkHistory {
     location: string;
 }
 
-export interface AttachmentEntity {
-    file_name: string;
-    file_type: string;
-    file_size: number;
-    type?: any;
-    download_link: string;
+export interface ResumeCard {
+    applicantId: number;
+    name: string;
+    designation: string;
+    skills: string;
+    status: string;
+    attachmentEntities: AttachmentEntity[];
 }
 
 export interface Applicant {
@@ -63,5 +66,6 @@ export interface Applicant {
     educationHistory: EducationHistory[];
     workHistory: WorkHistory[];
     attachmentEntities: AttachmentEntity[];
+    deleted: boolean;
 }
 

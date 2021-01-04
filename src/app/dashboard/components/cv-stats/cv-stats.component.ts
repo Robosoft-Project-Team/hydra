@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { CvAnalysisService } from '../../services/cv-analysis.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CvAnalysisService } from 'src/app/dashboard/services/cv-analysis.service';
+import { ResumeCard } from 'src/app/core/models';
 
 @Component({
   selector: 'app-cv-stats',
   templateUrl: './cv-stats.component.html',
   styleUrls: ['./cv-stats.component.scss']
 })
-export class CvStatsComponent implements OnInit {
+export class CvStatsComponent implements OnInit, OnDestroy {
 
   designationList;
-  selectedResume = [];
+  selectedResume: ResumeCard[] = [];
   selectedDesignation;
+  subscription: Subscription;
 
   constructor(
     private cvService: CvAnalysisService
-  ) { }
+  ) {
+    this.subscription = this.cvService.getSelectedResumes().subscribe(
+      response => {
+        this.selectedResume = response;
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.selectedDesignation = this.cvService.getDesignation();
@@ -47,11 +56,12 @@ export class CvStatsComponent implements OnInit {
   }
 
   getApplications(jobId): void {
-    this.cvService.getApplications(jobId).subscribe(
-      response => {
-        this.selectedResume = response.data;
-      }
-    );
+    this.cvService.getApplications(jobId);
+  }
+
+  ngOnDestroy(): void {
+    this.cvService.selectedResumes.splice(0, this.cvService.selectedResumes.length);
+    this.subscription.unsubscribe();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   trigger,
@@ -7,9 +7,10 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { CvAnalysisService } from '../../services/cv-analysis.service';
-import { Applicant } from '../../shared/interface';
+import { CvAnalysisService } from 'src/app/dashboard/services/cv-analysis.service';
+import { Applicant } from 'src/app/core/models';
 import * as fileSaver from 'file-saver';
+import { Organizer } from 'src/app/core/models';
 
 @Component({
   selector: 'app-cv-details',
@@ -36,7 +37,7 @@ import * as fileSaver from 'file-saver';
     ]),
   ],
 })
-export class CvDetailsComponent implements OnInit {
+export class CvDetailsComponent implements OnInit, OnDestroy {
 
   applicant: Applicant = {
     applicantName: '',
@@ -100,10 +101,16 @@ export class CvDetailsComponent implements OnInit {
         download_link: '',
         type: ''
       }
-    ]
+    ],
+    deleted: false
   };
 
-  currentURL: string;
+  buttonTwo = '';
+  buttonThree = '';
+  showDropdown = false;
+
+  organizers: Organizer[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -111,12 +118,16 @@ export class CvDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.currentURL = this.router.url;
-    console.log('URL is: ', this.currentURL);
     const id = +this.route.snapshot.params.id;
     this.cv.getApplicant(id).subscribe(
       response => {
         this.applicant = response.data.applicant;
+        this.setButtons(response.data.employee_name);
+      }
+    );
+    this.cv.getOrganizers().subscribe(
+      response => {
+        this.organizers = response;
       }
     );
   }
@@ -148,11 +159,10 @@ export class CvDetailsComponent implements OnInit {
   downloadAttachment(index): void {
     const attachment = this.applicant.attachmentEntities[index];
     const url = attachment.download_link.split('0/')[1];
-    const filename = url.split('/')[2];
     this.cv.getAttachment(url).subscribe(
       response => {
         const blob = new Blob([response], { type: `${attachment.file_type}; charset=utf-8` });
-        fileSaver.saveAs(blob, filename);
+        fileSaver.saveAs(blob, attachment.file_name);
       }
     );
   }
@@ -163,4 +173,57 @@ export class CvDetailsComponent implements OnInit {
       : (fileSize / 1024000).toFixed(2) + ' MB';
   }
 
+  setButtons(name): void {
+    [this.buttonTwo, this.buttonThree] = ['', ''];
+    if (this.applicant.applicationStatus === 'New') {
+      [this.buttonTwo, this.buttonThree] = ['Assign To', 'Reject'];
+    } else if (this.applicant.applicationStatus === 'Rejected') {
+      [this.buttonTwo, this.buttonThree] = ['Recruit', 'Delete'];
+    } else {
+      this.buttonTwo = 'Assigned To: ' + name;
+    }
+  }
+
+  buttonTwoFunction(array): any {
+    if (!array.length) {
+      this.showDropdown = !this.showDropdown;
+      return;
+    }
+    if (array[0] === 'assign' && this.applicant.applicationStatus !== 'Shortlisted') {
+      this.cv.assignApplicantToOrganiser(this.applicant.applicantId, array[1].employeeId);
+      this.changeStatus('Shortlisted', array[1].name);
+    }
+    else if (array[0] === 'assign') {
+      this.cv.assignApplicantToOrganiser(this.applicant.applicantId, array[1].employeeId);
+      this.setButtons(array[1].name);
+    } else if (array[0] === 'recruit') {
+      this.changeStatus('New');
+    }
+  }
+
+  buttonThreeFunction(type): void {
+    this.showDropdown = false;
+    if (type === 'Reject') {
+      this.changeStatus('Rejected');
+    } else if (type === 'Delete') {
+      this.cv.deleteApplicant(this.applicant.applicantId).subscribe(
+        response => {
+          if (response.status === 200) {
+            this.applicant.applicationStatus = 'deleted';
+            this.goBack();
+          }
+        }
+      );
+    }
+  }
+
+  changeStatus(status, name = ''): void {
+    this.applicant.applicationStatus = status;
+    this.cv.changeApplicantStatus(this.applicant.applicantId, status);
+    this.setButtons(name);
+  }
+
+  ngOnDestroy(): void {
+    this.cv.changeStatusOfSelectedResumes(this.applicant.applicantId, this.applicant.applicationStatus);
+  }
 }

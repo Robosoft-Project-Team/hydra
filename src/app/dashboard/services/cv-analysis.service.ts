@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable, Subject } from 'rxjs';
-import { Applicant } from '../shared/interface';
-import { applicants, list, allResumes } from './mockData';
+import { Observable, of } from 'rxjs';
+import { Organizer, ResumeCard  } from 'src/app/core/models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +9,8 @@ import { applicants, list, allResumes } from './mockData';
 export class CvAnalysisService {
 
   selectedDesignation;
+  organizers: Organizer[] = [];
+  selectedResumes: ResumeCard[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -25,10 +26,6 @@ export class CvAnalysisService {
     return this.http.get(`getApplicant/${id}`);
   }
 
-  getAllResumes(): any {
-    return allResumes;
-  }
-
   getAttachment(url: string): Observable<any> {
     return this.http.get(url, { responseType: 'blob' });
   }
@@ -38,22 +35,74 @@ export class CvAnalysisService {
   }
 
   getDesignationList(): Observable<any> {
+    this.setOrganizers();
     return this.http.get('getDesignationList');
-  }
-
-  assignApplicantToOrganiser(applicantId, employeeId): Observable<any> {
-    const putBody = {
-      applicant_id: applicantId,
-      employee_id: employeeId
-    };
-    return this.http.put('assignTo', putBody);
   }
 
   getAssignedList(): Observable<any> {
     return this.http.get('assignedApplicant');
   }
 
-  getApplications(id): Observable<any> {
-    return this.http.get(`getApplications/${id}`);
+  getApplications(id): void {
+    this.selectedResumes.splice(0, this.selectedResumes.length);
+    this.http.get<any>(`getApplications/${id}`).subscribe(
+      response => {
+        this.selectedResumes.push(...response.data);
+      }
+    );
+  }
+
+  getSelectedResumes(): Observable<any> {
+    return of(this.selectedResumes);
+  }
+
+  assignApplicantToOrganiser(applicantId, employeeId): void {
+    const putBody = {
+      applicant_id: applicantId,
+      employee_id: employeeId
+    };
+    this.http.put<any>('assignTo', putBody).subscribe(
+      response => { },
+      error => console.log(error)
+    );
+  }
+
+  changeApplicantStatus(applicantId, applicantStatus): void {
+    const putBody = {
+      id: applicantId,
+      status: applicantStatus
+    };
+    this.http.put<any>('changeApplicationStatus', putBody).subscribe(
+      response => { },
+      error => console.log(error)
+    );
+  }
+
+  changeStatusOfSelectedResumes(id, status): void {
+    if (this.selectedResumes.length) {
+      if (status === 'deleted') {
+        const index = this.selectedResumes.indexOf(this.selectedResumes.find(item => item.applicantId === id));
+        this.selectedResumes.splice(index, 1);
+      } else {
+        this.selectedResumes.find(item => item.applicantId === id).status = status;
+      }
+    }
+  }
+
+  setOrganizers(): void {
+    this.http.get<any>('organizerDetails').subscribe(
+      response => {
+        this.organizers = response.data;
+      },
+      error => console.log(error)
+    );
+  }
+
+  getOrganizers(): Observable<Organizer[]> {
+    return of(this.organizers);
+  }
+
+  deleteApplicant(applicantId): Observable<any> {
+    return this.http.delete(`deleteApplicant/${applicantId}`);
   }
 }

@@ -25,7 +25,6 @@ export class CreateEventFormComponent implements OnInit {
     '2.00',
     '3.00'
   ];
-
   constructor() { }
 
   ngOnInit(): void {

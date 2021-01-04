@@ -1,6 +1,6 @@
 <div class="overlay" [@overlay]="'show'" (click)="goBack()"></div>
 <!--  [@openClose]="'open'" -->
-<div class="container" [@openClose]="'open'">
+<div class="container" *ngIf="applicant.applicantId" [@openClose]="'open'">
   <div class="container-left-sidebar">
     <app-left-sidebar [applicant]="applicant"></app-left-sidebar>
   </div>
@@ -13,10 +13,18 @@
       <p class="designation">{{applicant.designation}}</p>
       <div class="buttons">
         <a (click)="downloadAttachment(0)" class="button download"><span>Download CV</span></a>
-        <a href=""
-          class="button assign"><span>{{ currentURL.includes('/dashboard/cv/stats/') ? 'Assign To' : 'Recruit'}}</span></a>
-        <a href=""
-          class="button reject"><span>{{ currentURL.includes('/dashboard/cv/stats/') ? 'Reject' : 'Delete'}}</span></a>
+        <a *ngIf="buttonTwo" (click)="buttonTwoFunction(buttonTwo === 'Recruit'? ['recruit']: [])"
+          class="button assign">
+          <span class="capitalize">{{buttonTwo}}</span>
+          <div *ngIf="showDropdown" class="dropdown">
+            <ul>
+              <li *ngFor="let item of organizers" (click)="buttonTwoFunction(['assign', item])">
+                <img src="assets/dashboard-home/icn_hr.png" alt=""><span class="capitalize">{{item.name}}</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+        <a *ngIf="buttonThree" (click)="buttonThreeFunction(buttonThree)" class="button reject"><span>{{buttonThree}}</span></a>
       </div>
       <div class="about-para">
         <p>{{applicant.aboutYou}}</p>
@@ -70,7 +78,7 @@
         </div>
         <p class="name capitalize">{{applicant.reference.reference_name}}</p>
         <p class="company capitalize">{{applicant.reference.reference_desig}}</p>
-        <p class="extra"><span>Phone: </span>{{applicant.reference.reference_mobile}}</p>
+        <p class="extra"><span>Phone: </span>+91 {{applicant.reference.reference_mobile}}</p>
         <p class="extra"><span>Email: </span>{{applicant.reference.reference_mail}}</p>
       </div>
       <hr class="hr">

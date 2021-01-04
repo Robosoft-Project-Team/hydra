@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile, User } from 'src/app/core/models';
+import { User } from 'src/app/core/models';
 import { DashboardService } from 'src/app/dashboard/services/dashboard.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 
@@ -26,5 +26,4 @@ export class InviteHeaderComponent implements OnInit {
     this.user.designation = this.storageService.getUserProfile()?.employeeRole || 'Employee';
     this.user.image.url = this.dashboardService.dashboardData.user.image.url;
   }
-
 }

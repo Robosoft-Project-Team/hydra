@@ -1,25 +1,24 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { ResumeCard } from 'src/app/core/models';
 
 @Component({
   selector: 'app-cv-stats-body',
   templateUrl: './cv-stats-body.component.html',
   styleUrls: ['./cv-stats-body.component.scss']
 })
-export class CvStatsBodyComponent implements OnInit, OnChanges {
+export class CvStatsBodyComponent implements OnInit, DoCheck {
   @Input() resumes;
   totalLength;
-  newResume;
-  shortlistResume;
-  rejectedResume;
+  newResume: ResumeCard[];
+  shortlistResume: ResumeCard[];
+  rejectedResume: ResumeCard[];
 
   constructor() { }
 
   ngOnInit(): void {
-    // this.resetList();
-    // this.divideByStatus();
   }
 
-  ngOnChanges(): void {
+  ngDoCheck(): void {
     this.resetList();
   }
 
@@ -27,23 +26,22 @@ export class CvStatsBodyComponent implements OnInit, OnChanges {
     this.newResume = [];
     this.shortlistResume = [];
     this.rejectedResume = [];
-    this.divideByStatus();
+    this.filterUsingStatus();
   }
 
-  divideByStatus(): void {
+  filterUsingStatus(): void {
     this.totalLength = this.resumes.length;
     this.resumes.forEach(element => {
-      switch (element.status) {
-        case 'New':
-          this.newResume.push(element);
-          break;
-        case 'Shortlisted':
-          this.shortlistResume.push(element);
-          break;
-        case 'Rejected':
-          this.rejectedResume.push(element);
-          break;
-        default: break;
+      if (!element.deleted) {
+        switch (element.status) {
+          case 'New': this.newResume.push(element);
+                      break;
+          case 'Shortlisted': this.shortlistResume.push(element);
+                              break;
+          case 'Rejected': this.rejectedResume.push(element);
+                           break;
+          default: break;
+        }
       }
     });
   }

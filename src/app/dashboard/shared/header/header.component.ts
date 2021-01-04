@@ -1,6 +1,5 @@
-import { Profile } from 'src/app/core/models/profile.model';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import * as moment from 'moment';
 import { FormControl } from '@angular/forms';

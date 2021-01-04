@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { sendInvite } from 'src/app/core/models';
+import { SendInvite } from 'src/app/core/models';
 import { SentInviteService } from 'src/app/dashboard/services/sent-invite.service';
 import * as moment from 'moment';
 
@@ -16,14 +16,14 @@ export class InviteComponent implements OnInit {
   end: string;
   selectedIndex = 0;
 
-  invitedCandidates: sendInvite[];
+  invitedCandidates: SendInvite[];
   inviteeCountList = [];
   list = [];
 
   displayItem(index: number): void {
     this.selectedIndex = index;
     this.getDate(this.selectedIndex);
-   this.onFilterData('');
+    this.onFilterData('');
   }
 
 
@@ -94,17 +94,16 @@ export class InviteComponent implements OnInit {
     ];
   }
 
-  onSearchItem(data: string) {
+  onSearchItem(data: string): void {
     this.onFilterData(data);
   }
 
-  onFilterData(search: string) {
+  onFilterData(search: string): void {
     this.sentInvite.getInvitedList(this.start, this.end).subscribe(
       response => {
-        this.invitedCandidates = response.data.filter( item=> {
+        this.invitedCandidates = response.data.filter(item => {
           return item.name.toLowerCase().includes(search?.toLowerCase());
-        }
-        )
+        });
       }
     );
   }
