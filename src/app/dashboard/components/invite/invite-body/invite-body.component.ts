@@ -1,6 +1,7 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { FormValidator } from 'src/app/shared/services/form.validator';
+import { SendNewInviteService } from 'src/app/dashboard/services/send-new-invite.service';
 
 @Component({
   selector: 'app-invite-body',
@@ -10,7 +11,7 @@ import { FormValidator } from 'src/app/shared/services/form.validator';
 export class InviteBodyComponent implements OnInit {
 
   inviteForm: FormGroup;
-  constructor() { }
+  constructor(private sendInviteService: SendNewInviteService) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -37,7 +38,12 @@ export class InviteBodyComponent implements OnInit {
     if (this.inviteForm.invalid) {
       return;
     }
-    console.log(JSON.stringify(this.inviteForm.value));
+    this.sendInviteService.sendInvitation(this.inviteForm.value)
+      .subscribe(
+        response => {
+          if (response.status === 200) { }
+          else if (response.status === 404) { }
+        },
+      );
   }
-
 }
