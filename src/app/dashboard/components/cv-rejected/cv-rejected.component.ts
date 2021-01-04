@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RejectedCV } from 'src/app/core/models';
 import { CvRejectedService } from 'src/app/dashboard/services/cv-rejected.service';
@@ -8,9 +8,10 @@ import { CvRejectedService } from 'src/app/dashboard/services/cv-rejected.servic
   templateUrl: './cv-rejected.component.html',
   styleUrls: ['./cv-rejected.component.scss']
 })
-export class CvRejectedComponent implements OnInit {
+export class CvRejectedComponent implements OnInit, DoCheck {
 
   RejectedUserData: RejectedCV[];
+  allRejectedCV: RejectedCV[];
   isDataExists = false;
 
   constructor(
@@ -18,10 +19,18 @@ export class CvRejectedComponent implements OnInit {
     private router: Router,
     private cvRejectedService: CvRejectedService
   ) {
+    this.cvRejectedService.getRejectedList().subscribe(
+      response => this.allRejectedCV = response
+    );
   }
 
   ngOnInit(): void {
-    this.filterDataOnSearch('');
+    this.cvRejectedService.setRejectedList();
+  }
+
+  ngDoCheck(): void {
+    this.RejectedUserData = this.allRejectedCV;
+    this.isDataExists = this.RejectedUserData.length > 0 ? true : false;
   }
 
   onSearchItem(data: string): void {
@@ -33,20 +42,10 @@ export class CvRejectedComponent implements OnInit {
   }
 
   filterDataOnSearch(search: string): void {
-    this.cvRejectedService.getRejectedList().subscribe(
-      response => {
-        if (search) {
-          this.RejectedUserData = response.data.filter(item => {
-            return item.applicantName.toLowerCase().includes(search?.toLowerCase());
-          });
-          console.log(this.RejectedUserData, search);
-        }
-        else {
-          this.RejectedUserData = response.data;
-        }
-        this.isDataExists = this.RejectedUserData.length > 0 ? true : false;
-      }
-    );
+    // this.RejectedUserData = this.allRejectedCV.filter(item => {
+    //   return item.applicantName.toLowerCase().includes(search?.toLowerCase());
+    // });
+    // console.log(this.RejectedUserData);
   }
 
   getProfileImage(user: RejectedCV): any {
