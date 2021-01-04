@@ -10,6 +10,7 @@ import { NotificationListService } from 'src/app/dashboard/services/notification
 })
 export class NotificationsListComponent implements OnInit {
 
+  isClicked=false;
   date = moment().format('YYYY, MMMM DD');
   notifications: NotificationList[];
   isNotificationExists = false;
@@ -30,8 +31,33 @@ export class NotificationsListComponent implements OnInit {
   }
 
   onClose(id: number): void {
-    this.notifications.splice(id, 1);
+    this.notification.deleteNotification(this.notifications[id].notificationId).subscribe(
+      response => {
+        this.notifications.splice(id, 1);     
+      },
+      error => {
+        console.log('Error =', error);
+      }
+    );
     this.isNotificationExists = this.notifications.length > 0 ? true : false;
   }
 
+  joinDecline(id: string | number,status: any) {
+    this.notification.joinDeclineEvent(this.notifications[id].eventId, status).subscribe(
+      response => {
+        if(response.status===200){
+          this.isClicked=true;
+        }
+      },
+      error => {
+        console.log('Join Decline Error = ', error);
+      }
+    );
+    this.notification.getNotificationList().subscribe(
+      response => {
+        this.notifications = response.data;
+        this.isNotificationExists = this.notifications.length > 0 ? true : false;
+      }
+    );
+  }
 }

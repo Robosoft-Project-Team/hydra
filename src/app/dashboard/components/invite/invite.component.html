@@ -21,11 +21,12 @@
       <app-invite-body></app-invite-body>
     </ng-container>
     <ng-template #sentInvite>
-      <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Sent Invite'" 
-      (searchItem)="onSearchItem($event)"></app-header>
+      <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Sent Invite'"
+        (searchItem)="onSearchItem($event)"></app-header>
       <hr>
       <ng-container *ngIf="invitedCandidates; else loading">
-        <app-invite-sent-body [invitedCandidates]="invitedCandidates" *ngIf="invitedCandidates.length > 0 ; else noData"></app-invite-sent-body>
+        <app-invite-sent-body [invitedCandidates]="invitedCandidates"
+          *ngIf="invitedCandidates.length > 0 ; else noData"></app-invite-sent-body>
       </ng-container>
     </ng-template>
   </div>

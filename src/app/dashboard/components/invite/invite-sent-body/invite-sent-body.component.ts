@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { sendInvite } from 'src/app/core/models';
+import * as moment from 'moment';
+import { SendInvite } from 'src/app/core/models';
 import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.service';
 
 
@@ -9,9 +10,10 @@ import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.se
   styleUrls: ['./invite-sent-body.component.scss']
 })
 export class InviteSentBodyComponent implements OnInit {
-  @Input() invitedCandidates: sendInvite[];
+  @Input() invitedCandidates: SendInvite[];
   isDataExists = false;
   invitees: any;
+  date = moment().format('YYYY-MM-DD');
 
   constructor(private resendInvite: ResendInviteService) { }
 
@@ -28,7 +30,6 @@ export class InviteSentBodyComponent implements OnInit {
       error => {
         console.log(error.message);
       }
-
     );
   }
 }
