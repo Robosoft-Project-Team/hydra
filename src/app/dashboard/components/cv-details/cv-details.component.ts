@@ -11,6 +11,7 @@ import { CvAnalysisService } from 'src/app/dashboard/services/cv-analysis.servic
 import { Applicant } from 'src/app/core/models';
 import * as fileSaver from 'file-saver';
 import { Organizer } from 'src/app/core/models';
+import { CvRejectedService } from '../../services/cv-rejected.service';
 
 @Component({
   selector: 'app-cv-details',
@@ -115,6 +116,7 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private cv: CvAnalysisService,
+    private rejectedService: CvRejectedService
   ) { }
 
   ngOnInit(): void {
@@ -224,6 +226,10 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.cv.changeStatusOfSelectedResumes(this.applicant.applicantId, this.applicant.applicationStatus);
+    if (this.router.url === '/dashboard/cv/stats') {
+      this.cv.changeStatusOfSelectedResumes(this.applicant.applicantId, this.applicant.applicationStatus);
+    } else if (this.router.url === '/dashboard/rejected') {
+      this.rejectedService.removeCvFromList(this.applicant.applicantId, this.applicant.applicationStatus);
+    }
   }
 }
