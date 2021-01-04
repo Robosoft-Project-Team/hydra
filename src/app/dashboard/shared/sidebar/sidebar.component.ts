@@ -1,5 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { SignInService } from 'src/app/login/services/sign-in.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -9,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isDashboard = true;
   constructor(
-    public router: Router
+    public router: Router,
+    private signInService: SignInService
   ) { }
 
   ngOnInit(): void {
   }
 
+  onLogout(): void {
+    this.signInService.logout();
+    this.router.navigate(['/']);
+  }
 }

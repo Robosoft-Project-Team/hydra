@@ -36,33 +36,9 @@ export class InviteComponent implements OnInit {
     );
   }
 
-  getDate(period: number): void {
-    switch (period) {
-      case 1:
-        this.start = moment().format('YYYY-MM-DD');
-        this.end = moment().format('YYYY-MM-DD');
-        break;
-      case 2:
-        this.start = moment().subtract(1, 'day').startOf('day').format('YYYY-MM-DD');
-        this.end = moment().subtract(1, 'day').endOf('day').format('YYYY-MM-DD');
-        break;
-      case 3:
-        this.start = moment().subtract(1, 'month').startOf('day').format('YYYY-MM-DD');
-        this.end = moment().subtract(1, 'month').endOf('day').format('YYYY-MM-DD');
-        break;
-      case 4:
-        this.start = moment().subtract(2, 'month').startOf('month').format('YYYY-MM-DD');
-        this.end = moment().subtract(2, 'month').endOf('month').format('YYYY-MM-DD');
-        break;
-      case 5:
-        this.start = moment().subtract(1, 'year').startOf('year').format('YYYY-MM-DD');
-        this.end = moment().subtract(1, 'year').endOf('year').format('YYYY-MM-DD');
-        break;
-      case 6:
-        this.start = moment().subtract(2, 'year').startOf('year').format('YYYY-MM-DD');
-        this.end = moment().subtract(2, 'year').endOf('year').format('YYYY-MM-DD');
-        break;
-    }
+  getDate(id: number): void {
+    this.start = moment(this.inviteeCountList[id - 1].startDate, 'YYYY-MM-DD').format('YYYY-MM-DD');
+    this.end = moment(this.inviteeCountList[id - 1].endDate, 'YYYY-MM-DD').format('YYYY-MM-DD');
   }
 
   initList(): void {
@@ -72,7 +48,7 @@ export class InviteComponent implements OnInit {
         count: ''
       },
       {
-        timePeriod: 'Today (' + moment().format('DD MMM YYYY') + ')',
+        timePeriod: 'Today (' + moment().startOf('day').format('DD MMM YYYY') + ')',
         count: this.inviteeCountList[0].countOfInvitees + ' Invited'
       },
       {
@@ -84,11 +60,12 @@ export class InviteComponent implements OnInit {
         count: this.inviteeCountList[2].countOfInvitees + ' Invited'
       },
       {
-        timePeriod: moment().startOf('month').subtract(2, 'month').format('MMMM'),
+        // timePeriod: moment(this.inviteeCountList[3].startDate, 'YYYY-MM-DD').format('YYYY'),
+        timePeriod: 'Past One Year',
         count: this.inviteeCountList[3].countOfInvitees + ' Invited'
       },
       {
-        timePeriod: moment().startOf('year').subtract(1, 'year').format('YYYY'),
+        timePeriod: moment(this.inviteeCountList[4].startDate, 'YYYY-MM-DD').format('YYYY'),
         count: this.inviteeCountList[4].countOfInvitees + ' Invited'
       }
     ];
@@ -101,9 +78,14 @@ export class InviteComponent implements OnInit {
   onFilterData(search: string): void {
     this.sentInvite.getInvitedList(this.start, this.end).subscribe(
       response => {
-        this.invitedCandidates = response.data.filter(item => {
-          return item.name.toLowerCase().includes(search?.toLowerCase());
-        });
+        if (response.data) {
+          this.invitedCandidates = response.data.filter(item => {
+            return item.name.toLowerCase().includes(search?.toLowerCase());
+          });
+        }
+        else {
+          this.invitedCandidates = [];
+        }
       }
     );
   }

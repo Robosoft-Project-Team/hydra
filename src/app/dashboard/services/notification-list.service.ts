@@ -12,4 +12,16 @@ export class NotificationListService {
   getNotificationList(): Observable<any> {
     return this.http.get('notification');
   }
+
+  deleteNotification(id: number): Observable<any> {
+    return this.http.delete('removeNotification/'+id);
+  }
+
+  joinDeclineEvent(eventId: any, status: any): Observable<any> {
+    const body: any = {
+      eventId,
+      status
+    };
+    return this.http.post('eventAcceptorReject', body);
+  }
 }

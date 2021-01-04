@@ -33,4 +33,9 @@ export class SignInService {
     console.log(userDetails);
     return this.http.post(`signUp`, userDetails);
   }
+
+  logout():void{
+    this.http.put('logOut',null);
+    this.storage.removeJwtToken();
+  }
 }
