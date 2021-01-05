@@ -1,0 +1,81 @@
+@import 'src/variables';
+
+.custom-dropdown {
+  position: relative;
+
+  &-container,
+  &-display {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin: 0;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+
+    .arrow {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 40px;
+      width: 40px;
+      border-radius: 0 6px 6px 0;
+      border-color: transparent;
+      pointer-events: none;
+      background: url('../../../../assets/icn_dropdown_down/icn_dropdown_down@1.5x.svg') no-repeat center;
+      filter: brightness(.05);
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    &.open .arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 6px;
+    max-height: 13rem;
+    overflow-y: auto;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    .custom-option {
+      position: relative;
+      display: block;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: $color-black-light;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.5s;
+      background-color: $color-white;
+      padding: 15px 20px;
+    }
+
+    .custom-option.selected {
+      color: $color-primary-dark;
+      font-weight: 600;
+    }
+
+  }
+
+  &-container.open &-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+}
