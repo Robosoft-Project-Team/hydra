@@ -104,7 +104,7 @@ export class FormThreeComponent implements OnInit {
     if (this.fileArray !== [] && this.profileImage) {
       this.submitForm.submitDetails(this.fileArray, this.profileImage).subscribe(
         response => {
-          if (response.status === 200){
+          if (response.status === 201){
             this.formStore.resetForms();
             this.router.navigate(['../success'], { relativeTo: this.route });
           }
