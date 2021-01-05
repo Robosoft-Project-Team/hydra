@@ -1,0 +1,13 @@
+<div class="custom-dropdown">
+  <div class="custom-dropdown-container">
+    <div class="custom-dropdown-display"><span>{{selectedChoice}}</span>
+      <div class="arrow"></div>
+    </div>
+    <div class="custom-dropdown-options">
+      <span class="custom-option" [ngClass]="{'selected': selectedChoice === item}" [attr.data-value]="item"
+        *ngFor="let item of data; let i =index" (click)="onItemSelect(i)">
+        {{item}}
+      </span>
+    </div>
+  </div>
+</div>

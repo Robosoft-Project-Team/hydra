@@ -1,22 +1,22 @@
 <div class="notification">
   <p class="notification-title">Create event</p>
-  <div class="form-group">
+  <form class="form-group" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="input-group">
         <label class="input-label">Event Title</label>
-        <input class="input-control" type="text" placeholder="Give a name for your event">
+        <input class="input-control" type="text" placeholder="Give a name for your event" formControlName="title">
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Institution Name</label>
-        <input class="input-control" type="text" placeholder="Name of Institution">
+        <input class="input-control" type="text" placeholder="Name of Institution" formControlName="institution">
       </div>
     </div>
     <div class="row">
       <div class="input-group">
         <label class="input-label">Location</label>
-        <input class="input-control" type="text" placeholder="Enter Institution Location">
+        <input class="input-control" type="text" placeholder="Enter Institution Location" formControlName="location">
       </div>
     </div>
     <div class="row">
@@ -25,39 +25,23 @@
           <label class="input-label">Date</label>
           <div class="input-container">
             <input class="input-control" placeholder="DD MMM YYYY" [matDatepicker]="eventDate"
-              (click)="eventDate.open()">
-            <mat-datepicker-toggle matSuffix [for]="eventDate"></mat-datepicker-toggle>
+              (click)="eventDate.open()" formControlName="date" formControlName="eventDate">
+            <mat-datepicker-toggle matSuffix [for]="eventDate">
+              <i class="input-control-date-icon" matDatepickerToggleIcon></i>
+            </mat-datepicker-toggle>
             <mat-datepicker #eventDate>
             </mat-datepicker>
           </div>
         </div>
         <div class="input-group sub">
-          <div class="input-group sub">
-            <label class="input-label">Time</label>
-            <div class="input-container">
-              <select id="10" class="input-control">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
+          <label class="input-label">Time</label>
+          <div class="input-dropdown">
+            <div class="input-control placeholder">
+              <app-custom-dropdown [data]="[1,2,3,4,5,6,7,8,9,10,11,12]" (selectedItem)="time=$event">
+              </app-custom-dropdown>
             </div>
-          </div>
-          <div class="input-group sub">
-            <label class="input-label transparent">Time</label>
-            <div class="input-container">
-              <select id="10" class="input-control">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-              </select>
+            <div class="input-control placeholder">
+              <app-custom-dropdown [data]="['AM', 'PM']" (selectedItem)="meridiem=$event"></app-custom-dropdown>
             </div>
           </div>
         </div>
@@ -66,21 +50,25 @@
     <div class="row">
       <div class="input-group">
         <label class="input-label">Description</label>
-        <textarea class="input-control large no-resize" type="text" rows="3" cols="60" placeholder="Notes"></textarea>
+        <textarea class="input-control large no-resize" type="text" rows="3" cols="60" placeholder="Notes"
+          formControlName="description"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="input-group vertical">
         <label class="input-label">Members</label>
         <div class="image-group">
-          <img class="icon-1" src="assets/icn_member_placeholder.svg" alt="">
-          <img src="assets/add member.svg" alt="">
+          <div class="icon-tooltip" *ngFor="let member of members; let i = index">
+            <img class="image-icon" src="assets/icn_member_placeholder.svg" alt="{{member.employee_username}}">
+            <span class="icon-tooltip-text">{{member.employee_username}}</span>
+          </div>
+          <img class="image-icon" src="assets/add member.svg" alt="" (click)="addMember()">
         </div>
       </div>
     </div>
     <div class="row">
       <button class="clear-button">Clear</button>
-      <button class="button create-button">Create</button>
+      <button class="button create-button" type="submit">Create</button>
     </div>
-  </div>
+  </form>
 </div>
