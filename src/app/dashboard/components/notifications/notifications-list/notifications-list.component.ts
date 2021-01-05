@@ -43,7 +43,7 @@ export class NotificationsListComponent implements OnInit {
   }
 
   joinDecline(id: string | number,status: any) {
-    this.notification.joinDeclineEvent(this.notifications[id].eventId, status).subscribe(
+    this.notification.joinDeclineEvent(this.notifications[id].notificationId,this.notifications[id].eventId, status).subscribe(
       response => {
         if(response.status===200){
           this.isClicked=true;

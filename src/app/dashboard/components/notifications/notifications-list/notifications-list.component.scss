@@ -212,8 +212,11 @@
     position: absolute;
     right: 35px;
     height: 26px;
-    border: solid 1px $color-black-lighter;
-    border-radius: 2px;
+
+    .mat-icon {
+      fill: $color-primary-dark;
+      color: $color-primary-dark;
+    }
   }
 
   &-schedule {

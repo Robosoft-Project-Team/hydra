@@ -21,7 +21,7 @@
         <div class="notification-list" *ngFor="let item of notifications; let id = index;">
           <p class="notification-message">{{item.notificationMessage}}
             <span class="dot" (click)="onClose(id)">
-              <mat-icon>close</mat-icon>
+              <mat-icon>delete</mat-icon>
             </span>
           </p>
           

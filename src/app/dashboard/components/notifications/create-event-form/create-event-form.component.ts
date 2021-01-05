@@ -89,7 +89,7 @@ export class CreateEventFormComponent implements OnInit {
       eventTime: `${this.time}:00 ${this.meridiem}`,
       members: selectedMembers
     };
-    this.eventService.createEvent(this.eventForm.value)
+    this.eventService.createEvent(formData)
     .subscribe(
       response=>{
         if(response.status===200){}
