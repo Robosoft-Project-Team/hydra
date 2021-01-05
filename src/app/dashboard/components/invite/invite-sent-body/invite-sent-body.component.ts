@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 import { SendInvite } from 'src/app/core/models';
 import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.service';
@@ -11,6 +11,7 @@ import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.se
 })
 export class InviteSentBodyComponent implements OnInit {
   @Input() invitedCandidates: SendInvite[];
+  @Output() increaseCount = new EventEmitter<any>();
   isDataExists = false;
   invitees: any;
   date = moment().format('YYYY-MM-DD');
@@ -27,6 +28,11 @@ export class InviteSentBodyComponent implements OnInit {
     let location = this.invitedCandidates[id].location;
     let emailId = this.invitedCandidates[id].emailId;
     this.resendInvite.resendInvite(inviteeName, designation, location, emailId).subscribe(
+      response => {
+        if (response.status === 200) {
+          this.increaseCount.emit(1);
+        }
+      },
       error => {
         console.log(error.message);
       }

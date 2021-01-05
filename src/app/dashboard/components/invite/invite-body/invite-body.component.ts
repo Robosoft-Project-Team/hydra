@@ -1,5 +1,5 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormValidator } from 'src/app/shared/services/form.validator';
 import { SendNewInviteService } from 'src/app/dashboard/services/send-new-invite.service';
 
@@ -11,6 +11,7 @@ import { SendNewInviteService } from 'src/app/dashboard/services/send-new-invite
 export class InviteBodyComponent implements OnInit {
 
   inviteForm: FormGroup;
+  @Output() increaseCount = new EventEmitter<any>();
   constructor(private sendInviteService: SendNewInviteService) { }
 
   ngOnInit(): void {
@@ -41,7 +42,9 @@ export class InviteBodyComponent implements OnInit {
     this.sendInviteService.sendInvitation(this.inviteForm.value)
       .subscribe(
         response => {
-          if (response.status === 200) { }
+          if (response.status === 200) {
+            this.increaseCount.emit(1);
+          }
           else if (response.status === 404) { }
         },
       );
