@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CreateEventService } from 'src/app/dashboard/services/create-event.service';
 
 const MY_FORMATS = {
   parse: {
@@ -30,7 +32,14 @@ export class CreateEventFormComponent implements OnInit {
     '2.00',
     '3.00'
   ];
-  constructor() { }
+
+  members:any[]=[];
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private eventService: CreateEventService
+  ) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -51,5 +60,25 @@ export class CreateEventFormComponent implements OnInit {
 
   get form(): any {
     return this.eventForm.controls;
+  }
+
+  onSubmit():void{
+    this.eventService.CreateEvent(this.eventForm.value)
+    .subscribe(
+      response=>{
+        if(response.status===200){}
+        else if(response.status===404){}
+      }
+    );
+  }
+
+  addmember():void{
+    this.eventService.getMemberList()
+    .subscribe(
+      response=>{
+        this.members=response.data;
+        console.log(this.members);
+      }
+    );
   }
 }

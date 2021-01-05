@@ -1,6 +1,6 @@
 <div class="notification">
   <p class="notification-title">Create event</p>
-  <div class="form-group" [formGroup]="eventForm">
+  <div class="form-group" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="input-group">
         <label class="input-label">Event Title</label>
@@ -81,13 +81,13 @@
         <label class="input-label">Members</label>
         <div class="image-group">
           <img class="icon-1" src="assets/icn_member_placeholder.svg" alt="">
-          <img src="assets/add member.svg" alt="">
+          <img src="assets/add member.svg" alt="" (click)="addmember()">
         </div>
       </div>
     </div>
     <div class="row">
       <button class="clear-button">Clear</button>
-      <button class="button create-button">Create</button>
+      <button class="button create-button" type="submit">Create</button>
     </div>
   </div>
 </div>
