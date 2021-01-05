@@ -89,4 +89,11 @@ export class InviteComponent implements OnInit {
       }
     );
   }
+
+  increaseCount(data): void {
+    this.inviteeCountList[0].countOfInvitees += data;
+    this.inviteeCountList[2].countOfInvitees += data;
+    this.inviteeCountList[3].countOfInvitees += data;
+    this.initList();
+  }
 }

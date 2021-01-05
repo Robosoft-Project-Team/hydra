@@ -18,7 +18,7 @@
       <img src="assets/background-image/img_bg.svg" alt="Background">
       <app-invite-header></app-invite-header>
       <hr>
-      <app-invite-body></app-invite-body>
+      <app-invite-body (increaseCount)="increaseCount($event)"></app-invite-body>
     </ng-container>
     <ng-template #sentInvite>
       <app-header [searchControl]="true" [dateControl]="false" [headerTitle]="'Sent Invite'"
@@ -26,7 +26,8 @@
       <hr>
       <ng-container *ngIf="invitedCandidates; else loading">
         <app-invite-sent-body [invitedCandidates]="invitedCandidates"
-          *ngIf="invitedCandidates.length > 0 ; else noData"></app-invite-sent-body>
+          *ngIf="invitedCandidates.length > 0 ; else noData"
+          (increaseCount)="increaseCount(1)"></app-invite-sent-body>
       </ng-container>
     </ng-template>
   </div>
