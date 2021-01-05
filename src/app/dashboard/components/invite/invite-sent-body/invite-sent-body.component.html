@@ -19,7 +19,7 @@
                   alt="Phone Icon">
                 <p class="cv-card-details-info">{{user.emailId}}</p>
               </div>
-              <button class="button button-invite" (click)="resendInvites(i)">Resend Invite</button>
+              <button class="button button-invite" *ngIf="id !== 1" (click)="resendInvites(i)">Resend Invite</button>
             </div>
           </div>
     </div>

@@ -12,6 +12,7 @@ import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.se
 export class InviteSentBodyComponent implements OnInit {
   @Input() invitedCandidates: SendInvite[];
   @Output() increaseCount = new EventEmitter<any>();
+  @Input() id:number;
   isDataExists = false;
   invitees: any;
   date = moment().format('YYYY-MM-DD');
