@@ -66,7 +66,7 @@ export class CreateEventFormComponent implements OnInit {
 
   // onSubmit():void{
   //   this.eventService.CreateEvent(this.eventForm.value)
-    
+
   // }
 
   onSubmit(): void {
@@ -90,14 +90,14 @@ export class CreateEventFormComponent implements OnInit {
       members: selectedMembers
     };
     this.eventService.createEvent(this.eventForm.value)
-    .subscribe(
-      response=>{
-        if(response.status===200){}
-        else if(response.status===404){
-          console.error(Message);          
+      .subscribe(
+        response => {
+          if (response.status === 200) { }
+          else if (response.status === 404) {
+            console.error(Message);
+          }
         }
-      }
-    );
+      );
   }
 
   addMember(): void {
@@ -108,5 +108,12 @@ export class CreateEventFormComponent implements OnInit {
           console.log(this.members);
         }
       );
+  }
+
+  deleteMember():void{
+    let index:number;
+    if(index !==-1){
+      this.members.slice(index,1);
+    }
   }
 }
