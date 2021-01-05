@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
@@ -25,7 +26,7 @@ const MY_FORMATS = {
 export class CreateEventFormComponent implements OnInit {
 
   //Reactive Forms
-  eventForm: FormGroup;  
+  eventForm: FormGroup;
 
   jobLocations = [
     '1.00',
@@ -33,7 +34,10 @@ export class CreateEventFormComponent implements OnInit {
     '3.00'
   ];
 
-  members:any[]=[];
+  members: any[] = [];
+
+  time: string;
+  meridiem: string;
 
   constructor(
     private router: Router,
@@ -47,13 +51,11 @@ export class CreateEventFormComponent implements OnInit {
 
   initializeForm(): void {
     const formGroup = new FormGroup({
-      event_title: new FormControl('', Validators.required),
-      institution_name: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required),
+      institution: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
-      date: new FormControl('', Validators.required),
-      time: new FormControl('', Validators.required),
-      meridiem: new FormControl('', Validators.required),
-      description:new FormControl('',Validators.required)
+      eventDate: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required)
     });
     this.eventForm = formGroup;
   }
@@ -62,23 +64,49 @@ export class CreateEventFormComponent implements OnInit {
     return this.eventForm.controls;
   }
 
-  onSubmit():void{
-    this.eventService.CreateEvent(this.eventForm.value)
+  // onSubmit():void{
+  //   this.eventService.CreateEvent(this.eventForm.value)
+    
+  // }
+
+  onSubmit(): void {
+    if (this.eventForm.invalid) {
+      return;
+    }
+    const selectedMembers = [
+      {
+        empUsername: 'vishwas.prabhu@robosoftin.com'
+      },
+      {
+        empUsername: 'sharathkumar.kr@robosoftin.com'
+      },
+      {
+        empUsername: 'pooja.bs@robosoftin.com'
+      }
+    ];
+    const formData = {
+      ...this.eventForm.value,
+      eventTime: `${this.time}:00 ${this.meridiem}`,
+      members: selectedMembers
+    };
+    this.eventService.createEvent(this.eventForm.value)
     .subscribe(
       response=>{
         if(response.status===200){}
-        else if(response.status===404){}
+        else if(response.status===404){
+          console.error(Message);          
+        }
       }
     );
   }
 
-  addmember():void{
+  addMember(): void {
     this.eventService.getMemberList()
-    .subscribe(
-      response=>{
-        this.members=response.data;
-        console.log(this.members);
-      }
-    );
+      .subscribe(
+        response => {
+          this.members = response.data;
+          console.log(this.members);
+        }
+      );
   }
 }

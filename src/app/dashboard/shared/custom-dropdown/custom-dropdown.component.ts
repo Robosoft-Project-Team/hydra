@@ -8,8 +8,8 @@ import { DropdowHandlerService } from './dropdown.service';
 })
 export class CustomDropdownComponent implements OnInit {
   @Input() data: any[];
-  @Output() selectedItem = new EventEmitter<string>();
-  selectedChoice: string;
+  @Output() selectedItem = new EventEmitter<any>();
+  selectedChoice: any;
   constructor(
     private el: ElementRef,
     private dropdown: DropdowHandlerService

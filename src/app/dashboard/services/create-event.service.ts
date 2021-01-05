@@ -13,14 +13,7 @@ export class CreateEventService {
     return this.http.get(`getMembers`);
   }  
 
-  CreateEvent(obj):any{
-    const postBody={
-      title:obj.event_title,
-      institution:obj.institution_name,
-      location:obj.location,
-      eventDate:obj.date,
-      description:obj.description,
-    };
-    return this.http.post(`createEvent`,postBody)
+  createEvent(obj):any{    
+    return this.http.post(`createEvent`, obj);
   }
 }
