@@ -31,7 +31,6 @@ export class CvRejectedComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log('Do check');
     this.isDataExists = this.RejectedUserData.length > 0 ? true : false;
   }
 

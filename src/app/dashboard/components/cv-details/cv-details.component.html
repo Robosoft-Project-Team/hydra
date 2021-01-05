@@ -13,18 +13,21 @@
       <p class="designation">{{applicant.designation}}</p>
       <div class="buttons">
         <a (click)="downloadAttachment(0)" class="button download"><span>Download CV</span></a>
-        <a *ngIf="buttonTwo" (click)="buttonTwoFunction(buttonTwo === 'Recruit'? ['recruit']: [])"
+        <a *ngIf="buttonTwoText" (click)="onClickButtonTwo(buttonTwoText === 'Recruit'? ['recruit']: [])"
           class="button assign">
-          <span class="capitalize">{{buttonTwo}}</span>
+          <span class="capitalize">{{buttonTwoText}}</span>
           <div *ngIf="showDropdown" class="dropdown">
             <ul>
-              <li *ngFor="let item of organizers" (click)="buttonTwoFunction(['assign', item])">
-                <img src="assets/dashboard-home/icn_hr.png" alt=""><span class="capitalize">{{item.name}}</span>
+              <li *ngFor="let item of organizers" (click)="onClickButtonTwo(['assign', item])">
+                <img src="assets/dashboard-home/icn_hr.png" alt="">
+                <span class="capitalize">{{item.name}}</span>
               </li>
             </ul>
           </div>
         </a>
-        <a *ngIf="buttonThree" (click)="buttonThreeFunction(buttonThree)" class="button reject"><span>{{buttonThree}}</span></a>
+        <a *ngIf="buttonThreeText" (click)="onClickButtonThree(buttonThreeText)" class="button reject">
+          <span>{{buttonThreeText}}</span>
+        </a>
       </div>
       <div class="about-para">
         <p>{{applicant.aboutYou}}</p>

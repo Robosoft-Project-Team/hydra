@@ -70,44 +70,15 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
     applicationStatus: '',
     submitDate: '',
     assigned: 0,
-    websiteUrl: [
-      {
-        websiteName: '',
-        url: ''
-      }
-    ],
-    educationHistory: [
-      {
-        instituitionName: '',
-        grade: '',
-        from: '',
-        to: '',
-        location: ''
-      }
-    ],
-    workHistory: [
-      {
-        companyName: '',
-        position: '',
-        from: '',
-        to: '',
-        location: ''
-      }
-    ],
-    attachmentEntities: [
-      {
-        file_name: '',
-        file_type: '',
-        file_size: 0,
-        download_link: '',
-        type: ''
-      }
-    ],
+    websiteUrl: [],
+    educationHistory: [],
+    workHistory: [],
+    attachmentEntities: [],
     deleted: false
   };
 
-  buttonTwo = '';
-  buttonThree = '';
+  buttonTwoText = '';
+  buttonThreeText = '';
   showDropdown = false;
 
   organizers: Organizer[] = [];
@@ -176,17 +147,17 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
   }
 
   setButtons(name): void {
-    [this.buttonTwo, this.buttonThree] = ['', ''];
+    [this.buttonTwoText, this.buttonThreeText] = ['', ''];
     if (this.applicant.applicationStatus === 'New') {
-      [this.buttonTwo, this.buttonThree] = ['Assign To', 'Reject'];
+      [this.buttonTwoText, this.buttonThreeText] = ['Assign To', 'Reject'];
     } else if (this.applicant.applicationStatus === 'Rejected') {
-      [this.buttonTwo, this.buttonThree] = ['Recruit', 'Delete'];
+      [this.buttonTwoText, this.buttonThreeText] = ['Recruit', 'Delete'];
     } else {
-      this.buttonTwo = 'Assigned To: ' + name;
+      this.buttonTwoText = 'Assigned To: ' + name;
     }
   }
 
-  buttonTwoFunction(array): any {
+  onClickButtonTwo(array): any {
     if (!array.length) {
       this.showDropdown = !this.showDropdown;
       return;
@@ -203,7 +174,7 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  buttonThreeFunction(type): void {
+  onClickButtonThree(type): void {
     this.showDropdown = false;
     if (type === 'Reject') {
       this.changeStatus('Rejected');
