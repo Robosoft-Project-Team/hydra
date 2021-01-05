@@ -68,8 +68,7 @@ export class InviteComponent implements OnInit {
         count: this.inviteeCountList[4].countOfInvitees + ' Invited'
       },
       {
-        // timePeriod: moment(this.inviteeCountList[4].startDate, 'YYYY-MM-DD').format('YYYY'),
-        timePeriod: '2019',
+        timePeriod: moment(this.inviteeCountList[5].startDate, 'YYYY-MM-DD').format('YYYY'),
         count: this.inviteeCountList[5].countOfInvitees + ' Invited'
       }
     ];
