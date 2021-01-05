@@ -27,7 +27,7 @@
       <ng-container *ngIf="invitedCandidates; else loading">
         <app-invite-sent-body [invitedCandidates]="invitedCandidates"
           *ngIf="invitedCandidates.length > 0 ; else noData"
-          (increaseCount)="increaseCount($event)" [id]="selectedIndex"></app-invite-sent-body>
+          (increaseCount)="increaseCount($event)" (selectedCandidateId)="removeCandidate($event)" [id]="selectedIndex"></app-invite-sent-body>
       </ng-container>
     </ng-template>
   </div>

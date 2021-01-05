@@ -99,4 +99,8 @@ export class InviteComponent implements OnInit {
     // this.inviteeCountList[3].countOfInvitees += data;
     this.initList();
   }
+
+  removeCandidate(id: number): void {
+    this.invitedCandidates.splice(id,1);
+  }
 }

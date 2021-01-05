@@ -11,7 +11,8 @@ import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.se
 })
 export class InviteSentBodyComponent implements OnInit {
   @Input() invitedCandidates: SendInvite[];
-  @Output() increaseCount = new EventEmitter<any>();
+  @Output() increaseCount = new EventEmitter<number>();
+  @Output() selectedCandidateId = new EventEmitter<number>();
   @Input() id:number;
   isDataExists = false;
   invitees: any;
@@ -32,6 +33,7 @@ export class InviteSentBodyComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.increaseCount.emit(1);
+          this.selectedCandidateId.emit(id);
         }
       },
       error => {
