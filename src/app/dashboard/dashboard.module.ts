@@ -37,14 +37,15 @@ import {
   NotificationsComponent,
   NotificationsListComponent,
   CreateEventFormComponent,
-  ChartComponent
+  ChartComponent,
 } from './components';
 
 import {
   SidebarComponent,
   HeaderComponent,
   TableComponent,
-  ImagePipePipe
+  ImagePipePipe,
+  CustomDropdownComponent
 } from './shared';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -75,7 +76,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NotificationsListComponent,
     CreateEventFormComponent,
     ChartComponent,
-    ImagePipePipe
+    ImagePipePipe,
+    CustomDropdownComponent
   ],
   imports: [
     DashboardRoutingModule,

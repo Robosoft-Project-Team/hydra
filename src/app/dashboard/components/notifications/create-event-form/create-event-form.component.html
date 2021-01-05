@@ -33,38 +33,21 @@
           <div class="input-container">
             <input class="input-control" placeholder="DD MMM YYYY" [matDatepicker]="eventDate"
               (click)="eventDate.open()" formControlName="date">
-            <mat-datepicker-toggle matSuffix [for]="eventDate"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="eventDate">
+              <i class="input-control-date-icon" matDatepickerToggleIcon></i>
+            </mat-datepicker-toggle>
             <mat-datepicker #eventDate>
             </mat-datepicker>
           </div>
         </div>
         <div class="input-group sub">
-          <div class="input-group sub">
-            <label class="input-label">Time</label>
-            <div class="input-container">
-              <select id="10" class="input-control" formControlName="time">
-                <option value="1">1</option> 
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
+          <label class="input-label">Time</label>
+          <div class="input-dropdown">
+            <div class="input-control placeholder">
+              <app-custom-dropdown [data]="[1,2,3,4,5,6,7,8,9,10,11,12]"></app-custom-dropdown>
             </div>
-          </div>
-          <div class="input-group sub">
-            <label class="input-label transparent">Time</label>
-            <div class="input-container">
-              <select id="10" class="input-control" formControlName="meridiem">
-                <option value="AM">AM</option>
-                <option value="PM">PM</option>
-              </select>
+            <div class="input-control placeholder">
+              <app-custom-dropdown [data]="['AM', 'PM']"></app-custom-dropdown>
             </div>
           </div>
         </div>
@@ -73,7 +56,8 @@
     <div class="row">
       <div class="input-group">
         <label class="input-label">Description</label>
-        <textarea class="input-control large no-resize" type="text" rows="3" cols="60" placeholder="Notes" formControlName="description" ></textarea>
+        <textarea class="input-control large no-resize" type="text" rows="3" cols="60" placeholder="Notes"
+          formControlName="description"></textarea>
       </div>
     </div>
     <div class="row">
