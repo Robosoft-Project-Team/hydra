@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+
 const MY_FORMATS = {
   parse: {
     dateInput: 'DD MMM YYYY',
@@ -20,6 +22,9 @@ const MY_FORMATS = {
 })
 export class CreateEventFormComponent implements OnInit {
 
+  //Reactive Forms
+  eventForm: FormGroup;  
+
   jobLocations = [
     '1.00',
     '2.00',
@@ -28,6 +33,23 @@ export class CreateEventFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.initializeForm();
   }
 
+  initializeForm(): void {
+    const formGroup = new FormGroup({
+      Event_title: new FormControl('', [Validators.required]),
+      Institution_name: new FormControl('', [Validators.required]),
+      location: new FormControl('', [Validators.required]),
+      date: new FormControl('', Validators.required),
+      time: new FormControl('', Validators.required),
+      meridiem: new FormControl('', Validators.required),
+      description:new FormControl('',Validators.required)
+    });
+    this.eventForm = formGroup;
+  }
+
+  get form(): any {
+    return this.eventForm.controls;
+  }
 }

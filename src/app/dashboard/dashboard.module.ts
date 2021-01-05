@@ -46,6 +46,7 @@ import {
   TableComponent,
   ImagePipePipe
 } from './shared';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import {
   ],
   imports: [
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }]
 })
