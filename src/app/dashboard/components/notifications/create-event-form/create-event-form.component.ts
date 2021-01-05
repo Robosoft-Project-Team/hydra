@@ -38,9 +38,9 @@ export class CreateEventFormComponent implements OnInit {
 
   initializeForm(): void {
     const formGroup = new FormGroup({
-      Event_title: new FormControl('', [Validators.required]),
-      Institution_name: new FormControl('', [Validators.required]),
-      location: new FormControl('', [Validators.required]),
+      Event_title: new FormControl('', Validators.required),
+      Institution_name: new FormControl('', Validators.required),
+      location: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
       time: new FormControl('', Validators.required),
       meridiem: new FormControl('', Validators.required),
