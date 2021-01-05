@@ -25,6 +25,7 @@ const MY_FORMATS = {
 })
 export class CreateEventFormComponent implements OnInit {
 
+  isClicked = false;
   //Reactive Forms
   eventForm: FormGroup;
 
@@ -64,37 +65,32 @@ export class CreateEventFormComponent implements OnInit {
     return this.eventForm.controls;
   }
 
-  // onSubmit():void{
-  //   this.eventService.CreateEvent(this.eventForm.value)
-
-  // }
-
   onSubmit(): void {
+    this.isClicked = true;
     if (this.eventForm.invalid) {
       return;
     }
-    const selectedMembers = [
-      {
-        empUsername: 'vishwas.prabhu@robosoftin.com'
-      },
-      {
-        empUsername: 'sharathkumar.kr@robosoftin.com'
-      },
-      {
-        empUsername: 'pooja.bs@robosoftin.com'
-      }
-    ];
+    const selectedMembers = this.members.map(item => {
+      return {
+        empUsername: item.employee_username
+      };
+    });
     const formData = {
       ...this.eventForm.value,
+      eventDate: this.form.eventDate.value.format('DD/MM/YYYY'),
       eventTime: `${this.time}:00 ${this.meridiem}`,
       members: selectedMembers
     };
     this.eventService.createEvent(formData)
       .subscribe(
         response => {
-          if (response.status === 200) { }
+          if (response.status === 201) {
+            this.isClicked = false;
+            this.onClear();
+          }
         },
         error => {
+          this.isClicked = false;
           console.log(error.message);
         }
       );
@@ -105,12 +101,16 @@ export class CreateEventFormComponent implements OnInit {
       .subscribe(
         response => {
           this.members = response.data;
-          console.log(this.members);
         }
       );
   }
 
   deleteMember(index: number): void {
     this.members.splice(index, 1);
+  }
+
+  onClear(): void {
+    this.eventForm.reset();
+    this.isClicked = false;
   }
 }

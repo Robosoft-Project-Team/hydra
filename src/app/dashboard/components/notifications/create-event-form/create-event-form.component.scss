@@ -142,12 +142,14 @@
       .image-icon {
         margin: 0 1rem 0.5rem;
         transition: all .3s;
+        cursor: pointer;
       }
 
       .delete-icon{
         position: absolute;
         right: 1rem;
         bottom: 0.5rem;
+        cursor: pointer;
       }
     }
 
