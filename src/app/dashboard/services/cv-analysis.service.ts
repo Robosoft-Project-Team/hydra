@@ -90,12 +90,14 @@ export class CvAnalysisService {
   }
 
   setOrganizers(): void {
-    this.http.get<any>('organizerDetails').subscribe(
-      response => {
-        this.organizers = response.data;
-      },
-      error => console.log(error)
-    );
+    if (!this.organizers.length) {
+      this.http.get<any>('organizerDetails').subscribe(
+        response => {
+          this.organizers = response.data;
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   getOrganizers(): Observable<Organizer[]> {
