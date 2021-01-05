@@ -24,6 +24,7 @@
     &.sub {
       margin-right: 0;
       margin-bottom: 0;
+      flex-direction: column;
 
       &:first-child {
         margin-left: 0;
@@ -53,6 +54,20 @@
       }
     }
 
+    .input-dropdown {
+      display: flex;
+
+      :first-child {
+        margin-right: 1rem;
+      }
+    }
+
+    .placeholder.input-control {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
     .input-control {
       border: 1px solid #535353;
       @include input-text-style(14px, #020202);
@@ -71,12 +86,67 @@
         resize: none;
         overflow-y: auto;
       }
+
+      &-date-icon {
+        background: url('../../../../../assets/dashboard/btn_calendar_task_unselected/btn_calendar_task_unselected@1.5x.svg');
+      }
     }
 
     .image-group {
-      .icon-1 {
-        margin-right: 1rem;
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .icon-tooltip {
+        position: relative;
+
+        &-text {
+          display: block;
+          background-color: #000000;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          position: absolute;
+          z-index: 1;
+          top: 110%;
+          left: 0;
+          margin: 0;
+          padding: .5rem;
+          width: 100%;
+          font-size: .75rem;
+          line-height: 1;
+          word-break: break-word;
+          font-family: Muli;
+          visibility: hidden;
+          opacity: 0;
+          transition: all .3s;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+          }
+        }
+
+        &:hover .icon-tooltip-text {
+          visibility: visible;
+          opacity: 1;
+        }
       }
+
+      .image-icon {
+        margin: 0 1rem 0.5rem;
+        transition: all .3s;
+      }
+    }
+
+    .image-icon:hover .icon-tooltip {
+      opacity: 0;
     }
 
   }

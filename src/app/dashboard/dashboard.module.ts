@@ -37,15 +37,17 @@ import {
   NotificationsComponent,
   NotificationsListComponent,
   CreateEventFormComponent,
-  ChartComponent
+  ChartComponent,
 } from './components';
 
 import {
   SidebarComponent,
   HeaderComponent,
   TableComponent,
-  ImagePipePipe
+  ImagePipePipe,
+  CustomDropdownComponent
 } from './shared';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -74,11 +76,13 @@ import {
     NotificationsListComponent,
     CreateEventFormComponent,
     ChartComponent,
-    ImagePipePipe
+    ImagePipePipe,
+    CustomDropdownComponent
   ],
   imports: [
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }]
 })
