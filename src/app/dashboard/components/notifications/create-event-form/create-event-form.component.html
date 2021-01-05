@@ -4,7 +4,7 @@
     <div class="row">
       <div class="input-group">
         <label class="input-label">Event Title</label>
-        <input class="input-control" type="text" placeholder="Give a name for your event" [formControl]="event_title">
+        <input class="input-control" type="text" placeholder="Give a name for your event" formControlName="event_title">
         <!-- <div class="input-error-wrapper">&nbsp;
           <p class="input-error" *ngIf="signup.event_title?.errors?.required && signup.event_title?.touched">Enter Full Name</p>
           <p class="input-error"
