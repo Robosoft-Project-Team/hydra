@@ -12,6 +12,7 @@ import { Applicant } from 'src/app/core/models';
 import * as fileSaver from 'file-saver';
 import { Organizer } from 'src/app/core/models';
 import { CvRejectedService } from '../../services/cv-rejected.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-cv-details',
@@ -87,7 +88,8 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private cv: CvAnalysisService,
-    private rejectedService: CvRejectedService
+    private rejectedService: CvRejectedService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -106,7 +108,7 @@ export class CvDetailsComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.location.back();
   }
 
   calculateAge(birthday): number {
