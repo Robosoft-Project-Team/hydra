@@ -24,10 +24,8 @@
               <mat-icon>delete</mat-icon>
             </span>
           </p>
-          
-          <button *ngIf="item.joinDeclineButton && !isClicked" class="button button-accept" (click)="joinDecline(id,'Join')">Join</button>
-          <button *ngIf="item.joinDeclineButton && !isClicked" class="button button-decline" (click)="joinDecline(id,'Decline')">Decline</button>
-        
+          <button *ngIf="item.joinDeclineButton && isClickable[id]" class="button button-accept" (click)="joinDecline(id,'Join')">Join</button>
+          <button *ngIf="item.joinDeclineButton && isClickable[id]" class="button button-decline" (click)="joinDecline(id,'Decline')">Decline</button>
           <div class="notification-schedule">
             <img class="icon" src="assets/notifications/icn_notification time.png" alt="Date Time Icon">
             <p class="time">{{formatDate(item.time)}}</p>

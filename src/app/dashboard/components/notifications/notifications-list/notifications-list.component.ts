@@ -10,7 +10,7 @@ import { NotificationListService } from 'src/app/dashboard/services/notification
 })
 export class NotificationsListComponent implements OnInit {
 
-  isClicked = false;
+  isClickable: boolean[];
   date = moment().format('YYYY, MMMM DD');
   notifications: NotificationList[];
   isNotificationExists = false;
@@ -22,6 +22,7 @@ export class NotificationsListComponent implements OnInit {
       response => {
         this.notifications = response.data.reverse();
         this.isNotificationExists = this.notifications.length > 0 ? true : false;
+        this.isClickable = new Array(this.notifications.length).fill(true);
       }
     );
   }
@@ -46,7 +47,7 @@ export class NotificationsListComponent implements OnInit {
     this.notification.joinDeclineEvent(this.notifications[id].notificationId, this.notifications[id].eventId, status).subscribe(
       response => {
         if (response.status === 200) {
-          this.isClicked = true;
+          this.isClickable[id] = false;
         }
       },
       error => {
@@ -55,8 +56,9 @@ export class NotificationsListComponent implements OnInit {
     );
     this.notification.getNotificationList().subscribe(
       response => {
-        this.notifications = response.data;
+        this.notifications = response.data.reverse();
         this.isNotificationExists = this.notifications.length > 0 ? true : false;
+        this.isClickable = new Array(this.notifications.length).fill(true);
       }
     );
   }

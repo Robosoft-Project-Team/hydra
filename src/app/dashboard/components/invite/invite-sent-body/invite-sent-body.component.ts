@@ -31,7 +31,9 @@ export class InviteSentBodyComponent implements OnInit {
     let designation = this.invitedCandidates[id].designation;
     let location = this.invitedCandidates[id].location;
     let emailId = this.invitedCandidates[id].emailId;
-    this.resendInvite.resendInvite(inviteeName, designation, location, emailId).subscribe(
+    let mobileNum = this.invitedCandidates[id].mobileNum;
+    let jobDetail = this.invitedCandidates[id].jobDetail;
+    this.resendInvite.resendInvite(inviteeName, designation, location, emailId, mobileNum, jobDetail).subscribe(
       response => {
         if (response.status === 200) {
           this.increaseCount.emit(1);
