@@ -4,7 +4,8 @@
       <p class="notifications-title">Notifications</p>
       <div class="notifications-toggle-switch">
         <label>
-          <input type="checkbox" class="notifications-toggle-switch-control">
+          <input #checkbox class="notifications-toggle-switch-control" type="checkbox" name="checkbox"
+            [checked]="notificationStatus" (change)="notificationStatus = !notificationStatus">
           <span class="switch-label"></span>
         </label>
       </div>
@@ -17,15 +18,17 @@
   <hr>
   <div class="notification">
     <ng-container *ngIf="notifications; else loading">
-      <ng-container *ngIf="isNotificationExists; else noData">
+      <ng-container *ngIf="isNotificationExists && notificationStatus; else noData">
         <div class="notification-list" *ngFor="let item of notifications; let id = index;">
           <p class="notification-message">{{item.notificationMessage}}
             <span class="dot" (click)="onClose(id)">
               <mat-icon>delete</mat-icon>
             </span>
           </p>
-          <button *ngIf="item.joinDeclineButton && isClickable[id]" class="button button-accept" (click)="joinDecline(id,'Join')">Join</button>
-          <button *ngIf="item.joinDeclineButton && isClickable[id]" class="button button-decline" (click)="joinDecline(id,'Decline')">Decline</button>
+          <button *ngIf="item.joinDeclineButton && isClickable[id]" class="button button-accept"
+            (click)="joinDecline(id,'Join')">Join</button>
+          <button *ngIf="item.joinDeclineButton && isClickable[id]" class="button button-decline"
+            (click)="joinDecline(id,'Decline')">Decline</button>
           <div class="notification-schedule">
             <img class="icon" src="assets/notifications/icn_notification time.png" alt="Date Time Icon">
             <p class="time">{{formatDate(item.time)}}</p>

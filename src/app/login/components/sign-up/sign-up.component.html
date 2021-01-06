@@ -51,8 +51,7 @@
         <div class="input-group">
           <label class="input-label">Position</label>
           <div class="input-control-radio">
-            <input type="radio" formControlName="role" name="role" id="recruiter" value="recruiter"
-              checked="true">
+            <input type="radio" formControlName="role" name="role" id="recruiter" value="recruiter" checked="true">
             <label class="input-label radio-label" for="recruiter">
               <div class="radio"></div>
               Recruiter
@@ -91,12 +90,11 @@
         </div>
       </div>
       <button class="button" type="submit" [ngClass]="{disabled: signupForm.invalid}"
-        [disabled]="signupForm.invalid">Sign
-        Up</button>
+        [disabled]="signupForm.invalid">Sign Up</button>
     </form>
   </div>
 </div>
 <div class="alternate">
-  <p class="alternate-message">Already have an Account ? <a class="alternate-action" routerLink="../sign-up">Sign In</a>
+  <p class="alternate-message">Already have an Account ? <a class="alternate-action" routerLink="../form">Sign In</a>
   </p>
 </div>

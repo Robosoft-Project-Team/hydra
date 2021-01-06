@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { NotificationList } from 'src/app/core/models';
@@ -9,7 +10,7 @@ import { NotificationListService } from 'src/app/dashboard/services/notification
   styleUrls: ['./notifications-list.component.scss']
 })
 export class NotificationsListComponent implements OnInit {
-
+  notificationStatus = true;
   isClickable: boolean[];
   date = moment().format('YYYY, MMMM DD');
   notifications: NotificationList[];
@@ -43,7 +44,7 @@ export class NotificationsListComponent implements OnInit {
     this.isNotificationExists = this.notifications.length > 0 ? true : false;
   }
 
-  joinDecline(id: string | number, status: any) {
+  joinDecline(id: string | number, status: any): void {
     this.notification.joinDeclineEvent(this.notifications[id].notificationId, this.notifications[id].eventId, status).subscribe(
       response => {
         if (response.status === 200) {
@@ -54,6 +55,8 @@ export class NotificationsListComponent implements OnInit {
         console.log('Join Decline Error = ', error);
       }
     );
+    console.log(this.notificationStatus);
+
     this.notification.getNotificationList().subscribe(
       response => {
         this.notifications = response.data.reverse();
