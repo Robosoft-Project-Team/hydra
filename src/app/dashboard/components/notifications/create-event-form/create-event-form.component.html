@@ -60,6 +60,7 @@
         <div class="image-group">
           <div class="icon-tooltip" *ngFor="let member of members; let i = index">
             <img class="image-icon" src="assets/icn_member_placeholder.svg" alt="{{member.employee_username}}">
+            <img class="delete-icon" src="assets/icn_delete member.svg" alt="" (click)="deleteMember(i)">
             <span class="icon-tooltip-text">{{member.employee_username}}</span>
           </div>
           <img class="image-icon" src="assets/add member.svg" alt="" (click)="addMember()">
@@ -67,8 +68,9 @@
       </div>
     </div>
     <div class="row">
-      <button class="clear-button">Clear</button>
-      <button class="button create-button" type="submit">Create</button>
+      <button class="clear-button" (click)="onClear()">Clear</button>
+      <button class="button create-button" type="submit" [ngClass]="{'disabled':isClicked}"
+        [disabled]="isClicked">Create</button>
     </div>
   </form>
 </div>

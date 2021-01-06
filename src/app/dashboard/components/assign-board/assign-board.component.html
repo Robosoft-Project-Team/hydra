@@ -7,11 +7,11 @@
     <app-table [headings]="tableHeadings" *ngIf="filteredData; else loading;">
       <ng-container *ngIf="isDataExists; else noData">
         <tr class="table-row" *ngFor="let item of filteredData; let i = index;" (click)="onItemSelected(i)">
-          <td class="table-data">{{item.applicantName}}</td>
+          <td class="table-data">{{item.applicantName | titlecase}}</td>
           <td class="table-data">{{item.designation}}</td>
           <td class="table-data">{{item.location}}</td>
           <td class="table-data">{{item.assignedDate | date : 'dd MMM, y'}}</td>
-          <td class="table-data">{{item.organizer}}</td>
+          <td class="table-data">{{item.organizer | titlecase}}</td>
         </tr>
       </ng-container>
     </app-table>

@@ -11,11 +11,13 @@ import { ResendInviteService } from 'src/app/dashboard/services/resend-invite.se
 })
 export class InviteSentBodyComponent implements OnInit {
   @Input() invitedCandidates: SendInvite[];
-  @Output() increaseCount = new EventEmitter<any>();
-  @Input() id:number;
+  @Output() increaseCount = new EventEmitter<number>();
+  @Output() selectedCandidateId = new EventEmitter<number>();
+  @Input() id: number;
   isDataExists = false;
   invitees: any;
   date = moment().format('YYYY-MM-DD');
+  isClicked = false;
 
   constructor(private resendInvite: ResendInviteService) { }
 
@@ -24,6 +26,7 @@ export class InviteSentBodyComponent implements OnInit {
   }
 
   resendInvites(id: number) {
+    this.isClicked = true;
     let inviteeName = this.invitedCandidates[id].name;
     let designation = this.invitedCandidates[id].designation;
     let location = this.invitedCandidates[id].location;
@@ -32,10 +35,13 @@ export class InviteSentBodyComponent implements OnInit {
       response => {
         if (response.status === 200) {
           this.increaseCount.emit(1);
+          this.selectedCandidateId.emit(id);
+          this.isClicked = false;
         }
       },
       error => {
         console.log(error.message);
+        this.isClicked = false;
       }
     );
   }

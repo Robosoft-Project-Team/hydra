@@ -173,8 +173,9 @@ export class DashboardService {
   getNotification(): void {
     this.http.get<ResponseData>('notification').subscribe(
       response => {
-        this.dashboardData.notification[0].message = response.data[0]?.notificationMessage || 'NA';
-        const date = this.formatDate(response.data[0]?.time) || new Date();
+        let length = response.data.length-1;
+        this.dashboardData.notification[0].message = response.data[length]?.notificationMessage || 'NA';
+        const date = this.formatDate(response.data[length]?.time) || new Date();
         this.dashboardData.notification[0].date = moment(date).format('DD MMM, YYYY');
         this.dashboardData.notification[0].time = moment(date.getTime()).format('hh:mm A');
       },
@@ -185,7 +186,6 @@ export class DashboardService {
   }
 
   formatDate(date: number[]): Date {
-    return date ? new Date(date[0], date[1], date[2], date[3], date[4], date[5]) : null;
+    return date ? new Date(Date.UTC(date[0], date[1] - 1, date[2], date[3], date[4], date[5])) : null;
   }
-
 }
