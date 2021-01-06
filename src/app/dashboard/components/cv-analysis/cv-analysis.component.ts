@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { JobSummary } from 'src/app/core/models';
 import { CvAnalysisService } from 'src/app/dashboard/services/cv-analysis.service';
 
@@ -24,34 +24,39 @@ export class CvAnalysisComponent implements OnInit {
     private route: ActivatedRoute,
     private cvService: CvAnalysisService
   ) {
+    this.cvService.getApplicantsData().subscribe(
+      response => {
+        this.data = response;
+      }
+    );
   }
 
   ngOnInit(): void {
     this.filterDate = new Date().toISOString().split('T')[0];
     this.filterSearch = '';
-    this.filterDataOnSearch(this.filterDate, this.filterSearch);
+    this.setDataOnDate(this.filterDate);
   }
 
   onDateSelected(date: string): void {
     this.filterDate = date;
-    this.filterDataOnSearch(this.filterDate, this.filterSearch);
+    this.setDataOnDate(this.filterDate);
   }
 
   onSearchItem(data: string): void {
     this.filterSearch = data;
-    this.filterDataOnSearch(this.filterDate, this.filterSearch);
+    this.filterDataOnSearch(this.filterSearch);
   }
 
-  filterDataOnSearch(date, search): void {
-    const epoch = new Date(date).getTime();
-    this.cvService.getAllCv(this.filterDate).subscribe(
-      response => {
-        this.data = response.data;
-        this.filteredData = response.data.filter(item => item.receivedDate === epoch)
+  setDataOnDate(date): void {
+    this.cvService.setTotalApplicantsData(date)
+    .then(() => {
+      this.filterDataOnSearch(this.filterSearch);
+    });
+  }
+
+  filterDataOnSearch(search): void {
+    this.filteredData = this.data
           .filter(item => item.designation.toLowerCase().includes(search?.toLowerCase()));
-        this.isDataExists = this.filteredData.length > 0 ? true : false;
-      }
-    );
   }
 
   getLocationString(locationArray): string {

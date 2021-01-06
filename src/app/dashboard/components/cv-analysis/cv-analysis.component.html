@@ -5,7 +5,7 @@
   </div>
   <div class="cv-table">
     <app-table [headings]="tableHeadings" *ngIf="filteredData; else loading;">
-      <ng-container *ngIf="isDataExists; else noData">
+      <ng-container *ngIf="filteredData.length; else noData">
         <ng-container *ngFor="let item of filteredData; let i = index">
           <tr class="table-row" *ngIf="item.applicants !== 0" (click)="onItemSelected(item.designation)">
             <td class="table-data">{{item.designation}}</td>
