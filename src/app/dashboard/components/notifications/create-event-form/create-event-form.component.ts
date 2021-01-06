@@ -26,17 +26,8 @@ const MY_FORMATS = {
 export class CreateEventFormComponent implements OnInit {
 
   isClicked = false;
-  //Reactive Forms
   eventForm: FormGroup;
-
-  jobLocations = [
-    '1.00',
-    '2.00',
-    '3.00'
-  ];
-
   members: any[] = [];
-
   time: string;
   meridiem: string;
 
@@ -66,10 +57,10 @@ export class CreateEventFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.isClicked = true;
     if (this.eventForm.invalid) {
       return;
     }
+    this.isClicked = true;
     const selectedMembers = this.members.map(item => {
       return {
         empUsername: item.employee_username

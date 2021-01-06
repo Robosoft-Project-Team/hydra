@@ -10,13 +10,13 @@ export class ResendInviteService {
 
   constructor(private http: HttpClient) { }
 
-  resendInvite(name: string, designation: string, location: string, emailId: string): Observable<any> {
+  resendInvite(name: string, designation: string, location: string, emailId: string, mobileNum: string, jobDetail:string): Observable<any> {
     const body: any = {
       name: name,
       designation: designation,
-      mobileNum: "9999999999",
+      mobileNum: mobileNum,
       location: location,
-      jobDetail: "Android developer",
+      jobDetail: jobDetail,
       emailId: emailId,
       invitedDate: moment().format('YYYY-MM-DD')
     };
