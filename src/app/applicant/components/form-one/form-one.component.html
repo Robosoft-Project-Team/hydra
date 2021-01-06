@@ -1,6 +1,8 @@
 <div class="container">
-  <p class="hello-text">Welcome to Robosoft!</p>
-  <p class="text">Enter your Details here</p>
+  <div class="text">
+    <p class="welcome-text">Welcome to Robosoft!</p>
+    <p class="heading-text">Enter your Details here</p>
+  </div>
   <form class="form" [formGroup]="applicantFormOne" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="input-group">
@@ -95,8 +97,8 @@
             <div class="radio"></div>
             Referral
           </label>
-          <input type="radio" formControlName="applicationType" name="applicationType" id="organizer" value="Organizer">
-          <label class="input-label radio-label" for="organizer">
+          <input type="radio" formControlName="applicationType" name="applicationType" id="walkIn" value="WalkIn">
+          <label class="input-label radio-label" for="walkIn">
             <div class="radio"></div>
             WalkIn
           </label>

@@ -1,33 +1,12 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-@mixin text {
-  .text {
-    color: $color-white;
-    font-family: Muli;
-    font-size: 32px;
-    font-weight: bold;
-    letter-spacing: 0.23px;
-    line-height: 2rem;
-    margin-bottom: 50px;
-  }
-}
-
-@include text;
+@include header-text;
 @include button;
 
 .button {
   margin: 20px;
 }
-
-.hello-text {
-  font-size: 26px;
-  font-family: 'Muli';
-  font-weight: bold;
-  color: $color-primary-dark;
-  margin-bottom: 15px;
-}
-
 
 form {
   max-width: 70%;
@@ -183,6 +162,11 @@ form {
       font-weight: 600;
       text-align: right;
       transition: all .1s ease-in-out;
+
+      &.transparent {
+        opacity: 0;
+        pointer-events: none;
+      }
 
       &:hover,
       &:link {

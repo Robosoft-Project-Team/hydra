@@ -40,6 +40,33 @@
   letter-spacing: 0;
 }
 
+// For Applicant Module Headers
+@mixin header-text {
+
+  .text {
+    display: block;
+    font-family: 'Muli';
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+    padding-bottom: 1.5rem;
+
+    .welcome-text {
+      font-size: 1.25rem;
+      color: $color-primary-dark;
+      letter-spacing: 0.17px;
+      margin-bottom: 0.5rem;
+    }
+
+    .heading-text {
+      font-size: 1.75rem;
+      color: $color-white;
+      letter-spacing: 0.23px;
+      margin-bottom: 0;
+    }
+  }
+}
+
 @mixin button {
   .button {
     margin-top: 40px;
@@ -112,6 +139,7 @@
 
     .input-label {
       margin-bottom: 0.625rem;
+      cursor: pointer;
       @include input-text-style(14px, #C1BEBE);
     }
 
@@ -157,6 +185,7 @@
       width: 100%;
       height: 40px;
       align-items: center;
+      cursor: pointer;
 
       input[type="radio"] {
         display: none;

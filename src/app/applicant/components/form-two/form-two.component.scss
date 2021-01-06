@@ -1,32 +1,6 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-@mixin header-text {
-
-  .text {
-    display: block;
-    font-family: 'Muli';
-    font-weight: bold;
-    line-height: 2rem;
-    text-align: center;
-    padding-bottom: 1.5rem;
-
-    .welcome-text {
-      font-size: 1.25rem;
-      color: $color-primary-dark;
-      letter-spacing: 0.17px;
-      margin-bottom: 0.5rem;
-    }
-
-    .heading-text {
-      font-size: 1.75rem;
-      color: $color-white;
-      letter-spacing: 0.23px;
-      margin-bottom: 0;
-    }
-  }
-}
-
 @include header-text;
 @include button;
 

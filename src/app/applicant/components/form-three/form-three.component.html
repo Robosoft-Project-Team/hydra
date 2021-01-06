@@ -1,6 +1,8 @@
 <div class="container">
-  <p class="hello-text">Welcome to Robosoft!</p>
-  <p class="text">Enter your Details here</p>
+  <div class="text">
+    <p class="welcome-text">Welcome to Robosoft!</p>
+    <p class="heading-text">Enter your Details here</p>
+  </div>
   <form [formGroup]="applicantFormThree" (ngSubmit)="onSubmit()">
     <div class="row form-group mb-0">
       <div class="input-group">
@@ -49,7 +51,7 @@
       <div class="row">
         <div class="form-info-wrapper">
           <p class="form-error">Provide Social Links</p>
-          <a class="form-add-control">+ Add Other External Link</a>
+          <a class="form-add-control transparent">+ Add Other External Link</a>
         </div>
       </div>
     </div>
@@ -58,7 +60,7 @@
         <label class="input-label">Current CTC</label>
         <input class="input-control padding" type="text" placeholder="&nbsp;&nbsp; Enter your current CTC"
           formControlName="currentCTC">
-        <img class="input-icon" src="../../../../assets/indian-rupee-xxl.png">
+        <img class="input-icon" src="assets/indian-rupee-xxl.png">
         <div class="input-error-wrapper">&nbsp;
           <p class="input-error" *ngIf="form.currennCTC?.errors?.required && form.currennCTC?.touched ">
             Enter Current CTC</p>
@@ -68,7 +70,7 @@
         <label class="input-label">Expected CTC</label>
         <input class="input-control padding" type="text" placeholder="&nbsp;&nbsp; Enter your expected CTC"
           formControlName="expectedCTC">
-        <img class="input-icon" src="../../../../assets/indian-rupee-xxl.png">
+        <img class="input-icon" src="assets/indian-rupee-xxl.png">
         <div class="input-error-wrapper">&nbsp;
           <p class="input-error" *ngIf="form.expectedCTC?.errors?.required && form.expectedCTC?.touched ">
             Enter Expected CTC</p>
@@ -91,7 +93,7 @@
           <p class="input-group-heading left">Profile Image</p>
           <p class="input-group-info right">File Format jpg or png</p>
           <div class="file-input-container profile">
-            <label for="file-input"><img src="../../../../assets/icn_upload_profile.png" /></label>
+            <label for="file-input"><img src="assets/icn_upload_profile.png" /></label>
             <input id="file-input" type="file" accept=".png, .jpg" (change)="uploadImage($event.target.files)" />
           </div>
         </div>
@@ -109,14 +111,12 @@
             <li class="file-list-item">
               <div class="file-name">{{profileImage.name}}</div>
               <div class="file-size">({{convertSize(profileImage.size)}})</div>
-              <!-- <p for="reset" class="file-reset-button" (click)="reset()"></p> -->
             </li>
           </ul>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <!-- <p>Please fill all the required fields!</p> -->
       <div class="row button-group">
         <button class="button" (click)="goBack()">Back</button>
         <button class="button" type="submit" [disabled]="applicantFormThree.invalid"

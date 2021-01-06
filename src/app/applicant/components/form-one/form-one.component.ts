@@ -49,24 +49,7 @@ export class FormOneComponent implements OnInit {
     'Others'
   ];
 
-  jobDesignations = [
-    // 'PHP Developer',
-    // 'Angular Developer',
-    // 'Java Developer',
-    // 'Ruby Rails Developer',
-    // 'React Developer',
-    // 'iOS Developer',
-    // 'Kotlin Developer',
-    // 'C# Developer',
-    // 'Marketing Manager',
-    // 'HR Manager',
-    // 'Technical Architect',
-    // 'System Admin',
-    // 'Analyst',
-    // 'Project Engineer',
-    // 'Intern',
-    // 'Trainee Engineer'
-  ];
+  jobDesignations: string[] = [];
 
   selectedLocation = this.jobLocations[0];
   selectedGender = this.genders[0];
@@ -92,26 +75,6 @@ export class FormOneComponent implements OnInit {
       reference_mail: '',
     },
     languages: '',
-  };
-
-  MOCK_DATA_FROM_SERVICE = {
-    applicantName: 'John',
-    emailId: 'john@gmail.co',
-    mobile_no: '8855664488',
-    dob: '10/06/1998',
-    jobLocation: 'Udupi',
-    gender: 'Others',
-    designation: '',
-    experienceYear: 6,
-    experienceMonth: 3,
-    applicationType: 'Organizer',
-    reference: {
-      reference_name: 'Jim Doe',
-      reference_desig: 'Engineer',
-      reference_mobile: '8855664455',
-      reference_mail: 'jim@test.com'
-    },
-    languages: 'English, Spanish'
   };
 
   constructor(

@@ -1,18 +1,7 @@
 @import 'src/variables';
 @import 'src/mixins';
 
-@mixin text {
-  .text {
-    color: $color-white;
-    font-family: Muli;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 0.23px;
-    line-height: 2rem;
-  }
-}
-
-@include text;
+@include header-text;
 @include button;
 
 form {
@@ -20,14 +9,6 @@ form {
   margin: 0 auto;
   width: 100%;
   margin-top: 2em;
-}
-
-.hello-text {
-  font-size: 26px;
-  font-family: 'Muli';
-  font-weight: bold;
-  color: $color-primary-dark;
-  margin-bottom: 0.1rem;
 }
 
 .placeholder.input-control {
@@ -68,11 +49,10 @@ form {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  // display: none; <- Crashes Chrome on hover 
   -webkit-appearance: none;
-  margin: 0; // <-- Apparently some margin are still there even though it's hidden
+  margin: 0;
 }
 
 input[type=number] {
-  -moz-appearance: textfield; // Firefox
+  -moz-appearance: textfield;
 }

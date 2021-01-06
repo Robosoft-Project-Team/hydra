@@ -41,16 +41,6 @@ export class FormThreeComponent implements OnInit {
     linkedInLink: ''
   };
 
-  MOCK_DATA: ApplicantFormThree = {
-    softwares: 'C, Java, Python',
-    skill: 'Programming, Communication',
-    aboutYou: 'Good Team pLayer, Blah Blah Blah',
-    currentCTC: '350000',
-    expectedCTC: '4000000',
-    facebookLink: 'https://www.facebook.com/',
-    linkedInLink: 'https://in.linkedin.com/'
-  };
-
   // FileDragDrop
   fileArray = [];
   fileSize = 0;
@@ -104,7 +94,7 @@ export class FormThreeComponent implements OnInit {
     if (this.fileArray !== [] && this.profileImage) {
       this.submitForm.submitDetails(this.fileArray, this.profileImage).subscribe(
         response => {
-          if (response.status === 201){
+          if (response.status === 201) {
             this.formStore.resetForms();
             this.router.navigate(['../success'], { relativeTo: this.route });
           }
