@@ -16,7 +16,7 @@
   <div class="cv-stats-right-side">
     <app-header [searchControl]="false" [dateControl]="false" [headerTitle]="selectedDesignation"></app-header>
     <hr>
-    <app-cv-stats-body [resumes]="selectedResume" *ngIf="designationList; else loading"></app-cv-stats-body>
+    <app-cv-stats-body [resumes]="cvService.selectedResumes" *ngIf="designationList; else loading"></app-cv-stats-body>
   </div>
   <router-outlet></router-outlet>
 </div>

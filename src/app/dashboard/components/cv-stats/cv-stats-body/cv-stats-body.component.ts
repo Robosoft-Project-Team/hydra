@@ -1,24 +1,30 @@
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
 import { ResumeCard } from 'src/app/core/models';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CvAnalysisService } from 'src/app/dashboard/services/cv-analysis.service';
 
 @Component({
   selector: 'app-cv-stats-body',
   templateUrl: './cv-stats-body.component.html',
   styleUrls: ['./cv-stats-body.component.scss']
 })
-export class CvStatsBodyComponent implements OnInit, DoCheck {
+export class CvStatsBodyComponent implements OnInit, OnChanges {
   @Input() resumes;
   totalLength;
   newResume: ResumeCard[];
   shortlistResume: ResumeCard[];
   rejectedResume: ResumeCard[];
 
-  constructor() { }
+  constructor(
+    private cv: CvAnalysisService
+  ) { }
 
   ngOnInit(): void {
+    // this.filterUsingStatus();
+
   }
 
-  ngDoCheck(): void {
+  ngOnChanges(): void {
     this.resetList();
   }
 
@@ -44,6 +50,21 @@ export class CvStatsBodyComponent implements OnInit, DoCheck {
         }
       }
     });
+  }
+
+  drop(event: CdkDragDrop<ResumeCard[]>): void {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      if (event.previousContainer.data[event.previousIndex].status === 'New') {
+        this.resumes.find((item) => item === event.previousContainer.data[event.previousIndex]).status = 'Rejected';
+        this.cv.changeApplicantStatus(event.previousContainer.data[event.previousIndex].applicantId, 'Rejected');
+      } else {
+        this.resumes.find((item) => item === event.previousContainer.data[event.previousIndex]).status = 'New';
+        this.cv.changeApplicantStatus(event.previousContainer.data[event.previousIndex].applicantId, 'New');
+      }
+      this.resetList();
+    }
   }
 
 }

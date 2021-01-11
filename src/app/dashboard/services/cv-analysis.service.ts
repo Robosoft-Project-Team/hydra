@@ -58,13 +58,16 @@ export class CvAnalysisService {
     return this.http.get('assignedApplicant');
   }
 
-  getApplications(id): void {
+  getApplications(id): Promise<any> {
     this.selectedResumes.splice(0, this.selectedResumes.length);
-    this.http.get<any>(`getApplications/${id}`).subscribe(
-      response => {
-        this.selectedResumes.push(...response.data);
-      }
-    );
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(`getApplications/${id}`).subscribe(
+        response => {
+          this.selectedResumes.push(...response.data);
+          resolve(true);
+        }
+      );
+    });
   }
 
   getSelectedResumes(): Observable<any> {

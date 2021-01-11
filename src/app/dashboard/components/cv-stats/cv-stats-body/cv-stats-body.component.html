@@ -4,8 +4,13 @@
             <p><img src="assets/dashboard-cv/icn_new.png" alt="">New</p>
             <span class="count">{{newResume.length}} / {{totalLength}}</span>
         </div>
-        <div class="content-resume">
-            <div *ngFor="let item of newResume">
+        <div class="content-resume"
+        cdkDropList
+        #newResumeGroup="cdkDropList"
+        [cdkDropListData]="newResume"
+        [cdkDropListConnectedTo]="[rejectedResumeGroup]"
+        (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let item of newResume" cdkDrag>
                 <app-applicant-card [card]="item"></app-applicant-card>
             </div>
         </div>
@@ -26,11 +31,18 @@
             <p><img src="assets/dashboard-cv/icn_rejected.png" alt="">Rejected</p>
             <span class="count">{{rejectedResume.length}} / {{totalLength}}</span>
         </div>
-        <div class="content-resume">
-            <div *ngFor="let item of rejectedResume">
+        <div class="content-resume"
+        cdkDropList
+        #rejectedResumeGroup="cdkDropList"
+        [cdkDropListData]="rejectedResume"
+        [cdkDropListConnectedTo]="[newResumeGroup]"
+        (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let item of rejectedResume" cdkDrag>
                 <app-applicant-card [card]="item"></app-applicant-card>
             </div>
         </div>
     </div>
 </div>
+
+
 <!-- <app-applicant-card></app-applicant-card> -->

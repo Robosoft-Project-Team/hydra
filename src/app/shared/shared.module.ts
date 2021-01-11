@@ -6,7 +6,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MomentDateModule } from '@angular/material-moment-adapter';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatNativeDateModule,
     MatIconModule,
     MomentDateModule,
+    DragDropModule
   ],
   exports: [
     CommonModule,
@@ -29,7 +31,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatNativeDateModule,
     MatIconModule,
     MomentDateModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    DragDropModule
   ]
 })
 export class SharedModule { }
