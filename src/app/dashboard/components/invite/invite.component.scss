@@ -1,0 +1,128 @@
+@import 'src/variables';
+
+@mixin sub-text {
+  @include set-font(#C1BEBE, 14px, bold, 0.2px, 20px);
+}
+
+@mixin main-text {
+  @include set-font(#333539, 16px, bold, 0.23px, 20px);
+}
+
+@mixin set-font($color, $size, $weight, $spacing, $height) {
+  font-family: Muli;
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
+}
+
+p,
+h1 {
+  margin: 0;
+}
+
+
+.invite {
+  height: 100vh;
+  position: relative;
+  border-radius: 2.5rem 0 0 2.5rem;
+  background-color: $color-blue-light;
+  width: 100%;
+
+  &-left {
+    width: 25%;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 2.5rem;
+    background-color: white;
+    padding-top: 2.5rem;
+    z-index: 100;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 0rem 2.5rem;
+    }
+
+    &-heading {
+      @include set-font($color-black-light, 22px, bold, 0.22px, 26px);
+      transform: translateY(4px);
+    }
+
+    &-icon {
+      height: 50px;
+      width: 50px;
+      border-radius: 15px;
+      text-align: center;
+      background-color: rgba($color-primary-dark, 0.16);
+      display: inline-flex;
+      align-items: center;
+
+      img {
+        color: $color-primary-dark;
+        margin: 0 auto;
+        opacity: 1;
+      }
+    }
+
+    &-list {
+      margin-top: 1.5rem;
+      list-style: none;
+      padding: 0;
+
+      &-item {
+        cursor: pointer;
+        height: 4.5rem;
+        padding: 1rem 0rem 1rem 2.5rem;
+        margin-bottom: 0;
+
+        &.selected {
+          background-color: rgba($color-grey-light, .16);
+          border-right: 5px solid $color-primary-dark;
+        }
+      }
+
+      &-main {
+        @include main-text();
+      }
+
+      &-sub {
+        @include sub-text();
+        transform: translateY(4px);
+      }
+    }
+  }
+
+  &-right {
+    width: 75%;
+    height: 100vh;
+    position: relative;
+    left: 25%;
+    top: 0;
+    padding: 2.5rem;
+
+    img {
+      position: absolute;
+      left: -10%;
+      top: 0;
+      z-index: 1;
+      height: 100%;
+      width: 110%;
+      object-fit: cover;
+    }
+  }
+
+  hr {
+    background-color: $color-grey-lighter;
+    z-index: 10;
+    height: 1px;
+    position: relative;
+    margin: 1.25rem 0 0;
+
+  }
+}

@@ -1,0 +1,76 @@
+<div class="notification">
+  <p class="notification-title">Create event</p>
+  <form class="form-group" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Event Title</label>
+        <input class="input-control" type="text" placeholder="Give a name for your event" formControlName="title">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Institution Name</label>
+        <input class="input-control" type="text" placeholder="Name of Institution" formControlName="institution">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Location</label>
+        <input class="input-control" type="text" placeholder="Enter Institution Location" formControlName="location">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <div class="input-group sub">
+          <label class="input-label">Date</label>
+          <div class="input-container">
+            <input class="input-control" placeholder="DD MMM YYYY" [matDatepicker]="eventDate"
+              (click)="eventDate.open()" formControlName="date" formControlName="eventDate">
+            <mat-datepicker-toggle matSuffix [for]="eventDate">
+              <i class="input-control-date-icon" matDatepickerToggleIcon></i>
+            </mat-datepicker-toggle>
+            <mat-datepicker #eventDate>
+            </mat-datepicker>
+          </div>
+        </div>
+        <div class="input-group sub">
+          <label class="input-label">Time</label>
+          <div class="input-dropdown">
+            <div class="input-control placeholder">
+              <app-custom-dropdown [data]="[1,2,3,4,5,6,7,8,9,10,11,12]" (selectedItem)="time=$event">
+              </app-custom-dropdown>
+            </div>
+            <div class="input-control placeholder">
+              <app-custom-dropdown [data]="['AM', 'PM']" (selectedItem)="meridiem=$event"></app-custom-dropdown>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label class="input-label">Description</label>
+        <textarea class="input-control large no-resize" type="text" rows="3" cols="60" placeholder="Notes"
+          formControlName="description"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group vertical">
+        <label class="input-label">Members</label>
+        <div class="image-group">
+          <div class="icon-tooltip" *ngFor="let member of members; let i = index">
+            <img class="image-icon" src="assets/icn_member_placeholder.svg" alt="{{member.employee_username}}">
+            <img class="delete-icon" src="assets/icn_delete member.svg" alt="" (click)="deleteMember(i)">
+            <span class="icon-tooltip-text">{{member.employee_username}}</span>
+          </div>
+          <img class="image-icon" src="assets/add member.svg" alt="" (click)="addMember()">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="clear-button" (click)="onClear()">Clear</button>
+      <button class="button create-button" type="submit" [ngClass]="{'disabled':isClicked}"
+        [disabled]="isClicked">Create</button>
+    </div>
+  </form>
+</div>

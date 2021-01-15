@@ -1,0 +1,130 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Muli;
+}
+
+p{
+    margin: 0;
+}
+
+@mixin sub-text {
+  @include set-font(#C1BEBE, 14px, bold, 0.2px, 20px);
+}
+
+@mixin main-text {
+  @include set-font(#333539, 16px, bold, 0.23px, 20px);
+}
+
+@mixin set-font($color, $size, $weight, $spacing, $height) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  position: relative;
+  height: calc(90% - 1rem);
+
+  &-item {
+    width: 30%;
+  }
+
+  &-label {
+    height: 3rem;
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+
+    p {
+      height: 100%;
+      border-radius: 15px;
+      @include set-font(#FFFFFF, 16px, bold, 0.23px, 20px);
+      display: inline-flex;
+      align-items: center;
+      padding: 0rem 1rem;
+      padding-top: 2px;
+
+
+      img {
+        margin-right: 1rem;
+        transform: translateY(-1px);
+      }
+    }
+
+    span {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-40%);
+    }
+  }
+
+  &-resume {
+    margin-top: 2rem;
+    height: calc(100% - 5rem);
+    overflow-y: auto;
+    border-radius: 15px;
+    padding: 0rem 1rem;
+    border-top: 1.25rem solid transparent;
+    background-color: #ced0d24d;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-bottom: 1rem solid rgba(0, 0, 0, 0);
+      opacity: 0;
+      background-clip: padding-box;
+      background-color: #808087;
+      box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+.new {
+  background-color: #599dbc66;
+
+  p {
+    background-color: #599CBC;
+    color: #FFFFFF;
+  }
+
+  span {
+    @include set-font(#599CBC, 16px, bold, 0.23px, 20px);
+  }
+}
+
+.shortlist {
+  background-color: #74cbd133;
+
+  p {
+    background-color: #74cbd1;
+    color: #FFFFFF;
+  }
+
+  span {
+    @include set-font(#74cbd1, 16px, bold, 0.23px, 20px);
+  }
+}
+
+.reject {
+  background-color: #f0664e33;
+
+  p {
+    background-color: #F0664E;
+    color: #FFFFFF;
+  }
+
+  span {
+    @include set-font(#F0664E, 16px, bold, 0.23px, 20px);
+  }
+}

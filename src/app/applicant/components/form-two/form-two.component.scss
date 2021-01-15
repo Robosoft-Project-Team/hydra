@@ -1,0 +1,134 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+@include header-text;
+@include button;
+
+form {
+  max-width: 70%;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 2em;
+
+  .sub-heading {
+    color: $color-white;
+    font-size: 1rem;
+    font-family: Muli;
+    font-weight: bold;
+    letter-spacing: 0.13px;
+    text-align: left;
+    line-height: 2rem;
+    margin: 0 1rem 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    &-container {
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      margin-bottom: .5rem;
+
+      &.sub {
+        margin-right: 0;
+        margin-bottom: 0;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        .input-container {
+          display: flex;
+          position: relative;
+
+          .mat-datepicker-toggle {
+            position: absolute;
+            right: 0;
+          }
+        }
+      }
+
+      .input-control {
+        margin-bottom: .5rem;
+
+        &.large {
+          height: 80px;
+        }
+
+        &.no-resize {
+          resize: none;
+          overflow-y: auto;
+        }
+      }
+    }
+
+    .button {
+      &-group {
+        justify-content: center;
+        margin: 1rem 0;
+
+        .button {
+          margin: 0;
+        }
+
+        .button:first-child {
+          margin-right: 2rem;
+        }
+
+      }
+    }
+  }
+
+  .form-info-wrapper {
+    font-family: Muli;
+    font-size: .75rem;
+    letter-spacing: 0;
+    display: inline-flex;
+    line-height: 18px;
+    display: flex;
+    width: 100%;
+    margin: -.5rem 2rem 0;
+
+    .form-error {
+      flex: 1;
+      margin: 0;
+      text-align: left;
+      color: $color-primary-dark;
+    }
+
+    .form-add-control {
+      flex: 1;
+      margin: 0;
+      margin-left: auto;
+      max-width: 50%;
+      color: $color-primary-dark;
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 600;
+      text-align: right;
+      transition: all .1s ease-in-out;
+
+      &:hover,
+      &:link {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; // <-- Apparently some margin are still there even though it's hidden
+}
+
+input[type=number] {
+  -moz-appearance: textfield; // Firefox
+}

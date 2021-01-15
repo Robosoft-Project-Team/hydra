@@ -1,0 +1,23 @@
+<div class="container verify">
+  <div class="verify-title">
+    <p class="verify-title-heading">Verification</p>
+    <p class="verify-title-text">Enter the verification code we just sent you on<br> your email address.</p>
+  </div>
+  <div class="verify-form-container">
+    <div class="verify-form">
+      <input class="verify-input" #f1 type="number" (keydown)="keytab($event, f1)" [ngModel]="f1"
+        (ngModelChange)="changeFocus($event, f1)" />
+      <input class="verify-input" #f2 type="number" (keydown)="keytab($event, f2)" [ngModel]="f2"
+        (ngModelChange)="changeFocus($event, f2)" />
+      <input class="verify-input" #f3 type="number" (keydown)="keytab($event, f3)" [ngModel]="f3"
+        (ngModelChange)="changeFocus($event, f3)" />
+      <input class="verify-input" #f4 type="number" (keydown)="keytab($event, f4)" [ngModel]="f4"
+        (ngModelChange)="changeFocus($event, f4)" />
+    </div>
+    <p class="verify-display">If you didn't recieve a code!<a class="verify-display-action"
+        (click)="resendOtp()">Resend</a></p>
+    <div class="verify-error" [ngClass]="{'show': message}">{{message}}</div>
+    <button class="button verify-button" (click)="onVerify()" [class.disabled]="buttonDisabled"
+      [disabled]="buttonDisabled">Verify</button>
+  </div>
+</div>

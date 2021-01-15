@@ -1,0 +1,4 @@
+<app-sidebar></app-sidebar>
+<div class="dashboard-container" [ngClass]="{expand: router.url !== '/dashboard'}">
+  <router-outlet></router-outlet>
+</div>

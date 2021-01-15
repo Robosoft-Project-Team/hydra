@@ -1,0 +1,42 @@
+@import '../../../../../variables';
+
+
+.summary {
+  height: 100%;
+  width: 100%;
+  padding: 26px;
+  border-radius: 26px;
+  background-color: #F6F9FD;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 1.25rem;
+    }
+  }
+  
+  &-details {
+    flex: 1;
+    font-family: Muli;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    margin-left: 1.25rem;
+
+    &-value {
+      color: #333539;
+      margin: 0;
+    }
+
+    &-description {
+      color: #808087;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.13px;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+}

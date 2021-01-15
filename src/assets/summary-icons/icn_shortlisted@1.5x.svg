@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="50px" viewBox="0 0 49 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 63.1 (101010) - https://sketch.com -->
+    <title>0B84B212-4304-48FA-AE44-E8295FCBDE74@1.5x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Recruiter-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02_Internapp_Dashboard" transform="translate(-1108.000000, -365.000000)">
+            <g id="CV-Analysis-Copy" transform="translate(1078.000000, 205.000000)">
+                <g id="Group-26" transform="translate(0.000000, 49.000000)">
+                    <g id="Group-25">
+                        <g id="Group-23" transform="translate(30.000000, 111.000000)">
+                            <g id="icn_shortlisted">
+                                <rect id="Rectangle-Copy-2" stroke="#E6E5F2" fill="#FFFFFF" x="0.5" y="0.5" width="48" height="49" rx="15"></rect>
+                                <g id="Group-9" transform="translate(15.000000, 13.000000)">
+                                    <circle id="Oval-Copy-18" fill="#98CD8D" cx="13" cy="6" r="3"></circle>
+                                    <circle id="Oval-Copy-14" fill="#FFFFFF" transform="translate(7.500000, 5.500000) rotate(1.000000) translate(-7.500000, -5.500000) " cx="7.5" cy="5.5" r="4.5"></circle>
+                                    <circle id="Oval-Copy-19" fill="#98CD8D" cx="7.5" cy="5.5" r="3.5"></circle>
+                                    <path d="M8,21 L8,17 C8,14.2385763 10.2385763,12 13,12 C15.7614237,12 18,14.2385763 18,17 L18,21" id="Path-Copy-3" stroke="#98CD8D" stroke-width="1.78" stroke-linecap="round"></path>
+                                    <path d="M0,24 L0,17.7777778 C0,13.4822297 3.35786438,10 7.5,10 C11.6421356,10 15,13.4822297 15,17.7777778 L15,24" id="Path-Copy-2" fill="#FFFFFF"></path>
+                                    <path d="M2,22 L2,17.5555556 C2,14.4873069 4.46243388,12 7.5,12 C10.5375661,12 13,14.4873069 13,17.5555556 L13,22" id="Path-Copy-4" stroke="#98CD8D" stroke-width="2" stroke-linecap="round"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

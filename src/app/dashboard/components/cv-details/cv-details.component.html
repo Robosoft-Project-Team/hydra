@@ -1,0 +1,117 @@
+<div class="overlay" [@overlay]="'show'" (click)="goBack()"></div>
+<!--  [@openClose]="'open'" -->
+<div class="container" *ngIf="applicant.applicantId" [@openClose]="'open'">
+  <div class="container-left-sidebar">
+    <app-left-sidebar [applicant]="applicant"></app-left-sidebar>
+  </div>
+  <div class="container-right-sidebar">
+    <div class="applicant">
+      <div class="name-and-age">
+        <p class="name capitalize">{{applicant.applicantName}}</p>
+        <p class="age">{{calculateAge(applicant.dob)}} years</p>
+      </div>
+      <p class="designation">{{applicant.designation}}</p>
+      <div class="buttons">
+        <a (click)="downloadAttachment(0)" class="button download"><span>Download CV</span></a>
+        <a *ngIf="buttonTwoText" (click)="onClickButtonTwo(buttonTwoText === 'Recruit'? ['recruit']: [])"
+          class="button assign">
+          <span class="capitalize">{{buttonTwoText}}</span>
+          <div *ngIf="showDropdown" class="dropdown">
+            <ul>
+              <li *ngFor="let item of organizers" (click)="onClickButtonTwo(['assign', item])">
+                <img src="assets/dashboard-home/icn_hr.png" alt="">
+                <span class="capitalize">{{item.name}}</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+        <a *ngIf="buttonThreeText" (click)="onClickButtonThree(buttonThreeText)" class="button reject">
+          <span>{{buttonThreeText}}</span>
+        </a>
+      </div>
+      <div class="about-para">
+        <p>{{applicant.aboutYou}}</p>
+      </div>
+      <hr class="hr">
+      <div class="section">
+        <div class="heading" i18n="@@workExperience">
+          Work Experience
+        </div>
+        <div class="section-content" *ngFor="let item of applicant.workHistory">
+          <img src="assets/dashboard-cv/img_amazon.png" alt="">
+          <div class="section-content-details">
+            <p class="main-text capitalize">{{item.position}}</p>
+            <div class="years-spent">
+              <p class="sub-text capitalize">{{item.companyName}}</p>
+              <p class="sub-text">{{dateDifference(item.from, item.to)}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="hr">
+      <div class="skills">
+        <div class="heading"  i18n="skills|main heading for skills@@skills">
+          Skills
+        </div>
+        <ul class="skills-list">
+          <li class="skills-list-item capitalize" *ngFor="let item of applicant.skill.split(',')">
+            <span>{{item}}</span>
+          </li>
+        </ul>
+      </div>
+      <hr class="hr">
+      <div class="section">
+        <div class="heading"  i18n="education|main heading for education@@education">
+          Education
+        </div>
+        <div class="section-content" *ngFor="let item of applicant.educationHistory">
+          <div class="section-content-details">
+            <p class="main-text">{{item.instituitionName}}</p>
+            <div class="years-spent">
+              <p class="sub-text">{{item.location}}</p>
+              <p class="sub-text">{{dateDifference(item.from, item.to)}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="hr">
+      <div class="reference">
+        <div class="heading" i18n="@@reference">
+          Reference
+        </div>
+        <p class="name capitalize">{{applicant.reference.reference_name}}</p>
+        <p class="company capitalize">{{applicant.reference.reference_desig}}</p>
+        <p class="extra"><span>Phone: </span>+91 {{applicant.reference.reference_mobile}}</p>
+        <p class="extra"><span>Email: </span>{{applicant.reference.reference_mail}}</p>
+      </div>
+      <hr class="hr">
+      <div class="skills">
+        <div class="heading"  i18n="software|main heading for software@@software">
+          Software
+        </div>
+        <ul class="skills-list">
+          <li class="skills-list-item capitalize" *ngFor="let item of applicant.softwares.split(',')">
+            <span>{{item}}</span>
+          </li>
+        </ul>
+      </div>
+      <hr class="hr">
+      <div class="attachment">
+        <div class="heading"  i18n="attachment|main heading for attachments@@attachment">
+          Attachment
+        </div>
+        <div class="attachment-files">
+          <div class="file" *ngFor="let item of applicant.attachmentEntities; let i = index"
+            (click)="downloadAttachment(i)">
+            <div class="file-preview">
+              <img width="100%" height="100%" src="assets/dashboard-cv/img_pdf_thumbnail.png" alt="">
+            </div>
+            <p class="file-name">{{item.file_name | slice:0:14}}</p>
+            <p class="file-size">{{convertSize(item.file_size)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="side-button"></div>
+  </div>
+</div>

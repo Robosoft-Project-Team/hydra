@@ -1,0 +1,36 @@
+<div class="container login">
+  <div class="login-title">
+    <p class="login-title-message">Hello Again <span>Recruiter</span></p>
+    <p class="login-title-greeting">Welcome Back</p>
+  </div>
+  <div class="login-form-container">
+    <div class="login-form">
+      <div class="login-input">
+        <label class="login-input-label" for="username">Email ID</label>
+        <input class="login-input-control" id="username" type="text" placeholder="Enter your Email Address"
+          [(ngModel)]="email.value" [class.invalid]="email.error" (input)="validateUsername()" (focusout)="isValid()">
+        <span class="login-input-suffix" *ngIf="showMark">
+          <img *ngIf="email.tick" src="../../../../assets/input-tick/icn_done_tick.png" alt="correct">
+          <img *ngIf="!email.tick" src="../../../../assets/input-error/icn_error_tick.png" alt="incorrect">
+        </span>
+        <div class="login-input-error" [ngClass]="{'show':email.error}">&nbsp;{{email.error}}</div>
+      </div>
+      <div class="login-input">
+        <label class="login-input-label" for="password">Password</label>
+        <input class="login-input-control" id="password" type="password" placeholder="Enter your Password"
+          [(ngModel)]="password.value" [class.invalid]="password.error" (keyup)="password.error = ''"
+          (input)="enableButton()" (focusout)="isValidPassword()">
+        <div class="login-input-error" [ngClass]="{'show':password.error}">&nbsp;{{password.error}}</div>
+        <a class="login-forgot-password" routerLink="../forgot-password">Forgot Password?</a>
+      </div>
+      <button class="button login-button" (click)="onClickSignIn()" [class.disabled]="buttonDisabled"
+        [disabled]="buttonDisabled">
+        Sign In
+      </button>
+    </div>
+  </div>
+</div>
+<div class="alternate">
+  <p class="alternate-message">New to Intern Management ? <a class="alternate-action" routerLink="../sign-up">Sign
+      Up</a></p>
+</div>

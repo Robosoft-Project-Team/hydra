@@ -1,0 +1,185 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+.notification {
+
+  &-title {
+    height: 26px;
+    color: #333539;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 26px;
+  }
+
+  .input-group {
+    margin: 0 1rem 1rem;
+
+    &.vertical {
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+
+    &.sub {
+      margin-right: 0;
+      margin-bottom: 0;
+      flex-direction: column;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      .input-container {
+        display: flex;
+        position: relative;
+
+        .mat-datepicker-toggle {
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+
+    .input-label {
+      margin-bottom: 0.625rem;
+      @include input-text-style(14px, #333539);
+
+      &.transparent {
+        color: transparent;
+
+        &::selection {
+          color: transparent;
+        }
+      }
+    }
+
+    .input-dropdown {
+      display: flex;
+
+      :first-child {
+        margin-right: 1rem;
+      }
+    }
+
+    .placeholder.input-control {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    .input-control {
+      border: 1px solid #535353;
+      @include input-text-style(14px, #020202);
+
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &::placeholder {
+        @include input-text-style(14px, #C1BEBE);
+      }
+
+      &.large {
+        height: 80px;
+      }
+
+      &.no-resize {
+        resize: none;
+        overflow-y: auto;
+      }
+
+      &-date-icon {
+        background: url('../../../../../assets/dashboard/btn_calendar_task_unselected/btn_calendar_task_unselected@1.5x.svg');
+      }
+    }
+
+    .image-group {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .icon-tooltip {
+        position: relative;
+
+        &-text {
+          display: block;
+          background-color: #000000;
+          color: #fff;
+          text-align: center;
+          border-radius: 6px;
+          position: absolute;
+          z-index: 1;
+          top: 110%;
+          left: 0;
+          margin: 0;
+          padding: .5rem;
+          width: 100%;
+          font-size: .75rem;
+          line-height: 1;
+          word-break: break-word;
+          font-family: Muli;
+          visibility: hidden;
+          opacity: 0;
+          transition: all .3s;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+          }
+        }
+
+        &:hover .icon-tooltip-text {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+      .image-icon {
+        margin: 0 1rem 0.5rem;
+        transition: all .3s;
+        cursor: pointer;
+      }
+
+      .delete-icon{
+        position: absolute;
+        right: 1rem;
+        bottom: 0.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .image-icon:hover .icon-tooltip {
+      opacity: 0;
+    }
+
+  }
+
+  @include button;
+
+  .clear-button {
+    box-sizing: border-box;
+    height: 40px;
+    width: 155px;
+    border: 2px solid #F52851;
+    border-radius: 8px;
+    color: #F52851;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    background-color: transparent;
+    margin-left: 20px;
+  }
+
+  .create-button {
+    width: 155px;
+    margin-top: 0;
+    margin-left: 20px;
+  }
+}

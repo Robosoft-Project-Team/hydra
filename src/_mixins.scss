@@ -1,0 +1,338 @@
+@import 'src/variables';
+
+@mixin text {
+  .text {
+    color: $color-white;
+    font-family: Muli;
+    font-size: 1.75rem;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 2rem;
+  }
+}
+
+@mixin sub-text {
+  .sub-text {
+    margin: 0.5rem 0rem;
+    color: #808087;
+    font-family: Muli;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.21px;
+    line-height: 2rem;
+    text-align: center;
+  }
+}
+
+@mixin default-text-style {
+  font-family: Muli;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.29px;
+  margin-bottom: 0;
+}
+
+@mixin input-text-style($font-size, $color) {
+  color: $color;
+  font-size: $font-size;
+  line-height: 18px;
+  font-family: 'Muli', sans-serif;
+  letter-spacing: 0;
+}
+
+// For Applicant Module Headers
+@mixin header-text {
+
+  .text {
+    display: block;
+    font-family: 'Muli';
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+    padding-bottom: 1.5rem;
+
+    .welcome-text {
+      font-size: 1.25rem;
+      color: $color-primary-dark;
+      letter-spacing: 0.17px;
+      margin-bottom: 0.5rem;
+    }
+
+    .heading-text {
+      font-size: 1.75rem;
+      color: $color-white;
+      letter-spacing: 0.23px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin button {
+  .button {
+    margin-top: 40px;
+    height: 40px;
+    width: 250px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    background-color: $color-primary-dark;
+    color: $color-white;
+    font-family: Muli;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 133px;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+  }
+}
+
+@mixin alternate {
+
+  // Signup Option Text
+  .alternate {
+
+    &-message {
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      color: $color-grey-darker;
+      @include default-text-style();
+      font-weight: unset;
+    }
+
+    // Signup Link
+    &-action {
+      display: inline-block;
+      font-family: Muli;
+      font-weight: 700;
+      color: $color-primary-dark;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      &:active {
+        transform: translateX(2px);
+      }
+
+      &:active,
+      &:link,
+      &:visited {
+        text-decoration: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+@mixin custom-input-styles {
+  .input-group {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 0 2rem 1rem;
+
+    .input-label {
+      margin-bottom: 0.625rem;
+      cursor: pointer;
+      @include input-text-style(14px, #C1BEBE);
+    }
+
+    .input-control {
+      height: 40px;
+      width: 100%;
+      border: 1px solid $color-white;
+      border-radius: 6px;
+      background-color: rgba($color-white, 0.06);
+      padding: 11px 1rem;
+      margin-bottom: 10px;
+      @include input-text-style(14px, $color-white);
+
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &::placeholder {
+        @include input-text-style(14px, $color-white);
+      }
+
+      &::-webkit-input-placeholder {
+        transform: translateY(2px);
+      }
+
+      &.ng-invalid.ng-touched {
+        color: $color-primary-dark !important;
+        border: 1px solid $color-primary-dark;
+
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &::placeholder {
+          color: $color-primary-dark;
+        }
+      }
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+
+    .input-control-radio {
+      display: flex;
+      width: 100%;
+      height: 40px;
+      align-items: center;
+      cursor: pointer;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .radio {
+        display: inline-block;
+        position: relative;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 0.1em solid $color-primary-dark;
+        top: 2px;
+        margin-right: 10px;
+        background-color: rgba($color-primary-dark, 0.09);
+        box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.06);
+      }
+
+      .radio-label:not(:last-child) {
+        margin-right: 3.5rem;
+      }
+
+      .radio::after {
+        content: '';
+        height: .4375rem; //7px
+        width: .4375rem; //7px
+        display: block;
+        position: absolute;
+        background: $color-primary-dark;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        opacity: 0;
+      }
+
+      input[type="radio"]:checked+.input-label {
+        color: $color-primary-dark;
+      }
+
+      input[type="radio"]:checked+.input-label>.radio {
+        border: 0.1em solid $color-primary-dark;
+      }
+
+      input[type="radio"]:checked+.input-label>.radio::after {
+        opacity: 1;
+      }
+
+    }
+
+    .input-error {
+      margin: 0;
+      @include input-text-style(.75rem, $color-primary-dark);
+      line-height: 15px;
+    }
+
+    .input-error-wrapper {
+      font-size: .75rem;
+      display: inline-flex;
+    }
+  }
+}
+
+@mixin customize-mat-date-picker {
+  .mat-icon-button {
+    font-size: 1.25rem;
+    color: $color-primary-dark !important;
+    outline: none;
+
+    &:active {
+      outline: none;
+    }
+
+    .mat-button-focus-overlay {
+      opacity: 0 !important;
+    }
+
+  }
+
+  .mat-datepicker-toggle {
+    i {
+      height: 19px;
+      width: 18px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: url('./assets/btn_calendar_registration_unselected/btn_calendar_registration_unselected@1.5x.svg') no-repeat;
+    }
+
+    &-active i {
+      background: url('./assets/btn_calendar_registration_selected/btn_calendar_registration_selected@1.5x.svg') no-repeat;
+    }
+  }
+
+  .mat-datepicker-content .mat-calendar {
+    height: auto;
+    width: 300px;
+  }
+
+  .mat-calendar {
+    &-previous-button {
+      order: 1;
+    }
+
+    &-period-button {
+      flex: 1;
+      order: 2;
+      color: $color-primary-dark;
+    }
+
+    &-next-button {
+      order: 3;
+    }
+
+    &-spacer {
+      flex: 0 !important;
+    }
+
+    &-arrow {
+      display: none !important;
+    }
+
+    &-controls {
+      margin: 0 calc(33% / 7 - 16px) !important;
+    }
+
+    &-body {
+      &-selected {
+        background-color: transparent !important;
+        color: $color-primary-dark !important;
+        outline: none;
+      }
+
+      &-today {
+        border: none !important;
+
+        .mat-calendar-body-selected {
+          box-shadow: none;
+          border: none;
+        }
+      }
+    }
+  }
+
+  button:focus {
+    outline: none !important;
+  }
+
+}

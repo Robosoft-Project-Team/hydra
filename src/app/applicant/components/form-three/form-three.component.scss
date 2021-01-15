@@ -1,0 +1,221 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+@include header-text;
+@include button;
+
+.button {
+  margin: 20px;
+}
+
+form {
+  max-width: 70%;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 2em;
+
+  .form-group {
+    margin-bottom: 1rem;
+
+    &-container {
+      margin-bottom: 1rem;
+    }
+
+    .input-group {
+      margin-bottom: .5rem;
+      position: relative;
+
+      .right {
+        text-align: right;
+        width: 100%;
+      }
+
+      .left {
+        text-align: left;
+        width: 100%;
+      }
+
+      &-info {
+        color: $color-white;
+        font-family: Muli;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 18px;
+        margin-bottom: .5rem;
+      }
+
+      &-heading {
+        color: $color-white;
+        font-family: Muli;
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.13px;
+        line-height: 1rem;
+        margin-bottom: .5rem;
+      }
+
+      .file-input-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        border-radius: 6px;
+        border: 3px dashed $color-primary-dark;
+        background-color: rgba(255, 255, 255, 0.06);
+
+        .file-upload-info {
+          font-family: Muli;
+          color: rgba($color-grey-light, .5);
+          text-align: center;
+          flex: 6;
+          margin-left: .5rem;
+          text-align: left;
+
+          &.small {
+            flex: 1;
+          }
+        }
+
+        .file-browse-button {
+          color: $color-primary-dark;
+          text-decoration: underline;
+          flex: 2;
+          cursor: pointer;
+          margin-right: .5rem;
+        }
+
+        &.profile {
+          flex: 1;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+
+      .input-control {
+        margin-bottom: .5rem;
+
+        &.large {
+          height: 80px;
+        }
+
+        &.no-resize {
+          resize: none;
+          overflow-y: auto;
+        }
+
+        &.padding {
+          padding-left: 1.7rem;
+        }
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    }
+
+    .button {
+      &-group {
+        justify-content: center;
+        margin: 1rem 0;
+
+        .button {
+          margin: 0;
+        }
+
+        .button:first-child {
+          margin-right: 2rem;
+        }
+
+      }
+    }
+  }
+
+  .form-info-wrapper {
+    font-family: Muli;
+    font-size: .75rem;
+    letter-spacing: 0;
+    display: inline-flex;
+    line-height: 18px;
+    display: flex;
+    width: 100%;
+    margin: -.5rem 2rem 0;
+
+    .form-error {
+      flex: 1;
+      margin: 0;
+      text-align: left;
+      color: $color-primary-dark;
+    }
+
+    .form-add-control {
+      flex: 1;
+      margin: 0;
+      margin-left: auto;
+      max-width: 50%;
+      color: $color-primary-dark;
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 600;
+      text-align: right;
+      transition: all .1s ease-in-out;
+
+      &.transparent {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover,
+      &:link {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+
+    .file-list {
+      margin: 0;
+      margin-left: -2.5rem;
+      flex: 1;
+
+      &.profile-list {
+        margin-left: 1.5rem;
+      }
+
+      &-item {
+        display: flex;
+        color: $color-white;
+        font-family: Muli;
+        font-size: 14px;
+        letter-spacing: 0;
+        line-height: 18px;
+
+        .file-size {
+          opacity: .5;
+          margin: 0 1rem;
+        }
+
+        .file-reset-button {
+          height: 15px;
+          width: 15px;
+          background-image: url('../../../../assets/icn_attachmentdelete/icn_attachmentdelete@1.5x.svg');
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .input-icon {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    top: 41px;
+    left: 13px;
+  }
+}

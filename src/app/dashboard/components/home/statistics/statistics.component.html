@@ -1,0 +1,30 @@
+<div class="container statistics">
+  <div class="statistics-header">
+    <p class="statistics-title">Dashboard</p>
+    <button class="button button-register">Register <img class="button-icon"
+        src="assets/dashboard-home/icn_register.png" alt="Register"></button>
+    <p class="statistics-date">Date:<span>{{date}}</span></p>
+  </div>
+  <div class="statistics-analysis">
+    <div class="statistics-analysis-details">
+      <p class="heading">Welcome Back, {{userName.split(' ')[0]}} !</p>
+      <p class="text">You have <span>{{count}}</span> new CV for Analysis.</p>
+      <button class="button button-cta" [routerLink]="['.','cv']">Check Now</button>
+    </div>
+  </div>
+  <div class="statistics-graph">
+    <p class="heading">CV Analysis</p>
+    <div class="statistics-graph-details">
+      <app-chart class="chart" [labels]="labels"></app-chart>
+    </div>
+  </div>
+  <div class="statistics-invite">
+    <div class="statistics-invite-details">
+      <p class="heading">Invite Candidate</p>
+      <p class="text">Send invite by email address</p>
+    </div>
+    <button class="button button-invite" [routerLink]="['.','invite']">
+      Invite <img src="assets/dashboard-home/icn_invite.png" alt="Invite Icon">
+    </button>
+  </div>
+</div>

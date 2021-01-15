@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Muli;
+}
+
+p {
+  margin: 0;
+}
+
+@mixin sub-text {
+  @include set-font(#C1BEBE, 14px, bold, 0.2px, 20px);
+}
+
+@mixin main-text {
+  @include set-font(#333539, 16px, bold, 0.23px, 20px);
+}
+
+@mixin set-font($color, $size, $weight, $spacing, $height) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
+}
+
+.card {
+  width: 100%;
+  border-radius: 7px;
+  background-color: #FFFFFF;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+
+  &-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  &-image {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    margin-right: 14px;
+  }
+
+  &-name {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  &-main-text {
+    @include main-text();
+  }
+
+  &-sub-text {
+    @include sub-text();
+    transform: translateY(2px);
+  }
+
+  &-skills {
+    display: flex;
+
+    p {
+      border: 1px solid #C1BEBE;
+      border-radius: 15px;
+      padding: .25rem .5rem;
+      margin-right: 0.5rem;
+      text-transform: capitalize;
+
+      span {
+        @include set-font(#C1BEBE, 10px, bold, 0.23px, 10px);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="workExperience" datatype="html">
+        <source> Work Experience </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/cv-details.component.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="skills" datatype="html">
+        <source> Skills </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/cv-details.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+        <note priority="1" from="description">main heading for skills</note>
+        <note priority="1" from="meaning">skills</note>
+      </trans-unit>
+      <trans-unit id="education" datatype="html">
+        <source> Education </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/cv-details.component.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+        <note priority="1" from="description">main heading for education</note>
+        <note priority="1" from="meaning">education</note>
+      </trans-unit>
+      <trans-unit id="reference" datatype="html">
+        <source> Reference </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/cv-details.component.html</context>
+          <context context-type="linenumber">80,81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="software" datatype="html">
+        <source> Software </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/cv-details.component.html</context>
+          <context context-type="linenumber">90,91</context>
+        </context-group>
+        <note priority="1" from="description">main heading for software</note>
+        <note priority="1" from="meaning">software</note>
+      </trans-unit>
+      <trans-unit id="attachment" datatype="html">
+        <source> Attachment </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/cv-details.component.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+        <note priority="1" from="description">main heading for attachments</note>
+        <note priority="1" from="meaning">attachment</note>
+      </trans-unit>
+      <trans-unit id="workLocation" datatype="html">
+        <source>Work Location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/left-sidebar/left-sidebar.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">side heading for work location</note>
+        <note priority="1" from="meaning">work location</note>
+      </trans-unit>
+      <trans-unit id="salaryExpectation" datatype="html">
+        <source>Salary Expectation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/left-sidebar/left-sidebar.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">side heading for Salary Expectation</note>
+        <note priority="1" from="meaning">Salary Expectation</note>
+      </trans-unit>
+      <trans-unit id="contact" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/left-sidebar/left-sidebar.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">main heading for contact</note>
+        <note priority="1" from="meaning">contact</note>
+      </trans-unit>
+      <trans-unit id="socials" datatype="html">
+        <source>Socials</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/components/cv-details/left-sidebar/left-sidebar.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="description">main heading for social media</note>
+        <note priority="1" from="meaning">socials</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,25 @@
+<div class="cv-stats">
+  <div class="cv-stats-left-side">
+    <div class="header">
+      <h1>CV Analysis</h1>
+      <div class="icon"><img src="assets/dashboard-cv/icn_search.png" alt=""></div>
+    </div>
+    <hr>
+    <ul class="list" *ngIf="designationList; else loading">
+      <li class="list-item" *ngFor="let item of designationList; let i = index" (click)="filterResumes(item.id)"
+        [class.selected]="selectedDesignation === item.designation">
+        <p class="list-main-text">{{item.designation}}</p>
+        <p class="list-sub-text">{{getLocationString(item.location)}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="cv-stats-right-side">
+    <app-header [searchControl]="false" [dateControl]="false" [headerTitle]="selectedDesignation"></app-header>
+    <hr>
+    <app-cv-stats-body [resumes]="selectedResume" *ngIf="designationList; else loading"></app-cv-stats-body>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+<ng-template #loading>
+  <h2 class="list-item">Loading Data...</h2>
+</ng-template>

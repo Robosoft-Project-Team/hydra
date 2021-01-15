@@ -1,0 +1,53 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+.invite {
+  z-index: 1;
+  position: absolute;
+  top: 6.25rem;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 6.25rem);
+  padding: 0 5rem;
+  border-top: solid 5rem transparent;
+  overflow: auto;
+
+  &-image {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &-form {
+    margin: 4.5rem 0;
+
+    .input-control {
+
+      &.large {
+        height: 80px;
+      }
+
+      &.no-resize {
+        resize: none;
+        overflow-y: auto;
+      }
+
+    }
+
+    @include button;
+
+    .button-send {
+      margin: 2rem auto 1rem;
+    }
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  // display: none; <- Crashes Chrome on hover 
+  -webkit-appearance: none;
+  margin: 0; // <-- Apparently some margin are still there even though it's hidden
+}
+
+input[type=number] {
+  -moz-appearance: textfield; // Firefox
+}

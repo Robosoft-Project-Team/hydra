@@ -1,0 +1,148 @@
+@import 'src/variables';
+// Variables 
+$color-blue-dark: #121432;
+
+.sidebar-container {
+  background-color: $color-blue-dark;
+  color: $color-white;
+  font-family: Muli;
+  letter-spacing: 0.56px;
+  line-height: 1.5rem;
+  position: fixed;
+  width: 400px;
+  top: 0;
+  height: 100vh;
+  z-index: 10;
+
+  &.expand {
+
+    .sidebar-logo {
+      &.large {
+        display: block;
+      }
+
+      &.small {
+        display: none;
+      }
+    }
+
+    .sidebar-item a {
+      display: inline-block;
+    }
+
+    .sidebar-title {
+      margin: 0;
+      visibility: visible;
+    }
+  }
+
+  .sidebar {
+    &-header {
+      display: block;
+      width: 100%;
+      max-width: 250px;
+      text-align: center;
+      position: relative;
+      top: 4.5vh;
+      margin-bottom: 4.5vh;
+      padding: 0 1.25rem;
+    }
+
+    &-logo {
+      height: 2.25rem;
+      display: block;
+      margin: 0 1.5rem .5rem;
+
+      &.large {
+        display: none;
+      }
+
+      &.small {
+        display: block;
+      }
+    }
+
+    &-title {
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      visibility: hidden;
+      overflow: hidden;
+    }
+
+    &-nav {
+      width: 100%;
+      padding: 0 1.25rem;
+      margin: 0;
+      list-style: none;
+      position: relative;
+      top: 4.5vh;
+    }
+
+    &-item {
+      font-size: 1rem;
+      color: $color-grey-light;
+      font-weight: 500;
+      letter-spacing: 0.62px;
+      line-height: 24px;
+      height: 45px;
+      width: 100%;
+      position: relative;
+      text-decoration: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-bottom: 2vh;
+      }
+
+      &.active {
+        font-weight: 800;
+        color: $color-white;
+        z-index: 10;
+
+        &::before {
+          content: '';
+          height: 45px;
+          width: 5px;
+          border-radius: 0 6.5rem 6.5rem 0;
+          background-color: $color-primary-dark;
+          position: absolute;
+          left: -1.125rem;
+        }
+
+        &::after {
+          content: '';
+          height: 45px;
+          width: calc(100% + 2.25rem);
+          background-color: rgba($color-primary-dark, .2);
+          position: absolute;
+          left: -1.125rem;
+          z-index: -1;
+        }
+      }
+
+      img {
+        height: 100%;
+        min-width: 45px;
+        padding: .625rem;
+        margin: 0 1rem;
+      }
+
+      a {
+        display: none;
+      }
+    }
+
+    &-footer {
+      position: absolute;
+      bottom: 0;
+      height: 60px;
+      width: 100%;
+      padding: 1vh 1.875rem 0;
+      border-top: solid 1px rgba($color-white, .1);
+      list-style: none;
+    }
+  }
+}

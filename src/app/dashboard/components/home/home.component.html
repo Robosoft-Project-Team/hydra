@@ -1,0 +1,38 @@
+<div class="dashboard">
+  <div class="dashboard-statistics">
+    <app-statistics [userName]="dashboardData.user.name" [count]="dashboardData.user.cvCount"
+      [date]="dashboardData.date.format('YYYY, MMMM DD')"></app-statistics>
+  </div>
+  <div class="dashboard-right">
+    <div class="dashboard-profile">
+      <div class="user">
+        <div class="user-info">
+          <p class="user-greeting">Hello,</p>
+          <p class="user-name">{{dashboardData.user.name}}</p>
+          <p class="user-designation">{{dashboardData.user.designation}}</p>
+        </div>
+        <div>
+          <img class="user-image" [src]="dashboardData.user.image.url" alt="User Image">
+        </div>
+      </div>
+    </div>
+    <p class="dashboard-section-title">Summary ({{dashboardData.date.format('MMMM')}})</p>
+    <div class="dashboard-summary">
+      <app-summary [summary]="dashboardData.summary"></app-summary>
+    </div>
+    <div class="dashboard-section-title">
+      <span class="title-text">Notification</span>
+      <div class="title-action" [routerLink]="['.', 'notifications']">
+        <a>View All</a>
+        <mat-icon class="title-action-btn">keyboard_arrow_right</mat-icon>
+      </div>
+    </div>
+    <div class="dashboard-notifications">
+      <app-notification-item [notification]="dashboardData.notification"></app-notification-item>
+    </div>
+    <p class="dashboard-section-title">Organizers</p>
+    <div class="dashboard-organizers">
+      <app-organizer-list [organizers]="dashboardData.organizers"></app-organizer-list>
+    </div>
+  </div>
+</div>

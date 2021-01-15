@@ -1,0 +1,22 @@
+<div class="notification">
+  <div class="notification-list">
+    <app-notifications-list></app-notifications-list>
+  </div>
+  <div class="notification-right">
+    <div class="notification-profile">
+      <div class="user">
+        <div class="user-info">
+          <p class="user-greeting">Hello,</p>
+          <p class="user-name">{{user.name | titlecase}}</p>
+          <p class="user-designation">{{user.designation}}</p>
+        </div>
+        <div>
+          <img class="user-image" [src]="user.image.url" alt="User Image">
+        </div>
+      </div>
+    </div>
+    <div class="notification-form">
+      <app-create-event-form></app-create-event-form>
+    </div>
+  </div>
+</div>

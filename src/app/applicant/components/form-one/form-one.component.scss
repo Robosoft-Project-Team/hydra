@@ -1,0 +1,58 @@
+@import 'src/variables';
+@import 'src/mixins';
+
+@include header-text;
+@include button;
+
+form {
+  max-width: 70%;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.placeholder.input-control {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin experience($width, $margin-left) {
+  width: $width;
+  height: 40px;
+  margin-left: $margin-left;
+  margin-top: 27px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid $color-white;
+  color: $color-grey-light;
+  padding: 5px;
+  padding-left: 12px;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.row1 {
+  display: flex;
+
+  .years {
+    @include experience(200px, -130px);
+  }
+
+  .months {
+    @include experience(110px, 28px);
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
