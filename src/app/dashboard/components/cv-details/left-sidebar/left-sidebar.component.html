@@ -4,40 +4,40 @@
     <img class="icon" src="assets/dashboard-cv/icn_workexp.png">
     <div class="general-information-text">
       <p class="main-text">{{applicant.experienceYear}}<span *ngIf="applicant.experienceMonth > 0">+</span> Years</p>
-      <p class="sub-text">Work experience</p>
+      <p class="sub-text" i18n="work experience|side heading for work experience@@workExperience">Work experience</p>
     </div>
   </div>
   <div class="general-information-row">
     <img class="icon" src="assets/dashboard-cv/icn_walkin.png">
     <div class="general-information-text">
       <p class="main-text">{{applicant.applicationType}}</p>
-      <p class="sub-text">Reference</p>
+      <p class="sub-text" i18n="reference|side heading for reference@@reference">Reference</p>
     </div>
   </div>
   <div class="general-information-row">
     <img class="icon" src="assets/dashboard-cv/icn_location.png">
     <div class="general-information-text">
       <p class="main-text">{{applicant.jobLocation}}</p>
-      <p class="sub-text">Work Location</p>
+      <p class="sub-text"  i18n="work location|side heading for work location@@workLocation">Work Location</p>
     </div>
   </div>
   <div class="general-information-row">
     <img class="icon" src="assets/dashboard-cv/icn_salary.png">
     <div class="general-information-text">
       <p class="main-text">{{convertCTC(applicant.expectedCTC)}} per annum</p>
-      <p class="sub-text">Salary Expectation</p>
+      <p class="sub-text"  i18n="Salary Expectation|side heading for Salary Expectation@@salaryExpectation">Salary Expectation</p>
     </div>
   </div>
 </div>
 <hr class="hr">
 <div class="contact">
-  <p class="heading">Contact</p>
+  <p class="heading" i18n="contact|main heading for contact@@contact">Contact</p>
   <p class="contact-info">+91 {{applicant.mobile_no}}</p>
   <p class="contact-info">{{applicant.emailId}}</p>
 </div>
 <hr class="hr">
 <div class="social">
-  <p class="heading">Socials</p>
+  <p class="heading" i18n="socials|main heading for social media@@socials">Socials</p>
   <div class="social-links">
     <div *ngFor="let link of applicant.websiteUrl">
       <a *ngIf="link.url" [href]="link.url">

@@ -5,6 +5,12 @@
   "projects": {
     "hydra": {
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "kn": "src/locale/messages.kn.xlf"
+        }
+      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -18,6 +24,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/hydra",
+            "localize": false,
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,6 +68,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "kn": {
+              "localize": ["kn"]
             }
           }
         },
@@ -72,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "hydra:build:production"
+            },
+            "kn": {
+              "browserTarget": "hydra:build:kn"
             }
           }
         },

@@ -21,11 +21,11 @@ export class HttpInterceptorService implements HttpInterceptor {
     if (this.storage.hasJwtToken()) {
       reqUrl = req.clone({
         setHeaders: { Authorization: `Bearer ${this.storage.getJwtToken()}`},
-        url: 'http://ec2-3-138-235-228.us-east-2.compute.amazonaws.com:5000/' + req.url
+        url: 'https://intern-management.herokuapp.com/' + req.url
       });
     } else {
       reqUrl = req.clone({
-        url: 'http://ec2-3-138-235-228.us-east-2.compute.amazonaws.com:5000/' + req.url
+        url: 'https://intern-management.herokuapp.com/' + req.url
       });
     }
 
